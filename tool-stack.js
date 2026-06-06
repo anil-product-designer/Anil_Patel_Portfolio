@@ -101,7 +101,10 @@ const tools = {
       tag: 'Cloud IDE',
       color: '#F26207',
       icon: `<img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/replit.svg" style="filter:invert(1)" alt="Replit">`
-    }, {
+    },
+  ],
+  ai: [
+    {
       name: 'Antigravity',
       tag: 'AI Tools',
       color: '#818CF8',

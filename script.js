@@ -21,28 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Theme Toggle Logic
-    const themeToggle = document.getElementById('theme-toggle');
-    const body = document.body;
 
-    // Check for saved theme preference
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        body.classList.add(currentTheme);
-    }
-
-    if (themeToggle) {
-        themeToggle.addEventListener('click', () => {
-            body.classList.toggle('light-mode');
-
-            // Save preference
-            if (body.classList.contains('light-mode')) {
-                localStorage.setItem('theme', 'light-mode');
-            } else {
-                localStorage.removeItem('theme');
-            }
-        });
-    }
 
     // Scroll Reveal Observer
     const revealCallback = (entries, observer) => {

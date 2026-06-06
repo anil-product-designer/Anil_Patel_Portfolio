@@ -1,3 +1,39 @@
+@font-face {
+  font-family: 'Stage Grotesk';
+  src: url('fonts/StageGrotesk-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stage Grotesk';
+  src: url('fonts/StageGrotesk-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stage Grotesk';
+  src: url('fonts/StageGrotesk-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stage Grotesk';
+  src: url('fonts/StageGrotesk-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Stage Grotesk';
+  src: url('fonts/StageGrotesk-Italic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
   --bg: #0a0a0f;
   --bg2: #10101a;
@@ -68,7 +104,7 @@ html {
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: 'DM Mono', monospace;
+  font-family: 'Stage Grotesk', sans-serif;
   font-size: 14px;
   line-height: 1.7;
   overflow-x: hidden;

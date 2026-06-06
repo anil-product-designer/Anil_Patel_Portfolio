@@ -1,0 +1,48 @@
+/* Visualizer Styles (Refactored for Prominent Bottom Display) */
+
+.hero {
+    position: relative;
+    /* Context for absolute visualizer */
+    padding-bottom: 0;
+    overflow: hidden;
+    /* horizontal containment */
+}
+
+/* Note: Class in HTML was updated to hero__visualizer-bottom in Step 170 */
+.hero__visualizer-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 240px;
+    /* Taller strip for impact */
+    display: flex;
+    justify-content: center;
+    /* Center grid */
+    align-items: flex-end;
+    /* Align to bottom */
+    z-index: -1;
+    /* Behind content as requested by "background" */
+    pointer-events: none;
+    /* Let clicks pass through */
+    /* No masking, full opacity for Vapi look */
+    opacity: 1;
+}
+
+.viz-column {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Bottom to top */
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.viz-pill {
+    width: 100%;
+    height: 12px;
+    border-radius: 100px;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}

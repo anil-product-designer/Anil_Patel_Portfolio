@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenisth IDP — Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Local override for IDP brand colors */
+    :root {
+      --teal: #0891b2;
+      --teal-bright: #22d3ee;
+      --teal-dim: #164e63;
+      --teal-glow: rgba(8, 145, 178, 0.14);
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    /* ── NAV ─────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: var(--header-bg);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--teal-bright);
+      text-transform: uppercase;
+    }
+
+    .nav-meta {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-meta span {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .nav-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--teal-dim);
+      color: var(--teal-bright);
+      padding: 4px 10px;
+      border-radius: 2px;
+      border: 1px solid var(--teal);
+    }
+
+    /* ── HERO ─────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 55% at 8% 55%, rgba(8, 145, 178, 0.11) 0%, transparent 60%),
+        radial-gradient(ellipse 45% 45% at 92% 18%, rgba(34, 211, 238, 0.06) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 55%, rgba(8, 145, 178, 0.04) 100%);
+    }
+
+    .hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 48px;
+      height: 1px;
+      background: var(--teal-bright);
+    }
+
+    .hero-eyebrow span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--teal-bright);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 9vw, 120px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+      max-width: 70%;
+    }
+
+    .hero-title .line1 {
+      display: block;
+      color: var(--text);
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(135deg, var(--teal-bright) 0%, #67e8f9 50%, var(--teal-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-title .line3 {
+      display: block;
+      color: var(--text-dim);
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .hero-bottom {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-top: 1px solid var(--line);
+      padding-top: 40px;
+      animation: fadeUp 0.7s 0.45s ease both;
+      width: 100%;
+    }
+
+    .hero-stat {
+      padding-right: 40px;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-stat:last-child {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 40px;
+    }
+
+    .hero-stat:nth-child(2) {
+      padding-left: 40px;
+    }
+
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--teal-bright);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ── SECTIONS ─────────────────────── */
+    section {
+      padding: 120px 48px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 64px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--teal);
+    }
+
+    .section-label span {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--teal-bright);
+      text-transform: uppercase;
+    }
+
+    .section-label .num {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    /* ── CONTEXT ──────────────────────── */
+    .context-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .context-left {
+      padding-right: 80px;
+      border-right: 1px solid var(--line);
+    }
+
+    .context-right {
+      padding-left: 80px;
+    }
+
+    .context-desc {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .context-desc strong {
+      color: var(--text);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .role-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .pill {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      color: var(--text-muted);
+    }
+
+    .tool-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .tool-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .tool-name {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .tool-tag {
+      margin-left: auto;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── PRINCIPLES ───────────────────── */
+    .principles-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .principle-item {
+      background: var(--bg2);
+      padding: 36px 28px;
+      transition: background 0.25s;
+    }
+
+    .principle-item:hover {
+      background: var(--bg3);
+    }
+
+    .principle-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 48px;
+      color: var(--text-dim);
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .principle-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--teal-bright);
+      margin-bottom: 10px;
+    }
+
+    .principle-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── PROBLEM ──────────────────────── */
+    .problem-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .problem-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      margin-bottom: 64px;
+    }
+
+    .problem-headline em {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--teal-bright);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-bottom: 80px;
+    }
+
+    .pain-item {
+      background: var(--bg);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+
+    .pain-item:hover {
+      background: var(--bg2);
+    }
+
+    .pain-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--teal-dim);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .pain-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .pain-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .big-insight {
+      border: 1px solid var(--teal);
+      background: var(--teal-glow);
+      padding: 48px;
+      border-radius: 4px;
+    }
+
+    .big-insight-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--teal-bright);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .big-insight-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 28px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .big-insight-text strong {
+      color: var(--teal-bright);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* ── DECISIONS ────────────────────── */
+    .decisions-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .module-divider {
+      padding: 28px 0 0;
+      margin-bottom: 0;
+    }
+
+    .module-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0;
+    }
+
+    .module-label::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--text-dim);
+    }
+
+    .decision-card {
+      border-top: 1px solid var(--line);
+      padding: 64px 0;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .decision-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .decision-meta {
+      position: sticky;
+      top: 100px;
+    }
+
+    .decision-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      letter-spacing: -0.04em;
+      transition: color 0.3s;
+    }
+
+    .decision-card:hover .decision-number {
+      color: var(--teal-bright);
+    }
+
+    .decision-badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .badge-upload {
+      background: rgba(8, 145, 178, 0.15);
+      color: var(--teal-bright);
+      border: 1px solid var(--teal);
+    }
+
+    .badge-schema {
+      background: rgba(167, 139, 250, 0.12);
+      color: var(--accent-violet);
+      border: 1px solid rgba(167, 139, 250, 0.35);
+    }
+
+    .badge-trust {
+      background: rgba(251, 191, 36, 0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .badge-scope {
+      background: rgba(239, 68, 68, 0.1);
+      color: var(--accent-red);
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-system {
+      background: rgba(52, 211, 153, 0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+
+    .decision-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .decision-headline {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .decision-headline strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .decision-rationale {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .impact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .impact-col {
+      background: var(--bg3);
+      padding: 24px 28px;
+    }
+
+    .impact-col-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .impact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .impact-item::before {
+      content: '→';
+      color: var(--teal-bright);
+      flex-shrink: 0;
+    }
+
+    .vs-box {
+      display: flex;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .vs-before {
+      flex: 1;
+      padding: 24px;
+      background: rgba(239, 68, 68, 0.05);
+      border-right: 1px solid var(--line);
+    }
+
+    .vs-after {
+      flex: 1;
+      padding: 24px;
+      background: rgba(52, 211, 153, 0.05);
+    }
+
+    .vs-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .vs-before .vs-label {
+      color: var(--accent-red);
+    }
+
+    .vs-after .vs-label {
+      color: var(--accent-green);
+    }
+
+    .vs-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .principle-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--teal-bright);
+      background: var(--teal-glow);
+      border: 1px solid var(--teal);
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-top: 24px;
+    }
+
+    .principle-tag::before {
+      content: '⟡';
+      font-size: 10px;
+    }
+
+    /* ── FLOW ─────────────────────────── */
+    .flow-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .flow-steps {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 64px;
+    }
+
+    .flow-step {
+      flex: 1;
+      padding: 32px 24px;
+      background: var(--bg2);
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .flow-step:hover {
+      background: var(--bg3);
+    }
+
+    .flow-step:not(:last-child) {
+      border-right: 1px solid var(--line);
+    }
+
+    .flow-step-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--teal-bright);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .flow-step-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .flow-step-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .flow-arrow {
+      position: absolute;
+      right: -12px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: var(--teal-bright);
+      z-index: 2;
+      background: var(--bg2);
+      padding: 4px;
+    }
+
+    /* ── EDGE CASES ───────────────────── */
+    .edge-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .edge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .edge-item {
+      background: var(--bg2);
+      padding: 28px 24px;
+      transition: background 0.2s;
+    }
+
+    .edge-item:hover {
+      background: var(--bg3);
+    }
+
+    .edge-icon {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .edge-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .edge-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── SCOPE ────────────────────────── */
+    .scope-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .scope-block-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .scope-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .scope-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    /* ── IMPACT ───────────────────────── */
+    .impact-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .impact-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 6vw, 80px);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 80px;
+    }
+
+    .impact-headline .muted {
+      color: var(--text-dim);
+    }
+
+    .impact-headline .bright {
+      background: linear-gradient(135deg, var(--teal-bright) 0%, #67e8f9 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 64px;
+    }
+
+    .metric-item {
+      background: var(--bg2);
+      padding: 40px 32px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .metric-item:hover {
+      background: var(--bg3);
+    }
+
+    .metric-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--teal-bright), #67e8f9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ── STORY ANGLE ──────────────────── */
+    .story-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .story-angle {
+      border: 1px solid var(--teal);
+      background: var(--teal-glow);
+      padding: 64px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .story-angle-tag {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--teal-bright);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .story-angle-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .story-angle-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ───────────────────────── */
+    footer {
+      padding: 64px 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding-top: 32px;
+    }
+
+    .footer-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: right;
+      padding-top: 32px;
+    }
+
+    /* ── ANIMATIONS ───────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── LARGE SCREENS ─────────────────── */
+    @media (min-width: 1600px) {
+      nav {
+        padding: 20px 80px;
+      }
+
+      .hero {
+        padding: 0 80px 80px;
+      }
+
+      section {
+        padding: 120px 80px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      .hero {
+        padding: 0 24px 60px;
+      }
+
+      .context-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .context-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 48px;
+        margin-bottom: 48px;
+      }
+
+      .context-right {
+        padding-left: 0;
+      }
+
+      .principles-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .decision-meta {
+        position: relative;
+        top: 0;
+      }
+
+      .impact-row {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-steps {
+        flex-direction: column;
+      }
+
+      .flow-step {
+        border-right: none !important;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .flow-arrow {
+        display: none;
+      }
+
+      .edge-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .scope-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-stat {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 0 0 24px;
+      }
+
+      .hero-stat:last-child {
+        padding: 0;
+      }
+
+      .hero-stat:nth-child(2) {
+        padding-left: 0;
+      }
+
+      .story-angle {
+        padding: 48px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+
+      .footer-meta {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 12px 16px;
+      }
+
+      .nav-logo {
+        font-size: 11px;
+      }
+
+      .nav-meta span:not(.nav-tag) {
+        display: none;
+      }
+
+      section {
+        padding: 60px 16px;
+      }
+
+      .hero {
+        padding: 0 16px 40px;
+      }
+
+      .hero-stat-num {
+        font-size: 28px;
+      }
+
+      .principles-grid,
+      .metrics-grid,
+      .edge-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .big-insight {
+        padding: 32px 24px;
+      }
+
+      .big-insight-text {
+        font-size: 22px;
+      }
+
+      .decision-card {
+        padding: 40px 0;
+      }
+
+      .decision-number {
+        font-size: 48px;
+      }
+
+      .decision-headline {
+        font-size: 20px;
+      }
+
+      .impact-row {
+        grid-template-columns: 1fr;
+      }
+
+      .impact-col {
+        padding: 20px;
+      }
+
+      .story-angle {
+        padding: 32px 24px;
+      }
+
+    }
+
+    /* ── PROJECT NAVIGATION SECTION ──────────────── */
+    .project-nav-section {
+      padding: 120px 48px;
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .project-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-project-card {
+      text-align: center;
+      padding: 48px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-project-card:hover {
+      background: var(--bg3);
+      border-color: var(--teal);
+      transform: translateY(-4px);
+    }
+
+    .nav-project-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .nav-project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .nav-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--teal-bright);
+    }
+
+    @media (max-width: 768px) {
+
+      /* Stack all two-column grids */
+      .context-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .context-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+      }
+
+      .context-right {
+        padding-left: 0;
+      }
+
+      /* Decision card: stack meta above content */
+      .decision-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .decision-meta {
+        position: relative;
+        top: 0;
+      }
+
+      .decision-number {
+        font-size: 48px;
+      }
+
+      /* Impact row: single column */
+      .impact-row {
+        grid-template-columns: 1fr;
+      }
+
+      /* Hero & section padding */
+      nav {
+        padding: 16px 20px;
+      }
+
+      .hero {
+        padding: 0 20px 60px;
+      }
+
+      section {
+        padding: 64px 20px;
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-stat {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 24px;
+      }
+
+      .hero-stat:last-child {
+        border-bottom: none;
+        padding-left: 0;
+      }
+
+      .hero-stat:nth-child(2) {
+        padding-left: 0;
+      }
+
+      .project-nav-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-nav-section {
+        padding: 80px 24px;
+      }
+    }
+
+    /* ── VISUAL COMPONENTS ─────────────────────── */
+    .visual-box {
+      width: 100%;
+      height: 480px;
+      background: linear-gradient(135deg,
+          rgba(8, 145, 178, 0.15) 0%,
+          rgba(34, 211, 238, 0.05) 50%,
+          rgba(8, 145, 178, 0.15) 100%);
+      background-size: 200% 200%;
+      animation: gradientFlow 8s ease infinite;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+
+    .visual-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.15;
+    }
+
+    @keyframes gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .inspiration-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .inspiration-main {
+      height: 520px;
+    }
+
+    .inspiration-side {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .inspiration-sub {
+      height: calc(260px - 16px);
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .inspiration-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .inspiration-main {
+        height: 320px;
+      }
+
+      .inspiration-sub {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo" style="text-decoration: none;">Zenisth · IDP</a>
+    <div class="nav-meta">
+      <a href="index.html"
+        style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
+        onmouseover="this.style.color='var(--teal-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
+      <span>B2B SaaS · Intelligent Document Processing</span>
+      <span class="nav-tag">Case Study</span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌑</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top:120px;">
+    <div class="hero-bg"></div>
+    <div class="hero-eyebrow">
+      <span>Product Design · End-to-End · 2024</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line1">Designing</span>
+      <span class="line2">IDP</span>
+      <span class="line3">decision clarity under constraints.</span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="hero-stat">
+        <span class="hero-stat-num">7</span>
+        <span class="hero-stat-label">Core Design Decisions</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">4</span>
+        <span class="hero-stat-label">Design Principles</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">V1</span>
+        <span class="hero-stat-label">Shipped Fast, Built to Scale</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXT -->
+  <section class="context-section reveal">
+    <div class="section-label">
+      <span>Context</span>
+      <span class="num">/ 01</span>
+    </div>
+    <div class="context-grid">
+      <div class="context-left">
+        <p class="context-desc">
+          Zenisth IDP is the <strong>AI-powered document intelligence layer</strong> of the Zenisth platform. It
+          extracts structured data from unstructured documents invoices, contracts, reports at enterprise scale.
+        </p>
+        <p class="context-desc">
+          My job was not to design screens. It was to design a <strong>system that non-technical operations teams could
+            trust</strong> predictable, auditable, and cost-transparent.
+        </p>
+        <div class="role-pills">
+          <span class="pill">UX Architecture</span>
+          <span class="pill">Workflow Design</span>
+          <span class="pill">Credit System</span>
+          <span class="pill">Tag Schema Design</span>
+          <span class="pill">Design System</span>
+          <span class="pill">Developer Collaboration</span>
+        </div>
+      </div>
+      <div class="context-right">
+        <div class="tool-list">
+          <div class="tool-item">
+            <div class="tool-dot" style="background:var(--teal-bright);"></div>
+            <span class="tool-name">Team Behind This Tool</span>
+            <span class="tool-tag" style="color:var(--teal-bright);"></span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot" style="background:var(--accent-green);"></div>
+            <span class="tool-name">Sikha Pancholi</span>
+            <span class="tool-tag" style="color:var(--accent-green);">Product Manager</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot" style="background:var(--accent-green);"></div>
+            <span class="tool-name">Anil Patel</span>
+            <span class="tool-tag" style="color:var(--accent-green);">Product Designer</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot" style="background:var(--accent-green);"></div>
+            <span class="tool-name">Jaydeep Darji</span>
+            <span class="tool-tag" style="color:var(--accent-green);">Frontend Developer</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot" style="background:var(--accent-green);"></div>
+            <span class="tool-name">Dhruvin Somani</span>
+            <span class="tool-tag" style="color:var(--accent-green);">Backend Developer</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRINCIPLES -->
+  <section class="principles-section">
+    <div class="section-label reveal">
+      <span>Design Principles</span>
+      <span class="num">/ 02</span>
+    </div>
+    <h2 class="section-title reveal" style="margin-bottom: 48px;">4 rules I defined before touching a frame.</h2>
+    <div class="principles-grid reveal">
+      <div class="principle-item">
+        <div class="principle-num">01</div>
+        <div class="principle-name">Consent Before Compute</div>
+        <p class="principle-desc">Users must see what will happen and what it costs before the system acts. No silent
+          processing.</p>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">02</div>
+        <div class="principle-name">Simple Before Smart</div>
+        <p class="principle-desc">A workflow that non-technical users can operate confidently beats a smart one that
+          confuses them.</p>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">03</div>
+        <div class="principle-name">Reusable Before Repeatable</div>
+        <p class="principle-desc">Configuration built once and reused is better than configuration rebuilt every time.
+        </p>
+      </div>
+      <div class="principle-item">
+        <div class="principle-num">04</div>
+        <div class="principle-name">Trust Over Automation Hype</div>
+        <p class="principle-desc">Enterprise teams need to trust the system first. Automation value comes after trust is
+          earned.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem-section">
+    <div class="section-label reveal">
+      <span>The Problem</span>
+      <span class="num">/ 03</span>
+    </div>
+    <h2 class="problem-headline reveal">
+      Operations teams were doing <em>manually</em><br>what machines should be doing <em>reliably</em>.
+    </h2>
+    <div class="pain-grid reveal">
+      <div class="pain-item">
+        <div class="pain-number">01</div>
+        <div class="pain-title">Manual Data Entry</div>
+        <p class="pain-text">Teams were re-keying invoice data, contract terms, and report values — spending hours on
+          work that should take seconds.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">02</div>
+        <div class="pain-title">Rechecking AI Outputs</div>
+        <p class="pain-text">Existing tools produced unpredictable extractions. Every result required manual
+          verification — erasing the automation benefit.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">03</div>
+        <div class="pain-title">Hidden Processing Costs</div>
+        <p class="pain-text">LLM + OCR costs were invisible until after processing. Billing surprises created distrust
+          and slowed enterprise adoption.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">04</div>
+        <div class="pain-title">Inconsistent Extraction</div>
+        <p class="pain-text">Without standardized schemas, same-type documents produced different structures. Downstream
+          systems broke constantly.</p>
+      </div>
+    </div>
+    <div class="big-insight reveal">
+      <p class="big-insight-label">Core Design Thesis</p>
+      <p class="big-insight-text">
+        Existing tools were <strong>complex, unpredictable, and over-engineered</strong> for the people who needed them
+        most. I designed IDP to be a <strong>controlled extraction system</strong> not an AI demo. Simple.
+        Predictable. Enterprise-safe.
+      </p>
+    </div>
+  </section>
+
+  <!-- DECISIONS -->
+  <section class="decisions-section">
+    <div class="section-label reveal">
+      <span>Design Decisions</span>
+      <span class="num">/ 04</span>
+    </div>
+    <p style="font-size:16px;color:var(--text-muted);max-width:560px;margin-bottom:80px;line-height:1.7;">
+      7 decisions across 7 modules. Each one made under real constraints time pressure, developer capacity, and
+      enterprise user expectations. Every decision traces back to one of the 4 principles.
+    </p>
+
+    <!-- MODULE 1 -->
+    <div class="module-divider">
+      <div class="module-label">Module 1 — Upload &amp; Ingestion</div>
+    </div>
+
+    <!-- D1 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">01</div>
+        <div class="decision-badge badge-upload">Upload</div>
+        <div class="decision-title">Document Preview Before Processing</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Processing the moment a file lands is <strong>fast for the machine</strong> and <strong>expensive for the
+            user</strong> who uploaded the wrong batch.
+        </p>
+        <p class="decision-rationale">
+          I introduced a staging area between upload and processing. Users can review every document, remove incorrect
+          files, and add missed ones all before a single credit is spent. This isn't just a UX nicety; it eliminates a
+          whole category of support tickets ("I uploaded the wrong file") and prevents wasted compute on the backend.
+        </p>
+        <div class="vs-box">
+          <div class="vs-before">
+            <div class="vs-label">Rejected — Process Immediately</div>
+            <p class="vs-text">Upload triggers processing instantly. Wrong files waste credits. Re-runs are required.
+              Frustration compounds.</p>
+          </div>
+          <div class="vs-after">
+            <div class="vs-label">Chosen — Staging Area</div>
+            <p class="vs-text">Upload lands in preview. User confirms the batch. Only then does processing begin. Full
+              control maintained.</p>
+          </div>
+        </div>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Fewer errors before extraction</div>
+            <div class="impact-item">No wasted credits on wrong files</div>
+            <div class="impact-item">Confidence in what will be processed</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Cleaner processing queue</div>
+            <div class="impact-item">Fewer reruns needed</div>
+            <div class="impact-item">Lower backend compute waste</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Lower OCR cost per run</div>
+            <div class="impact-item">Fewer support tickets</div>
+            <div class="impact-item">Higher enterprise trust</div>
+          </div>
+        </div>
+        <div class="principle-tag">Consent Before Compute no action before user confirms</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- MODULE 2 -->
+    <div class="module-divider" style="padding-top: 24px;">
+      <div class="module-label">Module 2 — Tag-Based Schema System</div>
+    </div>
+
+    <!-- D2 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">02</div>
+        <div class="decision-badge badge-schema">Schema</div>
+        <div class="decision-title">Reusable Tags Instead of Per-Run Prompts</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Asking teams to <strong>reconfigure extraction logic every batch</strong> is not a workflow it's a recurring
+          tax on their attention.
+        </p>
+        <p class="decision-rationale">
+          A Tag is a saved extraction schema template it bundles the fields to extract, the document type, and the
+          output format. Define it once, reuse it across every batch. No reconfiguration. No guesswork. The extraction
+          model behaves consistently because the input schema is consistent. Enterprise teams get standardized output by
+          default, not by luck.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">No reconfiguration per batch</div>
+            <div class="impact-item">Faster operations at scale</div>
+            <div class="impact-item">Predictable extraction output</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Structured schema storage</div>
+            <div class="impact-item">Clear field-mapping logic</div>
+            <div class="impact-item">Easier backend validation</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Cross-department standardization</div>
+            <div class="impact-item">Enterprise scalability</div>
+            <div class="impact-item">Downstream system stability</div>
+          </div>
+        </div>
+        <div class="principle-tag">Reusable Before Repeatable configure once, use everywhere</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- MODULE 3 -->
+    <div class="module-divider" style="padding-top: 24px;">
+      <div class="module-label">Module 3 — Credit Transparency</div>
+    </div>
+
+    <!-- D3 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">03</div>
+        <div class="decision-badge badge-trust">Trust System</div>
+        <div class="decision-title">Estimated Credits Shown Before Extraction</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          LLM + OCR costs real money. <strong>Hidden processing creates distrust.</strong> And distrust, in enterprise
+          SaaS, is a churn event.
+        </p>
+        <p class="decision-rationale">
+          I designed a Batch Summary screen that sits between configuration and execution. It shows: the number of
+          documents detected, estimated credit cost, and a clear confirmation button. Users see what they're about to
+          spend before they spend it. This is not just UX it's a product-level trust contract. Procurement teams can
+          budget. Finance can audit. Operations can act without fear.
+        </p>
+        <div class="vs-box">
+          <div class="vs-before">
+            <div class="vs-label">Without Transparency</div>
+            <p class="vs-text">Processing starts, credits deduct, user discovers the cost after the fact. Dispute
+              raised. Support ticket opened. Trust broken.</p>
+          </div>
+          <div class="vs-after">
+            <div class="vs-label">With Batch Summary</div>
+            <p class="vs-text">User sees document count + estimated credits before confirming. Full budget control. No
+              surprises. Confidence gained.</p>
+          </div>
+        </div>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">No surprise billing</div>
+            <div class="impact-item">Full budget control</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Clear cost computation logic</div>
+            <div class="impact-item">Predictable API triggers</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Fewer billing disputes</div>
+            <div class="impact-item">Higher enterprise adoption</div>
+          </div>
+        </div>
+        <div class="principle-tag">Consent Before Compute no spend without user confirmation</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- MODULE 4 -->
+    <div class="module-divider" style="padding-top: 24px;">
+      <div class="module-label">Module 4 — Classification Removal (V1)</div>
+    </div>
+
+    <!-- D4 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">04</div>
+        <div class="decision-badge badge-scope">Scope Cut</div>
+        <div class="decision-title">Remove Classification in V1</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Automatic document classification sounds like <strong>smart product thinking</strong>. In V1, it was a
+          <strong>complexity trap</strong>.
+        </p>
+        <p class="decision-rationale">
+          Auto-classification increased cognitive load for users who needed to understand and trust what the system was
+          doing. It multiplied edge cases, made credit calculation harder to explain, and slowed development. The
+          tradeoff was clear: remove the automation layer, ship a reliable extraction core, and validate that first.
+          Classification moves to V2 when we have usage data to justify it.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Simpler onboarding experience</div>
+            <div class="impact-item">Faster learning curve</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Faster shipping timeline</div>
+            <div class="impact-item">Reduced backend branching</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Faster go-to-market</div>
+            <div class="impact-item">Lower infrastructure cost</div>
+          </div>
+        </div>
+        <div class="principle-tag">Simple Before Smart reliability before automation</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- MODULE 5 -->
+    <div class="module-divider" style="padding-top: 24px;">
+      <div class="module-label">Module 5 — Review Queue Removal (V1)</div>
+    </div>
+
+    <!-- D5 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">05</div>
+        <div class="decision-badge badge-scope">Scope Cut</div>
+        <div class="decision-title">Remove Manual Review Flow</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          A review queue is a powerful enterprise feature. It is also a <strong>V1 scope killer</strong> if the
+          extraction engine it reviews isn't trusted yet.
+        </p>
+        <p class="decision-rationale">
+          Manual review adds: complex UI states, human-in-the-loop coordination logic, assignment and notification
+          systems, and significant state management overhead. V1's goal was to validate extraction reliability not to
+          build a review workflow. Once the extraction is trusted, the review layer has a reason to exist. Not before.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Faster processing flow</div>
+            <div class="impact-item">Less cognitive overhead</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Fewer UI states to handle</div>
+            <div class="impact-item">Cleaner API responses</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Reduced development cycle</div>
+            <div class="impact-item">Lower maintenance burden</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- MODULE 6 -->
+    <div class="module-divider" style="padding-top: 24px;">
+      <div class="module-label">Module 6 — Output Format</div>
+    </div>
+
+    <!-- D6 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">06</div>
+        <div class="decision-badge badge-schema">Schema</div>
+        <div class="decision-title">Export Format Defined in Tag, Not at Download</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Asking users to pick a download format at the end of a long process is a <strong>small friction point with a
+            large psychological cost</strong>.
+        </p>
+        <p class="decision-rationale">
+          Output format is defined once during Tag creation not at the moment of download. This eliminates decision
+          fatigue at the worst possible moment (post-extraction, when users just want their data). It also means the
+          export pipeline handles one format per batch, simplifying the transformation logic significantly. Predictable
+          in → predictable out.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Predictable download results</div>
+            <div class="impact-item">No decision fatigue at end</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Single format transformation logic</div>
+            <div class="impact-item">Simplified export pipeline</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Cleaner architecture</div>
+            <div class="impact-item">Reduced edge cases</div>
+          </div>
+        </div>
+        <div class="principle-tag">Simple Before Smart fewer choices at critical moments</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- MODULE 7 -->
+    <div class="module-divider" style="padding-top: 24px;">
+      <div class="module-label">Module 7 — Design System</div>
+    </div>
+
+    <!-- D7 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">07</div>
+        <div class="decision-badge badge-system">Design System</div>
+        <div class="decision-title">Token-Based Design System for the Entire Platform</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Zenisth has 6 tools. A design system built only for IDP is a <strong>dead end</strong>. A token-based system
+          is a <strong>platform asset</strong>.
+        </p>
+        <p class="decision-rationale">
+          I built a token-based design system with base tokens (colors, spacing, typography), semantic tokens (success,
+          warning, error states), shared components, and reusable layout patterns. Every component built for IDP is
+          available to Transify, Voice, and every future tool without restyling or duplication. This decision
+          compounded in value with every tool shipped after it.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Consistent experience across tools</div>
+            <div class="impact-item">Lower learning curve per tool</div>
+            <div class="impact-item">Unified mental model</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Faster UI implementation per tool</div>
+            <div class="impact-item">Reusable component logic</div>
+            <div class="impact-item">Reduced UI bugs across platform</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Faster feature delivery</div>
+            <div class="impact-item">Scalable platform growth</div>
+            <div class="impact-item">Brand consistency at scale</div>
+          </div>
+        </div>
+        <div class="principle-tag">Reusable Before Repeatable build once, scale everywhere</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+  </section>
+
+  <!-- FLOW -->
+  <section class="flow-section reveal">
+    <div class="section-label">
+      <span>Final Workflow</span>
+      <span class="num">/ 05</span>
+    </div>
+    <h2 class="section-title" style="margin-bottom:16px;">The flow that resulted from<br>every decision above.</h2>
+    <p
+      style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:20px;color:var(--text-muted);margin-bottom:48px;">
+      Simple. Predictable. Enterprise-safe.</p>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="flow-step-num">Step 01</div>
+        <div class="flow-step-name">Upload</div>
+        <div class="flow-step-desc">Documents land in a staging area. Nothing is processed yet.</div>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 02</div>
+        <div class="flow-step-name">Preview</div>
+        <div class="flow-step-desc">User reviews, removes, or adds documents before committing.</div>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 03</div>
+        <div class="flow-step-name">Select Tag</div>
+        <div class="flow-step-desc">Reusable schema applied. No reconfiguration required.</div>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 04</div>
+        <div class="flow-step-name">See Credits</div>
+        <div class="flow-step-desc">Batch summary shows document count and estimated cost.</div>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 05</div>
+        <div class="flow-step-name">Confirm</div>
+        <div class="flow-step-desc">Explicit user action triggers processing. Consent recorded.</div>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 06</div>
+        <div class="flow-step-name">Extract</div>
+        <div class="flow-step-desc">Structured data extracted against the Tag schema.</div>
+        <span class="flow-arrow">→</span>
+      </div>
+      <div class="flow-step">
+        <div class="flow-step-num">Step 07</div>
+        <div class="flow-step-name">Download</div>
+        <div class="flow-step-desc">Results in the format defined at Tag creation. Predictable every time.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDGE CASES -->
+  <section class="edge-section reveal">
+    <div class="section-label">
+      <span>Edge Case Thinking</span>
+      <span class="num">/ 06</span>
+    </div>
+    <h2 class="section-title" style="margin-bottom:16px;">Every system breaks.<br>I designed for when it does.</h2>
+    <p style="font-size:14px;color:var(--text-muted);max-width:520px;margin-bottom:48px;line-height:1.7;">These aren't
+      afterthoughts they're first-class design decisions. Handling edge cases is what separates enterprise-grade from
+      demo-grade.</p>
+    <div class="edge-grid">
+      <div class="edge-item">
+        <div class="edge-icon">📄</div>
+        <div class="edge-name">Duplicate Uploads</div>
+        <div class="edge-desc">Preview stage flags duplicates before processing. User decides no silent deduplication.
+        </div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">⚠️</div>
+        <div class="edge-name">Corrupted Documents</div>
+        <div class="edge-desc">Clear failure state with reason, retry option, and file safety confirmation. No red error
+          walls.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">🔄</div>
+        <div class="edge-name">Partial Extraction Failures</div>
+        <div class="edge-desc">Partial success reported clearly. Successfully extracted documents downloadable
+          immediately.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">📦</div>
+        <div class="edge-name">Large Batch Processing</div>
+        <div class="edge-desc">Batch summary credit estimate scales with volume. Users see cost before committing large
+          batches.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">🧮</div>
+        <div class="edge-name">Credit Miscalculation</div>
+        <div class="edge-desc">Estimates are shown as "up to X credits" conservative framing prevents underbilling
+          surprises.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">🔀</div>
+        <div class="edge-name">Schema Mismatch</div>
+        <div class="edge-desc">When document type doesn't match Tag schema, extraction reports field-level gaps not
+          silent failures.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">📏</div>
+        <div class="edge-name">Document Size Limits</div>
+        <div class="edge-desc">Size limits communicated at upload, not after processing. Users know before they commit.
+        </div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">🧑‍💼</div>
+        <div class="edge-name">Non-Technical User Confusion</div>
+        <div class="edge-desc">Plain-language microcopy at every step. No technical error codes in user-facing
+          interfaces.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">🏢</div>
+        <div class="edge-name">Enterprise Governance</div>
+        <div class="edge-desc">Confirmation events and Document History provide audit-ready logs for compliance teams.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCOPE -->
+  <section class="scope-section">
+    <div class="section-label reveal">
+      <span>Scope Decisions</span>
+      <span class="num">/ 07</span>
+    </div>
+    <h2 class="section-title reveal" style="margin-bottom:48px;">What shipped. What was cut.<br>What's next.</h2>
+    <div class="scope-grid reveal">
+      <div>
+        <div class="scope-block-title" style="color:var(--accent-green);">✓ Shipped in V1</div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Document preview staging area
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Reusable Tag schema system
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Batch summary with credit estimate
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Confirmation-based processing trigger
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Output format defined in Tag
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Smart failure states with recovery
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Document History (unified across tools)
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-green);"></div>Token-based platform design system
+        </div>
+      </div>
+      <div>
+        <div class="scope-block-title" style="color:var(--accent-red);">✗ Cut for V1</div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-red);"></div>Automatic document classification
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-red);"></div>Manual review queue &amp; assignment flow
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-red);"></div>Reviewer role &amp; permissions system
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-red);"></div>Inline extraction correction
+        </div>
+        <div class="scope-item" style="border:none;">
+          <div class="scope-dot" style="background:var(--accent-red);"></div>Tag Library analytics
+        </div>
+
+        <div class="scope-block-title" style="color:var(--accent-amber);margin-top:40px;">→ Planned for V2</div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-amber);"></div>Smart classification with user override
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot" style="background:var(--accent-amber);"></div>Human-in-the-loop review workflow
+        </div>
+        <div class="scope-item" style="border:none;">
+          <div class="scope-dot" style="background:var(--accent-amber);"></div>Per-user extraction analytics &amp;
+          reporting
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="impact-section">
+    <div class="section-label reveal">
+      <span>Impact</span>
+      <span class="num">/ 08</span>
+    </div>
+    <h2 class="impact-headline reveal">
+      <span class="muted">What happens when</span><br>
+      <span class="bright">you design for trust.</span>
+    </h2>
+    <div class="metrics-grid reveal">
+      <div class="metric-item">
+        <div class="metric-num">↓</div>
+        <div class="metric-label">Billing Disputes Eliminated</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-num">↑</div>
+        <div class="metric-label">Enterprise Adoption Rate</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-num">7×</div>
+        <div class="metric-label">Faster Workflow vs Manual Entry</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-num">∞</div>
+        <div class="metric-label">Scalability via Design System</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY ANGLE -->
+  <section class="story-section">
+    <div class="section-label reveal">
+      <span>The Real Strength</span>
+      <span class="num">/ 09</span>
+    </div>
+    <div class="story-angle reveal">
+      <span class="story-angle-tag">What this case study is actually about</span>
+      <p class="story-angle-text">
+        Not UI. Not AI. Not features.<br>
+        <em style="color:var(--teal-bright);">Decision clarity under constraints.</em>
+      </p>
+      <p class="story-angle-sub">
+        That's what separates a UI designer from a product designer.<br>
+        That's what hiring managers look for.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── PROJECT NAVIGATION ────────────────────── -->
+  <section class="project-nav-section">
+    <div class="project-nav-grid">
+      <a href="transify-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Previous Project</span>
+        <h2 class="nav-project-title">Zenisth Transify</h2>
+        <div class="nav-project-btn">← View Case Study</div>
+      </a>
+      <a href="trailtribe-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Next Project</span>
+        <h2 class="nav-project-title">TrailTribe App</h2>
+        <div class="nav-project-btn">View Case Study &nbsp; →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Zenisth · IDP · Case Study</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">B2B SaaS · Intelligent Document Processing ·
+        End-to-End Product Design</p>
+    </div>
+    <div class="footer-meta">
+      <p>7 Decisions · 4 Principles · 9 Edge Cases</p>
+      <p style="margin-top:4px;color:var(--text-dim);">V1 Shipped · V2 In Roadmap</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

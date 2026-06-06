@@ -1,0 +1,2271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenisth Transify — Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── GRAIN OVERLAY ─────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    /* ── NAV ────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(10, 10, 15, 0.8);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--violet-bright);
+      text-transform: uppercase;
+    }
+
+    .nav-meta {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-meta span {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .nav-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--violet-dim);
+      color: var(--violet-bright);
+      padding: 4px 10px;
+      border-radius: 2px;
+      border: 1px solid var(--violet);
+    }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 10% 50%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 90% 20%, rgba(168, 85, 247, 0.06) 0%, transparent 50%),
+        linear-gradient(180deg, var(--bg) 0%, var(--bg) 60%, rgba(124, 58, 237, 0.04) 100%);
+    }
+
+    .hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 48px;
+      height: 1px;
+      background: var(--violet-bright);
+    }
+
+    .hero-eyebrow span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--violet-bright);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 9vw, 120px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+      max-width: 70%;
+    }
+
+    .hero-title .line1 {
+      display: block;
+      color: var(--text);
+    }
+
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(135deg, var(--violet-bright) 0%, #c084fc 50%, var(--violet-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title .line3 {
+      display: block;
+      color: var(--text-muted);
+      font-style: italic;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: clamp(22px, 3.5vw, 32px);
+      margin-top: 24px;
+      max-width: 90%;
+      line-height: 1.6;
+      /* Increased from 1.4 for better vertical breathing room */
+      letter-spacing: 0.01em;
+      /* Adds a tiny bit of space between letters */
+      word-spacing: 0.05em;
+    }
+
+    .hero-bottom {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      padding-top: 40px;
+      width: 100%;
+    }
+
+    .hero-stat {
+      padding-right: 40px;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-stat:last-child {
+      border-right: none;
+      padding-right: 0;
+      padding-left: 40px;
+    }
+
+    .hero-stat:nth-child(2) {
+      padding-left: 40px;
+    }
+
+    .hero-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--violet-bright);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ── SECTION COMMON ─────────────────────────── */
+    section {
+      padding: 120px 48px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 64px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--violet);
+    }
+
+    .section-label span {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--violet-bright);
+      text-transform: uppercase;
+    }
+
+    .section-label .num {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+    }
+
+    .section-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 56px;
+      max-width: 540px;
+    }
+
+    /* ── CONTEXT SECTION ────────────────────────── */
+    .context-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .context-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .context-left {
+      padding-right: 80px;
+      border-right: 1px solid var(--line);
+    }
+
+    .context-right {
+      padding-left: 80px;
+    }
+
+    .context-desc {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+      font-style: italic;
+    }
+
+    .context-desc strong {
+      color: var(--text);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .tool-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .tool-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .tool-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--violet-bright);
+      flex-shrink: 0;
+    }
+
+    .tool-dot.active {
+      background: var(--accent-green);
+    }
+
+    .tool-name {
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .tool-tag {
+      margin-left: auto;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      color: var(--accent-green);
+      text-transform: uppercase;
+    }
+
+    .role-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .pill {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      color: var(--text-muted);
+    }
+
+    /* ── PROBLEM SECTION ────────────────────────── */
+    .problem-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .problem-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      margin-bottom: 64px;
+    }
+
+    .problem-headline em {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--violet-bright);
+    }
+
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      margin-bottom: 80px;
+    }
+
+    .pain-item {
+      background: var(--bg2);
+      padding: 32px 28px;
+      transition: background 0.2s;
+    }
+
+    .pain-item:hover {
+      background: var(--bg3);
+    }
+
+    .pain-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--violet-dim);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .pain-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .big-insight {
+      border: 1px solid var(--violet);
+      background: var(--violet-glow);
+      padding: 48px;
+      border-radius: 4px;
+    }
+
+    .big-insight-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--violet-bright);
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .big-insight-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 28px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .big-insight-text strong {
+      color: var(--violet-bright);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* ── RESEARCH ─────────────────────── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+
+    .research-block-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .research-block-title::before {
+      content: '';
+      width: 14px;
+      height: 1px;
+      background: var(--purple-bright);
+    }
+
+    .research-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .research-item::before {
+      content: '·';
+      color: var(--purple-bright);
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: -2px;
+    }
+
+    .insight-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .insight-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .insight-card:hover {
+      border-color: var(--line-purple);
+    }
+
+    .insight-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--purple-bright);
+      min-width: 32px;
+    }
+
+    .insight-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── DECISIONS SECTION ──────────────────────── */
+    .decisions-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+      padding-bottom: 0;
+    }
+
+    .decisions-intro {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 80px;
+      line-height: 1.7;
+    }
+
+    .decision-card {
+      border-top: 1px solid var(--line);
+      padding: 64px 0;
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .decision-card:hover .decision-number {
+      color: var(--violet-bright);
+    }
+
+    .decision-meta {
+      position: sticky;
+      top: 100px;
+    }
+
+    .decision-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      letter-spacing: -0.04em;
+      transition: color 0.3s;
+    }
+
+    .decision-badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    .badge-arch {
+      background: rgba(124, 58, 237, 0.15);
+      color: var(--violet-bright);
+      border: 1px solid var(--violet);
+    }
+
+    .badge-ux {
+      background: rgba(52, 211, 153, 0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+
+    .badge-trust {
+      background: rgba(251, 191, 36, 0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .badge-biz {
+      background: rgba(239, 68, 68, 0.1);
+      color: #f87171;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+    }
+
+    .badge-system {
+      background: rgba(99, 102, 241, 0.15);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.3);
+    }
+
+    .decision-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 18px;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+
+    .decision-headline {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 26px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+    }
+
+    .decision-headline strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .decision-rationale {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 40px;
+    }
+
+    .impact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .impact-col {
+      background: var(--bg2);
+      padding: 24px 28px;
+    }
+
+    .impact-col-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+    }
+
+    .impact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-bottom: 8px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .impact-item::before {
+      content: '→';
+      color: var(--violet-bright);
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+
+    .vs-box {
+      display: flex;
+      align-items: stretch;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .vs-before,
+    .vs-after {
+      flex: 1;
+      padding: 24px;
+    }
+
+    .vs-before {
+      background: rgba(239, 68, 68, 0.05);
+      border-right: 1px solid var(--line);
+    }
+
+    .vs-after {
+      background: rgba(52, 211, 153, 0.05);
+    }
+
+    .vs-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .vs-before .vs-label {
+      color: #f87171;
+    }
+
+    .vs-after .vs-label {
+      color: var(--accent-green);
+    }
+
+    .vs-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .principle-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--violet-bright);
+      background: var(--violet-glow);
+      border: 1px solid var(--violet);
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-top: 24px;
+    }
+
+    .principle-tag::before {
+      content: '⟡';
+      font-size: 10px;
+    }
+
+    /* ── SCOPE SECTION ──────────────────────────── */
+    .scope-section {
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .scope-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+
+    .scope-block-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 16px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .scope-tag-ship {
+      color: var(--accent-green);
+    }
+
+    .scope-tag-cut {
+      color: #f87171;
+    }
+
+    .scope-tag-later {
+      color: var(--accent-amber);
+    }
+
+    .scope-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .scope-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .dot-green {
+      background: var(--accent-green);
+    }
+
+    .dot-red {
+      background: #f87171;
+    }
+
+    .dot-amber {
+      background: var(--accent-amber);
+    }
+
+    /* ── PSYCHOLOGY SECTION ─────────────────────── */
+    .psych-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .psych-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .psych-item {
+      background: var(--bg);
+      padding: 32px 24px;
+      transition: background 0.25s;
+    }
+
+    .psych-item:hover {
+      background: var(--bg3);
+    }
+
+    .psych-icon {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .psych-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--violet-bright);
+      margin-bottom: 8px;
+    }
+
+    .psych-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── IMPACT SECTION ─────────────────────────── */
+    .impact-section {
+      background: var(--bg3);
+      border-top: 1px solid var(--line);
+    }
+
+    .impact-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 6vw, 80px);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 80px;
+    }
+
+    .impact-headline .muted {
+      color: var(--text-dim);
+    }
+
+    .impact-headline .bright {
+      background: linear-gradient(135deg, var(--violet-bright) 0%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 64px;
+    }
+
+    .metric-item {
+      background: var(--bg3);
+      padding: 40px 32px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .metric-item:hover {
+      background: var(--bg2);
+    }
+
+    .metric-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 1;
+      background: linear-gradient(135deg, var(--violet-bright), #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 12px;
+    }
+
+    .metric-label {
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    /* ── STORY SECTION ──────────────────────────── */
+    .story-section {
+      background: var(--bg);
+      border-top: 1px solid var(--line);
+    }
+
+    .story-angle {
+      border: 1px solid var(--violet);
+      background: var(--violet-glow);
+      padding: 64px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .story-angle-tag {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--violet-bright);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .story-angle-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .story-angle-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--text-muted);
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      padding: 64px 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-wordmark {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding-top: 32px;
+    }
+
+    .footer-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: right;
+      padding-top: 32px;
+    }
+
+    /* ── ANIMATIONS ─────────────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-title .line1 {
+      animation: fadeUp 0.7s 0.1s ease both;
+    }
+
+    .hero-title .line2 {
+      animation: fadeUp 0.7s 0.2s ease both;
+    }
+
+    .hero-title .line3 {
+      animation: fadeUp 0.7s 0.3s ease both;
+    }
+
+    .hero-bottom {
+      animation: fadeUp 0.7s 0.45s ease both;
+    }
+
+    .hero-eyebrow {
+      animation: fadeUp 0.7s 0.0s ease both;
+    }
+
+    /* ── LARGE SCREENS ──────────────────────────────── */
+    @media (min-width: 1600px) {
+      nav {
+        padding: 20px 80px;
+      }
+
+      .hero {
+        padding: 0 80px 80px;
+      }
+
+      section {
+        padding: 120px 80px;
+      }
+    }
+
+    /* ── RESPONSIVE ─────────────────────────────── */
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      section {
+        padding: 80px 24px;
+      }
+
+      .hero {
+        padding: 0 24px 60px;
+      }
+
+      .context-grid,
+      .scope-grid,
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .context-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 48px;
+        margin-bottom: 48px;
+      }
+
+      .context-right {
+        padding-left: 0;
+      }
+
+      .decision-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .decision-meta {
+        position: relative;
+        top: 0;
+      }
+
+      .pain-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .psych-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-stat {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding: 0 0 24px;
+      }
+
+      .hero-stat:last-child {
+        padding: 0;
+      }
+
+      .hero-stat:nth-child(2) {
+        padding-left: 0;
+      }
+
+      .story-angle {
+        padding: 48px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 24px;
+        align-items: flex-start;
+      }
+
+      .footer-meta {
+        text-align: left;
+      }
+
+      .next-project {
+        padding: 80px 24px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 12px 16px;
+      }
+
+      .nav-logo {
+        font-size: 11px;
+      }
+
+      .nav-meta span:not(.nav-tag) {
+        display: none;
+      }
+
+      section {
+        padding: 60px 16px;
+      }
+
+      .hero {
+        padding: 0 16px 40px;
+      }
+
+      .hero-stat-num {
+        font-size: 28px;
+      }
+
+      .pain-grid,
+      .psych-grid,
+      .metrics-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .big-insight {
+        padding: 32px 24px;
+      }
+
+      .big-insight-text {
+        font-size: 22px;
+      }
+
+      .decision-card {
+        padding: 40px 0;
+      }
+
+      .decision-number {
+        font-size: 48px;
+      }
+
+      .decision-headline {
+        font-size: 20px;
+      }
+
+      .impact-row {
+        grid-template-columns: 1fr;
+      }
+
+      .vs-box {
+        flex-direction: column;
+      }
+
+      .vs-before {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .story-angle {
+        padding: 32px 24px;
+      }
+    }
+
+    /* ── PROJECT NAVIGATION SECTION ──────────────── */
+    .project-nav-section {
+      padding: 120px 48px;
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .project-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-project-card {
+      text-align: center;
+      padding: 48px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-project-card:hover {
+      background: var(--bg3);
+      border-color: var(--violet);
+      transform: translateY(-4px);
+    }
+
+    .nav-project-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .nav-project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .nav-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--violet-bright);
+    }
+
+    @media (max-width: 768px) {
+
+      /* Stack all two-column grids */
+      .context-grid,
+      .scope-grid,
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .context-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 40px;
+        margin-bottom: 40px;
+      }
+
+      .context-right {
+        padding-left: 0;
+      }
+
+      /* Decision card: stack meta above content */
+      .decision-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .decision-meta {
+        position: relative;
+        top: 0;
+      }
+
+      .decision-number {
+        font-size: 48px;
+      }
+
+      /* Impact row: single column */
+      .impact-row {
+        grid-template-columns: 1fr;
+      }
+
+      /* Hero section on mobile */
+      nav {
+        padding: 16px 20px;
+      }
+
+      .hero {
+        padding: 0 20px 60px;
+      }
+
+      section {
+        padding: 64px 20px;
+      }
+
+      .hero-bottom {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .hero-stat {
+        border-right: none;
+        padding-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 24px;
+      }
+
+      .hero-stat:last-child {
+        border-bottom: none;
+        padding-left: 0;
+      }
+
+      .hero-stat:nth-child(2) {
+        padding-left: 0;
+      }
+
+      .project-nav-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-nav-section {
+        padding: 80px 24px;
+      }
+    }
+
+    /* ── VISUAL COMPONENTS ─────────────────────── */
+    .visual-box {
+      width: 100%;
+      height: 480px;
+      background: linear-gradient(135deg,
+          rgba(124, 58, 237, 0.15) 0%,
+          rgba(168, 85, 247, 0.05) 50%,
+          rgba(124, 58, 237, 0.15) 100%);
+      background-size: 200% 200%;
+      animation: gradientFlow 8s ease infinite;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+      margin: 40px 0;
+    }
+
+    .visual-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 40px 40px;
+      opacity: 0.15;
+    }
+
+    @keyframes gradientFlow {
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .inspiration-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 32px;
+      margin-top: 48px;
+    }
+
+    .inspiration-main {
+      height: 520px;
+    }
+
+    .inspiration-side {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    .inspiration-sub {
+      height: calc(260px - 16px);
+      margin: 0;
+    }
+
+    @media (max-width: 900px) {
+      .inspiration-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .inspiration-main {
+        height: 320px;
+      }
+
+      .inspiration-sub {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">Zenisth Transify</a>
+    <div class="nav-meta">
+      <a href="index.html"
+        style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
+        onmouseover="this.style.color='var(--violet-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
+      <span>B2B SaaS · AI-powered translation Tool</span>
+      <span class="nav-tag">Case Study</span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌑</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" style="padding-top: 120px;">
+    <div class="hero-bg"></div>
+    <div class="hero-eyebrow">
+      <span>Product Design · End-to-End · 2026</span>
+    </div>
+    <h1 class="hero-title">
+      <span class="line1">Designing</span>
+      <span class="line2">Transify</span>
+      <span class="line3">Building a predictable enterprise translation workflow from intake to delivery.</span>
+    </h1>
+    <div class="hero-bottom">
+      <div class="hero-stat">
+        <span class="hero-stat-num">10</span>
+        <span class="hero-stat-label">Core Design Decisions</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">70+</span>
+        <span class="hero-stat-label">Languages Supported</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">V1</span>
+        <span class="hero-stat-label">Shipped, Focused, Scalable</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTEXT -->
+  <section class="context-section">
+    <div class="section-label reveal">
+      <span>Context</span>
+      <span class="num">/ 01</span>
+    </div>
+    <div class="context-grid">
+      <div class="context-left reveal">
+        <p class="context-desc">
+          Zenisth AI is a <strong>B2B SaaS platform</strong> with multiple tools built for handling enterprise
+          documents. Transify is the
+          <strong>translation tool</strong> within this system. It works alongside other tools like IDP and Voice, all
+          connected under
+          one shared platform.
+          I led the <strong>end-to-end design of Transify</strong>.
+        <p class="context-desc">My role was not just designing screens <strong>I
+            defined how the workflow
+            works</strong>, how credits are calculated, how tags are structured, and how the <strong> experience stays
+            consistent</strong> across the
+          platform.</p>
+        </p>
+        <p class="context-desc">
+          Every design decision had to balance three things:
+        <ul class="context-desc">
+          <li><strong>What makes sense for the user</strong></li>
+          <li><strong>What works for the business</strong></li>
+          <li><strong>What is practical for developers to build</strong></li>
+        </ul>
+
+        </p>
+        <div class="role-pills">
+          <span class="pill">UX Architecture</span>
+          <span class="pill">Workflow Design</span>
+          <span class="pill">Credit System</span>
+          <span class="pill">Microcopy</span>
+          <span class="pill">Design System</span>
+          <span class="pill">Tag Architecture</span>
+        </div>
+      </div>
+      <div class="context-right reveal" data-reveal-delay="1">
+        <div class="tool-list">
+          <div class="tool-item">
+            <div class="tool-dot active"></div>
+            <span class="tool-name">Transify was built in collaboration with:</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot"></div>
+            <span class="tool-name">Sangeet Gupta</span>
+            <span class="tool-tag">Product Manager</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot"></div>
+            <span class="tool-name">Anil Patel-(Me)</span>
+            <span class="tool-tag">Product Designer</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot"></div>
+            <span class="tool-name">Jaydeep Darji</span>
+            <span class="tool-tag">Frontend Developer</span>
+          </div>
+          <div class="tool-item">
+            <div class="tool-dot"></div>
+            <span class="tool-name">Srajal Sahu</span>
+            <span class="tool-tag">Backend Developer</span>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROBLEM -->
+  <section class="problem-section">
+    <div class="section-label reveal">
+      <span>The Problem</span>
+      <span class="num">/ 02</span>
+    </div>
+    <h2 class="problem-headline reveal">
+      Enterprise translation tools behave like <em>utilities</em>,<br>not workflows.
+    </h2>
+    <div class="pain-grid reveal">
+      <div class="pain-item">
+        <div class="pain-number">01</div>
+        <p class="pain-text">Inconsistent terminology across teams. No system to enforce standard language.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">02</div>
+        <p class="pain-text">No batch control. Users submit documents without understanding cost or scope.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">03</div>
+        <p class="pain-text">Unclear cost estimation leads to billing surprises and loss of trust.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">04</div>
+        <p class="pain-text">Formatting is often lost. Translated documents require manual reconstruction.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">05</div>
+        <p class="pain-text">Manual coordination across teams. No unified view of document lifecycle.</p>
+      </div>
+      <div class="pain-item">
+        <div class="pain-number">06</div>
+        <p class="pain-text">Tool fragmentation. Separate histories and configurations across tools create confusion.
+        </p>
+      </div>
+    </div>
+    <div class="big-insight reveal">
+      <p class="big-insight-label">Core Design Thesis</p>
+      <p class="big-insight-text">
+        Transify was built as a <strong>predictable workflow layer</strong> within the platform not as a standalone AI
+        utility.
+      <p class="big-insight-text">For
+        enterprise teams, reliability and cost clarity matter as much as translation accuracy.</p>
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 05. RESEARCH ──────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Research &amp; Insights</span>
+      <span class="sl-num">/ 05</span>
+    </div>
+    <div class="section-title reveal">What existing enterprise translation tools do and where they fail?</div>
+    <div class="research-grid reveal">
+      <div class="research-block">
+        <div class="research-block-title">What I Reviewed</div>
+        <div class="research-item">How enterprise translation tools handle batch uploads</div>
+        <div class="research-item">When and how credits are deducted</div>
+        <div class="research-item">Whether cost estimation is shown before processing</div>
+        <div class="research-item">How configuration (glossary, language rules) is managed</div>
+        <div class="research-item">How history and audit logs are structured</div>
+        <div class="research-item">How failure states are communicated</div>
+      </div>
+      <div class="research-block">
+        <div class="research-block-title">Key Insights</div>
+        <div class="insight-cards">
+          <div class="insight-card">
+            <div class="insight-num">01</div>
+            <div class="insight-text">
+              <ul>
+                <li>Most translation tools behave like utilities, not workflows.</li>
+                <li>Users upload → click translate → download.</li>
+                <li>There is no structured operational flow, no state clarity.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">02</div>
+            <div class="insight-text">
+              <ul>
+                <li>Credit deduction often happens before confirmation.</li>
+                <li>Users discover cost after processing begins, creating billing anxiety and disputes.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">03</div>
+            <div class="insight-text">
+              <ul>
+                <li>Free-form configuration creates inconsistency.</li>
+                <li>Allowing custom prompts per job leads to unpredictable output across teams.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">04</div>
+            <div class="insight-text">
+              <ul>
+                <li>Batch processing lacks transparency.</li>
+                <li>Many tools don’t show clear document counts, character counts, or cost breakdown before execution.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">05</div>
+            <div class="insight-text">
+              <ul>
+                <li>History is tool-specific, not document-centric.</li>
+                <li>Translation history, extraction history, upload history all separated.</li>
+                <li>No unified lifecycle view for enterprise audit needs.</li>
+              </ul>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">06</div>
+            <div class="insight-text">
+              <ul>
+                <li>Failure states are technical, not human.</li>
+                <li>Error codes are shown instead of recovery paths.</li>
+                <li>Users panic because there is no clear “what next?”</li>
+              </ul>
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">07</div>
+            <div class="insight-text">
+              <ul>
+                <li>Formatting integrity is rarely positioned as a trust factor.</li>
+                <li>Tools focus on speed, not structure preservation which matters deeply in enterprise workflows.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- DECISIONS -->
+  <section class="decisions-section">
+    <div class="section-label reveal">
+      <span>Design Decisions</span>
+      <span class="num">/ 04</span>
+    </div>
+    <p class="decisions-intro reveal">
+      Every decision below was made under real constraints time pressure, developer dependencies, and enterprise user
+      expectations. Here's the reasoning behind each one.
+    </p>
+
+    <!-- Decision 1 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">01</div>
+        <div class="decision-badge badge-arch">Architecture</div>
+        <div class="decision-title">Step-Based Workflow Instead of Single Page</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          A single-page translation interface is <strong>faster to build</strong>, but harder to operate at enterprise
+          scale. When
+          multiple configuration options, document controls, and cost indicators appear at once, users face
+          <strong>decision friction and higher error risk</strong>.
+        </p>
+        <p class="decision-rationale">
+          I structured the workflow into four explicit states: <strong class="highlight">Upload → Select Tag → Translate
+            →
+            Download.</strong> Each step isolates one cognitive task. Users complete and commit before moving forward.
+          This mirrors backend state transitions, enabling cleaner API contracts, better error handling per step, and
+          clearer audit logs.
+        </p>
+        <div class="vs-box">
+          <div class="vs-before">
+            <div class="vs-label">Rejected</div>
+            <p class="vs-text">Single-page interface with all options visible simultaneously difficult to manage state,
+              harder to recover from partial failures.</p>
+          </div>
+          <div class="vs-after">
+            <div class="vs-label">Chosen</div>
+            <p class="vs-text">Linear step-based workflow with explicit progress indicators users always know where
+              they are, what’s next, and what has been committed.</p>
+          </div>
+        </div>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">UX Impact</div>
+            <div class="impact-item">Lower configuration mistakes</div>
+            <div class="impact-item">Faster onboarding for new enterprise users</div>
+            <div class="impact-item">Clearer mental model across tools (IDP alignment)</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Clean state-based logic</div>
+            <div class="impact-item">Easier failure isolation per step</div>
+            <div class="impact-item">Predictable backend transitions</div>
+          </div>
+        </div>
+        <div class="principle-tag">Hick's Law — Reduce choices at every decision point</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- Decision 2 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">02</div>
+        <div class="decision-badge badge-arch">Architecture</div>
+        <div class="decision-title">Tag System — Reusable Translation Configurations</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Letting users enter free-form prompts every time creates <strong>unpredictable output</strong> and
+          <strong>decision fatigue</strong> at enterprise scale.
+        </p>
+        <p class="decision-rationale">
+          Tags are saved configurations that bundle: source language, target language, glossary, category, and
+          description. A team creates a Tag once, and reuses it across every translation eliminating variance,
+          enforcing brand terminology, and enabling non-technical users to operate with confidence.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Standardized output across teams</div>
+            <div class="impact-item">Lower error rate per translation batch</div>
+            <div class="impact-item">Brand consistency at scale</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Config-driven architecture</div>
+            <div class="impact-item">Reduced runtime variability</div>
+            <div class="impact-item">Clean schema storage</div>
+          </div>
+        </div>
+        <div class="principle-tag">Progressive Disclosure — hide complexity, surface control</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+    <!-- Decision 3 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">03</div>
+        <div class="decision-badge badge-trust">Trust System</div>
+        <div class="decision-title">Confirmation-Based Credit Deduction</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Enterprise buyers have been burned by <strong>hidden charges</strong>. The moment trust breaks, they churn
+          and they bring <strong>procurement teams</strong> to the cancellation meeting.
+        </p>
+        <p class="decision-rationale">
+          Credits are not deducted on upload. Not during processing. Not during preview. Credits are deducted only when
+          the user clicks "Next" to confirm. This is not just a UX nicety it is a trust contract written in product
+          behavior. The microcopy mirrors this: "Credits will be deducted only after you confirm."
+        </p>
+        <div class="vs-box">
+          <div class="vs-before">
+            <div class="vs-label">What Competitors Do</div>
+            <p class="vs-text">Deduct on upload or on start of processing users discover charges after the fact,
+              creating disputes and anxiety.</p>
+          </div>
+          <div class="vs-after">
+            <div class="vs-label">Transify Approach</div>
+            <p class="vs-text">Explicit confirmation moment — users see cost before committing, maintaining complete
+              control of spend.</p>
+          </div>
+        </div>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Trust Impact</div>
+            <div class="impact-item">Reduced billing disputes</div>
+            <div class="impact-item">Stronger onboarding confidence</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Sales Impact</div>
+            <div class="impact-item">Easier procurement approval</div>
+            <div class="impact-item">Clear audit trail for finance teams</div>
+          </div>
+        </div>
+        <div class="principle-tag">Loss Aversion — make cost visible before loss occurs</div>
+      </div>
+    </div>
+
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- Decision 4 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">04</div>
+        <div class="decision-badge badge-biz">Pricing UX</div>
+        <div class="decision-title">Flat Upload Cost (V1)</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Variable upload pricing forces users to <strong>calculate before they act</strong>. That friction is enough to
+          <strong>pause a workflow indefinitely</strong>.
+        </p>
+        <p class="decision-rationale">
+          V1 uses a flat 2-credit upload cost regardless of document count. Simple. Predictable. No mental arithmetic
+          required before starting. This decision trades pricing granularity for cognitive speed the right tradeoff at
+          the validation stage.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Cognitive Impact</div>
+            <div class="impact-item">Instant clarity no calculation needed</div>
+            <div class="impact-item">Lower decision friction at start of workflow</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Trade-off</div>
+            <div class="impact-item">Less pricing granularity (post-V1 refinement)</div>
+            <div class="impact-item">Simpler to explain to enterprise buyers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+    <!-- Decision 5 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">05</div>
+        <div class="decision-badge badge-biz">Pricing UX</div>
+        <div class="decision-title">Character-Based Translation Cost Formula</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Pricing per translation job is a <strong>black box</strong>. Enterprise teams need to <strong>forecast
+            spend</strong> they cannot budget against mystery numbers.
+        </p>
+        <p class="decision-rationale">
+          After evaluating per-10,000 and per-1,000 character models, I landed on: 1,000 characters = 5 credits. This
+          formula is simple enough to calculate mentally, prominent in the batch summary UI, and precise enough to build
+          budget forecasts around. Transparency here is not just good UX it's a sales asset.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Pricing Clarity</div>
+            <div class="impact-item">Predictable cost per document type</div>
+            <div class="impact-item">Fewer billing questions to support</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Sales Alignment</div>
+            <div class="impact-item">CFOs can model usage costs upfront</div>
+            <div class="impact-item">Reduces objections in enterprise deals</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- Decision 6 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">06</div>
+        <div class="decision-badge badge-arch">Platform Architecture</div>
+        <div class="decision-title">Document History (Not Translation History)</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Separate histories for each tool Translation, Extraction, Upload creates <strong>fragmented audit
+            trails</strong> that break at enterprise scale.
+        </p>
+        <p class="decision-rationale">
+          I unified all events into a single Document History model. This was a platform-level decision, not a UI
+          decoration. One document can flow through IDP, Transify, and Voice the history captures all of it.
+          Enterprise clients need audit readiness. Legal teams need document lifecycle logs. This architecture provides
+          both, without extra engineering overhead per tool.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Platform Impact</div>
+            <div class="impact-item">Future-proof multi-tool architecture</div>
+            <div class="impact-item">Easier expansion to Voice and beyond</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Enterprise Value</div>
+            <div class="impact-item">Audit-ready document lifecycle logs</div>
+            <div class="impact-item">Cross-tool visibility in one view</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Breaker 2 -->
+    <div class="visual-box"
+      style="height: 480px; margin: 80px 0; background: linear-gradient(135deg, rgba(168, 85, 247, 0.15), rgba(124, 58, 237, 0.05), rgba(168, 85, 247, 0.15));">
+    </div>
+
+    <!-- Decision 7 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">07</div>
+        <div class="decision-badge badge-ux">UX Resilience</div>
+        <div class="decision-title">Smart Failure States</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          A red error screen at a critical processing moment <strong>panics enterprise users</strong> and triggers
+          <strong>immediate support tickets</strong>.
+        </p>
+        <p class="decision-rationale">
+          Every failure state includes: a plain-language reason (no technical codes), a retry button, a re-upload
+          option, and a message confirming files are safe. The design principle is: never blame the user, never leave
+          them stranded. Recovery paths must be as prominent as the failure message itself.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">UX Impact</div>
+            <div class="impact-item">Reduced panic at failure moments</div>
+            <div class="impact-item">Maintained workflow momentum</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Support Impact</div>
+            <div class="impact-item">Fewer "my document is gone" tickets</div>
+            <div class="impact-item">Self-serve recovery reduces load</div>
+          </div>
+        </div>
+        <div class="principle-tag">Error Recovery — give users a path forward, not a dead end</div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- Decision 8 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">08</div>
+        <div class="decision-badge badge-ux">Safety UX</div>
+        <div class="decision-title">Confirmation Modals for Destructive Actions</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          In enterprise tools, an <strong>accidental delete</strong> is not an inconvenience it's an <strong>incident
+            report</strong>.
+        </p>
+        <p class="decision-rationale">
+          Delete Tag, Cancel Translation, and Cancel Upload all require explicit confirmation. No silent destructive
+          actions. This pattern communicates respect for the user's work and the organization's data. The cost of one
+          extra click is nothing compared to the cost of irreversible data loss in an enterprise context.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Trust Impact</div>
+            <div class="impact-item">Enterprise tools must feel safe to operate</div>
+            <div class="impact-item">Reduces accidental data loss</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Compliance Impact</div>
+            <div class="impact-item">Traceable confirmation events</div>
+            <div class="impact-item">Supports audit requirements</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+    <!-- Decision 9 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">09</div>
+        <div class="decision-badge badge-biz">Product Strategy</div>
+        <div class="decision-title">V1 Scope Reduction — What I Removed</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          The strongest signal of product maturity is <strong>knowing what to cut</strong>. Not what to build what to
+          protect the launch from.
+        </p>
+        <p class="decision-rationale">
+          Features removed for V1: prompt instructions, manual correction flow, reviewer queue, Tag Library analytics,
+          comments system. Each of these is valuable but each also adds surface area that slows validation. V1 tests
+          the core loop: Can enterprise users translate documents reliably, with predictable cost, in a controlled
+          workflow? Everything else is V2.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Launch Speed</div>
+            <div class="impact-item">Focused scope enables faster shipping</div>
+            <div class="impact-item">Core loop validated without noise</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Strategic Gain</div>
+            <div class="impact-item">V2 roadmap already clear</div>
+            <div class="impact-item">No over-engineering sunk cost</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Visual Breaker 3 -->
+    <div class="visual-box"
+      style="height: 480px; margin: 80px 0; background: linear-gradient(135deg, rgba(124, 58, 237, 0.2), rgba(168, 85, 247, 0.1));">
+    </div>
+
+    <!-- Decision 10 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">10</div>
+        <div class="decision-badge badge-system">Design System</div>
+        <div class="decision-title">Reusable UI Components Across Tools</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          A design system that only serves one tool is a <strong>liability</strong>. One that scales across all tools is
+          a <strong>competitive moat</strong>.
+        </p>
+        <p class="decision-rationale">
+          The Tag Card component, Batch Summary, and Navigation are built once and shared across Transify, IDP, and
+          future tools. This decision saved development time on every subsequent tool, maintained brand consistency
+          without enforcing it manually, and created a unified state-handling model that developers could rely on
+          platform-wide.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">Dev Impact</div>
+            <div class="impact-item">Reduced component duplication</div>
+            <div class="impact-item">Faster UI implementation per tool</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Brand Impact</div>
+            <div class="impact-item">Cross-tool visual consistency</div>
+            <div class="impact-item">Unified user mental model</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Visual Breaker 1 -->
+    <div class="visual-box" style="height: 480px; margin: 80px 0;"></div>
+
+  </section>
+
+  <!-- SCOPE -->
+  <section class="scope-section">
+    <div class="section-label reveal">
+      <span>Scope Decisions</span>
+      <span class="num">/ 05</span>
+    </div>
+    <h2 class="section-title reveal" style="margin-bottom: 48px;">What shipped. What was cut.<br>What was postponed.
+    </h2>
+    <div class="scope-grid reveal">
+      <div class="scope-block">
+        <div class="scope-block-title scope-tag-ship">✓ Shipped in V1</div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Step-based upload workflow
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Tag system with reusable configurations
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Confirmation-based credit deduction
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Character-based cost formula display
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Unified Document History
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Smart failure states with recovery
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Destructive action confirmation modals
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-green"></div>Shared component library
+        </div>
+      </div>
+      <div class="scope-block">
+        <div class="scope-block-title scope-tag-cut">✗ Cut for V1</div>
+        <div class="scope-item">
+          <div class="scope-dot dot-red"></div>Prompt instruction input per document
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-red"></div>Manual correction / review layer
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-red"></div>Reviewer queue and assignment system
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-red"></div>Comments and annotation system
+        </div>
+        <div class="scope-item" style="border: none;">
+          <div class="scope-dot dot-red"></div>Tag Library analytics dashboard
+        </div>
+
+        <div class="scope-block-title scope-tag-later" style="margin-top: 40px;">→ Postponed to V2</div>
+        <div class="scope-item">
+          <div class="scope-dot dot-amber"></div>Usage analytics per team member
+        </div>
+        <div class="scope-item">
+          <div class="scope-dot dot-amber"></div>Variable upload cost by document count
+        </div>
+        <div class="scope-item" style="border: none;">
+          <div class="scope-dot dot-amber"></div>Voice tool integration in shared history
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PSYCHOLOGY -->
+  <section class="psych-section">
+    <div class="section-label reveal">
+      <span>Behavioral Psychology Applied</span>
+      <span class="num">/ 06</span>
+    </div>
+    <div class="psych-grid reveal">
+      <div class="psych-item">
+        <div class="psych-icon">⚖️</div>
+        <div class="psych-name">Hick's Law</div>
+        <p class="psych-desc">Step-based flow reduces choices at each decision point, cutting response time and
+          cognitive load.</p>
+      </div>
+      <div class="psych-item">
+        <div class="psych-icon">🧲</div>
+        <div class="psych-name">Loss Aversion</div>
+        <p class="psych-desc">Confirmation before credit deduction ensures users experience control, not surprise loss.
+        </p>
+      </div>
+      <div class="psych-item">
+        <div class="psych-icon">🪟</div>
+        <div class="psych-name">Progressive Disclosure</div>
+        <p class="psych-desc">Tags hide configuration complexity. Users access power without confronting it upfront.</p>
+      </div>
+      <div class="psych-item">
+        <div class="psych-icon">🤝</div>
+        <div class="psych-name">Trust Framing</div>
+        <p class="psych-desc">Microcopy that confirms safety ("your files are safe") directly addresses anxiety at key
+          moments.</p>
+      </div>
+      <div class="psych-item">
+        <div class="psych-icon">🔁</div>
+        <div class="psych-name">Consistency Principle</div>
+        <p class="psych-desc">Tags enforce behavioral standards across teams consistent input, consistent output,
+          consistent trust.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="impact-section">
+    <div class="section-label reveal">
+      <span>Impact</span>
+      <span class="num">/ 07</span>
+    </div>
+    <h2 class="impact-headline reveal">
+      <span class="muted">The result</span><br>
+      <span class="bright">of designing for control.</span>
+    </h2>
+    <div class="metrics-grid reveal">
+      <div class="metric-item">
+        <div class="metric-num">~40%</div>
+        <div class="metric-label">Task Clarity Improvement</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-num">~30%</div>
+        <div class="metric-label">Decision Complexity Reduced</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-num">↓</div>
+        <div class="metric-label">Billing Confusion Eliminated</div>
+      </div>
+      <div class="metric-item">
+        <div class="metric-num">∞</div>
+        <div class="metric-label">Multi-Tool Scalability Enabled</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STORY ANGLE -->
+  <section class="story-section">
+    <div class="section-label reveal">
+      <span>The Strongest Angle</span>
+      <span class="num">/ 08</span>
+    </div>
+    <div class="story-angle reveal">
+      <span class="story-angle-tag">What this case study is really about</span>
+      <p class="story-angle-text">
+        I didn't design an AI translation tool.<br>
+        I designed a <em style="color: var(--violet-bright);">controlled operational workflow</em><br>that happens to
+        use AI.
+      </p>
+      <p class="story-angle-sub">
+        The screens are a consequence of the decisions.<br>The decisions are the design.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── PROJECT NAVIGATION ────────────────────── -->
+  <section class="project-nav-section">
+    <div class="project-nav-grid">
+      <a href="rumble-rewards-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Previous Project</span>
+        <h2 class="nav-project-title">Rumble Rewards</h2>
+        <div class="nav-project-btn">← View Case Study</div>
+      </a>
+      <a href="idp-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Next Project</span>
+        <h2 class="nav-project-title">Zenisth IDP</h2>
+        <div class="nav-project-btn">View Case Study &nbsp; →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-wordmark">Zenisth · Transify · Case Study</div>
+      <p style="font-size: 11px; color: var(--text-dim); margin-top: 8px;">B2B SaaS · AI-powered translation Tool ·
+        End-to-End Product Design</p>
+    </div>
+    <div class="footer-meta">
+      <p>10 Core Decisions</p>
+      <p style="margin-top: 4px; color: var(--text-dim);">V1 Shipped · V2 In Roadmap</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

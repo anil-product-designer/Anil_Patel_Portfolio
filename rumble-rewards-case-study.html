@@ -1,0 +1,2415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rumble Rewards — Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #080808;
+      --bg2: #0f0f0f;
+      --bg3: #161616;
+      --bg4: #1c1c1c;
+      --purple: #7c3aed;
+      --purple-bright: #a855f7;
+      --purple-dim: #3b0764;
+      --purple-glow: rgba(124, 58, 237, 0.13);
+      --white: #ffffff;
+      --text: #f5f5f5;
+      --text-muted: #888888;
+      --text-dim: #444444;
+      --line: rgba(255, 255, 255, 0.07);
+      --line-purple: rgba(124, 58, 237, 0.2);
+      --accent-green: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-red: #f87171;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.55;
+    }
+
+    /* ── NAV ─────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(8, 8, 8, 0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--purple-bright);
+      text-transform: uppercase;
+    }
+
+    .nav-meta {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-meta span {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .nav-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--purple-dim);
+      color: var(--purple-bright);
+      padding: 4px 10px;
+      border-radius: 2px;
+      border: 1px solid var(--purple);
+    }
+
+    /* ── THEME TOGGLE ─────────────────── */
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s ease;
+      font-size: 16px;
+      margin-left: 16px;
+    }
+
+    .theme-toggle:hover {
+      border-color: var(--purple-bright);
+      color: var(--purple-bright);
+      background-color: var(--purple-glow);
+    }
+
+    .theme-toggle .sun-icon {
+      display: none;
+    }
+
+    .theme-toggle .moon-icon {
+      display: block;
+    }
+
+    .light-mode .theme-toggle .sun-icon {
+      display: block;
+    }
+
+    .light-mode .theme-toggle .moon-icon {
+      display: none;
+    }
+
+    /* ── NEXT PROJECT ─────────────────── */
+    .next-project {
+      padding: 120px 48px;
+      text-align: center;
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .next-project-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .next-project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(32px, 5vw, 64px);
+      letter-spacing: -0.02em;
+      margin-bottom: 48px;
+      color: var(--white);
+    }
+
+    .next-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 18px 36px;
+      background: var(--purple);
+      color: white;
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .next-project-btn:hover {
+      background: var(--purple-bright);
+      transform: translateY(-2px);
+    }
+
+    /* ── HERO ─────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 65% 60% at 5% 55%, rgba(124, 58, 237, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 95% 15%, rgba(168, 85, 247, 0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 40% 40% at 50% 100%, rgba(124, 58, 237, 0.05) 0%, transparent 50%);
+    }
+
+    /* Phone mockup SVG in hero */
+    .hero-phone {
+      position: absolute;
+      right: 80px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 220px;
+      opacity: 0.18;
+    }
+
+    .hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.7s 0.05s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 48px;
+      height: 1px;
+      background: var(--purple-bright);
+    }
+
+    .hero-eyebrow span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--purple-bright);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 9vw, 118px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+    }
+
+    .hero-title .line1 {
+      display: block;
+      color: var(--white);
+      animation: fadeUp 0.7s 0.12s ease both;
+    }
+
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(135deg, var(--purple-bright) 0%, #c084fc 50%, var(--purple-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp 0.7s 0.22s ease both;
+    }
+
+    .hero-title .line3 {
+      display: block;
+      color: var(--text-dim);
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      animation: fadeUp 0.7s 0.32s ease both;
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 1;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 580px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      padding-top: 40px;
+      animation: fadeUp 0.7s 0.5s ease both;
+    }
+
+    .hero-meta-item {
+      padding-right: 32px;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-meta-item:last-child {
+      border-right: none;
+    }
+
+    .hero-meta-item:not(:first-child) {
+      padding-left: 32px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .meta-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--white);
+    }
+
+    .scroll-hint {
+      position: relative;
+      z-index: 1;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeUp 0.7s 0.6s ease both;
+    }
+
+    .scroll-hint::after {
+      content: '↓';
+      color: var(--purple-bright);
+    }
+
+    /* ── COMMON SECTION ───────────────── */
+    section {
+      padding: 112px 48px;
+      border-top: 1px solid var(--line);
+    }
+
+    section:nth-child(odd) {
+      background: var(--bg);
+    }
+
+    section:nth-child(even) {
+      background: var(--bg2);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--purple);
+    }
+
+    .sl-text {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--purple-bright);
+      text-transform: uppercase;
+    }
+
+    .sl-num {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 5vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 56px;
+      max-width: 540px;
+    }
+
+    /* ── PLATFORM OVERVIEW ─────────────── */
+    .platform-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .platform-left {
+      padding-right: 80px;
+      border-right: 1px solid var(--line);
+    }
+
+    .platform-right {
+      padding-left: 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .platform-desc {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 21px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .platform-desc strong {
+      color: var(--white);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .benefit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .benefit-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .benefit-item:hover {
+      background: var(--bg4);
+      border-color: var(--line-purple);
+    }
+
+    .benefit-icon {
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .benefit-arrow {
+      margin-left: auto;
+      color: var(--purple-bright);
+      font-size: 12px;
+    }
+
+    .concept-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .concept-pill span {
+      background: linear-gradient(135deg, var(--purple-bright), #c084fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .concept-badge {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--line-purple);
+      background: var(--purple-glow);
+      color: var(--purple-bright);
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    /* ── MY ROLE ──────────────────────── */
+    .role-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+    .role-focus {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .role-focus-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 18px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: border-color 0.2s;
+    }
+
+    .role-focus-item:hover {
+      border-color: var(--line-purple);
+    }
+
+    .role-focus-item::before {
+      content: '→';
+      color: var(--purple-bright);
+      flex-shrink: 0;
+      margin-top: 0;
+    }
+
+
+    .responsible-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .responsible-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--purple-bright);
+      flex-shrink: 0;
+    }
+
+    .role-disclaimer {
+      margin-top: 32px;
+      padding: 20px 24px;
+      background: var(--purple-glow);
+      border: 1px solid var(--line-purple);
+      border-radius: 4px;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    /* ── PROBLEM ──────────────────────── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+
+
+    .user-behavior {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-bottom: 40px;
+    }
+
+    .behavior-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+    }
+
+    .behavior-pct {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--purple-bright);
+      min-width: 60px;
+    }
+
+    .behavior-text {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .challenge-block {
+      border: 1px solid var(--line-purple);
+      background: var(--purple-glow);
+      padding: 32px;
+      border-radius: 4px;
+    }
+
+    .challenge-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple-bright);
+      margin-bottom: 14px;
+    }
+
+    .challenge-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .challenge-text strong {
+      color: var(--purple-bright);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* ── OBJECTIVE ────────────────────── */
+    .objective-center {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .objective-items {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .objective-item {
+      background: var(--bg2);
+      padding: 32px 24px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .objective-item:hover {
+      background: var(--bg3);
+    }
+
+    .obj-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--text-dim);
+      margin-bottom: 12px;
+      line-height: 1;
+    }
+
+    .obj-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── RESEARCH ─────────────────────── */
+    .research-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+
+    .research-block-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .research-block-title::before {
+      content: '';
+      width: 16px;
+      height: 1px;
+      background: var(--purple-bright);
+    }
+
+    .research-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .research-item::before {
+      content: '·';
+      color: var(--purple-bright);
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: -2px;
+    }
+
+    .insight-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .insight-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: border-color 0.2s;
+    }
+
+    .insight-card:hover {
+      border-color: var(--line-purple);
+    }
+
+    .insight-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      color: var(--purple-bright);
+      min-width: 32px;
+    }
+
+    .insight-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── DECISIONS ────────────────────── */
+    .decisions-intro {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 80px;
+      line-height: 1.7;
+    }
+
+    .decision-card {
+      border-top: 1px solid var(--line);
+      padding: 64px 0;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 80px;
+      align-items: start;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .decision-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .decision-card:hover .decision-number {
+      color: var(--purple-bright);
+    }
+
+    .decision-meta {
+      position: sticky;
+      top: 100px;
+    }
+
+    .decision-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      letter-spacing: -0.04em;
+      transition: color 0.3s;
+    }
+
+    .decision-badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+
+    .badge-purple {
+      background: rgba(124, 58, 237, 0.15);
+      color: var(--purple-bright);
+      border: 1px solid var(--purple);
+    }
+
+    .badge-green {
+      background: rgba(52, 211, 153, 0.1);
+      color: var(--accent-green);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+    }
+
+    .badge-amber {
+      background: rgba(251, 191, 36, 0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .badge-white {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--text-muted);
+      border: 1px solid var(--line);
+    }
+
+    .decision-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .decision-headline {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 25px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .decision-headline strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .decision-rationale {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .before-after {
+      display: flex;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .ba-before {
+      flex: 1;
+      padding: 22px 24px;
+      background: rgba(239, 68, 68, 0.04);
+      border-right: 1px solid var(--line);
+    }
+
+    .ba-after {
+      flex: 1;
+      padding: 22px 24px;
+      background: rgba(52, 211, 153, 0.04);
+    }
+
+    .ba-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .ba-before .ba-label {
+      color: var(--accent-red);
+    }
+
+    .ba-after .ba-label {
+      color: var(--accent-green);
+    }
+
+    .ba-text {
+      font-size: 13px;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .ba-quote {
+      font-family: 'Fraunces', serif;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--text);
+      margin-top: 8px;
+    }
+
+    .reason-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--purple-bright);
+      background: var(--purple-glow);
+      border: 1px solid var(--purple);
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .reason-tag::before {
+      content: '⟡';
+      font-size: 10px;
+    }
+
+    /* ── SCREENSHOT FLOW ──────────────── */
+
+    .screen-row {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 0;
+      border-top: 1px solid var(--line);
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .screen-row.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .screen-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .screen-phone {
+      padding: 40px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-right: 1px solid var(--line);
+    }
+
+    .phone-frame {
+      width: 100px;
+      height: 180px;
+      background: var(--bg3);
+      border: 2px solid var(--line-purple);
+      border-radius: 16px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .phone-frame::before {
+      content: '';
+      position: absolute;
+      top: 10px;
+      width: 28px;
+      height: 4px;
+      background: var(--line-purple);
+      border-radius: 4px;
+    }
+
+    .phone-screen-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      color: var(--purple-bright);
+    }
+
+    .phone-screen-label {
+      font-size: 9px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .screen-info {
+      padding: 40px 48px;
+    }
+
+    .screen-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 24px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .screen-purpose-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--purple-bright);
+      margin-bottom: 6px;
+    }
+
+    .screen-purpose {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+    }
+
+    .screen-reason-label {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .screen-reason {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 15px;
+      color: var(--text-muted);
+    }
+
+    /* ── IMPACT ───────────────────────── */
+    .impact-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(38px, 5.5vw, 76px);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 64px;
+    }
+
+    .impact-headline .dim {
+      color: var(--text-dim);
+    }
+
+    .impact-headline .bright {
+      background: linear-gradient(135deg, var(--purple-bright) 0%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .impact-items {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 56px;
+    }
+
+    .impact-item {
+      background: var(--bg2);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+
+    .impact-item:hover {
+      background: var(--bg3);
+    }
+
+    .impact-icon {
+      font-size: 22px;
+      margin-bottom: 14px;
+    }
+
+    .impact-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .impact-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .impact-summary {
+      border: 1px solid var(--line-purple);
+      background: var(--purple-glow);
+      padding: 48px;
+      border-radius: 4px;
+    }
+
+    .impact-summary-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--purple-bright);
+      margin-bottom: 14px;
+    }
+
+    .impact-summary-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.4;
+      color: var(--text);
+    }
+
+    .impact-summary-text strong {
+      color: var(--purple-bright);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    /* ── LEARNINGS ────────────────────── */
+    .learnings-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .learning-card {
+      background: var(--bg);
+      padding: 36px 28px;
+      transition: background 0.25s;
+    }
+
+    .learning-card:hover {
+      background: var(--bg3);
+    }
+
+    .learning-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      line-height: 1;
+      transition: color 0.2s;
+    }
+
+    .learning-card:hover .learning-num {
+      color: var(--purple-bright);
+    }
+
+    .learning-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .learning-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    /* ── WHAT THIS SHOWS ──────────────── */
+
+    .dem-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .dem-item {
+      background: var(--bg2);
+      padding: 36px 24px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .dem-item:hover {
+      background: var(--bg3);
+    }
+
+    .dem-icon {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .dem-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--white);
+      line-height: 1.3;
+    }
+
+    /* ── FOOTER ───────────────────────── */
+    footer {
+      padding: 60px 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding-top: 32px;
+    }
+
+    .footer-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: right;
+      padding-top: 32px;
+    }
+
+    /* ── ANIMATIONS ───────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── LARGE SCREENS ───────────────────── */
+    @media (min-width: 1600px) {
+      nav {
+        padding: 20px 80px;
+      }
+
+      .hero {
+        padding: 0 80px 80px;
+      }
+
+      section {
+        padding: 120px 80px;
+      }
+    }
+
+    /* ── RESPONSIVE ───────────────────── */
+    @media (max-width: 1024px) {
+
+      .platform-grid,
+      .problem-grid,
+      .role-grid,
+      .research-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 48px;
+        margin-bottom: 48px;
+      }
+
+      .platform-right {
+        padding-left: 0;
+      }
+
+      .objective-items {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .dem-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      section {
+        padding: 72px 24px;
+      }
+
+      .hero {
+        padding: 0 24px 60px;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .hero-meta-item {
+        border-right: none;
+        padding: 0;
+      }
+
+      .decision-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .decision-meta {
+        position: relative;
+        top: 0;
+      }
+
+      .screen-row {
+        grid-template-columns: 1fr;
+      }
+
+      .screen-phone {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .impact-items {
+        grid-template-columns: 1fr;
+      }
+
+      .learnings-grid {
+        grid-template-columns: 1fr;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .footer-meta {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        padding: 12px 16px;
+      }
+
+      .nav-logo {
+        font-size: 11px;
+      }
+
+      .nav-meta span:not(.nav-tag) {
+        display: none;
+      }
+
+      section {
+        padding: 60px 16px;
+      }
+
+      .hero {
+        padding: 0 16px 40px;
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+      }
+
+      .hero-stat-num {
+        font-size: 28px;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .hero-meta-item {
+        padding: 0 !important;
+        border: none !important;
+      }
+
+      .platform-grid,
+      .role-grid,
+      .problem-grid,
+      .research-grid,
+      .scope-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .platform-left,
+      .platform-right,
+      .research-left,
+      .research-right {
+        padding: 0 !important;
+        border: none !important;
+      }
+
+      .objective-items {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .impact-items {
+        grid-template-columns: 1fr;
+      }
+
+      .decision-card {
+        padding: 40px 0;
+      }
+
+      .decision-number {
+        font-size: 48px;
+      }
+
+      .decision-headline {
+        font-size: 20px;
+      }
+
+      .impact-summary-text {
+        font-size: 20px;
+      }
+    }
+
+    /* ── PROJECT NAVIGATION SECTION ──────────────── */
+    .project-nav-section {
+      padding: 120px 48px;
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .project-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-project-card {
+      text-align: center;
+      padding: 48px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-project-card:hover {
+      background: var(--bg3);
+      border-color: var(--purple-bright);
+      transform: translateY(-4px);
+    }
+
+    .nav-project-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .nav-project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .nav-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--purple-bright);
+    }
+
+    @media (max-width: 768px) {
+
+      /* Stack all two-column grids */
+      .platform-grid,
+      .role-grid,
+      .problem-grid,
+      .research-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .platform-left,
+      .role-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 40px;
+        margin-bottom: 0;
+      }
+
+      .platform-right {
+        padding-left: 0;
+      }
+
+      /* Decision card: stack on mobile */
+      .decision-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .decision-meta {
+        position: relative;
+        top: 0;
+      }
+
+      .decision-number {
+        font-size: 48px;
+      }
+
+      /* Hero meta: 2-col on mobile */
+      .hero-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .hero-meta-item {
+        border-right: none;
+        padding: 0;
+      }
+
+      /* Nav & section padding */
+      nav {
+        padding: 16px 20px;
+      }
+
+      .hero {
+        padding: 0 20px 60px;
+      }
+
+      section {
+        padding: 64px 20px;
+      }
+
+      .project-nav-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-nav-section {
+        padding: 80px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo" style="text-decoration: none;">Rumble Rewards</a>
+    <div class="nav-meta">
+      <a href="index.html"
+        style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
+        onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
+      <span>Fintech · Play Store · Conversion</span>
+      <span class="nav-tag">Case Study · 2026</span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌑</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────── -->
+  <section class="hero" style="padding-top:120px; border-top:none;">
+    <div class="hero-bg"></div>
+
+    <!-- Decorative phone shape -->
+    <svg class="hero-phone" viewBox="0 0 220 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="2" y="2" width="216" height="416" rx="32" stroke="#a855f7" stroke-width="2" />
+      <rect x="80" y="18" width="60" height="8" rx="4" fill="#a855f7" opacity="0.4" />
+      <rect x="20" y="60" width="180" height="300" rx="8" fill="#a855f7" opacity="0.04" />
+      <rect x="40" y="80" width="140" height="12" rx="3" fill="#a855f7" opacity="0.15" />
+      <rect x="40" y="104" width="100" height="8" rx="3" fill="#a855f7" opacity="0.08" />
+      <rect x="40" y="140" width="140" height="80" rx="6" fill="#a855f7" opacity="0.07" />
+      <rect x="40" y="240" width="60" height="8" rx="3" fill="#a855f7" opacity="0.1" />
+      <rect x="40" y="260" width="140" height="6" rx="3" fill="#a855f7" opacity="0.06" />
+      <rect x="40" y="278" width="120" height="6" rx="3" fill="#a855f7" opacity="0.06" />
+      <rect x="60" y="320" width="100" height="28" rx="14" fill="#7c3aed" opacity="0.3" />
+    </svg>
+
+    <div class="hero-eyebrow"><span>Product Design · Play Store · Conversion Focus</span></div>
+    <h1 class="hero-title">
+      <span class="line1">Rumble</span>
+      <span class="line2">Rewards</span>
+      <span class="line3">pay now, rent later.</span>
+    </h1>
+    <p class="hero-subtitle">
+      Designing a clear and high-impact Play Store experience for a fintech platform built around rent payments and
+      rewards.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-val">Product Designer</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Scope</div>
+        <div class="meta-val">Play Store Screenshots</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Focus</div>
+        <div class="meta-val">Conversion &amp; Messaging</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Year</div>
+        <div class="meta-val">2026</div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll to explore</div>
+  </section>
+
+  <!-- ── 01. PLATFORM OVERVIEW ────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Platform Overview</span>
+      <span class="sl-num">/ 01</span>
+    </div>
+    <div class="platform-grid reveal">
+      <div class="platform-left">
+        <div class="section-title">What is Rumble Rewards?</div>
+        <p class="platform-desc">
+          Rumble Rewards is a fintech platform built around the idea of <strong>Pay Now, Rent Later</strong> helping
+          users manage rent payments while building better financial habits.
+        </p>
+        <div class="benefit-list">
+          <div class="benefit-item">
+            <span class="benefit-icon">🏠</span>
+            Pay rent on time, every time
+            <span class="benefit-arrow">→</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">🎁</span>
+            Earn rewards on every rent payment
+            <span class="benefit-arrow">→</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">📈</span>
+            Build better payment habits over time
+            <span class="benefit-arrow">→</span>
+          </div>
+          <div class="benefit-item">
+            <span class="benefit-icon">💳</span>
+            Access financial flexibility when needed
+            <span class="benefit-arrow">→</span>
+          </div>
+        </div>
+      </div>
+      <div class="platform-right">
+        <div class="concept-pill">Pay Now, <span>Rent Later</span></div>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.7;margin-bottom:24px;">
+          The goal of the platform is to reduce stress around rent payments while encouraging responsible financial
+          behavior giving users rewards and flexibility in a space that typically offers neither.
+        </p>
+        <div class="concept-badge" style="margin-bottom:12px;">Fintech · Consumer</div>
+        <div class="concept-badge" style="margin-left:8px;">Rent Payments</div>
+        <div
+          style="margin-top:32px;padding:20px 24px;background:var(--bg3);border:1px solid var(--line);border-radius:4px;">
+          <div
+            style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:10px;">
+            Platform Goal</div>
+          <p
+            style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:18px;color:var(--text-muted);">
+            Reduce rent stress. Reward responsibility. Build habits.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02. MY ROLE ───────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">My Role</span>
+      <span class="sl-num">/ 02</span>
+    </div>
+    <div class="section-title reveal">What I worked on.</div>
+    <p class="section-sub reveal">Conversion-focused mobile storefront design not full product UX.</p>
+    <div class="role-grid reveal">
+      <div>
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:18px;">
+          My focus was to</div>
+        <div class="role-focus">
+          <div class="role-focus-item">Improve clarity of the value proposition</div>
+          <div class="role-focus-item">Structure screenshots in a logical conversion order</div>
+          <div class="role-focus-item">Simplify messaging for scan-first behavior</div>
+          <div class="role-focus-item">Build trust visually through fintech-appropriate signals</div>
+          <div class="role-focus-item">Increase install intent within the first two screens</div>
+        </div>
+      </div>
+      <div>
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:18px;">
+          I was responsible for</div>
+        <div class="role-responsible">
+          <div class="responsible-item">
+            <div class="responsible-dot"></div>Screenshot sequencing logic
+          </div>
+          <div class="responsible-item">
+            <div class="responsible-dot"></div>Microcopy writing
+          </div>
+          <div class="responsible-item">
+            <div class="responsible-dot"></div>Layout and visual hierarchy
+          </div>
+          <div class="responsible-item">
+            <div class="responsible-dot"></div>Visual rhythm across screens
+          </div>
+          <div class="responsible-item" style="border:none;">
+            <div class="responsible-dot"></div>Trust positioning
+          </div>
+        </div>
+        <div class="role-disclaimer">
+          This was not full product UX. It was conversion-focused mobile storefront design where every word and every
+          frame earns its place.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03. PROBLEM ───────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">The Problem</span>
+      <span class="sl-num">/ 03</span>
+    </div>
+    <div class="problem-grid reveal">
+      <div>
+        <div class="section-title">Users decide in seconds.</div>
+        <p
+          style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:20px;color:var(--text-muted);margin-bottom:32px;">
+          The Play Store is not a website. It's a <strong style="color:var(--text);font-style:normal;">5-second
+            pitch</strong>.
+        </p>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.75;margin-bottom:32px;">
+          The early version of the screenshots relied on emotional messaging which creates connection but not clarity.
+          The concept <em>Pay Now, Rent Later</em> was new enough that users needed explanation before persuasion.
+        </p>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.75;">
+          A financial app with an unfamiliar model needs to earn comprehension first trust comes second, and download
+          comes third.
+        </p>
+      </div>
+      <div class="problem-right">
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+          How most users interact with Play Store screenshots</div>
+        <div class="user-behavior">
+          <div class="behavior-item">
+            <div class="behavior-pct">~80%</div>
+            <div class="behavior-text">Only see the first two screenshots before deciding</div>
+          </div>
+          <div class="behavior-item">
+            <div class="behavior-pct">Fast</div>
+            <div class="behavior-text">Scan quickly — no time for long explanations</div>
+          </div>
+          <div class="behavior-item">
+            <div class="behavior-pct">Low</div>
+            <div class="behavior-text">Reading intent — visual hierarchy does the talking</div>
+          </div>
+        </div>
+        <div class="challenge-block">
+          <div class="challenge-label">The Challenge</div>
+          <p class="challenge-text">
+            Make a <strong>new financial idea</strong> clear and trustworthy within a few screens before users bounce.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04. OBJECTIVE ─────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Objective</span>
+      <span class="sl-num">/ 04</span>
+    </div>
+    <div class="objective-center reveal">
+      <div class="section-title" style="text-align:center;margin-bottom:12px;">Redesign the Play Store screenshots to do
+        five things.</div>
+      <p
+        style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:18px;color:var(--text-muted);text-align:center;margin-bottom:48px;">
+        Each one traceable to a user behavior or business outcome.</p>
+      <div class="objective-items">
+        <div class="objective-item">
+          <div class="obj-num">01</div>
+          <div class="obj-text">Communicate value within the first two screens</div>
+        </div>
+        <div class="objective-item">
+          <div class="obj-num">02</div>
+          <div class="obj-text">Reduce confusion about the Pay Now, Rent Later model</div>
+        </div>
+        <div class="objective-item">
+          <div class="obj-num">03</div>
+          <div class="obj-text">Establish trust early through fintech signals</div>
+        </div>
+        <div class="objective-item">
+          <div class="obj-num">04</div>
+          <div class="obj-text">Present features in a logical progressive order</div>
+        </div>
+        <div class="objective-item">
+          <div class="obj-num">05</div>
+          <div class="obj-text">Improve download decision confidence</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 05. RESEARCH ──────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Research &amp; Insights</span>
+      <span class="sl-num">/ 05</span>
+    </div>
+    <div class="section-title reveal">What high-performing apps do differently.</div>
+    <p class="section-sub reveal">Studied fintech and consumer apps on the Play Store to understand conversion patterns.
+    </p>
+    <div class="research-grid reveal">
+      <div class="research-block">
+        <div class="research-block-title">What I Reviewed</div>
+        <div class="research-item">How high-performing apps present their value proposition</div>
+        <div class="research-item">How much text top apps use per screenshot</div>
+        <div class="research-item">How trust is communicated in financial products</div>
+        <div class="research-item">How screenshot ordering affects first perception</div>
+        <div class="research-item">Where emotional vs rational messaging works best</div>
+      </div>
+      <div class="research-block">
+        <div class="research-block-title">Key Insights</div>
+        <div class="insight-cards">
+          <div class="insight-card">
+            <div class="insight-num">01</div>
+            <div class="insight-text">First two screens carry disproportionate weight. They must close, not just
+              introduce.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">02</div>
+            <div class="insight-text">Short headlines 5 to 8 words outperform longer emotional copy in fintech.
+            </div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">03</div>
+            <div class="insight-text">One idea per screen improves comprehension and prevents scroll fatigue.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">04</div>
+            <div class="insight-text">Trust signals must appear more than once across a screenshot sequence.</div>
+          </div>
+          <div class="insight-card">
+            <div class="insight-num">05</div>
+            <div class="insight-text">Screenshot order affects perceived credibility sequence is strategy, not layout.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 06. DESIGN DECISIONS ──────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Design Decisions</span>
+      <span class="sl-num">/ 06</span>
+    </div>
+    <p class="decisions-intro reveal">5 decisions that turned a set of standalone marketing slides into a structured
+      conversion
+      flow. Each one has a clear before, a clear after, and a traceable reason.</p>
+
+    <!-- D1 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">01</div>
+        <div class="decision-badge badge-purple">Sequencing</div>
+        <div class="decision-title">Reordered Screenshot Flow Value First, Emotion Second</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          <strong>Emotion before clarity</strong> works for brands people already know. For a new fintech model, it
+          creates <strong>beautiful confusion</strong>.
+        </p>
+        <p class="decision-rationale">
+          The original flow led with emotional resonance which is a sound strategy when users already understand what
+          you do. But <em>Pay Now, Rent Later</em> is a new concept. Users landing on the listing don't have the context
+          to receive emotion yet. I restructured the flow to deliver clarity first, then build the emotional and trust
+          layers on top of that foundation.
+        </p>
+        <div class="before-after">
+          <div class="ba-before">
+            <div class="ba-label">Old Order — Emotion First</div>
+            <p class="ba-text">Emotional message → Features → Trust → Value → Social proof</p>
+          </div>
+          <div class="ba-after">
+            <div class="ba-label">New Order — Value First</div>
+            <p class="ba-text">Value → Simplification → Rewards → Flexibility → Habit building → Perks → Security →
+              Social proof</p>
+          </div>
+        </div>
+        <div class="reason-tag">Users need clarity before emotional persuasion</div>
+      </div>
+    </div>
+
+    <!-- D2 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">02</div>
+        <div class="decision-badge badge-white">Microcopy</div>
+        <div class="decision-title">Reduced Text Length to 5–8 Word Headlines</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Long copy in a Play Store screenshot is a <strong>monologue nobody asked for</strong>. Short copy is a
+          <strong>conversation starter</strong>.
+        </p>
+        <p class="decision-rationale">
+          Users scan — they do not read. Every extra word is a decision to keep reading, and most users won't make that
+          decision more than once. I cut every headline to 5–8 words maximum, focusing on a single concrete benefit per
+          screen. The result is copy that registers in the time it takes to blink past it.
+        </p>
+        <div class="before-after">
+          <div class="ba-before">
+            <div class="ba-label">Before — Long Emotional Copy</div>
+            <p class="ba-text" style="margin-bottom:10px;">Descriptive headline:</p>
+            <p class="ba-quote">"Make rent day easier."</p>
+          </div>
+          <div class="ba-after">
+            <div class="ba-label">After — Short Value Copy</div>
+            <p class="ba-text" style="margin-bottom:10px;">Action + reward in 4 words:</p>
+            <p class="ba-quote">"Pay rent. Earn rewards."</p>
+          </div>
+        </div>
+        <div class="reason-tag">Short text improves scan speed and comprehension</div>
+      </div>
+    </div>
+
+    <!-- D3 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">03</div>
+        <div class="decision-badge badge-amber">Trust Design</div>
+        <div class="decision-title">Strengthened Trust Signals Throughout</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          In fintech, <strong>trust is not a section</strong> — it is a layer that runs through <strong>every
+            screen</strong>.
+        </p>
+        <p class="decision-rationale">
+          Financial products carry inherent anxiety users are handing over payment information to an unfamiliar
+          platform. Trust cannot be a single badge at the end of the screenshot flow. I introduced trust signals at
+          multiple points: security messaging in the early screens, bank-grade language in the features section, and
+          responsible renter framing throughout. The goal is to make trust ambient always present, never heavy-handed.
+        </p>
+        <div class="before-after">
+          <div class="ba-before">
+            <div class="ba-label">Before — Trust as afterthought</div>
+            <p class="ba-text">Security messaging appeared once, near the end of the flow. Easy to miss for most users
+              who don't scroll that far.</p>
+          </div>
+          <div class="ba-after">
+            <div class="ba-label">After — Trust distributed across flow</div>
+            <p class="ba-text">Security messaging, bank-grade phrasing, and responsible renter framing appear across
+              multiple screens not just one.</p>
+          </div>
+        </div>
+        <div class="reason-tag">Fintech products require repeated, ambient reassurance</div>
+      </div>
+    </div>
+
+    <!-- D4 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">04</div>
+        <div class="decision-badge badge-green">Visual Rhythm</div>
+        <div class="decision-title">Alternated Visual Layout Across Screens</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Eight screens of the same visual pattern creates <strong>scroll blindness</strong>. Alternating patterns
+          creates <strong>visual momentum</strong>.
+        </p>
+        <p class="decision-rationale">
+          I designed the screenshots to alternate between three visual modes: UI mockup screens (showing the actual app
+          interface), concept visuals (illustrating the Pay Now, Rent Later idea), and reward visuals (showing the
+          rewards and perks system). This rhythm prevents the eye from habituating to a single layout — each swipe feels
+          like a new frame, not a repeat.
+        </p>
+        <div class="before-after">
+          <div class="ba-before">
+            <div class="ba-label">Before — Uniform Visual Style</div>
+            <p class="ba-text">All screens used the same layout pattern UI mockup with text overlay. Predictable and
+              fatiguing.</p>
+          </div>
+          <div class="ba-after">
+            <div class="ba-label">After — Alternating Visual Modes</div>
+            <p class="ba-text">UI mockups → Concept visuals → Reward visuals three modes cycling across 8 screens.</p>
+          </div>
+        </div>
+        <div class="reason-tag">Visual variety prevents fatigue and sustains attention</div>
+      </div>
+    </div>
+
+    <!-- D5 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">05</div>
+        <div class="decision-badge badge-purple">Mental Model</div>
+        <div class="decision-title">One Question Per Screen Clear Benefit Framing</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          A screenshot that answers <strong>multiple questions</strong> at once answers <strong>none of them
+            clearly</strong>.
+        </p>
+        <p class="decision-rationale">
+          I structured each screen to answer exactly one user question. Screen 1: "What is this?" Screen 2: "Why should
+          I care?" Screen 3: "Is it safe?" Screen 4: "What do I gain?" This creates a logical mental progression — each
+          screen builds on the previous one, moving the user from comprehension to consideration to confidence. Install
+          intent follows naturally at the end of a complete mental journey.
+        </p>
+        <div class="before-after">
+          <div class="ba-before">
+            <div class="ba-label">Before — Multiple Messages Per Screen</div>
+            <p class="ba-text">Screens tried to communicate value, trust, and features simultaneously — leaving users
+              without a clear takeaway.</p>
+          </div>
+          <div class="ba-after">
+            <div class="ba-label">After — One Question Per Screen</div>
+            <p class="ba-text">What is this? → Why care? → Is it safe? → What do I gain? Each screen owns its question
+              completely.</p>
+          </div>
+        </div>
+        <div class="reason-tag">Clear mental progression increases install confidence</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── 07. SCREENSHOT FLOW ───────────────────── -->
+  <section class="screens-section">
+    <div class="section-label reveal">
+      <span class="sl-text">Final Screenshot Flow</span>
+      <span class="sl-num">/ 07</span>
+    </div>
+    <div class="section-title reveal">Visual progression.</div>
+    <p class="section-sub reveal">8 screens designed as a conversion-first narrative.</p>
+
+    <div class="screens-grid">
+      <!-- Screen 1 & 2 (Key conversion pair) -->
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">01</div>
+            <div class="phone-screen-label">Value</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Pay rent. Earn rewards."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Immediate value clarity what you do and what you get, in four words.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Users must understand the core value proposition before they swipe. If screen 1
+            fails, nothing else lands.</div>
+        </div>
+      </div>
+
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">02</div>
+            <div class="phone-screen-label">Simplify</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Rent made simple."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Reduce cognitive friction address the complexity anxiety that comes with any new
+            payment model.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Pay Now, Rent Later sounds complex. Screen 2 reassures users that the process is
+            straightforward before they invest more attention.</div>
+        </div>
+      </div>
+
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">03</div>
+            <div class="phone-screen-label">Rewards</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Every payment earns."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Make the reward mechanic concrete users see exactly what they gain for paying
+            rent.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Rewards are the primary differentiator from every other rent app. This screen makes
+            the value tangible and specific.</div>
+        </div>
+      </div>
+
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">04</div>
+            <div class="phone-screen-label">Flexibility</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Financial flexibility, built in."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Address the user's deeper need not just paying rent, but feeling in control of
+            their finances.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Rent is a stress point. This screen reframes Rumble Rewards as a financial tool,
+            not
+            just a payment method elevating the perceived value.</div>
+        </div>
+      </div>
+
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">05</div>
+            <div class="phone-screen-label">Habit</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Good habits. Better rewards."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Reinforce the behavioral loop on-time payment leads to growing rewards, creating
+            a
+            positive cycle.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Users who see long-term value are more likely to install. This screen positions
+            Rumble Rewards as a financial habit, not a one-time tool.</div>
+        </div>
+      </div>
+
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">06</div>
+            <div class="phone-screen-label">Perks</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Perks that stack up."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Show the expanding value rewards aren't just points, they convert into
+            real-world
+            perks.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Reward systems need to feel substantial. This screen makes the reward ecosystem
+            feel
+            rich and growing, not thin.</div>
+        </div>
+      </div>
+
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">07</div>
+            <div class="phone-screen-label">Security</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Bank-grade security. Always."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Address the safety objection before it becomes a reason not to download.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Trust signals placed here after features are established land with more weight.
+            Users who've seen value are more receptive to security reassurance.</div>
+        </div>
+      </div>
+
+      <div class="screen-row reveal">
+        <div class="screen-phone">
+          <div class="phone-frame">
+            <div class="phone-screen-num">08</div>
+            <div class="phone-screen-label">Social Proof</div>
+          </div>
+        </div>
+        <div class="screen-info">
+          <div class="screen-headline">"Join thousands of responsible renters."</div>
+          <div class="screen-purpose-label">Purpose</div>
+          <div class="screen-purpose">Close with belonging social proof confirms that this decision is one others have
+            already made.</div>
+          <div class="screen-reason-label">Design Reasoning</div>
+          <div class="screen-reason">Placed last because social proof is most effective after users understand what
+            they're joining. The sequence earns this final push.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 08. IMPACT ─────────────────────────────── -->
+  <section class="impact-section">
+    <div class="section-label reveal">
+      <span class="sl-text">Expected Impact</span>
+      <span class="sl-num">/ 08</span>
+    </div>
+    <h2 class="impact-headline reveal">
+      <span class="muted">Conversion by</span><br>
+      <span class="bright">not a slide deck.</span>
+    </h2>
+    <div class="impact-items reveal">
+      <div class="impact-item">
+        <div class="impact-icon">🎯</div>
+        <div class="impact-title">Product Clarity</div>
+        <div class="impact-desc">Pay Now, Rent Later is now understandable within the first two screens before users
+          have to decide anything.</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">⚡</div>
+        <div class="impact-title">First Impression Strength</div>
+        <div class="impact-desc">Screen 1 leads with concrete value not an emotion that requires context the user
+          doesn't yet have.</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">🔒</div>
+        <div class="impact-title">Trust Perception</div>
+        <div class="impact-desc">Security and credibility signals distributed across the flow ambient, not
+          conspicuous.</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">🚀</div>
+        <div class="impact-title">Differentiation</div>
+        <div class="impact-desc">Rumble Rewards now reads distinctly different from generic payment apps the rewards
+          mechanic is front and center.</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">📲</div>
+        <div class="impact-title">Download Confidence</div>
+        <div class="impact-desc">Users end the scroll having answered the four questions that drive install decisions
+          what, why, safe, and worth it.</div>
+      </div>
+      <div class="impact-item">
+        <div class="impact-icon">🔄</div>
+        <div class="impact-title">Structured Flow</div>
+        <div class="impact-desc">The 8 screenshots now function as a single narrative arc — not 8 independent marketing
+          slides.</div>
+      </div>
+    </div>
+    <div class="impact-summary reveal">
+      <div class="impact-summary-label">The Shift</div>
+      <p class="impact-summary-text">
+        The screenshot journey now works as a <strong>structured conversion flow</strong> each screen builds on the
+        last, answers one question, and hands off to the next with momentum.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── 09. KEY LEARNINGS ──────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Key Learnings</span>
+      <span class="sl-num">/ 09</span>
+    </div>
+    <div class="section-title reveal">What this project taught me.</div>
+    <p class="section-sub reveal">5 principles I'd apply to every Play Store design from here forward.</p>
+    <div class="learnings-grid reveal">
+      <div class="learning-card">
+        <div class="learning-num">01</div>
+        <div class="learning-title">Clarity Increases Trust</div>
+        <div class="learning-desc">When users understand what an app does immediately, they trust it more — even before
+          seeing any security signals.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-num">02</div>
+        <div class="learning-title">Less Text, More Comprehension</div>
+        <div class="learning-desc">Cutting copy in half didn't reduce communication — it doubled it. Short text that
+          lands beats long text that gets skipped.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-num">03</div>
+        <div class="learning-title">Order Influences Credibility</div>
+        <div class="learning-desc">The sequence of screenshots shapes how users perceive the entire product. Order is
+          strategy, not aesthetics.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-num">04</div>
+        <div class="learning-title">Trust Must Repeat in Fintech</div>
+        <div class="learning-desc">One trust signal is a checkbox. Multiple trust signals across a flow create an
+          ambient sense of safety users carry to install.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-num">05</div>
+        <div class="learning-title">Most Users Stop at Screen 2</div>
+        <div class="learning-desc">Designing screens 3–8 to convert screen-2 stoppers is good hygiene. But screens 1 and
+          2 must close on their own, without backup.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 10. WHAT THIS DEMONSTRATES ────────────── -->
+  <section class="demonstrates-section">
+    <div class="section-label reveal">
+      <span class="sl-text">What This Case Study Demonstrates</span>
+      <span class="sl-num">/ 10</span>
+    </div>
+    <div class="section-title reveal" style="margin-bottom:48px;">The thinking behind the screens.</div>
+    <div class="dem-grid reveal">
+      <div class="dem-item">
+        <div class="dem-icon">🧭</div>
+        <div class="dem-label">Product Positioning Thinking</div>
+      </div>
+      <div class="dem-item">
+        <div class="dem-icon">📊</div>
+        <div class="dem-label">Conversion Awareness</div>
+      </div>
+      <div class="dem-item">
+        <div class="dem-icon">✍️</div>
+        <div class="dem-label">Messaging Clarity</div>
+      </div>
+      <div class="dem-item">
+        <div class="dem-icon">📱</div>
+        <div class="dem-label">Mobile-First Layout Logic</div>
+      </div>
+      <div class="dem-item">
+        <div class="dem-icon">🔒</div>
+        <div class="dem-label">Trust-Oriented Design</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECT NAVIGATION ────────────────────── -->
+  <section class="project-nav-section">
+    <div class="project-nav-grid">
+      <a href="trailtribe-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Previous Project</span>
+        <h2 class="nav-project-title">TrailTribe App</h2>
+        <div class="nav-project-btn">← View Case Study</div>
+      </a>
+      <a href="transify-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Next Project</span>
+        <h2 class="nav-project-title">Zenisth Transify</h2>
+        <div class="nav-project-btn">View Case Study &nbsp; →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Rumble Rewards · Play Store Case Study · 2025</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Fintech · Conversion Design · Product Designer:
+        Anil Patel</p>
+    </div>
+    <div class="footer-meta">
+      <p>5 Decisions · 8 Screens · 5 Learnings</p>
+      <p style="margin-top:4px;color:var(--text-dim);">Pay Now, Rent Later</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="visualizer.js"></script>
+</body>
+
+</html>

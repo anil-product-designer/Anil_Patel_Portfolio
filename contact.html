@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Anil Patel</title>
+    <meta name="description" content="Get in touch with Anil Patel for design collaboration or projects.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Header & Nav -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <a href="index.html" class="nav__logo">Anil Patel</a>
+
+                <ul class="nav__links">
+                    <li><a href="index.html" class="nav__link">Home</a></li>
+                    <li><a href="index.html#work" class="nav__link">Work</a></li>
+                    <li><a href="about.html" class="nav__link">About</a></li>
+                    <li><a href="contact.html" class="nav__link nav__link--active">Contact</a></li>
+                    <li><a href="https://drive.google.com/file/d/1BBnAo2b5aryfHrwjOLvC19Bb_kDSdgzV/view?usp=sharing"
+                            class="nav__link" target="_blank">Resume</a></li>
+                </ul>
+
+                <div class="nav__actions">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                        <span class="sun-icon">☀️</span>
+                        <span class="moon-icon">🌑</span>
+                    </button>
+
+                    <button class="menu-toggle" aria-label="Toggle Navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="contact-page">
+        <div class="container">
+            <h1 class="contact-page__title">
+                <span class="dim">Get in</span> <span class="bright">touch</span>
+            </h1>
+            <p class="contact-page__intro">I love meeting people who care about great design. If you'd like to
+                collaborate, share ideas, or just chat, drop me a message.</p>
+
+            <div class="contact-grid">
+                <!-- Contact Info -->
+                <div class="contact-info">
+                    <div class="info-group">
+                        <h4>Location</h4>
+                        <p>Ahemdabad, Gujarat<br>India</p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4>Email</h4>
+                        <p><a href="mailto:anil.patelit8266@gmail.com">anil.patelit8266@gmail.com</a></p>
+                    </div>
+
+                    <div class="info-group">
+                        <h4>Phone</h4>
+                        <p>+91 8160333948</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name">Name *</label>
+                        <input type="text" id="name" name="name" placeholder="John Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="john@mail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="company">Company *</label>
+                        <input type="text" id="company" name="company" placeholder="Fieldwork" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" placeholder="Message" rows="5" required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn">Send now <span>↗</span></button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__grid">
+                <div class="footer__brand">
+                    <h3>Anil Patel</h3>
+                    <p>Product Designer</p>
+                    <p>India</p>
+                </div>
+
+                <div class="footer__nav">
+                    <h4 class="footer__nav-title">Navigation</h4>
+                    <nav class="footer__links">
+                        <a href="index.html">Home</a>
+                        <a href="index.html#work">Work</a>
+                        <a href="about.html">About</a>
+                        <a href="contact.html">Contact</a>
+                    </nav>
+                </div>
+
+                <div class="footer__social">
+                    <h4 class="footer__nav-title">Connect</h4>
+                    <nav class="footer__links">
+                        <a href="https://www.linkedin.com/in/anil-patel-28543024a" target="_blank">LinkedIn</a>
+                        <a href="mailto:anil.patelit8266@gmail.com">Email</a>
+                        <a href="https://drive.google.com/file/d/1BBnAo2b5aryfHrwjOLvC19Bb_kDSdgzV/view?usp=sharing"
+                            target="_blank">Read CV</a>
+                    </nav>
+                </div>
+            </div>
+
+            <div class="footer__bottom">
+                <span>&copy; 2026 Anil Patel. All rights reserved.</span>
+                <span>Designed with simplicity.</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

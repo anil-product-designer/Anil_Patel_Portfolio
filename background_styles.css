@@ -1,0 +1,51 @@
+/* Visualizer Styles (Refactored for Background) */
+
+.hero {
+    position: relative;
+    /* Context for absolute visualizer */
+    /* Remove padding bottom to allow visualizer to sit flush if needed, but keep for spacing */
+    overflow: hidden;
+    /* horizontal containment */
+}
+
+.hero__visualizer-background {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px;
+    /* Reduced height for bottom strip */
+    display: flex;
+    justify-content: center;
+    /* Center grid */
+    align-items: flex-end;
+    /* Align to bottom */
+    z-index: -1;
+    /* Behind content if overlapping */
+    pointer-events: none;
+    /* Non-interactive */
+    mask-image: linear-gradient(to top, black 20%, transparent 100%);
+    /* Fade out top */
+    -webkit-mask-image: linear-gradient(to top, black 20%, transparent 100%);
+    opacity: 0.6;
+    /* Unobtrusive background */
+}
+
+.viz-column {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Bottom to top */
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
+    /* Don't shrink columns */
+}
+
+.viz-pill {
+    width: 100%;
+    height: 12px;
+    border-radius: 100px;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}

@@ -1,0 +1,39 @@
+
+/* Visualizer Styles (Repaired & Linked) */
+
+.hero {
+    position: relative;
+    padding-bottom: 0;
+    overflow: hidden;
+}
+
+.hero__visualizer-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 240px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    z-index: 1; /* Visible above background */
+    pointer-events: none;
+    opacity: 1; /* Fully opaque */
+}
+
+.viz-column {
+    display: flex;
+    flex-direction: column-reverse;
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0; 
+}
+
+.viz-pill {
+    width: 100%;
+    height: 12px;
+    border-radius: 100px;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}

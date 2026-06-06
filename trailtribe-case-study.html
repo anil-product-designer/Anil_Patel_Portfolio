@@ -1,0 +1,2878 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TrailTribe — Founder-Led Product Case Study</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #060a08;
+      --bg2: #0b100d;
+      --bg3: #111813;
+      --bg4: #18211a;
+      --green: #059669;
+      --green-bright: #34d399;
+      --green-dim: #064e3b;
+      --green-glow: rgba(5, 150, 105, 0.13);
+      --text: #edfaf4;
+      --text-muted: #6b9e82;
+      --text-dim: #334d3e;
+      --line: rgba(255, 255, 255, 0.06);
+      --line-green: rgba(5, 150, 105, 0.2);
+      --accent-amber: #fbbf24;
+      --accent-red: #f87171;
+      --accent-blue: #60a5fa;
+      --accent-purple: #a78bfa;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.55;
+    }
+
+    /* ── NAV ─────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 48px;
+      background: rgba(6, 10, 8, 0.88);
+      backdrop-filter: blur(24px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-logo,
+    .nav-logo a {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      color: var(--green-bright);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+
+    .nav-meta {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .nav-meta span {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .nav-tag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      background: var(--green-dim);
+      color: var(--green-bright);
+      padding: 4px 10px;
+      border-radius: 2px;
+      border: 1px solid var(--green);
+    }
+
+    /* ── HERO ─────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 48px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 60% at 5% 60%, rgba(5, 150, 105, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 92% 20%, rgba(52, 211, 153, 0.06) 0%, transparent 55%),
+        radial-gradient(ellipse 60% 40% at 50% 110%, rgba(5, 150, 105, 0.06) 0%, transparent 50%);
+    }
+
+    /* Decorative mountain shape */
+    .hero-mountain {
+      position: absolute;
+      right: 60px;
+      bottom: 80px;
+      opacity: 0.07;
+    }
+
+    .hero-eyebrow {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 32px;
+      animation: fadeUp 0.7s 0.05s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 48px;
+      height: 1px;
+      background: var(--green-bright);
+    }
+
+    .hero-eyebrow span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--green-bright);
+      text-transform: uppercase;
+    }
+
+    .hero-title {
+      position: relative;
+      z-index: 1;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(52px, 8vw, 118px);
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+    }
+
+    .hero-title .line1 {
+      display: block;
+      color: var(--text);
+      animation: fadeUp 0.7s 0.12s ease both;
+    }
+
+    .hero-title .line2 {
+      display: block;
+      background: linear-gradient(135deg, var(--green-bright) 0%, #6ee7b7 50%, var(--green-bright) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: fadeUp 0.7s 0.22s ease both;
+    }
+
+    .hero-title .line3 {
+      display: block;
+      color: var(--text-dim);
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      animation: fadeUp 0.7s 0.32s ease both;
+    }
+
+    .hero-subtitle {
+      position: relative;
+      z-index: 1;
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 600px;
+      margin-bottom: 48px;
+      animation: fadeUp 0.7s 0.4s ease both;
+    }
+
+    .hero-meta {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-top: 1px solid var(--line);
+      padding-top: 40px;
+      animation: fadeUp 0.7s 0.5s ease both;
+    }
+
+    .hero-meta-item {
+      padding-right: 32px;
+      border-right: 1px solid var(--line);
+    }
+
+    .hero-meta-item:last-child {
+      border-right: none;
+    }
+
+    .hero-meta-item:not(:first-child) {
+      padding-left: 32px;
+    }
+
+    .meta-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .meta-val {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+    }
+
+    .scroll-hint {
+      position: relative;
+      z-index: 1;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--text-dim);
+      text-transform: uppercase;
+      margin-top: 32px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      animation: fadeUp 0.7s 0.6s ease both;
+    }
+
+    .scroll-hint::after {
+      content: '↓';
+      color: var(--green-bright);
+    }
+
+    /* ── SECTIONS ─────────────────────── */
+    section {
+      padding: 112px 48px;
+      border-top: 1px solid var(--line);
+    }
+
+    section:nth-child(odd) {
+      background: var(--bg);
+    }
+
+    section:nth-child(even) {
+      background: var(--bg2);
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--green);
+    }
+
+    .sl-text {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--green-bright);
+      text-transform: uppercase;
+    }
+
+    .sl-num {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      margin-bottom: 20px;
+    }
+
+    .section-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-muted);
+      margin-bottom: 56px;
+      max-width: 560px;
+    }
+
+    /* ── EXECUTIVE SUMMARY ─────────────── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .summary-left {
+      padding-right: 80px;
+      border-right: 1px solid var(--line);
+    }
+
+    .summary-right {
+      padding-left: 80px;
+    }
+
+    .summary-desc {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 22px;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin-bottom: 40px;
+    }
+
+    .summary-desc strong {
+      color: var(--text);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .founder-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border: 1px solid var(--line-green);
+      background: var(--green-glow);
+      color: var(--green-bright);
+      border-radius: 2px;
+      margin-bottom: 32px;
+    }
+
+    .founder-badge::before {
+      content: '🥾';
+      font-size: 13px;
+    }
+
+    .integration-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .integration-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: border-color 0.2s;
+    }
+
+    .integration-item:hover {
+      border-color: var(--line-green);
+    }
+
+    .integration-icon {
+      font-size: 15px;
+      flex-shrink: 0;
+    }
+
+    .integration-arrow {
+      margin-left: auto;
+      color: var(--green-bright);
+    }
+
+    /* ── PROBLEM ──────────────────────── */
+    .problem-flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .flow-item {
+      background: var(--bg2);
+      padding: 24px 20px;
+      text-align: center;
+    }
+
+    .flow-item-icon {
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+
+    .flow-item-tool {
+      font-size: 11px;
+      color: var(--green-bright);
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+
+    .flow-item-task {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .problem-consequences {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 64px;
+    }
+
+
+    .consequence-title {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .consequence-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .consequence-item::before {
+      content: '↳';
+      color: var(--accent-red);
+      flex-shrink: 0;
+    }
+
+    .insight-hero {
+      border: 1px solid var(--line-green);
+      background: var(--green-glow);
+      padding: 48px;
+      border-radius: 4px;
+      text-align: center;
+    }
+
+    .insight-hero-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .insight-hero-text {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 4vw, 52px);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .insight-hero-text em {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--green-bright);
+    }
+
+    /* ── RESEARCH ─────────────────────── */
+    .research-methods {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 64px;
+    }
+
+    .method-item {
+      background: var(--bg2);
+      padding: 32px 24px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .method-item:hover {
+      background: var(--bg3);
+    }
+
+    .method-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      color: var(--green-bright);
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .method-label {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .insights-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .insight-row {
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .insight-row:last-child {
+      border-bottom: none;
+    }
+
+    .insight-row-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--text-dim);
+      line-height: 1;
+      letter-spacing: -0.03em;
+    }
+
+    .insight-row-text {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .insight-row-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* ── PRODUCT DIRECTION ─────────────── */
+    .direction-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .direction-left {
+      padding-right: 80px;
+      border-right: 1px solid var(--line);
+    }
+
+    .direction-right {
+      padding-left: 80px;
+    }
+
+    .ecosystem-chain {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      margin-top: 40px;
+    }
+
+    .chain-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      background: var(--bg3);
+      border-left: 2px solid var(--green-dim);
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .chain-item:hover {
+      border-color: var(--green-bright);
+      background: var(--bg4);
+    }
+
+    .chain-step {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      color: var(--green-bright);
+      text-transform: uppercase;
+      min-width: 90px;
+    }
+
+    .chain-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .chain-arrow {
+      margin-left: auto;
+      color: var(--text-dim);
+    }
+
+    /* ── GOALS & KPIs ─────────────────── */
+    .goals-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+
+    .goals-col:first-child {
+      padding-right: 60px;
+      border-right: 1px solid var(--line);
+    }
+
+    .goals-col:last-child {
+      padding-left: 60px;
+    }
+
+    .goals-col-title {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .goal-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .goal-item::before {
+      content: '→';
+      color: var(--green-bright);
+      flex-shrink: 0;
+    }
+
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 64px;
+    }
+
+    .kpi-item {
+      background: var(--bg2);
+      padding: 28px 24px;
+      transition: background 0.2s;
+    }
+
+    .kpi-item:hover {
+      background: var(--bg3);
+    }
+
+    .kpi-icon {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .kpi-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .kpi-desc {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ── MVP SCOPE ────────────────────── */
+    .mvp-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .mvp-item {
+      background: var(--bg2);
+      padding: 32px 24px;
+      transition: background 0.2s;
+    }
+
+    .mvp-item:hover {
+      background: var(--bg3);
+    }
+
+    .mvp-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 36px;
+      color: var(--text-dim);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+
+    .mvp-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .mvp-desc {
+      font-size: 12px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    /* ── DECISIONS ────────────────────── */
+    .decisions-intro {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin-bottom: 80px;
+      line-height: 1.7;
+    }
+
+    .decision-card {
+      border-top: 1px solid var(--line);
+      padding: 64px 0;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 80px;
+      align-items: start;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .decision-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .decision-card:hover .decision-number {
+      color: var(--green-bright);
+    }
+
+    .decision-meta {
+      position: sticky;
+      top: 100px;
+    }
+
+    .decision-number {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 72px;
+      line-height: 1;
+      color: var(--text-dim);
+      margin-bottom: 14px;
+      letter-spacing: -0.04em;
+      transition: color 0.3s;
+    }
+
+    .decision-badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-bottom: 18px;
+    }
+
+    .badge-green {
+      background: rgba(5, 150, 105, 0.15);
+      color: var(--green-bright);
+      border: 1px solid var(--green);
+    }
+
+    .badge-amber {
+      background: rgba(251, 191, 36, 0.1);
+      color: var(--accent-amber);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+    }
+
+    .badge-blue {
+      background: rgba(96, 165, 250, 0.1);
+      color: var(--accent-blue);
+      border: 1px solid rgba(96, 165, 250, 0.3);
+    }
+
+    .badge-purple {
+      background: rgba(167, 139, 250, 0.1);
+      color: var(--accent-purple);
+      border: 1px solid rgba(167, 139, 250, 0.3);
+    }
+
+    .badge-white {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+      border: 1px solid var(--line);
+    }
+
+    .decision-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 17px;
+      line-height: 1.3;
+      color: var(--text);
+    }
+
+    .decision-headline {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 25px;
+      line-height: 1.4;
+      color: var(--text-muted);
+      margin-bottom: 28px;
+    }
+
+    .decision-headline strong {
+      color: var(--text);
+      font-style: normal;
+    }
+
+    .decision-rationale {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      margin-bottom: 36px;
+    }
+
+    .impact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+
+    .impact-col {
+      background: var(--bg3);
+      padding: 22px 24px;
+    }
+
+    .impact-col-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .impact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .impact-item::before {
+      content: '→';
+      color: var(--green-bright);
+      flex-shrink: 0;
+    }
+
+    .psych-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--green-bright);
+      background: var(--green-glow);
+      border: 1px solid var(--green);
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .psych-tag::before {
+      content: '⟡';
+      font-size: 10px;
+    }
+
+    /* ── MONETIZATION ─────────────────── */
+    .mono-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .mono-item {
+      background: var(--bg2);
+      padding: 36px 28px;
+      transition: background 0.2s;
+    }
+
+    .mono-item:hover {
+      background: var(--bg3);
+    }
+
+    .mono-icon {
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    .mono-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .mono-price {
+      font-size: 12px;
+      color: var(--green-bright);
+      margin-bottom: 10px;
+      letter-spacing: 0.08em;
+    }
+
+    .mono-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .expansion-strip {
+      border: 1px solid var(--line-green);
+      background: var(--green-glow);
+      padding: 32px 40px;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 48px;
+    }
+
+    .expansion-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      white-space: nowrap;
+    }
+
+    .expansion-items {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .expansion-pill {
+      font-size: 12px;
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+    }
+
+    /* ── IA ───────────────────────────── */
+    .ia-nav {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .ia-tab {
+      background: var(--bg2);
+      padding: 28px 24px;
+      text-align: center;
+      transition: background 0.2s;
+    }
+
+    .ia-tab:hover {
+      background: var(--bg3);
+    }
+
+    .ia-icon {
+      font-size: 22px;
+      margin-bottom: 10px;
+    }
+
+    .ia-label {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .user-journey {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .journey-step {
+      flex: 1;
+      padding: 20px 16px;
+      background: var(--bg3);
+      border-right: 1px solid var(--line);
+      text-align: center;
+      position: relative;
+    }
+
+    .journey-step:last-child {
+      border-right: none;
+    }
+
+    .journey-step-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--green-bright);
+      margin-bottom: 4px;
+    }
+
+    .journey-step-desc {
+      font-size: 10px;
+      color: var(--text-dim);
+    }
+
+    /* ── USABILITY TESTING ─────────────── */
+    .testing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .testing-left {
+      padding-right: 80px;
+      border-right: 1px solid var(--line);
+    }
+
+    .testing-right {
+      padding-left: 80px;
+    }
+
+    .result-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 32px;
+    }
+
+    .result-stat {
+      background: var(--bg3);
+      padding: 28px;
+      text-align: center;
+    }
+
+    .result-stat-num {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 44px;
+      background: linear-gradient(135deg, var(--green-bright), #6ee7b7);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .result-stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+    }
+
+    .testing-changes {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .change-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 18px 20px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .change-item::before {
+      content: '✓';
+      color: var(--green-bright);
+      flex-shrink: 0;
+      font-weight: bold;
+    }
+
+    /* ── EDGE CASES ───────────────────── */
+    .edge-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .edge-item {
+      background: var(--bg2);
+      padding: 28px 24px;
+      transition: background 0.2s;
+    }
+
+    .edge-item:hover {
+      background: var(--bg3);
+    }
+
+    .edge-icon {
+      font-size: 20px;
+      margin-bottom: 12px;
+    }
+
+    .edge-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      color: var(--text);
+      margin-bottom: 6px;
+    }
+
+    .edge-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ── COMPETITIVE ADVANTAGE ─────────── */
+    .comp-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+
+    .comp-left {
+      padding-right: 80px;
+      border-right: 1px solid var(--line);
+    }
+
+    .comp-right {
+      padding-left: 80px;
+    }
+
+    .comp-diff {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .comp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px 18px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+      transition: border-color 0.2s;
+    }
+
+    .comp-item:hover {
+      border-color: var(--line-green);
+    }
+
+    .comp-item::before {
+      content: '✦';
+      color: var(--green-bright);
+      flex-shrink: 0;
+      font-size: 10px;
+      margin-top: 2px;
+    }
+
+    .tech-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .tech-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 18px;
+      background: var(--bg3);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .tech-dot {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--green-bright);
+      flex-shrink: 0;
+    }
+
+    /* ── IMPACT SECTION ───────────────── */
+
+    .impact-headline {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(40px, 6vw, 80px);
+      letter-spacing: -0.03em;
+      line-height: 0.95;
+      margin-bottom: 72px;
+    }
+
+    .impact-headline .dim {
+      color: var(--text-dim);
+    }
+
+    .impact-headline .bright {
+      background: linear-gradient(135deg, var(--green-bright) 0%, #6ee7b7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 64px;
+    }
+
+
+    .impact-block-title {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .impact-block-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    .impact-block-item::before {
+      content: '→';
+      color: var(--green-bright);
+      flex-shrink: 0;
+    }
+
+    /* ── REFLECTION ───────────────────── */
+    .reflection-block {
+      border: 1px solid var(--line-green);
+      background: var(--green-glow);
+      padding: 64px;
+      border-radius: 4px;
+    }
+
+    .reflection-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+      margin-bottom: 32px;
+      display: block;
+    }
+
+    .reflection-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 1.5;
+      color: var(--text);
+      margin-bottom: 40px;
+    }
+
+    .reflection-text strong {
+      color: var(--green-bright);
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    .reflection-learnings {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .reflection-learning {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 14px;
+      color: var(--text-muted);
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .reflection-learning::before {
+      content: '→';
+      color: var(--green-bright);
+      flex-shrink: 0;
+    }
+
+    .reflection-learning:last-child {
+      border-bottom: none;
+    }
+
+    /* ── FINAL STATEMENT ──────────────── */
+
+    .final-block {
+      text-align: center;
+      padding: 0 80px;
+    }
+
+    .final-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(36px, 5vw, 72px);
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      margin-bottom: 32px;
+    }
+
+    .final-title .green {
+      background: linear-gradient(135deg, var(--green-bright) 0%, #6ee7b7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .final-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 560px;
+      margin: 0 auto 40px;
+      line-height: 1.5;
+    }
+
+    .final-tags {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .final-tag {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      border: 1px solid var(--line-green);
+      background: var(--green-glow);
+      color: var(--green-bright);
+      border-radius: 2px;
+    }
+
+    /* ── FOOTER ───────────────────────── */
+    footer {
+      padding: 60px 48px;
+      border-top: 1px solid var(--line);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      padding-top: 32px;
+    }
+
+    .footer-meta {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: right;
+      padding-top: 32px;
+    }
+
+    /* ── ANIMATIONS ───────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ── LARGE SCREENS ───────────────────── */
+    @media (min-width: 1600px) {
+      nav {
+        padding: 20px 80px;
+      }
+
+      .hero {
+        padding: 0 80px 80px;
+      }
+
+      section {
+        padding: 120px 80px;
+      }
+    }
+
+    /* ── RESPONSIVE ───────────────────── */
+    @media (max-width: 1024px) {
+
+      .summary-grid,
+      .direction-split,
+      .testing-grid,
+      .comp-grid,
+      .impact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .summary-left,
+      .direction-left,
+      .testing-left,
+      .comp-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 48px;
+        margin-bottom: 48px;
+      }
+
+      .summary-right,
+      .direction-right,
+      .testing-right,
+      .comp-right {
+        padding-left: 0;
+      }
+
+      .goals-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .goals-col:first-child {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+      }
+
+      .goals-col:last-child {
+        padding-left: 0;
+      }
+
+      .problem-flow {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .kpi-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      section {
+        padding: 72px 24px;
+      }
+
+      .hero {
+        padding: 0 24px 60px;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+
+      .hero-meta-item {
+        border-right: none;
+        padding: 0;
+      }
+
+      .decision-card {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .decision-meta {
+        position: relative;
+        top: 0;
+      }
+
+      .impact-row {
+        grid-template-columns: 1fr;
+      }
+
+      .mono-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .research-methods {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .mvp-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .edge-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .problem-consequences {
+        grid-template-columns: 1fr;
+      }
+
+      .ia-nav {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .result-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .user-journey {
+        flex-direction: column;
+      }
+
+      .journey-step {
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .expansion-strip {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .final-block {
+        padding: 0;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+      }
+
+      .footer-meta {
+        text-align: left;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .nav-meta span:not(.nav-tag) {
+        display: none;
+      }
+
+      .hero-eyebrow::before {
+        width: 24px;
+      }
+
+      .hero-title {
+        font-size: clamp(36px, 10vw, 64px);
+      }
+
+      .hero-subtitle {
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
+
+      .hero-meta {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .hero-meta-item:not(:first-child) {
+        padding-left: 0;
+      }
+
+      section {
+        padding: 48px 20px;
+      }
+
+      .section-label {
+        margin-bottom: 32px;
+      }
+
+      .section-title {
+        font-size: clamp(26px, 8vw, 36px);
+      }
+
+      .section-sub {
+        font-size: 16px;
+        margin-bottom: 32px;
+      }
+
+      .summary-left {
+        padding-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+      }
+
+      .summary-desc {
+        font-size: 18px;
+      }
+
+      .problem-flow {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .consequence-title {
+        font-size: 9px;
+      }
+
+      .insight-hero {
+        padding: 32px 20px;
+      }
+
+      .insight-hero-text {
+        font-size: clamp(22px, 7vw, 32px);
+      }
+
+      .research-methods {
+        grid-template-columns: 1fr;
+      }
+
+      .kpi-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mvp-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mono-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .edge-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .ia-nav {
+        grid-template-columns: 1fr;
+      }
+
+      .direction-left {
+        padding-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 32px;
+        margin-bottom: 32px;
+      }
+
+      .chain-step {
+        min-width: 70px;
+        font-size: 10px;
+      }
+
+      .chain-desc {
+        font-size: 12px;
+      }
+
+      .decision-card {
+        padding: 48px 0;
+      }
+
+      .decision-number {
+        font-size: 48px;
+      }
+
+      .decision-headline {
+        font-size: 20px;
+      }
+
+      .reflection-block {
+        padding: 32px 20px;
+      }
+
+      .reflection-text {
+        font-size: 18px;
+      }
+
+      .expansion-strip {
+        padding: 24px 20px;
+      }
+
+      .expansion-items {
+        gap: 12px;
+      }
+
+      .final-block {
+        padding: 0;
+      }
+
+      .final-title {
+        font-size: clamp(28px, 8vw, 44px);
+      }
+
+      .final-sub {
+        font-size: 16px;
+      }
+
+    }
+
+    /* ── PROJECT NAVIGATION SECTION ──────────────── */
+    .project-nav-section {
+      padding: 120px 48px;
+      background: var(--bg2);
+      border-top: 1px solid var(--line);
+    }
+
+    .project-nav-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .nav-project-card {
+      text-align: center;
+      padding: 48px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .nav-project-card:hover {
+      background: var(--bg3);
+      border-color: var(--green-bright);
+      transform: translateY(-4px);
+    }
+
+    .nav-project-label {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .nav-project-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 32px;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .nav-project-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--green-bright);
+    }
+
+    @media (max-width: 768px) {
+      .project-nav-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .project-nav-section {
+        padding: 80px 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">TrailTribe</a>
+    <div class="nav-meta">
+      <a href="index.html"
+        style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
+        onmouseover="this.style.color='var(--green-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
+      <span>Community · Trekking Ecosystem · Personal Project</span>
+      <span class="nav-tag">Case Study · 2024</span>
+    </div>
+  </nav>
+
+  <!-- ── HERO ─────────────────────────────────── -->
+  <section class="hero" style="padding-top:120px; border-top:none;">
+    <div class="hero-bg"></div>
+
+    <svg class="hero-mountain" width="400" height="280" viewBox="0 0 400 280" fill="none">
+      <polygon points="200,20 380,260 20,260" fill="#34d399" opacity="0.5" />
+      <polygon points="120,80 280,260 20,260" fill="#059669" opacity="0.5" />
+      <polygon points="300,100 400,260 200,260" fill="#34d399" opacity="0.3" />
+      <line x1="0" y1="260" x2="400" y2="260" stroke="#34d399" stroke-width="1" opacity="0.5" />
+    </svg>
+
+    <div class="hero-eyebrow"><span>Founding Product Designer · Mobile · iOS &amp; Android</span></div>
+    <h1 class="hero-title">
+      <span class="line1">Trail</span>
+      <span class="line2">Tribe</span>
+      <span class="line3">a founder-led product vision.</span>
+    </h1>
+    <p class="hero-subtitle">
+      A community-driven trekking ecosystem that eliminates fragmented planning and builds trust between trekkers and
+      organizers from UI concept to scalable product.
+    </p>
+    <div class="hero-meta">
+      <div class="hero-meta-item">
+        <div class="meta-label">Role</div>
+        <div class="meta-val">Founding Product Designer</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Platform</div>
+        <div class="meta-val">iOS &amp; Android</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Type</div>
+        <div class="meta-val">Ecosystem Vision</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="meta-label">Year</div>
+        <div class="meta-val">2024</div>
+      </div>
+    </div>
+    <div class="scroll-hint">Scroll to explore</div>
+  </section>
+
+  <!-- ── 01. EXECUTIVE SUMMARY ─────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Executive Summary</span>
+      <span class="sl-num">/ 01</span>
+    </div>
+    <div class="summary-grid reveal">
+      <div class="summary-left">
+        <div class="founder-badge">Founder-Led Product Vision</div>
+        <p class="summary-desc">
+          TrailTribe is not a trekking app. It is a <strong>trust-driven community ecosystem</strong> that connects
+          discovery, planning, preparation, participation, and commerce into a single structured experience.
+        </p>
+        <p class="summary-desc">
+          This project evolved from a UI concept into a <strong>scalable product vision</strong> with defined
+          monetization strategy, KPIs, and long-term ecosystem expansion the thinking that separates product designers
+          from UI designers.
+        </p>
+      </div>
+      <div class="summary-right">
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+          TrailTribe integrates</div>
+        <div class="integration-list">
+          <div class="integration-item"><span class="integration-icon">🔍</span> Trek discovery &amp; filtering<span
+              class="integration-arrow">→</span></div>
+          <div class="integration-item"><span class="integration-icon">🗺️</span> Structured planning with maps<span
+              class="integration-arrow">→</span></div>
+          <div class="integration-item"><span class="integration-icon">✅</span> Trust verification system<span
+              class="integration-arrow">→</span></div>
+          <div class="integration-item"><span class="integration-icon">📋</span> Preparation checklists<span
+              class="integration-arrow">→</span></div>
+          <div class="integration-item"><span class="integration-icon">👥</span> Community engagement layer<span
+              class="integration-arrow">→</span></div>
+          <div class="integration-item"><span class="integration-icon">💰</span> Marketplace monetization<span
+              class="integration-arrow">→</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 02. THE REAL PROBLEM ──────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">The Real Market Problem</span>
+      <span class="sl-num">/ 02</span>
+    </div>
+    <div class="section-title reveal">Trekking is growing.<br>Planning is broken.</div>
+    <p class="section-sub reveal">Today's trekking workflow is six apps, zero coordination, and no trust.</p>
+
+    <div style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+      Current fragmented flow</div>
+    <div class="problem-flow reveal">
+      <div class="flow-item">
+        <div class="flow-item-icon">📸</div>
+        <div class="flow-item-tool">Instagram</div>
+        <div class="flow-item-task">Discovery</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-item-icon">💬</div>
+        <div class="flow-item-tool">WhatsApp</div>
+        <div class="flow-item-task">Planning</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-item-icon">🗺️</div>
+        <div class="flow-item-tool">Google Maps</div>
+        <div class="flow-item-task">Location</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-item-icon">🛒</div>
+        <div class="flow-item-tool">Amazon</div>
+        <div class="flow-item-task">Gear</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-item-icon">🏠</div>
+        <div class="flow-item-tool">Booking Apps</div>
+        <div class="flow-item-task">Stay</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-item-icon">📞</div>
+        <div class="flow-item-tool">Phone</div>
+        <div class="flow-item-task">Coordination</div>
+      </div>
+    </div>
+
+    <div class="problem-consequences">
+      <div class="consequence-block">
+        <div class="consequence-title">What this creates for users</div>
+        <div class="consequence-item">Safety anxiety for beginners with no verified guidance</div>
+        <div class="consequence-item">Context switching fatigue across 6+ tools</div>
+        <div class="consequence-item">Low RSVP conversion due to uncertainty</div>
+        <div class="consequence-item">High drop-off before actual participation</div>
+      </div>
+      <div class="consequence-block">
+        <div class="consequence-title">What this creates for organizers</div>
+        <div class="consequence-item">Coordination chaos across scattered channels</div>
+        <div class="consequence-item">No standardized communication system</div>
+        <div class="consequence-item">Inability to verify participant readiness</div>
+        <div class="consequence-item">No tool for building organizer reputation</div>
+      </div>
+    </div>
+
+    <div class="insight-hero">
+      <span class="insight-hero-label">The Real Conversion Barrier</span>
+      <div class="insight-hero-text">
+        Trust is <em>not a feature.</em><br>It is the product.
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 03. RESEARCH ──────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Research &amp; Validation</span>
+      <span class="sl-num">/ 03</span>
+    </div>
+    <div class="section-title reveal">What real trekkers said.</div>
+    <p class="section-sub reveal">Mixed methods interviews, surveys, and competitive analysis against Indiahikes,
+      Meetup, and
+      AllTrails.</p>
+
+    <div class="research-methods reveal">
+      <div class="method-item">
+        <div class="method-num">5</div>
+        <div class="method-label">In-depth user interviews</div>
+      </div>
+      <div class="method-item">
+        <div class="method-num">20+</div>
+        <div class="method-label">Survey responses collected</div>
+      </div>
+      <div class="method-item">
+        <div class="method-num">3</div>
+        <div class="method-label">Competitors analyzed in depth</div>
+      </div>
+      <div class="method-item">
+        <div class="method-num">8</div>
+        <div class="method-label">Usability test participants</div>
+      </div>
+    </div>
+
+    <div class="insights-list">
+      <div class="insight-row">
+        <div class="insight-row-num">01</div>
+        <div class="insight-row-text"><strong>Beginners need structure, not inspiration.</strong> They want to know what
+          to bring, what to expect, and how hard it will be before they commit.</div>
+      </div>
+      <div class="insight-row">
+        <div class="insight-row-num">02</div>
+        <div class="insight-row-text"><strong>Users instinctively open maps before joining.</strong> Location
+          verification was the number one reason users left the app mid-decision flow.</div>
+      </div>
+      <div class="insight-row">
+        <div class="insight-row-num">03</div>
+        <div class="insight-row-text"><strong>Seeing who else is going increases commitment.</strong> Participant
+          visibility applied social proof directly to RSVP behavior.</div>
+      </div>
+      <div class="insight-row">
+        <div class="insight-row-num">04</div>
+        <div class="insight-row-text"><strong>Organizers struggle with coordination chaos.</strong> Managing
+          participants across WhatsApp groups created errors, fatigue, and drop-offs before trek day.</div>
+      </div>
+      <div class="insight-row">
+        <div class="insight-row-num">05</div>
+        <div class="insight-row-text"><strong>Trust signals directly affect RSVP decisions.</strong> Verified organizer
+          badges, ratings, and completed trek counts were cited as primary confidence drivers.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 04. PRODUCT DIRECTION ──────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Strategic Product Direction</span>
+      <span class="sl-num">/ 04</span>
+    </div>
+    <div class="direction-split reveal">
+      <div class="direction-left">
+        <div class="section-title">Not "another trekking app."<br>A trust-driven ecosystem.</div>
+        <p
+          style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:20px;color:var(--text-muted);margin-bottom:32px;">
+          This shift moved the project from feature-based thinking to <strong
+            style="color:var(--text);font-style:normal;">ecosystem thinking</strong>.
+        </p>
+        <p style="font-size:14px;color:var(--text-muted);line-height:1.75;">
+          Every competitor solves one part of the problem discovery, planning, or community. TrailTribe integrates all
+          of them into a single trust layer that connects every stage from initial interest to post-trek recognition.
+        </p>
+      </div>
+      <div class="direction-right">
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+          The TrailTribe Ecosystem Chain</div>
+        <div class="ecosystem-chain">
+          <div class="chain-item"><span class="chain-step">Discover</span><span class="chain-desc">Find relevant treks
+              fast with filters and map preview</span><span class="chain-arrow">↓</span></div>
+          <div class="chain-item"><span class="chain-step">Plan</span><span class="chain-desc">Verified organizer
+              profiles and embedded location context</span><span class="chain-arrow">↓</span></div>
+          <div class="chain-item"><span class="chain-step">Prepare</span><span class="chain-desc">Auto-unlocked
+              checklists after RSVP confirmation</span><span class="chain-arrow">↓</span></div>
+          <div class="chain-item"><span class="chain-step">Participate</span><span class="chain-desc">Community
+              connection before and during the trek</span><span class="chain-arrow">↓</span></div>
+          <div class="chain-item"><span class="chain-step">Recognize</span><span class="chain-desc">Badges,
+              achievements, and community standing</span><span class="chain-arrow">↓</span></div>
+          <div class="chain-item"><span class="chain-step">Monetize</span><span class="chain-desc">Gear marketplace,
+              subscriptions, brand partnerships</span><span class="chain-arrow">↓</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 05. GOALS & KPIs ───────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Product Goals &amp; KPIs</span>
+      <span class="sl-num">/ 05</span>
+    </div>
+    <div class="section-title reveal">What success looks like precisely.</div>
+    <p class="section-sub reveal">Not features. Not screens. Defined business and user outcomes traceable to design
+      decisions.
+    </p>
+
+    <div class="goals-grid">
+      <div class="goals-col">
+        <div class="goals-col-title">User Goals</div>
+        <div class="goal-item">Discover relevant treks faster with less context switching</div>
+        <div class="goal-item">Decide to RSVP with confidence, not anxiety</div>
+        <div class="goal-item">Prepare properly with structured checklists</div>
+        <div class="goal-item">Connect with the community before the trek starts</div>
+        <div class="goal-item">Track personal progress and earn recognition</div>
+      </div>
+      <div class="goals-col">
+        <div class="goals-col-title">Business Goals</div>
+        <div class="goal-item">Increase RSVP conversion rate from discovery</div>
+        <div class="goal-item">Improve Day 7 user retention</div>
+        <div class="goal-item">Enable subscription revenue from power users</div>
+        <div class="goal-item">Introduce marketplace transaction revenue</div>
+        <div class="goal-item">Build long-term organizer loyalty and retention</div>
+      </div>
+    </div>
+
+    <div class="kpi-grid">
+      <div class="kpi-item">
+        <div class="kpi-icon">⏱️</div>
+        <div class="kpi-name">Time to First RSVP</div>
+        <div class="kpi-desc">How quickly new users commit to their first trek</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-icon">📊</div>
+        <div class="kpi-name">RSVP Conversion Rate</div>
+        <div class="kpi-desc">Trek views that convert to confirmed RSVPs</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-icon">✅</div>
+        <div class="kpi-name">Checklist Completion Rate</div>
+        <div class="kpi-desc">Users who complete preparation after RSVP</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-icon">📅</div>
+        <div class="kpi-name">DAU / MAU Ratio</div>
+        <div class="kpi-desc">Habit formation and daily engagement depth</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-icon">💳</div>
+        <div class="kpi-name">Subscription Conversion</div>
+        <div class="kpi-desc">Free users upgrading to premium plan</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-icon">🏕️</div>
+        <div class="kpi-name">Organizer Retention Rate</div>
+        <div class="kpi-desc">Organizers posting treks in subsequent months</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-icon">🛒</div>
+        <div class="kpi-name">Marketplace Transactions</div>
+        <div class="kpi-desc">Gear and kit purchases via the platform</div>
+      </div>
+      <div class="kpi-item">
+        <div class="kpi-icon">📈</div>
+        <div class="kpi-name">Day 7 Retention</div>
+        <div class="kpi-desc">Users still active one week after signup</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 06. MVP SCOPE ──────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">MVP Scope Phase 1</span>
+      <span class="sl-num">/ 06</span>
+    </div>
+    <div class="section-title reveal">Testing the trust layer.</div>
+    <p class="section-sub reveal">Qualitative logic testing with 8 users from beginner to mountain leader.</p>
+    <div class="methodology-grid reveal">
+      <div class="method-item">
+        <div class="mvp-num">01</div>
+        <div class="mvp-title">Trek Discovery</div>
+        <div class="mvp-desc">Carousel-based browsing with difficulty tags, weather, and map preview embedded.</div>
+      </div>
+      <div class="method-item">
+        <div class="mvp-num">02</div>
+        <div class="mvp-title">Embedded Map Preview</div>
+        <div class="mvp-desc">Location visible inside trek card. No app-switching required before deciding.</div>
+      </div>
+      <div class="method-item">
+        <div class="mvp-num">03</div>
+        <div class="mvp-title">Organizer Profiles</div>
+        <div class="mvp-desc">Verified badges, trek history, ratings. Trust made visible before RSVP.</div>
+      </div>
+      <div class="method-item">
+        <div class="mvp-num">04</div>
+        <div class="mvp-title">RSVP System</div>
+        <div class="mvp-desc">Clear confirmation flow with participant visibility and waitlist logic.</div>
+      </div>
+      <div class="method-item">
+        <div class="mvp-num">05</div>
+        <div class="mvp-title">Auto Checklist Unlock</div>
+        <div class="mvp-desc">Preparation checklist unlocks immediately after RSVP confirmation.</div>
+      </div>
+      <div class="method-item">
+        <div class="mvp-num">06</div>
+        <div class="mvp-title">Community Highlights</div>
+        <div class="mvp-desc">Social proof layer who's going, recent completions, photos from past treks.</div>
+      </div>
+      <div class="method-item">
+        <div class="mvp-num">07</div>
+        <div class="mvp-title">Resource Hub</div>
+        <div class="mvp-desc">Curated gear guides, safety tips, and beginner content organized by difficulty.</div>
+      </div>
+      <div class="method-item">
+        <div class="mvp-num">08</div>
+        <div class="mvp-title">Profile &amp; Badge System</div>
+        <div class="mvp-desc">Personal trek history, achievements, and community standing — retention through
+          recognition.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 07. DESIGN DECISIONS ──────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Key Design Decisions</span>
+      <span class="sl-num">/ 07</span>
+    </div>
+    <p class="decisions-intro reveal">6 decisions, each grounded in a behavioral psychology principle and traced to a
+      measurable user or business outcome. This is the thinking behind the screens.</p>
+
+    <!-- D1 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">01</div>
+        <div class="decision-badge badge-green">Discovery</div>
+        <div class="decision-title">Embedded Map Preview Inside Trek Card</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Users were <strong>leaving the app to verify location</strong> before deciding. That exit was often permanent.
+        </p>
+        <p class="decision-rationale">
+          Research showed location verification was the primary reason users switched apps mid-decision. Instead of
+          accepting that exit, I embedded a map preview directly inside the trek card. The user sees location context
+          without breaking flow. The decision to RSVP now happens within a single, uninterrupted experience.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">No context switching to verify location</div>
+            <div class="impact-item">Faster decision-making within the app</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Higher RSVP confidence and conversion</div>
+            <div class="impact-item">Reduced drop-off at decision moment</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">KPI Linked</div>
+            <div class="impact-item">RSVP Conversion Rate</div>
+            <div class="impact-item">Time to First RSVP</div>
+          </div>
+        </div>
+        <div class="psych-tag">Friction Reduction remove every exit from the decision path</div>
+      </div>
+    </div>
+
+    <!-- D2 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">02</div>
+        <div class="decision-badge badge-amber">Trust</div>
+        <div class="decision-title">Difficulty Tags &amp; Weather Visibility</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Beginners were not converting because they could not <strong>assess whether a trek was right for them</strong>
+          without external research.
+        </p>
+        <p class="decision-rationale">
+          Hesitation before RSVP is not a trust problem it's an information problem. I surfaced difficulty rating,
+          weather conditions, and terrain type directly on the discovery card. Beginners could self-select appropriate
+          treks without anxiety. More confident entry = higher follow-through.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Reduced hesitation before RSVP</div>
+            <div class="impact-item">Better self-selection of appropriate treks</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Increased beginner conversion</div>
+            <div class="impact-item">Lower cancellation after RSVP</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">KPI Linked</div>
+            <div class="impact-item">RSVP Conversion Rate</div>
+            <div class="impact-item">Day 7 Retention</div>
+          </div>
+        </div>
+        <div class="psych-tag">Anxiety Reduction answer the "is this right for me?" question before it's asked</div>
+      </div>
+    </div>
+
+    <!-- D3 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">03</div>
+        <div class="decision-badge badge-blue">Social Proof</div>
+        <div class="decision-title">Participant Faces Visible Before RSVP</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          An empty trek listing feels <strong>unsafe for beginners</strong>. A trek with 12 confirmed participants feels
+          <strong>validated and social</strong>.
+        </p>
+        <p class="decision-rationale">
+          I surfaced participant avatars and confirmation counts on the trek card. Seeing real faces increased trust in
+          the organizer and triggered FOMO both powerful RSVP motivators. This is not decoration; it is a behavioral
+          mechanism applied directly to the conversion moment.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Increased trust in the trek listing</div>
+            <div class="impact-item">Triggered FOMO and social momentum</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Higher RSVP conversion rate</div>
+            <div class="impact-item">Viral growth via visible participation</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">KPI Linked</div>
+            <div class="impact-item">RSVP Conversion Rate</div>
+            <div class="impact-item">DAU / MAU Ratio</div>
+          </div>
+        </div>
+        <div class="psych-tag">Social Proof visible participation signals safety and desirability</div>
+      </div>
+    </div>
+
+    <!-- D4 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">04</div>
+        <div class="decision-badge badge-green">Commitment</div>
+        <div class="decision-title">Checklist Unlocks Automatically After RSVP</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Users who RSVP and then feel <strong>unprepared are the ones who cancel</strong>. Preparation is a retention
+          strategy.
+        </p>
+        <p class="decision-rationale">
+          The moment a user confirms their RSVP, a personalized preparation checklist unlocks. This uses the Endowed
+          Progress Effect users who have already started a checklist are significantly more likely to complete the
+          behavior (showing up). It also reduces anxiety by giving users a clear action to take immediately after
+          committing.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Increased sense of commitment post-RSVP</div>
+            <div class="impact-item">Better preparedness before trek day</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Lower cancellation rate after RSVP</div>
+            <div class="impact-item">Higher Day 7 retention</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">KPI Linked</div>
+            <div class="impact-item">Checklist Completion Rate</div>
+            <div class="impact-item">Day 7 Retention</div>
+          </div>
+        </div>
+        <div class="psych-tag">Endowed Progress Effect started actions are harder to abandon</div>
+      </div>
+    </div>
+
+    <!-- D5 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">05</div>
+        <div class="decision-badge badge-purple">Retention</div>
+        <div class="decision-title">Personalized Home Screen with User Name</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Generic home screens are <strong>utilities</strong>. Personalized home screens are <strong>destinations users
+            return to</strong>.
+        </p>
+        <p class="decision-rationale">
+          "Welcome back, Anil" is not just a greeting it is a habit trigger. The home screen was designed to feel
+          personal from the first return visit: user name, upcoming trek countdown, recent community activity. Each
+          element creates a micro-reason to open the app daily, forming the habit loop that drives DAU growth.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Emotional connection to the product</div>
+            <div class="impact-item">Habit loop formation over time</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Improved DAU / MAU ratio</div>
+            <div class="impact-item">Higher retention past Day 7</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">KPI Linked</div>
+            <div class="impact-item">DAU / MAU Ratio</div>
+            <div class="impact-item">Day 7 Retention</div>
+          </div>
+        </div>
+        <div class="psych-tag">Habit Loop cue → routine → reward, personalized per user</div>
+      </div>
+    </div>
+
+    <!-- D6 -->
+    <div class="decision-card reveal">
+      <div class="decision-meta">
+        <div class="decision-number">06</div>
+        <div class="decision-badge badge-white">Discovery UX</div>
+        <div class="decision-title">Carousel-Based Discovery over List View</div>
+      </div>
+      <div class="decision-body">
+        <p class="decision-headline">
+          Showing 20 treks at once creates <strong>decision paralysis</strong>. Showing 3 well-curated options creates
+          <strong>confident selection</strong>.
+        </p>
+        <p class="decision-rationale">
+          I applied Hick's Law the more options presented simultaneously, the longer (and more anxious) the decision.
+          A carousel format presents treks sequentially, with full visual attention on each one. The browsing experience
+          feels curated, not overwhelming. Users move through options with momentum rather than scrolling through an
+          endless list.
+        </p>
+        <div class="impact-row">
+          <div class="impact-col">
+            <div class="impact-col-label">User Impact</div>
+            <div class="impact-item">Reduced cognitive overload at discovery</div>
+            <div class="impact-item">Faster scanning with clear visual focus</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">Business Impact</div>
+            <div class="impact-item">Higher engagement per session</div>
+            <div class="impact-item">Increased time spent in discovery</div>
+          </div>
+          <div class="impact-col">
+            <div class="impact-col-label">KPI Linked</div>
+            <div class="impact-item">Time to First RSVP</div>
+            <div class="impact-item">DAU / MAU Ratio</div>
+          </div>
+        </div>
+        <div class="psych-tag">Hick's Law — fewer options, faster and more confident decisions</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ── 08. MONETIZATION ───────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Monetization Strategy</span>
+      <span class="sl-num">/ 08</span>
+    </div>
+    <div class="section-title reveal">Built for scale.</div>
+    <p class="section-sub reveal">A sustainable multi-stream revenue model that doesn't sacrifice user trust.</p>
+
+    <div class="mono-grid reveal">
+      <div class="mono-item">
+        <div class="mono-icon">💳</div>
+        <div class="mono-title">Subscription — Premium</div>
+        <div class="mono-price">₹100 / month</div>
+        <div class="mono-desc">Offline maps, advanced filters, priority visibility, and ad-free experience. Recurring
+          revenue from power users.</div>
+      </div>
+      <div class="mono-item">
+        <div class="mono-icon">🛒</div>
+        <div class="mono-title">Marketplace Commission</div>
+        <div class="mono-price">Commission-based</div>
+        <div class="mono-desc">Trek kits, gear bundles, and accessories sold within the app. Revenue on every
+          transaction without inventory risk.</div>
+      </div>
+      <div class="mono-item">
+        <div class="mono-icon">🏷️</div>
+        <div class="mono-title">Sponsored Brand Placements</div>
+        <div class="mono-price">CPM / CPA</div>
+        <div class="mono-desc">Contextual placements inside resource guides and trek listings. Outdoor brand
+          partnerships with high purchase intent audience.</div>
+      </div>
+      <div class="mono-item">
+        <div class="mono-icon">🌐</div>
+        <div class="mono-title">Organizer Tools — Pro</div>
+        <div class="mono-price">B2B Tier</div>
+        <div class="mono-desc">Advanced analytics, verified badge, bulk communication tools. Organizers pay for
+          professional-grade features.</div>
+      </div>
+    </div>
+
+    <div class="expansion-strip reveal">
+      <div class="expansion-label">Phase 2 Expansion</div>
+      <div class="expansion-items">
+        <div class="expansion-pill">Rental marketplace</div>
+        <div class="expansion-pill">Homestay booking</div>
+        <div class="expansion-pill">Transport packages</div>
+        <div class="expansion-pill">Verified badge monetization</div>
+        <div class="expansion-pill">Insurance partnerships</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 09. INFORMATION ARCHITECTURE ─────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Information Architecture</span>
+      <span class="sl-num">/ 09</span>
+    </div>
+    <div class="section-title reveal">Navigation designed as a user journey, not a menu.</div>
+    <p class="section-sub reveal">Five tabs. Each one owns a stage of the trekker's lifecycle.</p>
+    <div class="ia-nav reveal">
+      <div class="ia-tab">
+        <div class="ia-icon">🏠</div>
+        <div class="ia-label">Home</div>
+      </div>
+      <div class="ia-tab">
+        <div class="ia-icon">👥</div>
+        <div class="ia-label">Community</div>
+      </div>
+      <div class="ia-tab">
+        <div class="ia-icon">🗺️</div>
+        <div class="ia-label">Treks</div>
+      </div>
+      <div class="ia-tab">
+        <div class="ia-icon">📚</div>
+        <div class="ia-label">Resources</div>
+      </div>
+      <div class="ia-tab">
+        <div class="ia-icon">👤</div>
+        <div class="ia-label">Profile</div>
+      </div>
+    </div>
+    <div class="user-journey reveal">
+      <div class="journey-step">
+        <div class="journey-step-name">Discover</div>
+        <div class="journey-step-desc">Home + Treks</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-name">Engage</div>
+        <div class="journey-step-desc">Community</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-name">Plan</div>
+        <div class="journey-step-desc">Trek Detail</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-name">Prepare</div>
+        <div class="journey-step-desc">Resources + Checklist</div>
+      </div>
+      <div class="journey-step">
+        <div class="journey-step-name">Track</div>
+        <div class="journey-step-desc">Profile + Badges</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 10. USABILITY TESTING ──────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Usability Testing</span>
+      <span class="sl-num">/ 10</span>
+    </div>
+    <div class="section-title reveal">8 participants. 4 tasks. Real feedback.</div>
+    <div class="testing-grid reveal">
+      <div class="testing-left">
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+          Tasks tested</div>
+        <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:40px;">
+          <div class="consequence-item" style="border-color:var(--line);">Join a trek and complete RSVP</div>
+          <div class="consequence-item" style="border-color:var(--line);">Explore community and find recent posts</div>
+          <div class="consequence-item" style="border-color:var(--line);">Share a resource with another user</div>
+          <div class="consequence-item" style="border-color:var(--line);">Update profile and view badge history</div>
+        </div>
+        <div class="result-stats">
+          <div class="result-stat">
+            <div class="result-stat-num">92%</div>
+            <div class="result-stat-label">Task success rate</div>
+          </div>
+          <div class="result-stat">
+            <div class="result-stat-num">45s</div>
+            <div class="result-stat-label">Avg RSVP time</div>
+          </div>
+        </div>
+      </div>
+      <div class="testing-right">
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+          Key feedback received</div>
+        <p
+          style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:20px;color:var(--text-muted);margin-bottom:24px;">
+          "The checklist makes it easy to know what to bring."</p>
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+          Changes made post-testing</div>
+        <div class="testing-changes">
+          <div class="change-item">Added clear RSVP confirmation state users wanted explicit "you're confirmed"
+            feedback before leaving the screen.</div>
+          <div class="change-item">Added "Saved" indicator for resources users were unsure whether bookmarking had
+            registered without visible feedback.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 11. EDGE CASES ────────────────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Edge Cases &amp; Complexity</span>
+      <span class="sl-num">/ 11</span>
+    </div>
+    <div class="section-title reveal">Designed for when things go wrong.</div>
+    <p class="section-sub reveal">Edge cases are first-class design decisions. Handling failure gracefully is what
+      separates
+      enterprise-grade from demo-grade.</p>
+    <div class="edge-grid reveal">
+      <div class="edge-item">
+        <div class="edge-icon">❌</div>
+        <div class="edge-name">Trek Cancellation</div>
+        <div class="edge-desc">Clear notification flow with refund confirmation and alternative trek suggestions
+          surfaced immediately.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">⏳</div>
+        <div class="edge-name">Waitlist Logic</div>
+        <div class="edge-desc">Transparent waitlist position shown with auto-upgrade notification when spots open.</div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">📄</div>
+        <div class="edge-name">Duplicate Treks</div>
+        <div class="edge-desc">Organizer-side validation surfaces duplicates before publishing not after discovery.
+        </div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">📵</div>
+        <div class="edge-name">Offline Usage</div>
+        <div class="edge-desc">Checklist and saved trek details cached locally. Premium subscribers get offline maps.
+        </div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">🗺️</div>
+        <div class="edge-name">Map Loading Failure</div>
+        <div class="edge-desc">Fallback to static location image with coordinates and retry option no dead screens.
+        </div>
+      </div>
+      <div class="edge-item">
+        <div class="edge-icon">♿</div>
+        <div class="edge-name">Accessibility Standards</div>
+        <div class="edge-desc">WCAG AA contrast, 44px tap targets, screen reader support, 8pt grid, clear typography
+          scale.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 12. COMPETITIVE ADVANTAGE ─────────────── -->
+  <section>
+    <div class="section-label reveal">
+      <span class="sl-text">Competitive Advantage &amp; Scalability</span>
+      <span class="sl-num">/ 12</span>
+    </div>
+    <div class="comp-grid reveal">
+      <div class="comp-left">
+        <div class="section-title">What separates TrailTribe from every existing solution.</div>
+        <div class="comp-diff">
+          <div class="comp-item">Integrates trust, planning, and community — no competitor owns all three</div>
+          <div class="comp-item">Reduces context switching — the full journey lives in one product</div>
+          <div class="comp-item">Safety-first design built for beginners — not assumed expertise</div>
+          <div class="comp-item">Monetization from day one — not retrofitted after growth</div>
+          <div class="comp-item">Multi-revenue expansion model — not dependent on one stream</div>
+        </div>
+      </div>
+      <div class="comp-right">
+        <div
+          style="font-size:10px;letter-spacing:0.2em;text-transform:uppercase;color:var(--text-dim);margin-bottom:16px;">
+          Technical &amp; scalability thinking</div>
+        <div class="tech-grid">
+          <div class="tech-item">
+            <div class="tech-dot"></div>Modular architecture — features ship independently
+          </div>
+          <div class="tech-item">
+            <div class="tech-dot"></div>API-ready marketplace integration
+          </div>
+          <div class="tech-item">
+            <div class="tech-dot"></div>Offline caching for core flows
+          </div>
+          <div class="tech-item">
+            <div class="tech-dot"></div>Expandable database schema for multi-sport
+          </div>
+          <div class="tech-item">
+            <div class="tech-dot"></div>Token-based design system across platforms
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 13. BUSINESS IMPACT ─────────────────────── -->
+  <section class="impact-section">
+    <div class="section-label reveal">
+      <span class="sl-text">Expected Business Impact</span>
+      <span class="sl-num">/ 13</span>
+    </div>
+    <h2 class="impact-headline reveal">
+      <span class="dim">Ecosystem thinking</span><br>
+      <span class="bright">compounds over time.</span>
+    </h2>
+    <div class="impact-block">
+      <div class="impact-block-title">Short-Term Outcomes</div>
+      <div class="impact-block-item">Faster trek discovery with lower bounce rate</div>
+      <div class="impact-block-item">Higher RSVP confidence through embedded trust signals</div>
+      <div class="impact-block-item">Increased engagement from personalized home experience</div>
+      <div class="impact-block-item">Lower cancellation through checklist-driven preparation</div>
+    </div>
+    <div class="impact-block">
+      <div class="impact-block-title">Long-Term Outcomes</div>
+      <div class="impact-block-item">Subscription revenue from power trekkers</div>
+      <div class="impact-block-item">Marketplace transaction revenue from gear ecosystem</div>
+      <div class="impact-block-item">Brand partnership revenue from outdoor category</div>
+      <div class="impact-block-item">Network effects — more organizers attract more trekkers</div>
+    </div>
+    </div>
+  </section>
+
+  <!-- ── 14. FOUNDER REFLECTION ────────────────── -->
+  <section>
+    <div class="section-label">
+      <span class="sl-text">Founder Reflection</span>
+      <span class="sl-num">/ 14</span>
+    </div>
+    <div class="reflection-block">
+      <span class="reflection-label">What this project changed about how I think</span>
+      <p class="reflection-text">
+        TrailTribe is not just a UI case study. It is a long-term product vision built with <strong>psychology, system
+          thinking, monetization awareness, technical scalability</strong>, and a community-first strategy. This project
+        changed how I think about product design permanently.
+      </p>
+      <div class="reflection-learnings">
+        <div class="reflection-learning">Trust drives conversion — not features, not UI polish, not color choices.</div>
+        <div class="reflection-learning">UX decisions affect revenue — every friction point costs money, every trust
+          signal earns it.</div>
+        <div class="reflection-learning">Reducing friction increases retention — the easier it is to commit, the harder
+          it is to leave.</div>
+        <div class="reflection-learning">Design must align with business strategy — beautiful products that don't serve
+          a business model don't survive.</div>
+        <div class="reflection-learning">Ecosystem thinking creates scalability — designing the platform beats designing
+          the feature.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FINAL STATEMENT ────────────────────────── -->
+  <section class="final-section">
+    <div class="section-label">
+      <span class="sl-text">Final Statement</span>
+      <span class="sl-num">/ 15</span>
+    </div>
+    <div class="final-block">
+      <h2 class="final-title">
+        Not just an app.<br>
+        <span class="green">A scalable community platform.</span>
+      </h2>
+      <p class="final-sub">
+        TrailTribe transforms fragmented trek planning into confident action connecting discovery, trust, preparation,
+        and commerce into one structured ecosystem.
+      </p>
+      <div class="final-tags">
+        <span class="final-tag">Psychology-Driven</span>
+        <span class="final-tag">System Thinking</span>
+        <span class="final-tag">Monetization Aware</span>
+        <span class="final-tag">Technically Scalable</span>
+        <span class="final-tag">Community-First</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── PROJECT NAVIGATION ────────────────────── -->
+  <section class="project-nav-section">
+    <div class="project-nav-grid">
+      <a href="idp-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Previous Project</span>
+        <h2 class="nav-project-title">Zenisth IDP</h2>
+        <div class="nav-project-btn">← View Case Study</div>
+      </a>
+      <a href="rumble-rewards-case-study.html" class="nav-project-card">
+        <span class="nav-project-label">Next Project</span>
+        <h2 class="nav-project-title">Rumble Rewards</h2>
+        <div class="nav-project-btn">View Case Study &nbsp; →</div>
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">TrailTribe · Community Platform (Personal) · 2024</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Ecosystem Vision · Product Designer: Anil Patel
+      </p>
+    </div>
+    <div class="footer-meta">
+      <p>6 Decisions · 8 MVP Features · 7 KPIs · 4 Revenue Streams</p>
+      <p style="margin-top:4px;color:var(--text-dim);">Mobile · iOS &amp; Android · 2024 Archive</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

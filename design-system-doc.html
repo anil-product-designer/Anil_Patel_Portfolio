@@ -1,0 +1,1890 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Design System Documentation — Dark Editorial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
+    rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #0a0a0f;
+      --bg2: #10101a;
+      --bg3: #16162a;
+      --violet: #7c3aed;
+      --violet-bright: #a855f7;
+      --violet-dim: #4c1d95;
+      --violet-glow: rgba(124, 58, 237, 0.15);
+      --text: #f1f0ff;
+      --text-muted: #8884a8;
+      --text-dim: #4e4c6b;
+      --line: rgba(124, 58, 237, 0.18);
+      --accent-green: #34d399;
+      --accent-amber: #fbbf24;
+      --accent-red: #f87171;
+      --accent-indigo: #818cf8;
+    }
+
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.6;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(10, 10, 15, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .nav-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 13px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--violet-bright);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+    }
+
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover {
+      color: var(--violet-bright);
+    }
+
+    /* HERO */
+    .doc-hero {
+      padding: 100px 48px 80px;
+      border-bottom: 1px solid var(--line);
+      background: radial-gradient(ellipse 70% 60% at 0% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+    }
+
+    .doc-hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+
+    .doc-hero-eyebrow::before {
+      content: '';
+      width: 36px;
+      height: 1px;
+      background: var(--violet-bright);
+    }
+
+    .doc-hero-eyebrow span {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      color: var(--violet-bright);
+      text-transform: uppercase;
+    }
+
+    .doc-hero-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(44px, 6vw, 88px);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 32px;
+    }
+
+    .doc-hero-title .dim {
+      color: var(--text-dim);
+    }
+
+    .doc-hero-title .bright {
+      background: linear-gradient(135deg, var(--violet-bright) 0%, #c084fc 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .doc-hero-sub {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--text-muted);
+      max-width: 560px;
+    }
+
+    .doc-hero-tags {
+      display: flex;
+      gap: 10px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    .htag {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      color: var(--text-dim);
+    }
+
+    /* SECTION */
+    .doc-section {
+      padding: 96px 48px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .doc-section:nth-child(odd) {
+      background: var(--bg);
+    }
+
+    .doc-section:nth-child(even) {
+      background: var(--bg2);
+    }
+
+    .sec-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .sec-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--violet);
+    }
+
+    .sec-label-text {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--violet-bright);
+      text-transform: uppercase;
+    }
+
+    .sec-label-num {
+      font-size: 10px;
+      color: var(--text-dim);
+      letter-spacing: 0.2em;
+    }
+
+    .sec-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: clamp(28px, 3.5vw, 48px);
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+
+    .sec-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      max-width: 520px;
+      margin-bottom: 56px;
+      line-height: 1.7;
+    }
+
+    /* ── 1. COLOR SYSTEM ──────────────── */
+    .color-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+    }
+
+    .color-group-title {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 16px;
+    }
+
+    .color-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 12px;
+    }
+
+    .color-swatch {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+    }
+
+    .swatch-block {
+      height: 80px;
+    }
+
+    .swatch-info {
+      background: var(--bg3);
+      padding: 14px 16px;
+    }
+
+    .swatch-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .swatch-hex {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .swatch-use {
+      font-size: 10px;
+      color: var(--text-dim);
+      margin-top: 6px;
+      line-height: 1.4;
+    }
+
+    /* ── 2. TYPOGRAPHY ──────────────────── */
+    .type-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .type-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 160px;
+      align-items: center;
+      gap: 32px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .type-meta {}
+
+    .type-role {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 6px;
+    }
+
+    .type-spec {
+      font-size: 12px;
+      color: var(--violet-bright);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .type-preview {
+      overflow: hidden;
+    }
+
+    .type-usage {
+      font-size: 11px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      border-left: 1px solid var(--line);
+      padding-left: 24px;
+    }
+
+    /* Font pairings */
+    .pairing-box {
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .pairing-header {
+      background: var(--bg3);
+      padding: 16px 24px;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--violet-bright);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .pairing-body {
+      padding: 40px 40px 48px;
+    }
+
+    .pairing-display {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 52px;
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+      margin-bottom: 20px;
+    }
+
+    .pairing-italic {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 26px;
+      color: var(--text-muted);
+      margin-bottom: 24px;
+    }
+
+    .pairing-body-text {
+      font-family: 'DM Mono', monospace;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 560px;
+    }
+
+    .pairing-code {
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--accent-green);
+      background: var(--bg);
+      padding: 4px 10px;
+      border-radius: 2px;
+      display: inline-block;
+      margin-top: 4px;
+    }
+
+    /* ── 3. SPACING ─────────────────── */
+    .spacing-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .spacing-row {
+      display: grid;
+      grid-template-columns: 80px 1fr 120px 200px;
+      align-items: center;
+      gap: 24px;
+      padding: 16px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .spacing-token {
+      font-size: 12px;
+      color: var(--violet-bright);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .spacing-bar-wrap {}
+
+    .spacing-bar {
+      height: 4px;
+      background: var(--violet);
+      border-radius: 2px;
+    }
+
+    .spacing-px {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .spacing-use {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    /* ── 4. COMPONENTS ──────────────── */
+    .component-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+    }
+
+    .comp-block {}
+
+    .comp-block-title {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .comp-demo {
+      margin-bottom: 20px;
+    }
+
+    .comp-code-box {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      padding: 16px 18px;
+      font-family: 'DM Mono', monospace;
+      font-size: 11px;
+      color: var(--accent-green);
+      line-height: 1.7;
+      overflow-x: auto;
+    }
+
+    .comp-code-box .c-purple {
+      color: var(--violet-bright);
+    }
+
+    .comp-code-box .c-white {
+      color: var(--text);
+    }
+
+    .comp-code-box .c-dim {
+      color: var(--text-dim);
+    }
+
+    .comp-code-box .c-green {
+      color: var(--accent-green);
+    }
+
+    .comp-code-box .c-amber {
+      color: var(--accent-amber);
+    }
+
+    /* Component previews */
+    .demo-badge {
+      display: inline-block;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 5px 12px;
+      border-radius: 2px;
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .demo-pill {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border: 1px solid var(--line);
+      border-radius: 2px;
+      color: var(--text-muted);
+      margin-right: 8px;
+      margin-bottom: 8px;
+    }
+
+    .demo-section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+
+    .demo-section-label::before {
+      content: '';
+      width: 24px;
+      height: 1px;
+      background: var(--violet);
+    }
+
+    .demo-section-label span {
+      font-size: 10px;
+      letter-spacing: 0.25em;
+      color: var(--violet-bright);
+      text-transform: uppercase;
+    }
+
+    .demo-impact-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--line);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .demo-impact-col {
+      background: var(--bg2);
+      padding: 18px 20px;
+    }
+
+    .demo-impact-col-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 10px;
+    }
+
+    .demo-impact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .demo-impact-item::before {
+      content: '→';
+      color: var(--violet-bright);
+      flex-shrink: 0;
+    }
+
+    .demo-vs {
+      display: flex;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .demo-vs-before {
+      flex: 1;
+      padding: 18px;
+      background: rgba(239, 68, 68, 0.05);
+      border-right: 1px solid var(--line);
+    }
+
+    .demo-vs-after {
+      flex: 1;
+      padding: 18px;
+      background: rgba(52, 211, 153, 0.05);
+    }
+
+    .demo-vs-label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .demo-vs-before .demo-vs-label {
+      color: var(--accent-red);
+    }
+
+    .demo-vs-after .demo-vs-label {
+      color: var(--accent-green);
+    }
+
+    .demo-vs-text {
+      font-size: 12px;
+      color: var(--text-muted);
+    }
+
+    .demo-tool-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg2);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      margin-bottom: 8px;
+    }
+
+    .demo-tool-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .demo-tool-tag {
+      margin-left: auto;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .demo-big-insight {
+      border: 1px solid var(--violet);
+      background: var(--violet-glow);
+      padding: 28px;
+      border-radius: 4px;
+    }
+
+    .demo-insight-label {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--violet-bright);
+      margin-bottom: 10px;
+    }
+
+    .demo-insight-text {
+      font-family: 'Fraunces', serif;
+      font-weight: 300;
+      font-style: italic;
+      font-size: 18px;
+      color: var(--text);
+    }
+
+    .demo-principle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      color: var(--violet-bright);
+      background: var(--violet-glow);
+      border: 1px solid var(--violet);
+      padding: 6px 14px;
+      border-radius: 2px;
+    }
+
+    .demo-principle::before {
+      content: '⟡';
+      font-size: 10px;
+    }
+
+    /* ── 5. BORDERS & EFFECTS ───────── */
+    .effects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .effect-card {
+      border-radius: 4px;
+      padding: 32px 28px;
+    }
+
+    .effect-card-title {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .effect-card-desc {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .effect-code {
+      font-size: 11px;
+      color: var(--accent-green);
+      font-family: 'DM Mono', monospace;
+      line-height: 1.6;
+    }
+
+    /* ── 6. MOTION ──────────────────── */
+    .motion-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .motion-row {
+      display: grid;
+      grid-template-columns: 200px 1fr 120px;
+      gap: 24px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+      align-items: center;
+    }
+
+    .motion-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 700;
+      font-size: 13px;
+      color: var(--text);
+    }
+
+    .motion-val {
+      font-size: 12px;
+      color: var(--accent-green);
+      font-family: 'DM Mono', monospace;
+    }
+
+    .motion-use {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .motion-demo {
+      display: flex;
+      align-items: center;
+    }
+
+    .motion-bar {
+      height: 3px;
+      background: var(--violet-bright);
+      border-radius: 2px;
+      animation: motionDemo 2.5s ease-in-out infinite;
+      transform-origin: left;
+    }
+
+    @keyframes motionDemo {
+
+      0%,
+      100% {
+        width: 0;
+        opacity: 0;
+      }
+
+      20% {
+        opacity: 1;
+      }
+
+      60%,
+      80% {
+        width: 80px;
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
+
+    /* ── 7. CSS VARS BLOCK ──────────── */
+    .css-vars-block {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .css-vars-header {
+      background: var(--bg3);
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--line);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--violet-bright);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .css-vars-header::before {
+      content: '●';
+      color: var(--accent-red);
+    }
+
+    .css-vars-body {
+      padding: 28px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      line-height: 2;
+      overflow-x: auto;
+    }
+
+    .cv {
+      color: var(--violet-bright);
+    }
+
+    .cv-val {
+      color: var(--accent-green);
+    }
+
+    .cv-comment {
+      color: var(--text-dim);
+    }
+
+    /* ── 8. GOOGLE FONTS BLOCK ──────── */
+    .import-block {
+      background: var(--bg);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .import-header {
+      background: var(--bg3);
+      padding: 14px 24px;
+      border-bottom: 1px solid var(--line);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent-green);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .import-body {
+      padding: 24px 28px;
+      font-family: 'DM Mono', monospace;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.8;
+    }
+
+    .import-body .ib-url {
+      color: var(--accent-amber);
+    }
+
+    .import-body .ib-tag {
+      color: var(--violet-bright);
+    }
+
+    /* FULL DIVIDER */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 0;
+    }
+
+    /* Footer */
+    footer {
+      padding: 60px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+    }
+
+    .footer-brand {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-dim);
+    }
+
+    .footer-note {
+      font-size: 11px;
+      color: var(--text-dim);
+      text-align: right;
+    }
+
+    @media (max-width: 900px) {
+      nav {
+        padding: 16px 24px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .doc-section {
+        padding: 64px 24px;
+      }
+
+      .doc-hero {
+        padding: 80px 24px 60px;
+      }
+
+      .component-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .effects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .type-row {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .type-usage {
+        border-left: none;
+        padding-left: 0;
+        border-top: 1px solid var(--line);
+        padding-top: 12px;
+      }
+
+      .spacing-row {
+        grid-template-columns: 60px 1fr 80px;
+      }
+
+      .spacing-use {
+        display: none;
+      }
+
+      .motion-row {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .motion-use {
+        display: none;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-start;
+      }
+
+      .footer-note {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-title"><a href="index.html" style="text-decoration:none; color:inherit;">Design System Doc</a></div>
+    <div class="nav-links">
+      <a href="index.html" style="opacity:0.6;">← Portfolio</a>
+      <a href="#colors">Colors</a>
+      <a href="#typography">Typography</a>
+      <a href="#spacing">Spacing</a>
+      <a href="#components">Components</a>
+      <a href="#effects">Effects</a>
+      <a href="#motion">Motion</a>
+      <a href="#code">Code</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <div class="doc-hero">
+    <div class="doc-hero-eyebrow">
+      <span>Dark Editorial Design System · v1.0</span>
+    </div>
+    <h1 class="doc-hero-title">
+      <span class="dim">Everything you need</span><br>
+      <span class="bright">to build this.</span>
+    </h1>
+    <p class="doc-hero-sub">
+      A complete reference for colors, typography, spacing, components, effects, and motion — extracted from the
+      Transify case study.
+    </p>
+    <div class="doc-hero-tags">
+      <span class="htag">Dark Theme</span>
+      <span class="htag">Editorial</span>
+      <span class="htag">Monospace + Display</span>
+      <span class="htag">Violet Accent</span>
+      <span class="htag">HTML / CSS / JS</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- 1. COLOR SYSTEM -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="doc-section" id="colors">
+    <div class="sec-label">
+      <span class="sec-label-text">Color System</span>
+      <span class="sec-label-num">/ 01</span>
+    </div>
+    <h2 class="sec-title">Every color, and when to use it.</h2>
+    <p class="sec-desc">A dominant dark background, a single violet accent family, and three supporting accent colors.
+      Never use more than one accent at a time in the same component.</p>
+
+    <div class="color-grid">
+
+      <div>
+        <div class="color-group-title">Background Layers</div>
+        <div class="color-row">
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#0a0a0f;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--bg</div>
+              <div class="swatch-hex">#0a0a0f</div>
+              <div class="swatch-use">Base page background. Deepest layer.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#10101a;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--bg2</div>
+              <div class="swatch-hex">#10101a</div>
+              <div class="swatch-use">Alternate sections, cards, panels.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#16162a;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--bg3</div>
+              <div class="swatch-hex">#16162a</div>
+              <div class="swatch-use">Hover states, code blocks, inset panels.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="color-group-title">Violet — Primary Accent Family</div>
+        <div class="color-row">
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#4c1d95;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--violet-dim</div>
+              <div class="swatch-hex">#4c1d95</div>
+              <div class="swatch-use">Badge backgrounds. Deep accents.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#7c3aed;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--violet</div>
+              <div class="swatch-hex">#7c3aed</div>
+              <div class="swatch-use">Borders, dividers, decorative lines.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#a855f7;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--violet-bright</div>
+              <div class="swatch-hex">#a855f7</div>
+              <div class="swatch-use">Labels, arrows (→), tags, highlights.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:rgba(124,58,237,0.15);border:1px solid rgba(124,58,237,0.18);">
+            </div>
+            <div class="swatch-info">
+              <div class="swatch-name">--violet-glow</div>
+              <div class="swatch-hex">rgba(124,58,237,0.15)</div>
+              <div class="swatch-use">Insight box backgrounds, glow fills.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="color-group-title">Text Scale</div>
+        <div class="color-row">
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#f1f0ff;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--text</div>
+              <div class="swatch-hex">#f1f0ff</div>
+              <div class="swatch-use">Primary text. Has a cool violet tint — not pure white.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#8884a8;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--text-muted</div>
+              <div class="swatch-hex">#8884a8</div>
+              <div class="swatch-use">Body copy, supporting text, descriptions.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#4e4c6b;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--text-dim</div>
+              <div class="swatch-hex">#4e4c6b</div>
+              <div class="swatch-use">Metadata, numbers, secondary labels. Near-invisible.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="color-group-title">Supporting Accent Colors (use sparingly, one per component)</div>
+        <div class="color-row">
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#34d399;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--accent-green</div>
+              <div class="swatch-hex">#34d399</div>
+              <div class="swatch-use">Success, live status, "shipped" states, code output.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#fbbf24;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--accent-amber</div>
+              <div class="swatch-hex">#fbbf24</div>
+              <div class="swatch-use">Warnings, postponed states, "future" indicators.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#f87171;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--accent-red</div>
+              <div class="swatch-hex">#f87171</div>
+              <div class="swatch-use">Errors, removed features, destructive states.</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:#818cf8;"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--accent-indigo</div>
+              <div class="swatch-hex">#818cf8</div>
+              <div class="swatch-use">System/platform-level decisions. Neutral accent.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="color-group-title">Border / Line</div>
+        <div class="color-row">
+          <div class="color-swatch">
+            <div class="swatch-block" style="background:rgba(124,58,237,0.18);"></div>
+            <div class="swatch-info">
+              <div class="swatch-name">--line</div>
+              <div class="swatch-hex">rgba(124,58,237,0.18)</div>
+              <div class="swatch-use">All borders and dividers. Violet-tinted, very subtle.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- 2. TYPOGRAPHY -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="doc-section" id="typography">
+    <div class="sec-label">
+      <span class="sec-label-text">Typography</span>
+      <span class="sec-label-num">/ 02</span>
+    </div>
+    <h2 class="sec-title">Three fonts. Three roles. Never mix them up.</h2>
+    <p class="sec-desc">Each font has a strict job. Syne for structure and impact. Fraunces for emotion and contrast. DM
+      Mono for everything else — data, body, UI text.</p>
+
+    <div class="type-grid">
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Display / Headlines</div>
+          <div class="type-spec">Syne · 700 / 800</div>
+        </div>
+        <div class="type-preview">
+          <div
+            style="font-family:'Syne',sans-serif;font-weight:800;font-size:42px;letter-spacing:-0.03em;line-height:1;">
+            Designing<br><span style="color:var(--text-dim)">Systems.</span>
+          </div>
+        </div>
+        <div class="type-usage">Used for: Hero titles, section titles, decision numbers, metric numbers. Always tight
+          letter-spacing (-0.02em to -0.04em).</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Italic / Emphasis</div>
+          <div class="type-spec">Fraunces · 300 italic</div>
+        </div>
+        <div class="type-preview">
+          <div
+            style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:28px;line-height:1.3;color:var(--text-muted);">
+            not a tool — <span style="color:var(--text)">a workflow.</span>
+          </div>
+        </div>
+        <div class="type-usage">Used for: Subheadings under Syne titles, decision headlines, hero subtitles. Creates
+          visual contrast and emotional weight through serif + italic contrast.</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Body / UI / Code</div>
+          <div class="type-spec">DM Mono · 300 / 400 / 500</div>
+        </div>
+        <div class="type-preview">
+          <div style="font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;color:var(--text-muted);">
+            Enterprise teams translating documents face<br>
+            <span style="color:var(--accent-green)">→ inconsistent terminology</span><br>
+            <span style="color:var(--accent-green)">→ no batch control</span><br>
+            <span style="color:var(--accent-green)">→ unclear cost estimation</span>
+          </div>
+        </div>
+        <div class="type-usage">Used for: Body copy, labels, badges, code blocks, metadata, captions, nav items.
+          Monospace gives a precise, technical, audit-ready feel appropriate for enterprise SaaS.</div>
+      </div>
+
+      <div class="type-row">
+        <div class="type-meta">
+          <div class="type-role">Labels / Eyebrows</div>
+          <div class="type-spec">DM Mono · letter-spacing: 0.15–0.25em · uppercase</div>
+        </div>
+        <div class="type-preview">
+          <div
+            style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--violet-bright);">
+            Design Decisions · / 03
+          </div>
+        </div>
+        <div class="type-usage">Used for: Section labels, eyebrow text above headings, badge text, nav links. Always
+          uppercase, always spaced out, always small (10–12px).</div>
+      </div>
+    </div>
+
+    <!-- Font pairing demo -->
+    <div class="pairing-box">
+      <div class="pairing-header">▶ Live Pairing Demo</div>
+      <div class="pairing-body">
+        <div class="pairing-display">Enterprise Translation<br><span style="color:var(--text-dim)">Redesigned.</span>
+        </div>
+        <div class="pairing-italic">not just an AI tool — <strong
+            style="color:var(--text);font-style:normal;font-weight:400;">a controlled workflow.</strong></div>
+        <p class="pairing-body-text">I structured the workflow into four explicit states: Upload → Select Tag →
+          Translate → Download. Each step is atomic — the user completes one cognitive task before advancing. This isn't
+          just UX polish; it maps directly to backend state management.</p>
+        <div style="margin-top:20px;">
+          <span class="pairing-code">font-family: 'Syne' → Heroes & Titles</span>
+          <span class="pairing-code" style="color:var(--violet-bright);">font-family: 'Fraunces' → Italic
+            Subtitles</span>
+          <span class="pairing-code" style="color:var(--text-muted);">font-family: 'DM Mono' → Body & UI</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google Fonts import -->
+    <div class="import-block" style="margin-top:32px;">
+      <div class="import-header">
+        <span>Google Fonts Import Link</span>
+        <span style="color:var(--text-dim);">Paste into &lt;head&gt;</span>
+      </div>
+      <div class="import-body">
+        <span class="ib-tag">&lt;link</span> href=<span
+          class="ib-url">"https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"</span>
+        <span class="ib-tag">rel=</span><span class="ib-url">"stylesheet"</span><span class="ib-tag">&gt;</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- 3. SPACING -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="doc-section" id="spacing">
+    <div class="sec-label">
+      <span class="sec-label-text">Spacing Scale</span>
+      <span class="sec-label-num">/ 03</span>
+    </div>
+    <h2 class="sec-title">Spacing is the design.</h2>
+    <p class="sec-desc">This system uses generous space. Breathing room creates the premium editorial feel. Never crowd
+      components — negative space is intentional.</p>
+
+    <div class="spacing-grid">
+      <div class="spacing-row">
+        <div class="spacing-token">xs</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:8px;"></div>
+        </div>
+        <div class="spacing-px">8px</div>
+        <div class="spacing-use">Icon gaps, small tag padding</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">sm</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:12px;"></div>
+        </div>
+        <div class="spacing-px">12px</div>
+        <div class="spacing-use">Between items in a list, badge margins</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">md</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:24px;"></div>
+        </div>
+        <div class="spacing-px">24px</div>
+        <div class="spacing-use">Component internal padding, section divider gap</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">lg</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:40px;"></div>
+        </div>
+        <div class="spacing-px">40px</div>
+        <div class="spacing-use">Card padding, between label and content</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">xl</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:64px;"></div>
+        </div>
+        <div class="spacing-px">64px</div>
+        <div class="spacing-use">Between heading and first component</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">2xl</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:80px;"></div>
+        </div>
+        <div class="spacing-px">80px</div>
+        <div class="spacing-use">Between major blocks within a section</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">section</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:96px;"></div>
+        </div>
+        <div class="spacing-px">96–120px</div>
+        <div class="spacing-use">Section vertical padding (top & bottom)</div>
+      </div>
+      <div class="spacing-row">
+        <div class="spacing-token">page</div>
+        <div class="spacing-bar-wrap">
+          <div class="spacing-bar" style="width:48px; background:var(--accent-amber);"></div>
+        </div>
+        <div class="spacing-px">48px</div>
+        <div class="spacing-use">Horizontal page padding (left & right)</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- 4. COMPONENTS -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="doc-section" id="components">
+    <div class="sec-label">
+      <span class="sec-label-text">Components</span>
+      <span class="sec-label-num">/ 04</span>
+    </div>
+    <h2 class="sec-title">Every reusable UI pattern.</h2>
+    <p class="sec-desc">Live demos on the left. CSS code on the right. Every component is used in the Transify case
+      study.</p>
+
+    <div class="component-grid">
+
+      <!-- Section Label -->
+      <div class="comp-block">
+        <div class="comp-block-title">Section Label (Eyebrow)</div>
+        <div class="comp-demo">
+          <div class="demo-section-label">
+            <span>Design Decisions</span>
+          </div>
+        </div>
+        <div class="comp-code-box"><span class="c-comment">/* Section label with left line */</span>
+          <span class="c-purple">.section-label</span> {
+          display: <span class="c-green">flex</span>;
+          align-items: <span class="c-green">center</span>;
+          gap: <span class="c-amber">14px</span>;
+          margin-bottom: <span class="c-amber">56px</span>;
+          }
+          <span class="c-purple">.section-label::before</span> {
+          content: <span class="c-green">''</span>;
+          width: <span class="c-amber">24px</span>; height: <span class="c-amber">1px</span>;
+          background: var(<span class="c-amber">--violet</span>);
+          }
+          <span class="c-purple">.section-label span</span> {
+          font-size: <span class="c-amber">10px</span>;
+          letter-spacing: <span class="c-amber">0.25em</span>;
+          color: var(<span class="c-amber">--violet-bright</span>);
+          text-transform: <span class="c-green">uppercase</span>;
+          }
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="comp-block">
+        <div class="comp-block-title">Badges (Category Tags)</div>
+        <div class="comp-demo">
+          <span class="demo-badge"
+            style="background:rgba(124,58,237,0.15);color:var(--violet-bright);border:1px solid var(--violet);">Architecture</span>
+          <span class="demo-badge"
+            style="background:rgba(52,211,153,0.1);color:var(--accent-green);border:1px solid rgba(52,211,153,0.3);">UX</span>
+          <span class="demo-badge"
+            style="background:rgba(251,191,36,0.1);color:var(--accent-amber);border:1px solid rgba(251,191,36,0.3);">Strategy</span>
+          <span class="demo-badge"
+            style="background:rgba(239,68,68,0.1);color:var(--accent-red);border:1px solid rgba(239,68,68,0.3);">Business</span>
+        </div>
+        <div class="comp-code-box"><span class="c-purple">.badge</span> {
+          font-size: <span class="c-amber">10px</span>;
+          letter-spacing: <span class="c-amber">0.15em</span>;
+          text-transform: <span class="c-green">uppercase</span>;
+          padding: <span class="c-amber">5px 12px</span>;
+          border-radius: <span class="c-amber">2px</span>; <span class="c-comment">/* sharp corners */</span>
+          }
+          <span class="c-comment">/* Violet variant */</span>
+          <span class="c-purple">.badge-arch</span> {
+          background: <span class="c-green">rgba(124,58,237,0.15)</span>;
+          color: var(<span class="c-amber">--violet-bright</span>);
+          border: <span class="c-amber">1px</span> solid var(<span class="c-amber">--violet</span>);
+          }
+        </div>
+      </div>
+
+      <!-- Pills -->
+      <div class="comp-block">
+        <div class="comp-block-title">Pills (Role Tags)</div>
+        <div class="comp-demo">
+          <span class="demo-pill">UX Architecture</span>
+          <span class="demo-pill">Microcopy</span>
+          <span class="demo-pill">Design System</span>
+        </div>
+        <div class="comp-code-box"><span class="c-purple">.pill</span> {
+          font-size: <span class="c-amber">11px</span>;
+          letter-spacing: <span class="c-amber">0.08em</span>;
+          text-transform: <span class="c-green">uppercase</span>;
+          padding: <span class="c-amber">6px 14px</span>;
+          border: <span class="c-amber">1px</span> solid var(<span class="c-amber">--line</span>);
+          border-radius: <span class="c-amber">2px</span>;
+          color: var(<span class="c-amber">--text-muted</span>);
+          }</div>
+      </div>
+
+      <!-- Impact Row -->
+      <div class="comp-block">
+        <div class="comp-block-title">Impact Row (2-column split)</div>
+        <div class="comp-demo">
+          <div class="demo-impact-row">
+            <div class="demo-impact-col">
+              <div class="demo-impact-col-label">UX Impact</div>
+              <div class="demo-impact-item">Clear mental model</div>
+              <div class="demo-impact-item">Reduced abandonment</div>
+            </div>
+            <div class="demo-impact-col">
+              <div class="demo-impact-col-label">Dev Impact</div>
+              <div class="demo-impact-item">State-based logic</div>
+              <div class="demo-impact-item">Cleaner implementation</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-code-box"><span class="c-purple">.impact-row</span> {
+          display: <span class="c-green">grid</span>;
+          grid-template-columns: <span class="c-amber">1fr 1fr</span>;
+          gap: <span class="c-amber">1px</span>; <span class="c-comment">/* the gap IS the border */</span>
+          background: var(<span class="c-amber">--line</span>);
+          border: <span class="c-amber">1px</span> solid var(<span class="c-amber">--line</span>);
+          border-radius: <span class="c-amber">4px</span>;
+          overflow: <span class="c-green">hidden</span>;
+          }
+          <span class="c-purple">.impact-col</span> {
+          background: var(<span class="c-amber">--bg2</span>);
+          padding: <span class="c-amber">24px 28px</span>;
+          }
+        </div>
+      </div>
+
+      <!-- VS Box -->
+      <div class="comp-block">
+        <div class="comp-block-title">Before / After (VS Box)</div>
+        <div class="comp-demo">
+          <div class="demo-vs">
+            <div class="demo-vs-before">
+              <div class="demo-vs-label">Rejected</div>
+              <div class="demo-vs-text">Single-page form with all options visible simultaneously.</div>
+            </div>
+            <div class="demo-vs-after">
+              <div class="demo-vs-label">Chosen</div>
+              <div class="demo-vs-text">Linear step indicator with clear progress states.</div>
+            </div>
+          </div>
+        </div>
+        <div class="comp-code-box"><span class="c-purple">.vs-box</span> {
+          display: <span class="c-green">flex</span>;
+          border: <span class="c-amber">1px</span> solid var(<span class="c-amber">--line</span>);
+          border-radius: <span class="c-amber">4px</span>; overflow: <span class="c-green">hidden</span>;
+          }
+          <span class="c-purple">.vs-before</span> {
+          background: <span class="c-green">rgba(239,68,68,0.05)</span>;
+          border-right: <span class="c-amber">1px</span> solid var(<span class="c-amber">--line</span>);
+          }
+          <span class="c-purple">.vs-after</span> {
+          background: <span class="c-green">rgba(52,211,153,0.05)</span>;
+          }
+        </div>
+      </div>
+
+      <!-- Tool Item -->
+      <div class="comp-block">
+        <div class="comp-block-title">Tool List Item</div>
+        <div class="comp-demo">
+          <div class="demo-tool-item">
+            <div class="demo-tool-dot" style="background:var(--violet-bright);"></div>
+            <span style="font-size:13px;">Transify — AI Document Translation</span>
+            <span class="demo-tool-tag" style="color:var(--violet-bright);">This Project</span>
+          </div>
+          <div class="demo-tool-item">
+            <div class="demo-tool-dot" style="background:var(--accent-green);"></div>
+            <span style="font-size:13px;">IDP — Intelligent Document Processing</span>
+            <span class="demo-tool-tag" style="color:var(--accent-green);">Live</span>
+          </div>
+        </div>
+        <div class="comp-code-box"><span class="c-purple">.tool-item</span> {
+          display: <span class="c-green">flex</span>;
+          align-items: <span class="c-green">center</span>;
+          gap: <span class="c-amber">12px</span>; padding: <span class="c-amber">14px 16px</span>;
+          background: var(<span class="c-amber">--bg2</span>);
+          border: <span class="c-amber">1px</span> solid var(<span class="c-amber">--line</span>);
+          border-radius: <span class="c-amber">4px</span>;
+          }
+          <span class="c-comment">/* tag pushed to right edge */</span>
+          <span class="c-purple">.tool-tag</span> { margin-left: <span class="c-green">auto</span>; }
+        </div>
+      </div>
+
+      <!-- Insight Box -->
+      <div class="comp-block">
+        <div class="comp-block-title">Insight / Quote Box</div>
+        <div class="comp-demo">
+          <div class="demo-big-insight">
+            <div class="demo-insight-label">Core Design Thesis</div>
+            <div class="demo-insight-text">I designed Transify as a <strong
+                style="color:var(--violet-bright);font-style:normal;font-weight:400;">controlled operational
+                system</strong>, not a smart AI utility.</div>
+          </div>
+        </div>
+        <div class="comp-code-box"><span class="c-purple">.insight-box</span> {
+          border: <span class="c-amber">1px</span> solid var(<span class="c-amber">--violet</span>);
+          background: var(<span class="c-amber">--violet-glow</span>);
+          padding: <span class="c-amber">48px</span>;
+          border-radius: <span class="c-amber">4px</span>;
+          }
+          <span class="c-comment">/* label inside */</span>
+          <span class="c-purple">.insight-label</span> {
+          font-size: <span class="c-amber">10px</span>; letter-spacing: <span class="c-amber">0.2em</span>;
+          color: var(<span class="c-amber">--violet-bright</span>);
+          text-transform: <span class="c-green">uppercase</span>;
+          margin-bottom: <span class="c-amber">16px</span>;
+          }
+        </div>
+      </div>
+
+      <!-- Principle Tag -->
+      <div class="comp-block">
+        <div class="comp-block-title">Principle Tag</div>
+        <div class="comp-demo" style="padding:12px 0;">
+          <div class="demo-principle">Hick's Law — reduce choices at every decision point</div>
+        </div>
+        <div class="comp-code-box"><span class="c-purple">.principle-tag</span> {
+          display: <span class="c-green">inline-flex</span>;
+          align-items: <span class="c-green">center</span>;
+          gap: <span class="c-amber">8px</span>;
+          font-size: <span class="c-amber">11px</span>;
+          color: var(<span class="c-amber">--violet-bright</span>);
+          background: var(<span class="c-amber">--violet-glow</span>);
+          border: <span class="c-amber">1px</span> solid var(<span class="c-amber">--violet</span>);
+          padding: <span class="c-amber">6px 14px</span>;
+          border-radius: <span class="c-amber">2px</span>;
+          }
+          <span class="c-purple">.principle-tag::before</span> {
+          content: <span class="c-green">'⟡'</span>;
+          font-size: <span class="c-amber">10px</span>;
+          }
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- 5. EFFECTS -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="doc-section" id="effects">
+    <div class="sec-label">
+      <span class="sec-label-text">Visual Effects</span>
+      <span class="sec-label-num">/ 05</span>
+    </div>
+    <h2 class="sec-title">The invisible details that make it feel premium.</h2>
+    <p class="sec-desc">Three layered effects that create depth and atmosphere. Each one is subtle alone — together they
+      define the aesthetic.</p>
+
+    <div class="effects-grid">
+      <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
+        <div class="effect-card-title" style="color:var(--violet-bright);">Grain Texture Overlay</div>
+        <div class="effect-card-desc">Applied to the entire page via a fixed pseudo-element. Creates organic,
+          anti-digital texture that makes the dark background feel handcrafted rather than digital.</div>
+        <div class="effect-code">body::before {<br>&nbsp;&nbsp;content: '';<br>&nbsp;&nbsp;position: fixed; inset:
+          0;<br>&nbsp;&nbsp;background-image: url("data:image/svg+xml,<br>&nbsp;&nbsp;&nbsp;&nbsp;...feTurbulence
+          baseFrequency='0.9'...");<br>&nbsp;&nbsp;pointer-events: none;<br>&nbsp;&nbsp;z-index:
+          1000;<br>&nbsp;&nbsp;opacity: 0.6;<br>}</div>
+      </div>
+
+      <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
+        <div class="effect-card-title" style="color:var(--violet-bright);">Radial Gradient Hero BG</div>
+        <div class="effect-card-desc">A large violet radial gradient sits behind hero sections, giving the impression of
+          a distant light source. Keeps the dark background from feeling flat.</div>
+        <div class="effect-code">.hero-bg
+          {<br>&nbsp;&nbsp;background:<br>&nbsp;&nbsp;&nbsp;&nbsp;radial-gradient(<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ellipse
+          80% 60% at 10% 50%,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;rgba(124,58,237,0.12)
+          0%,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;transparent 60%<br>&nbsp;&nbsp;&nbsp;&nbsp;);<br>}</div>
+      </div>
+
+      <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
+        <div class="effect-card-title" style="color:var(--violet-bright);">Gradient Text</div>
+        <div class="effect-card-desc">Applied to the most important word or line in a hero or section title. Creates a
+          luminous, memorable highlight without color overload.</div>
+        <div class="effect-code">.gradient-text {<br>&nbsp;&nbsp;background:
+          linear-gradient(<br>&nbsp;&nbsp;&nbsp;&nbsp;135deg,<br>&nbsp;&nbsp;&nbsp;&nbsp;#a855f7
+          0%,<br>&nbsp;&nbsp;&nbsp;&nbsp;#c084fc 50%,<br>&nbsp;&nbsp;&nbsp;&nbsp;#a855f7
+          100%<br>&nbsp;&nbsp;);<br>&nbsp;&nbsp;-webkit-background-clip: text;<br>&nbsp;&nbsp;-webkit-text-fill-color:
+          transparent;<br>&nbsp;&nbsp;background-clip: text;<br>}</div>
+      </div>
+
+      <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
+        <div class="effect-card-title" style="color:var(--violet-bright);">Nav Blur / Frosted Glass</div>
+        <div class="effect-card-desc">The sticky navigation uses backdrop-filter to blur content beneath it. Creates
+          layering depth without heavy shadows.</div>
+        <div class="effect-code">nav {<br>&nbsp;&nbsp;position: sticky; top: 0;<br>&nbsp;&nbsp;background:
+          rgba(10,10,15,0.8);<br>&nbsp;&nbsp;backdrop-filter: blur(20px);<br>&nbsp;&nbsp;-webkit-backdrop-filter:
+          blur(20px);<br>&nbsp;&nbsp;border-bottom: 1px solid var(--line);<br>}</div>
+      </div>
+
+      <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
+        <div class="effect-card-title" style="color:var(--violet-bright);">1px Grid Divider Trick</div>
+        <div class="effect-card-desc">Instead of adding individual borders to grid children, set gap:1px and
+          background:var(--line) on the parent. The gap color becomes the border.</div>
+        <div class="effect-code">.grid-parent {<br>&nbsp;&nbsp;display: grid;<br>&nbsp;&nbsp;grid-template-columns: 1fr
+          1fr;<br>&nbsp;&nbsp;gap: 1px;<br>&nbsp;&nbsp;background: var(--line); /* ← border */<br>&nbsp;&nbsp;border:
+          1px solid var(--line);<br>&nbsp;&nbsp;overflow: hidden;<br>}<br>.grid-child {<br>&nbsp;&nbsp;background:
+          var(--bg2); /* ← fill */<br>}</div>
+      </div>
+
+      <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
+        <div class="effect-card-title" style="color:var(--violet-bright);">Eyebrow Line Decoration</div>
+        <div class="effect-card-desc">A short horizontal line before eyebrow/label text. Built with a ::before
+          pseudo-element. Adds rhythm and visual hierarchy without extra HTML.</div>
+        <div class="effect-code">.eyebrow {<br>&nbsp;&nbsp;display: flex;<br>&nbsp;&nbsp;align-items:
+          center;<br>&nbsp;&nbsp;gap: 16px;<br>}<br>.eyebrow::before {<br>&nbsp;&nbsp;content: '';<br>&nbsp;&nbsp;width:
+          48px; height: 1px;<br>&nbsp;&nbsp;background: var(--violet-bright);<br>&nbsp;&nbsp;flex-shrink: 0;<br>}</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- 6. MOTION -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="doc-section" id="motion">
+    <div class="sec-label">
+      <span class="sec-label-text">Motion Design</span>
+      <span class="sec-label-num">/ 06</span>
+    </div>
+    <h2 class="sec-title">Motion rules that feel intentional.</h2>
+    <p class="sec-desc">Every animation serves a purpose: revealing content, confirming interaction, or creating
+      hierarchy. Never animate for decoration.</p>
+
+    <div class="motion-grid">
+      <div class="motion-row">
+        <div>
+          <div class="motion-name">Fade Up (entry)</div>
+          <div class="motion-val">opacity 0→1 + translateY 24px→0</div>
+        </div>
+        <div class="motion-demo">
+          <div class="motion-bar"></div>
+        </div>
+        <div class="motion-use">Used for cards entering viewport on scroll.</div>
+      </div>
+      <div class="motion-row">
+        <div>
+          <div class="motion-name">Staggered Hero</div>
+          <div class="motion-val">animation-delay: 0.1s, 0.2s, 0.3s, 0.45s</div>
+        </div>
+        <div class="motion-demo">
+          <div class="motion-bar" style="animation-delay:0.5s;"></div>
+        </div>
+        <div class="motion-use">Hero title lines animate in sequence on page load.</div>
+      </div>
+      <div class="motion-row">
+        <div>
+          <div class="motion-name">Duration</div>
+          <div class="motion-val">0.5s – 0.7s</div>
+        </div>
+        <div class="motion-demo">
+          <div style="font-size:11px;color:var(--text-dim);">— standard —</div>
+        </div>
+        <div class="motion-use">Long enough to feel intentional, short enough to feel snappy.</div>
+      </div>
+      <div class="motion-row">
+        <div>
+          <div class="motion-name">Easing</div>
+          <div class="motion-val">ease (CSS default)</div>
+        </div>
+        <div class="motion-demo">
+          <div style="font-size:11px;color:var(--text-dim);">— smooth —</div>
+        </div>
+        <div class="motion-use">No cubic-bezier complexity needed. ease-in-out for emphasis.</div>
+      </div>
+      <div class="motion-row">
+        <div>
+          <div class="motion-name">Hover Transitions</div>
+          <div class="motion-val">0.2s – 0.3s</div>
+        </div>
+        <div class="motion-demo">
+          <div style="font-size:11px;color:var(--text-dim);">— instant feel —</div>
+        </div>
+        <div class="motion-use">Color and background changes on hover. Never 0s (jarring) or 0.5s+ (laggy).</div>
+      </div>
+      <div class="motion-row">
+        <div>
+          <div class="motion-name">Scroll Observer</div>
+          <div class="motion-val">IntersectionObserver · threshold: 0.1</div>
+        </div>
+        <div class="motion-demo">
+          <div style="font-size:11px;color:var(--text-dim);">— on viewport —</div>
+        </div>
+        <div class="motion-use">Trigger fadeUp when card enters viewport. No libraries needed.</div>
+      </div>
+    </div>
+
+    <!-- Animation code -->
+    <div class="css-vars-block" style="margin-top:40px;">
+      <div class="css-vars-header">Core Animation CSS</div>
+      <div class="css-vars-body">
+        <span class="cv-comment">/* The only keyframe you need */</span>
+        <span class="cv">@keyframes</span> <span class="cv-val">fadeUp</span> {
+        from { opacity: <span class="cv-val">0</span>; transform: <span class="cv">translateY</span>(<span
+          class="cv-val">24px</span>); }
+        to { opacity: <span class="cv-val">1</span>; transform: <span class="cv">translateY</span>(<span
+          class="cv-val">0</span>); }
+        }
+
+        <span class="cv-comment">/* Staggered hero text */</span>
+        <span class="cv">.line1</span> { animation: fadeUp <span class="cv-val">0.7s 0.1s</span> ease both; }
+        <span class="cv">.line2</span> { animation: fadeUp <span class="cv-val">0.7s 0.2s</span> ease both; }
+        <span class="cv">.line3</span> { animation: fadeUp <span class="cv-val">0.7s 0.3s</span> ease both; }
+
+        <span class="cv-comment">/* Scroll-triggered (JavaScript) */</span>
+        <span class="cv">const</span> observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        entry.target.style.opacity = <span class="cv-val">'1'</span>;
+        entry.target.style.transform = <span class="cv-val">'translateY(0)'</span>;
+        }
+        });
+        }, { threshold: <span class="cv-val">0.1</span>, rootMargin: <span class="cv-val">'0px 0px -60px 0px'</span> });
+
+        cards.forEach(card => {
+        card.style.opacity = <span class="cv-val">'0'</span>;
+        card.style.transform = <span class="cv-val">'translateY(24px)'</span>;
+        card.style.transition = <span class="cv-val">'opacity 0.55s ease, transform 0.55s ease'</span>;
+        observer.observe(card);
+        });
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- 7. FULL CSS VARS REFERENCE -->
+  <!-- ══════════════════════════════════════ -->
+  <section class="doc-section" id="code">
+    <div class="sec-label">
+      <span class="sec-label-text">Code Reference</span>
+      <span class="sec-label-num">/ 07</span>
+    </div>
+    <h2 class="sec-title">Copy-paste this to start any project.</h2>
+    <p class="sec-desc">The complete :root variable block, base reset, and body styles. Paste this at the top of your
+      CSS and you have the full foundation.</p>
+
+    <div class="css-vars-block">
+      <div class="css-vars-header">Complete CSS Foundation — Copy This</div>
+      <div class="css-vars-body">
+        <span class="cv-comment">/* ── GOOGLE FONTS IMPORT (in &lt;head&gt;) ─── */</span>
+        <span class="cv-comment">/* Syne + DM Mono + Fraunces */</span>
+        <span class="cv-comment">/* URL in Typography section above */</span>
+
+        <span class="cv-comment">/* ── CSS CUSTOM PROPERTIES ─────────────── */</span>
+        <span class="cv">:root</span> {
+        <span class="cv-comment">/* Backgrounds */</span>
+        <span class="cv">--bg</span>: <span class="cv-val">#0a0a0f</span>;
+        <span class="cv">--bg2</span>: <span class="cv-val">#10101a</span>;
+        <span class="cv">--bg3</span>: <span class="cv-val">#16162a</span>;
+
+        <span class="cv-comment">/* Violet family */</span>
+        <span class="cv">--violet</span>: <span class="cv-val">#7c3aed</span>;
+        <span class="cv">--violet-bright</span>: <span class="cv-val">#a855f7</span>;
+        <span class="cv">--violet-dim</span>: <span class="cv-val">#4c1d95</span>;
+        <span class="cv">--violet-glow</span>: <span class="cv-val">rgba(124, 58, 237, 0.15)</span>;
+
+        <span class="cv-comment">/* Text scale */</span>
+        <span class="cv">--text</span>: <span class="cv-val">#f1f0ff</span>;
+        <span class="cv">--text-muted</span>: <span class="cv-val">#8884a8</span>;
+        <span class="cv">--text-dim</span>: <span class="cv-val">#4e4c6b</span>;
+
+        <span class="cv-comment">/* Borders */</span>
+        <span class="cv">--line</span>: <span class="cv-val">rgba(124, 58, 237, 0.18)</span>;
+
+        <span class="cv-comment">/* Supporting accents */</span>
+        <span class="cv">--accent-green</span>: <span class="cv-val">#34d399</span>;
+        <span class="cv">--accent-amber</span>: <span class="cv-val">#fbbf24</span>;
+        <span class="cv">--accent-red</span>: <span class="cv-val">#f87171</span>;
+        <span class="cv">--accent-indigo</span>: <span class="cv-val">#818cf8</span>;
+        }
+
+        <span class="cv-comment">/* ── BASE RESET ─────────────────────────── */</span>
+        <span class="cv">*, *::before, *::after</span> {
+        box-sizing: <span class="cv-val">border-box</span>;
+        margin: <span class="cv-val">0</span>; padding: <span class="cv-val">0</span>;
+        }
+
+        <span class="cv-comment">/* ── BODY ───────────────────────────────── */</span>
+        <span class="cv">body</span> {
+        background: var(<span class="cv">--bg</span>);
+        color: var(<span class="cv">--text</span>);
+        font-family: <span class="cv-val">'DM Mono'</span>, monospace;
+        font-size: <span class="cv-val">14px</span>;
+        line-height: <span class="cv-val">1.7</span>;
+        overflow-x: <span class="cv-val">hidden</span>;
+        }
+
+        <span class="cv-comment">/* ── GRAIN OVERLAY ──────────────────────── */</span>
+        <span class="cv">body::before</span> {
+        content: <span class="cv-val">''</span>;
+        position: <span class="cv-val">fixed</span>; inset: <span class="cv-val">0</span>;
+        background-image: url(<span class="cv-val">"data:image/svg+xml,%3Csvg viewBox='0 0 256 256'
+          xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise'
+          baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25'
+          filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"</span>);
+        pointer-events: <span class="cv-val">none</span>;
+        z-index: <span class="cv-val">1000</span>; opacity: <span class="cv-val">0.6</span>;
+        }
+
+        <span class="cv-comment">/* ── TYPOGRAPHY SHORTCUTS ───────────────── */</span>
+        <span class="cv">.font-display</span> { font-family: <span class="cv-val">'Syne'</span>, sans-serif;
+        font-weight: <span class="cv-val">800</span>; }
+        <span class="cv">.font-italic</span> { font-family: <span class="cv-val">'Fraunces'</span>, serif; font-weight:
+        <span class="cv-val">300</span>; font-style: <span class="cv-val">italic</span>; }
+        <span class="cv">.font-mono</span> { font-family: <span class="cv-val">'DM Mono'</span>, monospace; }
+
+        <span class="cv-comment">/* ── GRADIENT TEXT ──────────────────────── */</span>
+        <span class="cv">.text-gradient</span> {
+        background: <span class="cv-val">linear-gradient(135deg, #a855f7 0%, #c084fc 100%)</span>;
+        -webkit-background-clip: <span class="cv-val">text</span>;
+        -webkit-text-fill-color: <span class="cv-val">transparent</span>;
+        background-clip: <span class="cv-val">text</span>;
+        }
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>
+      <div class="footer-brand">Dark Editorial Design System · v1.0</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Extracted from Zenisth Transify Case Study</p>
+    </div>
+    <div class="footer-note">
+      <p>Syne · DM Mono · Fraunces</p>
+      <p style="color:var(--text-dim);margin-top:4px;">Pure HTML + CSS · No dependencies</p>
+    </div>
+  </footer>
+
+</body>
+
+</html>

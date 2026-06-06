@@ -1,0 +1,46 @@
+/* Visualizer Styles (Rotated & Inline) */
+
+.hero__visualizer-inline {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    transform: rotate(180deg);
+    margin-top: 64px;
+    margin-bottom: 24px;
+    pointer-events: none;
+    opacity: 1;
+}
+
+.viz-column {
+    display: flex;
+    flex-direction: column-reverse;
+    /* Bottom to top (which becomes Top to Bottom after 180 rotation) */
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.viz-pill {
+    width: 100%;
+    height: 12px;
+    border-radius: 100px;
+    transition: opacity 0.1s ease, transform 0.1s ease;
+    flex-shrink: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero__visualizer-inline {
+        height: 80px;
+        margin-top: 32px;
+        justify-content: center;
+        /* Center on mobile */
+    }
+
+    .viz-pill {
+        height: 6px;
+    }
+}

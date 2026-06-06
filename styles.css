@@ -107,6 +107,7 @@ body {
   font-family: 'Stage Grotesk', sans-serif;
   font-size: 14px;
   line-height: 1.7;
+  letter-spacing: 0.03em;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   transition: background-color 0.4s ease, color 0.4s ease;

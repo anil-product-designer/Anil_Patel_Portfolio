@@ -12,7 +12,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,200..800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css?v=2">
     <link rel="stylesheet" href="visualizer-styles.css">
 </head>
 
@@ -51,6 +51,8 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
+        <div class="hero__bg-pattern"></div>
+        <div class="hero__bg-glow"></div>
         <div class="container grid">
             <div class="hero__content">
                 <h1 class="hero__headline reveal">
@@ -174,6 +176,43 @@
         </div>
     </section>
 
+
+    <!-- Tool Stack Section -->
+    <div class="tool-stack-wrapper">
+<header class="tool-hero">
+  <div class="hero-glow"></div>
+  <p class="hero-label">✦ Design · Build · Ship · Repeat</p>
+  <h1>My Tool Stack</h1>
+  <p class="hero-sub">// the exact tools powering every project</p>
+</header>
+
+<div class="divider"></div>
+
+<!-- ── Marquee ── -->
+<div class="marquee-section">
+  <div class="marquee-track" id="marquee">
+    <!-- filled by JS -->
+  </div>
+</div>
+
+<!-- ── Grid ── -->
+<div class="grid-wrapper">
+
+  <p class="section-label"><span>Design & Prototyping</span></p>
+  <div class="tools-grid" id="grid-design"></div>
+
+  <br><br>
+  <p class="section-label" style="margin-top:40px"><span>Build & Deploy</span></p>
+  <div class="tools-grid" id="grid-build"></div>
+
+  <br><br>
+  <p class="section-label" style="margin-top:40px"><span>AI & No-Code</span></p>
+  <div class="tools-grid" id="grid-ai"></div>
+
+</div>
+
+
+    </div>
     <!-- Philosophy Section -->
     <section class="philosophy reveal">
         <div class="container grid">
@@ -239,6 +278,7 @@
         </div>
     </footer>
 
+    <script src="tool-stack.js"></script>
     <script src="script.js"></script>
     <script src="visualizer.js"></script>
 </body>

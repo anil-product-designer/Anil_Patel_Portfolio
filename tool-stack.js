@@ -186,8 +186,7 @@ function buildCards(containerId, list) {
 }
 
 buildCards('grid-design', tools.design);
-buildCards('grid-build', tools.build);
-buildCards('grid-ai', tools.ai);
+buildCards('grid-build', [...tools.build, ...tools.ai]);
 
 // ─── Scroll-triggered reveal ─────────────────────────────────────
 const observer = new IntersectionObserver(entries => {

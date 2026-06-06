@@ -1964,20 +1964,10 @@ ul {
 }
 
 /* Staggered Hero Animation */
-.hero__headline .dim,
-.hero__headline .bright,
 .hero__subline,
 .hero__cta {
   opacity: 0;
   animation: revealUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-
-.hero__headline .dim {
-  animation-delay: 0.1s;
-}
-
-.hero__headline .bright {
-  animation-delay: 0.2s;
 }
 
 .hero__subline {

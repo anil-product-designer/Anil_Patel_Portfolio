@@ -357,17 +357,17 @@
     }
 
     /* ── COMMON SECTION ───────────────── */
-    section {
+    section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E');
       padding: 112px 48px;
       border-top: 1px solid var(--line);
     }
 
     section:nth-child(odd) {
-      background: var(--bg);
+      background-color: var(--bg);
     }
 
     section:nth-child(even) {
-      background: var(--bg2);
+      background-color: var(--bg2);
     }
 
     .section-label {
@@ -381,7 +381,7 @@
       content: '';
       width: 24px;
       height: 1px;
-      background: var(--purple);
+      background-color: var(--purple);
     }
 
     .sl-text {
@@ -1278,197 +1278,10 @@
       }
     }
 
-    /* ── LARGE SCREENS ───────────────────── */
-    @media (min-width: 1600px) {
-      nav {
-        padding: 20px 80px;
-      }
-
-      .hero {
-        padding: 0 80px 80px;
-      }
-
-      section {
-        padding: 120px 80px;
-      }
-    }
-
-    /* ── RESPONSIVE ───────────────────── */
-    @media (max-width: 1024px) {
-
-      .platform-grid,
-      .problem-grid,
-      .role-grid,
-      .research-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .platform-left {
-        padding-right: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 48px;
-        margin-bottom: 48px;
-      }
-
-      .platform-right {
-        padding-left: 0;
-      }
-
-      .objective-items {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .dem-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-    }
-
-    @media (max-width: 900px) {
-      nav {
-        padding: 16px 24px;
-      }
-
-      section {
-        padding: 72px 24px;
-      }
-
-      .hero {
-        padding: 0 24px 60px;
-      }
-
-      .hero-meta {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-
-      .hero-meta-item {
-        border-right: none;
-        padding: 0;
-      }
-
-      .decision-card {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .decision-meta {
-        position: relative;
-        top: 0;
-      }
-
-      .screen-row {
-        grid-template-columns: 1fr;
-      }
-
-      .screen-phone {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .impact-items {
-        grid-template-columns: 1fr;
-      }
-
-      .learnings-grid {
-        grid-template-columns: 1fr;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 20px;
-        align-items: flex-start;
-      }
-
-      .footer-meta {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        padding: 12px 16px;
-      }
-
-      .nav-logo {
-        font-size: 11px;
-      }
-
-      .nav-meta span:not(.nav-tag) {
-        display: none;
-      }
-
-      section {
-        padding: 60px 16px;
-      }
-
-      .hero {
-        padding: 0 16px 40px;
-      }
-
-      .hero-subtitle {
-        font-size: 16px;
-      }
-
-      .hero-stat-num {
-        font-size: 28px;
-      }
-
-      .hero-meta {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
-
-      .hero-meta-item {
-        padding: 0 !important;
-        border: none !important;
-      }
-
-      .platform-grid,
-      .role-grid,
-      .problem-grid,
-      .research-grid,
-      .scope-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .platform-left,
-      .platform-right,
-      .research-left,
-      .research-right {
-        padding: 0 !important;
-        border: none !important;
-      }
-
-      .objective-items {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .impact-items {
-        grid-template-columns: 1fr;
-      }
-
-      .decision-card {
-        padding: 40px 0;
-      }
-
-      .decision-number {
-        font-size: 48px;
-      }
-
-      .decision-headline {
-        font-size: 20px;
-      }
-
-      .impact-summary-text {
-        font-size: 20px;
-      }
-    }
-
     /* ── PROJECT NAVIGATION SECTION ──────────────── */
     .project-nav-section {
       padding: 120px 48px;
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -1526,76 +1339,91 @@
       color: var(--purple-bright);
     }
 
-    @media (max-width: 768px) {
+    /* ── RESPONSIVE RULES ─────────────────── */
+    @media (min-width: 1600px) {
+      nav { padding: 20px 80px; }
+      .hero { padding: 0 80px 80px; }
+      section { padding: 120px 80px; }
+    }
 
-      /* Stack all two-column grids */
+    @media (max-width: 1024px) {
       .platform-grid,
-      .role-grid,
       .problem-grid,
-      .research-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-      }
+      .role-grid,
+      .research-grid,
+      .project-nav-grid { grid-template-columns: 1fr; }
 
       .platform-left,
       .role-left {
         padding-right: 0;
         border-right: none;
         border-bottom: 1px solid var(--line);
-        padding-bottom: 40px;
-        margin-bottom: 0;
+        padding-bottom: 48px;
+        margin-bottom: 48px;
       }
+      .platform-right { padding-left: 0; }
 
-      .platform-right {
-        padding-left: 0;
-      }
+      .objective-items { grid-template-columns: 1fr 1fr; }
+      .dem-grid { grid-template-columns: 1fr 1fr; }
+    }
 
-      /* Decision card - stack on mobile */
-      .decision-card {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      section { padding: 72px 24px; }
+      .hero { padding: 0 24px 60px; }
+      .project-nav-section { padding: 80px 24px; }
 
-      .decision-meta {
-        position: relative;
-        top: 0;
-      }
+      .hero-meta { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .hero-meta-item { border-right: none; padding: 0; }
 
-      .decision-number {
-        font-size: 48px;
-      }
+      .decision-card { grid-template-columns: 1fr; gap: 32px; }
+      .decision-meta { position: relative; top: 0; }
+      
+      .screen-row { grid-template-columns: 1fr; }
+      .screen-phone { border-right: none; border-bottom: 1px solid var(--line); }
+      
+      .impact-items { grid-template-columns: 1fr; }
+      .learnings-grid { grid-template-columns: 1fr; }
+      
+      footer { flex-direction: column; gap: 20px; align-items: flex-start; }
+      .footer-meta { text-align: left; }
+    }
 
-      /* Hero meta - 2-col on mobile */
-      .hero-meta {
-        grid-template-columns: 1fr 1fr;
-        gap: 20px;
-      }
+    @media (max-width: 768px) {
+      .platform-left,
+      .role-left { padding-bottom: 40px; margin-bottom: 0; }
+    }
 
-      .hero-meta-item {
-        border-right: none;
-        padding: 0;
-      }
+    @media (max-width: 600px) {
+      nav { padding: 12px 16px; }
+      .nav-logo { font-size: 11px; }
+      .nav-meta span:not(.nav-tag) { display: none; }
+      section { padding: 60px 16px; }
+      .hero { padding: 0 16px 40px; }
+      
+      .hero-subtitle { font-size: 16px; }
+      .hero-stat-num { font-size: 28px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .hero-meta-item { padding: 0 !important; border: none !important; }
 
-      /* Nav & section padding */
-      nav {
-        padding: 16px 20px;
-      }
+      .platform-grid,
+      .role-grid,
+      .problem-grid,
+      .research-grid,
+      .scope-grid { grid-template-columns: 1fr; }
+      
+      .platform-left,
+      .platform-right,
+      .research-left,
+      .research-right { padding: 0 !important; border: none !important; }
 
-      .hero {
-        padding: 0 20px 60px;
-      }
-
-      section {
-        padding: 64px 20px;
-      }
-
-      .project-nav-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-nav-section {
-        padding: 80px 24px;
-      }
+      .objective-items { grid-template-columns: 1fr 1fr; }
+      .impact-items { grid-template-columns: 1fr; }
+      
+      .decision-card { padding: 40px 0; }
+      .decision-number { font-size: 48px; }
+      .decision-headline { font-size: 20px; }
+      .impact-summary-text { font-size: 20px; }
     }
   
   .back-btn {

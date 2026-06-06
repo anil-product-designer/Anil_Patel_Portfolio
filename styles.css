@@ -102,7 +102,8 @@ html {
 }
 
 body {
-  background: var(--bg);
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   color: var(--text);
   font-family: 'Stage Grotesk', sans-serif;
   font-size: 14px;
@@ -121,6 +122,10 @@ body::before {
   pointer-events: none;
   z-index: 1000;
   opacity: 0.6;
+}
+
+section, footer {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
 }
 
 a {
@@ -215,7 +220,7 @@ ul {
 }
 
 .placeholder-system {
-  background: var(--bg2);
+  background-color: var(--bg2);
   border: 1px solid var(--line);
   position: relative;
   overflow: hidden;
@@ -370,7 +375,7 @@ ul {
   display: flex;
   align-items: center;
   border-bottom: 1px solid var(--line);
-  background: radial-gradient(ellipse 70% 60% at 0% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 60%);
+  background: radial-gradient(ellipse 70% 60% at 0% 50%, rgba(124, 58, 237, 0.1) 0%, transparent 60%), url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   padding: 0;
 }
 
@@ -464,7 +469,7 @@ ul {
   padding: var(--space-64) 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
-  background: var(--bg2);
+  background-color: var(--bg2);
 }
 
 .metrics .container {
@@ -649,7 +654,7 @@ ul {
 /* Section: Philosophy */
 .philosophy {
   padding: var(--space-120) 0;
-  background: var(--bg2);
+  background-color: var(--bg2);
   border-bottom: 1px solid var(--line);
 }
 
@@ -671,7 +676,7 @@ ul {
 .contact-strip {
   padding: var(--space-120) 0;
   border-bottom: 1px solid var(--line);
-  background: var(--bg);
+  background-color: var(--bg);
 }
 
 .contact-strip .container {
@@ -795,7 +800,7 @@ ul {
 .form-group input,
 .form-group textarea {
   width: 100%;
-  background: var(--bg2);
+  background-color: var(--bg2);
   border: 1px solid var(--line);
   border-radius: 4px;
   padding: 14px 16px;
@@ -984,7 +989,7 @@ ul {
 
 .thinking-statement {
   padding: var(--space-120) 0;
-  background: var(--bg2);
+  background-color: var(--bg2);
   border-bottom: 1px solid var(--line);
 }
 
@@ -1102,7 +1107,7 @@ ul {
 .specialization {
   padding: var(--space-120) 0;
   border-bottom: 1px solid var(--line);
-  background: var(--bg2);
+  background-color: var(--bg2);
 }
 
 .specialization__grid {

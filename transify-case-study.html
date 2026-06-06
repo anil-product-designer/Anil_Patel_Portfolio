@@ -222,7 +222,7 @@
     }
 
     /* ── SECTION COMMON ─────────────────────────── */
-    section {
+    section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E');
       padding: 120px 48px;
     }
 
@@ -237,7 +237,7 @@
       content: '';
       width: 24px;
       height: 1px;
-      background: var(--violet);
+      background-color: var(--violet);
     }
 
     .section-label span {
@@ -274,7 +274,7 @@
 
     /* ── CONTEXT SECTION ────────────────────────── */
     .context-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -369,7 +369,7 @@
 
     /* ── PROBLEM SECTION ────────────────────────── */
     .problem-section {
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -534,7 +534,7 @@
 
     /* ── DECISIONS SECTION ──────────────────────── */
     .decisions-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
       padding-bottom: 0;
     }
@@ -753,7 +753,7 @@
 
     /* ── SCOPE SECTION ──────────────────────────── */
     .scope-section {
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -818,7 +818,7 @@
 
     /* ── PSYCHOLOGY SECTION ─────────────────────── */
     .psych-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -863,7 +863,7 @@
 
     /* ── IMPACT SECTION ─────────────────────────── */
     .impact-section {
-      background: var(--bg3);
+      background-color: var(--bg3);
       border-top: 1px solid var(--line);
     }
 
@@ -930,7 +930,7 @@
 
     /* ── STORY SECTION ──────────────────────────── */
     .story-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -1027,186 +1027,10 @@
       animation: fadeUp 0.7s 0.0s ease both;
     }
 
-    /* ── LARGE SCREENS ──────────────────────────────── */
-    @media (min-width: 1600px) {
-      nav {
-        padding: 20px 80px;
-      }
-
-      .hero {
-        padding: 0 80px 80px;
-      }
-
-      section {
-        padding: 120px 80px;
-      }
-    }
-
-    /* ── RESPONSIVE ─────────────────────────────── */
-    @media (max-width: 900px) {
-      nav {
-        padding: 16px 24px;
-      }
-
-      section {
-        padding: 80px 24px;
-      }
-
-      .hero {
-        padding: 0 24px 60px;
-      }
-
-      .context-grid,
-      .scope-grid,
-      .research-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .context-left {
-        padding-right: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 48px;
-        margin-bottom: 48px;
-      }
-
-      .context-right {
-        padding-left: 0;
-      }
-
-      .decision-card {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .decision-meta {
-        position: relative;
-        top: 0;
-      }
-
-      .pain-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .psych-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .metrics-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .hero-bottom {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .hero-stat {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding: 0 0 24px;
-      }
-
-      .hero-stat:last-child {
-        padding: 0;
-      }
-
-      .hero-stat:nth-child(2) {
-        padding-left: 0;
-      }
-
-      .story-angle {
-        padding: 48px;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 24px;
-        align-items: flex-start;
-      }
-
-      .footer-meta {
-        text-align: left;
-      }
-
-      .next-project {
-        padding: 80px 24px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        padding: 12px 16px;
-      }
-
-      .nav-logo {
-        font-size: 11px;
-      }
-
-      .nav-meta span:not(.nav-tag) {
-        display: none;
-      }
-
-      section {
-        padding: 60px 16px;
-      }
-
-      .hero {
-        padding: 0 16px 40px;
-      }
-
-      .hero-stat-num {
-        font-size: 28px;
-      }
-
-      .pain-grid,
-      .psych-grid,
-      .metrics-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .big-insight {
-        padding: 32px 24px;
-      }
-
-      .big-insight-text {
-        font-size: 22px;
-      }
-
-      .decision-card {
-        padding: 40px 0;
-      }
-
-      .decision-number {
-        font-size: 48px;
-      }
-
-      .decision-headline {
-        font-size: 20px;
-      }
-
-      .impact-row {
-        grid-template-columns: 1fr;
-      }
-
-      .vs-box {
-        flex-direction: column;
-      }
-
-      .vs-before {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .story-angle {
-        padding: 32px 24px;
-      }
-    }
-
     /* ── PROJECT NAVIGATION SECTION ──────────────── */
     .project-nav-section {
       padding: 120px 48px;
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -1264,90 +1088,6 @@
       color: var(--violet-bright);
     }
 
-    @media (max-width: 768px) {
-
-      /* Stack all two-column grids */
-      .context-grid,
-      .scope-grid,
-      .research-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .context-left {
-        padding-right: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 40px;
-        margin-bottom: 40px;
-      }
-
-      .context-right {
-        padding-left: 0;
-      }
-
-      /* Decision card - stack meta above content */
-      .decision-card {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .decision-meta {
-        position: relative;
-        top: 0;
-      }
-
-      .decision-number {
-        font-size: 48px;
-      }
-
-      /* Impact row - single column */
-      .impact-row {
-        grid-template-columns: 1fr;
-      }
-
-      /* Hero section on mobile */
-      nav {
-        padding: 16px 20px;
-      }
-
-      .hero {
-        padding: 0 20px 60px;
-      }
-
-      section {
-        padding: 64px 20px;
-      }
-
-      .hero-bottom {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .hero-stat {
-        border-right: none;
-        padding-right: 0;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 24px;
-      }
-
-      .hero-stat:last-child {
-        border-bottom: none;
-        padding-left: 0;
-      }
-
-      .hero-stat:nth-child(2) {
-        padding-left: 0;
-      }
-
-      .project-nav-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-nav-section {
-        padding: 80px 24px;
-      }
-    }
-
     /* ── VISUAL COMPONENTS ─────────────────────── */
     .visual-box {
       width: 100%;
@@ -1377,17 +1117,9 @@
     }
 
     @keyframes gradientFlow {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .inspiration-grid {
@@ -1412,18 +1144,89 @@
       margin: 0;
     }
 
+    /* ── RESPONSIVE RULES ─────────────────── */
+    @media (min-width: 1600px) {
+      nav { padding: 20px 80px; }
+      .hero { padding: 0 80px 80px; }
+      section { padding: 120px 80px; }
+    }
+
+    @media (max-width: 1024px) {
+      .context-grid,
+      .scope-grid,
+      .research-grid,
+      .project-nav-grid,
+      .inspiration-grid { grid-template-columns: 1fr; }
+
+      .context-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 48px;
+        margin-bottom: 48px;
+      }
+      .context-right { padding-left: 0; }
+    }
+
     @media (max-width: 900px) {
-      .inspiration-grid {
-        grid-template-columns: 1fr;
-      }
+      nav { padding: 16px 24px; }
+      section { padding: 72px 24px; }
+      .hero { padding: 0 24px 60px; }
+      .project-nav-section { padding: 80px 24px; }
+      .next-project { padding: 80px 24px; }
 
-      .inspiration-main {
-        height: 320px;
-      }
+      .decision-card { grid-template-columns: 1fr; gap: 32px; }
+      .decision-meta { position: relative; top: 0; }
 
-      .inspiration-sub {
-        height: 200px;
-      }
+      .pain-grid { grid-template-columns: 1fr 1fr; }
+      .psych-grid { grid-template-columns: 1fr 1fr; }
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+
+      .hero-bottom { grid-template-columns: 1fr; gap: 24px; }
+      .hero-stat { border-right: none; border-bottom: 1px solid var(--line); padding: 0 0 24px; }
+      .hero-stat:last-child { padding: 0; border-bottom: none; }
+      .hero-stat:nth-child(2) { padding-left: 0; }
+
+      .story-angle { padding: 48px; }
+
+      footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .footer-meta { text-align: left; }
+
+      .inspiration-main { height: 320px; }
+      .inspiration-sub { height: 200px; }
+    }
+
+    @media (max-width: 768px) {
+      .context-left { padding-bottom: 40px; margin-bottom: 0; }
+      .impact-row { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 12px 16px; }
+      .nav-logo { font-size: 11px; }
+      .nav-meta span:not(.nav-tag) { display: none; }
+      section { padding: 60px 16px; }
+      .hero { padding: 0 16px 40px; }
+      
+      .hero-stat-num { font-size: 28px; }
+      
+      .pain-grid,
+      .psych-grid,
+      .metrics-grid { grid-template-columns: 1fr; }
+
+      .big-insight { padding: 32px 24px; }
+      .big-insight-text { font-size: 22px; }
+
+      .decision-card { padding: 40px 0; }
+      .decision-number { font-size: 48px; }
+      .decision-headline { font-size: 20px; }
+
+      .vs-box { flex-direction: column; }
+      .vs-before { border-right: none; border-bottom: 1px solid var(--line); }
+
+      .story-angle { padding: 32px 24px; }
+      .context-left { padding: 0 !important; border: none !important; margin-bottom: 32px; }
+      .context-right { padding: 0 !important; }
     }
   
   .back-btn {

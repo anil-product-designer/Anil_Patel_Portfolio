@@ -224,7 +224,7 @@
     }
 
     /* ── SECTIONS ─────────────────────── */
-    section {
+    section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E');
       padding: 120px 48px;
     }
 
@@ -239,7 +239,7 @@
       content: '';
       width: 24px;
       height: 1px;
-      background: var(--teal);
+      background-color: var(--teal);
     }
 
     .section-label span {
@@ -266,7 +266,7 @@
 
     /* ── CONTEXT ──────────────────────── */
     .context-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -355,7 +355,7 @@
 
     /* ── PRINCIPLES ───────────────────── */
     .principles-section {
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -404,7 +404,7 @@
 
     /* ── PROBLEM ──────────────────────── */
     .problem-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -496,7 +496,7 @@
 
     /* ── DECISIONS ────────────────────── */
     .decisions-section {
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -733,7 +733,7 @@
 
     /* ── FLOW ─────────────────────────── */
     .flow-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -801,7 +801,7 @@
 
     /* ── EDGE CASES ───────────────────── */
     .edge-section {
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -846,7 +846,7 @@
 
     /* ── SCOPE ────────────────────────── */
     .scope-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -886,7 +886,7 @@
 
     /* ── IMPACT ───────────────────────── */
     .impact-section {
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -953,7 +953,7 @@
 
     /* ── STORY ANGLE ──────────────────── */
     .story-section {
-      background: var(--bg);
+      background-color: var(--bg);
       border-top: 1px solid var(--line);
     }
 
@@ -1030,200 +1030,10 @@
       }
     }
 
-    /* ── LARGE SCREENS ─────────────────── */
-    @media (min-width: 1600px) {
-      nav {
-        padding: 20px 80px;
-      }
-
-      .hero {
-        padding: 0 80px 80px;
-      }
-
-      section {
-        padding: 120px 80px;
-      }
-    }
-
-    @media (max-width: 900px) {
-      nav {
-        padding: 16px 24px;
-      }
-
-      section {
-        padding: 80px 24px;
-      }
-
-      .hero {
-        padding: 0 24px 60px;
-      }
-
-      .context-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .context-left {
-        padding-right: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 48px;
-        margin-bottom: 48px;
-      }
-
-      .context-right {
-        padding-left: 0;
-      }
-
-      .principles-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .pain-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .decision-card {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .decision-meta {
-        position: relative;
-        top: 0;
-      }
-
-      .impact-row {
-        grid-template-columns: 1fr;
-      }
-
-      .flow-steps {
-        flex-direction: column;
-      }
-
-      .flow-step {
-        border-right: none !important;
-        border-bottom: 1px solid var(--line);
-      }
-
-      .flow-arrow {
-        display: none;
-      }
-
-      .edge-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .metrics-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .scope-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .hero-bottom {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .hero-stat {
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding: 0 0 24px;
-      }
-
-      .hero-stat:last-child {
-        padding: 0;
-      }
-
-      .hero-stat:nth-child(2) {
-        padding-left: 0;
-      }
-
-      .story-angle {
-        padding: 48px;
-      }
-
-      footer {
-        flex-direction: column;
-        gap: 24px;
-        align-items: flex-start;
-      }
-
-      .footer-meta {
-        text-align: left;
-      }
-    }
-
-    @media (max-width: 600px) {
-      nav {
-        padding: 12px 16px;
-      }
-
-      .nav-logo {
-        font-size: 11px;
-      }
-
-      .nav-meta span:not(.nav-tag) {
-        display: none;
-      }
-
-      section {
-        padding: 60px 16px;
-      }
-
-      .hero {
-        padding: 0 16px 40px;
-      }
-
-      .hero-stat-num {
-        font-size: 28px;
-      }
-
-      .principles-grid,
-      .metrics-grid,
-      .edge-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .big-insight {
-        padding: 32px 24px;
-      }
-
-      .big-insight-text {
-        font-size: 22px;
-      }
-
-      .decision-card {
-        padding: 40px 0;
-      }
-
-      .decision-number {
-        font-size: 48px;
-      }
-
-      .decision-headline {
-        font-size: 20px;
-      }
-
-      .impact-row {
-        grid-template-columns: 1fr;
-      }
-
-      .impact-col {
-        padding: 20px;
-      }
-
-      .story-angle {
-        padding: 32px 24px;
-      }
-
-    }
-
     /* ── PROJECT NAVIGATION SECTION ──────────────── */
     .project-nav-section {
       padding: 120px 48px;
-      background: var(--bg2);
+      background-color: var(--bg2);
       border-top: 1px solid var(--line);
     }
 
@@ -1279,88 +1089,6 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--teal-bright);
-    }
-
-    @media (max-width: 768px) {
-
-      /* Stack all two-column grids */
-      .context-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .context-left {
-        padding-right: 0;
-        border-right: none;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 40px;
-        margin-bottom: 40px;
-      }
-
-      .context-right {
-        padding-left: 0;
-      }
-
-      /* Decision card - stack meta above content */
-      .decision-card {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .decision-meta {
-        position: relative;
-        top: 0;
-      }
-
-      .decision-number {
-        font-size: 48px;
-      }
-
-      /* Impact row - single column */
-      .impact-row {
-        grid-template-columns: 1fr;
-      }
-
-      /* Hero & section padding */
-      nav {
-        padding: 16px 20px;
-      }
-
-      .hero {
-        padding: 0 20px 60px;
-      }
-
-      section {
-        padding: 64px 20px;
-      }
-
-      .hero-bottom {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .hero-stat {
-        border-right: none;
-        padding-right: 0;
-        border-bottom: 1px solid var(--line);
-        padding-bottom: 24px;
-      }
-
-      .hero-stat:last-child {
-        border-bottom: none;
-        padding-left: 0;
-      }
-
-      .hero-stat:nth-child(2) {
-        padding-left: 0;
-      }
-
-      .project-nav-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .project-nav-section {
-        padding: 80px 24px;
-      }
     }
 
     /* ── VISUAL COMPONENTS ─────────────────────── */
@@ -1427,18 +1155,87 @@
       margin: 0;
     }
 
+    /* ── RESPONSIVE RULES ─────────────────── */
+    @media (min-width: 1600px) {
+      nav { padding: 20px 80px; }
+      .hero { padding: 0 80px 80px; }
+      section { padding: 120px 80px; }
+    }
+
+    @media (max-width: 1024px) {
+      .context-grid,
+      .principles-grid,
+      .pain-grid,
+      .edge-grid,
+      .scope-grid,
+      .project-nav-grid,
+      .inspiration-grid { grid-template-columns: 1fr; }
+
+      .context-left {
+        padding-right: 0;
+        border-right: none;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 48px;
+        margin-bottom: 48px;
+      }
+      .context-right { padding-left: 0; }
+    }
+
     @media (max-width: 900px) {
-      .inspiration-grid {
-        grid-template-columns: 1fr;
-      }
+      nav { padding: 16px 24px; }
+      section { padding: 72px 24px; }
+      .hero { padding: 0 24px 60px; }
+      .project-nav-section { padding: 80px 24px; }
 
-      .inspiration-main {
-        height: 320px;
-      }
+      .decision-card { grid-template-columns: 1fr; gap: 32px; }
+      .decision-meta { position: relative; top: 0; }
+      
+      .impact-row { grid-template-columns: 1fr; }
+      .flow-steps { flex-direction: column; }
+      .flow-step { border-right: none !important; border-bottom: 1px solid var(--line); }
+      .flow-arrow { display: none; }
+      
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      
+      .hero-bottom { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .hero-stat { border-right: none; padding: 0 0 24px; border-bottom: 1px solid var(--line); }
+      .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+      
+      .story-angle { padding: 48px; }
+      
+      footer { flex-direction: column; gap: 24px; align-items: flex-start; }
+      .footer-meta { text-align: left; }
+      
+      .inspiration-main { height: 320px; }
+      .inspiration-sub { height: 200px; }
+    }
 
-      .inspiration-sub {
-        height: 200px;
-      }
+    @media (max-width: 768px) {
+      .context-left { padding-bottom: 40px; margin-bottom: 0; }
+      .hero-bottom { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 12px 16px; }
+      .nav-logo { font-size: 11px; }
+      .nav-meta span:not(.nav-tag) { display: none; }
+      section { padding: 60px 16px; }
+      .hero { padding: 0 16px 40px; }
+      
+      .context-left { padding: 0 !important; border: none !important; margin-bottom: 32px; }
+      .context-right { padding: 0 !important; }
+
+      .hero-stat-num { font-size: 28px; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .big-insight { padding: 32px 24px; }
+      .big-insight-text { font-size: 22px; }
+      
+      .decision-card { padding: 40px 0; }
+      .decision-number { font-size: 48px; }
+      .decision-headline { font-size: 20px; }
+      
+      .impact-col { padding: 20px; }
+      .story-angle { padding: 32px 24px; }
     }
   
   .back-btn {

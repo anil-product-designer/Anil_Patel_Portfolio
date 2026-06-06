@@ -215,9 +215,10 @@
   }
 
   .hero-meta {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
     gap: 16px;
-    flex-wrap: wrap;
+    max-width: 700px;
     margin-bottom: 80px;
     opacity: 0;
     transform: translateY(20px);
@@ -229,7 +230,6 @@
     border: 1px solid var(--border);
     border-radius: 12px;
     padding: 16px 24px;
-    min-width: 140px;
   }
 
   .meta-label {
@@ -269,9 +269,8 @@
   }
 
   .scroll-hint {
-    position: absolute;
-    bottom: 40px;
-    left: 80px;
+    position: relative;
+    margin-top: 64px;
     display: flex;
     align-items: center;
     gap: 12px;

@@ -135,6 +135,8 @@ body::before {
   width: 200%;
   height: 200%;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  background-repeat: repeat;
   pointer-events: none;
   z-index: 0;
   opacity: 0.4;
@@ -148,6 +150,8 @@ body > * {
 
 section, footer {
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  background-repeat: repeat;
 }
 
 a {
@@ -1317,7 +1321,7 @@ ul {
   /* Philosophy */
   .philosophy__content {
     grid-column: 2 / span 10;
-    text-align: center;
+    text-align: left;
   }
 }
 
@@ -1432,7 +1436,7 @@ ul {
   /* ─ Philosophy ─ */
   .philosophy__content {
     grid-column: span 8;
-    text-align: center;
+    text-align: left;
   }
 
   /* ─ Contact Strip ─ */
@@ -1465,7 +1469,7 @@ ul {
 
   .thinking-statement__content {
     grid-column: span 8;
-    text-align: center;
+    text-align: left;
   }
 
   /* ─ Experience (4 + 4) ─ */
@@ -1595,7 +1599,7 @@ ul {
   /* Image on top, content below */
   .hero__image-wrapper {
     grid-column: span 4;
-    justify-self: center;
+    justify-self: start;
     max-width: 150px;
     order: 1;
     margin-bottom: 0;
@@ -1620,6 +1624,7 @@ ul {
     flex-direction: column;
     width: 100%;
     gap: 12px;
+    align-items: flex-start;
   }
 
   .hero__cta .btn {
@@ -1704,7 +1709,7 @@ ul {
 
   .philosophy__content {
     grid-column: span 4;
-    text-align: center;
+    text-align: left;
   }
 
   /* ─ Contact Strip ─ */
@@ -1714,6 +1719,8 @@ ul {
 
   .contact-strip .container {
     gap: var(--space-32);
+    align-items: flex-start;
+    text-align: left;
   }
 
   .contact-strip h2 {
@@ -1722,7 +1729,7 @@ ul {
 
   .contact-strip__actions {
     flex-direction: column;
-    align-items: stretch;
+    align-items: flex-start;
     width: 100%;
     max-width: 320px;
     gap: 12px;
@@ -2047,4 +2054,27 @@ ul {
 .metric-card:hover {
   background-color: var(--bg3);
   transform: translateY(-4px);
+}
+
+/* Staggered Text Reveal Animations */
+.reveal-text {
+  display: block !important; /* Force block to prevent flex from treating text nodes as items */
+}
+
+.reveal-text-word {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
+.reveal-text-word span {
+  display: inline-block;
+  transform: translateY(110%);
+  transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+  will-change: transform;
+}
+
+.reveal-text.reveal--visible .reveal-text-word span,
+.reveal-text.reveal--visible .reveal-text-word {
+  transform: translateY(0);
 }

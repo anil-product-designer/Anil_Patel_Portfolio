@@ -219,7 +219,7 @@ ul {
 }
 
 .nav__logo {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
   font-size: 16px;
   letter-spacing: 0.15em;
@@ -351,7 +351,7 @@ ul {
 }
 
 .hero__headline {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
   font-size: clamp(40px, 7vw, 80px);
   line-height: 0.95;
@@ -450,7 +450,7 @@ ul {
 }
 
 .metric-card h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 11px;
   text-transform: uppercase;
@@ -583,7 +583,7 @@ ul {
 
 .project-card__title {
   grid-column: span 4;
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 24px;
   color: var(--text);
@@ -647,7 +647,7 @@ ul {
 }
 
 .contact-strip h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
   font-size: clamp(32px, 4vw, 60px);
   line-height: 1.1;
@@ -676,7 +676,7 @@ ul {
 }
 
 .contact-page__title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
   font-size: clamp(48px, 7vw, 96px);
   line-height: 0.95;
@@ -815,7 +815,7 @@ ul {
 }
 
 .footer__brand h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
   font-size: 14px;
   letter-spacing: 0.15em;
@@ -891,7 +891,7 @@ ul {
 }
 
 .about-hero__headline {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
   font-size: clamp(48px, 7vw, 96px);
   line-height: 0.95;
@@ -1045,7 +1045,7 @@ ul {
 }
 
 .experience-card__role {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 18px;
   color: var(--text);
@@ -1109,7 +1109,7 @@ ul {
 }
 
 .specialization-card h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 17px;
   color: var(--text);
@@ -1146,7 +1146,7 @@ ul {
 }
 
 .work-style-card h3 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 16px;
   color: var(--text);
@@ -1171,7 +1171,7 @@ ul {
 }
 
 .project-title {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 800;
   font-size: clamp(48px, 6vw, 96px);
   line-height: 0.95;
@@ -1213,7 +1213,7 @@ ul {
 }
 
 .content-block h2 {
-  font-family: 'Syne', sans-serif;
+  font-family: 'Bricolage Grotesque', sans-serif;
   font-weight: 700;
   font-size: 32px;
   margin-bottom: 24px;

@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Design System Documentation — Dark Editorial</title>
+  <title>Design System Documentation: Dark Editorial</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -895,6 +895,24 @@
       text-align: right;
     }
 
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    @media (min-width: 1600px) {
+      nav { padding: 20px 80px; }
+      .doc-hero { padding: 120px 80px 100px; }
+      .doc-section { padding: 120px 80px; }
+      footer { padding: 80px 80px; }
+    }
+
+    @media (max-width: 1024px) {
+      .component-grid { grid-template-columns: 1fr; }
+      .effects-grid { grid-template-columns: 1fr 1fr; }
+    }
+
     @media (max-width: 900px) {
       nav {
         padding: 16px 24px;
@@ -958,14 +976,45 @@
         text-align: left;
       }
     }
-  </style>
+
+    @media (max-width: 768px) {
+      .effects-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 600px) {
+      nav { padding: 12px 16px; }
+      .doc-hero { padding: 60px 16px 40px; }
+      .doc-hero-title { font-size: clamp(36px, 10vw, 52px); }
+      .doc-section { padding: 60px 16px; }
+      .sec-label { margin-bottom: 32px; }
+      .sec-title { font-size: clamp(26px, 8vw, 36px); }
+      .sec-desc { font-size: 16px; margin-bottom: 32px; }
+      footer { padding: 40px 16px; }
+    }
+  
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2, #A09CB8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-btn:hover {
+    color: var(--text, #F0EFF8);
+  }
+</style>
 </head>
 
 <body>
 
   <!-- NAV -->
   <nav>
+  <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
+    <a href="index.html#work" class="back-btn">← Back</a>
     <div class="nav-title"><a href="index.html" style="text-decoration:none; color:inherit;">Design System Doc</a></div>
+  </div>
     <div class="nav-links">
       <a href="index.html" style="opacity:0.6;">← Portfolio</a>
       <a href="#colors">Colors</a>
@@ -980,18 +1029,18 @@
 
   <!-- HERO -->
   <div class="doc-hero">
-    <div class="doc-hero-eyebrow">
+    <div class="doc-hero-eyebrow reveal">
       <span>Dark Editorial Design System · v1.0</span>
     </div>
-    <h1 class="doc-hero-title">
+    <h1 class="doc-hero-title reveal">
       <span class="dim">Everything you need</span><br>
       <span class="bright">to build this.</span>
     </h1>
-    <p class="doc-hero-sub">
-      A complete reference for colors, typography, spacing, components, effects, and motion — extracted from the
+    <p class="doc-hero-sub reveal">
+      A complete reference for colors, typography, spacing, components, effects, and motion: extracted from the
       Transify case study.
     </p>
-    <div class="doc-hero-tags">
+    <div class="doc-hero-tags reveal">
       <span class="htag">Dark Theme</span>
       <span class="htag">Editorial</span>
       <span class="htag">Monospace + Display</span>
@@ -1004,15 +1053,15 @@
   <!-- 1. COLOR SYSTEM -->
   <!-- ══════════════════════════════════════ -->
   <section class="doc-section" id="colors">
-    <div class="sec-label">
+    <div class="sec-label reveal">
       <span class="sec-label-text">Color System</span>
       <span class="sec-label-num">/ 01</span>
     </div>
-    <h2 class="sec-title">Every color, and when to use it.</h2>
-    <p class="sec-desc">A dominant dark background, a single violet accent family, and three supporting accent colors.
+    <h2 class="sec-title reveal">Every color, and when to use it.</h2>
+    <p class="sec-desc reveal">A dominant dark background, a single violet accent family, and three supporting accent colors.
       Never use more than one accent at a time in the same component.</p>
 
-    <div class="color-grid">
+    <div class="color-grid reveal">
 
       <div>
         <div class="color-group-title">Background Layers</div>
@@ -1045,7 +1094,7 @@
       </div>
 
       <div>
-        <div class="color-group-title">Violet — Primary Accent Family</div>
+        <div class="color-group-title">Violet: Primary Accent Family</div>
         <div class="color-row">
           <div class="color-swatch">
             <div class="swatch-block" style="background:#4c1d95;"></div>
@@ -1091,7 +1140,7 @@
             <div class="swatch-info">
               <div class="swatch-name">--text</div>
               <div class="swatch-hex">#f1f0ff</div>
-              <div class="swatch-use">Primary text. Has a cool violet tint — not pure white.</div>
+              <div class="swatch-use">Primary text. Has a cool violet tint: not pure white.</div>
             </div>
           </div>
           <div class="color-swatch">
@@ -1172,15 +1221,15 @@
   <!-- 2. TYPOGRAPHY -->
   <!-- ══════════════════════════════════════ -->
   <section class="doc-section" id="typography">
-    <div class="sec-label">
+    <div class="sec-label reveal">
       <span class="sec-label-text">Typography</span>
       <span class="sec-label-num">/ 02</span>
     </div>
-    <h2 class="sec-title">Three fonts. Three roles. Never mix them up.</h2>
-    <p class="sec-desc">Each font has a strict job. Syne for structure and impact. Fraunces for emotion and contrast. DM
-      Mono for everything else — data, body, UI text.</p>
+    <h2 class="sec-title reveal">Three fonts. Three roles. Never mix them up.</h2>
+    <p class="sec-desc reveal">Each font has a strict job. Syne for structure and impact. Fraunces for emotion and contrast. DM
+      Mono for everything else: data, body, UI text.</p>
 
-    <div class="type-grid">
+    <div class="type-grid reveal">
       <div class="type-row">
         <div class="type-meta">
           <div class="type-role">Display / Headlines</div>
@@ -1204,7 +1253,7 @@
         <div class="type-preview">
           <div
             style="font-family:'Fraunces',serif;font-weight:300;font-style:italic;font-size:28px;line-height:1.3;color:var(--text-muted);">
-            not a tool — <span style="color:var(--text)">a workflow.</span>
+            not a tool: <span style="color:var(--text)">a workflow.</span>
           </div>
         </div>
         <div class="type-usage">Used for: Subheadings under Syne titles, decision headlines, hero subtitles. Creates
@@ -1245,15 +1294,15 @@
     </div>
 
     <!-- Font pairing demo -->
-    <div class="pairing-box">
+    <div class="pairing-box reveal">
       <div class="pairing-header">▶ Live Pairing Demo</div>
       <div class="pairing-body">
         <div class="pairing-display">Enterprise Translation<br><span style="color:var(--text-dim)">Redesigned.</span>
         </div>
-        <div class="pairing-italic">not just an AI tool — <strong
+        <div class="pairing-italic">not just an AI tool: <strong
             style="color:var(--text);font-style:normal;font-weight:400;">a controlled workflow.</strong></div>
         <p class="pairing-body-text">I structured the workflow into four explicit states: Upload → Select Tag →
-          Translate → Download. Each step is atomic — the user completes one cognitive task before advancing. This isn't
+          Translate → Download. Each step is atomic: the user completes one cognitive task before advancing. This isn't
           just UX polish; it maps directly to backend state management.</p>
         <div style="margin-top:20px;">
           <span class="pairing-code">font-family: 'Syne' → Heroes & Titles</span>
@@ -1265,7 +1314,7 @@
     </div>
 
     <!-- Google Fonts import -->
-    <div class="import-block" style="margin-top:32px;">
+    <div class="import-block reveal" style="margin-top:32px;">
       <div class="import-header">
         <span>Google Fonts Import Link</span>
         <span style="color:var(--text-dim);">Paste into &lt;head&gt;</span>
@@ -1282,15 +1331,15 @@
   <!-- 3. SPACING -->
   <!-- ══════════════════════════════════════ -->
   <section class="doc-section" id="spacing">
-    <div class="sec-label">
+    <div class="sec-label reveal">
       <span class="sec-label-text">Spacing Scale</span>
       <span class="sec-label-num">/ 03</span>
     </div>
-    <h2 class="sec-title">Spacing is the design.</h2>
-    <p class="sec-desc">This system uses generous space. Breathing room creates the premium editorial feel. Never crowd
-      components — negative space is intentional.</p>
+    <h2 class="sec-title reveal">Spacing is the design.</h2>
+    <p class="sec-desc reveal">This system uses generous space. Breathing room creates the premium editorial feel. Never crowd
+      components: negative space is intentional.</p>
 
-    <div class="spacing-grid">
+    <div class="spacing-grid reveal">
       <div class="spacing-row">
         <div class="spacing-token">xs</div>
         <div class="spacing-bar-wrap">
@@ -1362,15 +1411,15 @@
   <!-- 4. COMPONENTS -->
   <!-- ══════════════════════════════════════ -->
   <section class="doc-section" id="components">
-    <div class="sec-label">
+    <div class="sec-label reveal">
       <span class="sec-label-text">Components</span>
       <span class="sec-label-num">/ 04</span>
     </div>
-    <h2 class="sec-title">Every reusable UI pattern.</h2>
-    <p class="sec-desc">Live demos on the left. CSS code on the right. Every component is used in the Transify case
+    <h2 class="sec-title reveal">Every reusable UI pattern.</h2>
+    <p class="sec-desc reveal">Live demos on the left. CSS code on the right. Every component is used in the Transify case
       study.</p>
 
-    <div class="component-grid">
+    <div class="component-grid reveal">
 
       <!-- Section Label -->
       <div class="comp-block">
@@ -1518,12 +1567,12 @@
         <div class="comp-demo">
           <div class="demo-tool-item">
             <div class="demo-tool-dot" style="background:var(--violet-bright);"></div>
-            <span style="font-size:13px;">Transify — AI Document Translation</span>
+            <span style="font-size:13px;">Transify: AI Document Translation</span>
             <span class="demo-tool-tag" style="color:var(--violet-bright);">This Project</span>
           </div>
           <div class="demo-tool-item">
             <div class="demo-tool-dot" style="background:var(--accent-green);"></div>
-            <span style="font-size:13px;">IDP — Intelligent Document Processing</span>
+            <span style="font-size:13px;">IDP: Intelligent Document Processing</span>
             <span class="demo-tool-tag" style="color:var(--accent-green);">Live</span>
           </div>
         </div>
@@ -1571,7 +1620,7 @@
       <div class="comp-block">
         <div class="comp-block-title">Principle Tag</div>
         <div class="comp-demo" style="padding:12px 0;">
-          <div class="demo-principle">Hick's Law — reduce choices at every decision point</div>
+          <div class="demo-principle">Hick's Law: reduce choices at every decision point</div>
         </div>
         <div class="comp-code-box"><span class="c-purple">.principle-tag</span> {
           display: <span class="c-green">inline-flex</span>;
@@ -1598,15 +1647,15 @@
   <!-- 5. EFFECTS -->
   <!-- ══════════════════════════════════════ -->
   <section class="doc-section" id="effects">
-    <div class="sec-label">
+    <div class="sec-label reveal">
       <span class="sec-label-text">Visual Effects</span>
       <span class="sec-label-num">/ 05</span>
     </div>
-    <h2 class="sec-title">The invisible details that make it feel premium.</h2>
-    <p class="sec-desc">Three layered effects that create depth and atmosphere. Each one is subtle alone — together they
+    <h2 class="sec-title reveal">The invisible details that make it feel premium.</h2>
+    <p class="sec-desc reveal">Three layered effects that create depth and atmosphere. Each one is subtle alone: together they
       define the aesthetic.</p>
 
-    <div class="effects-grid">
+    <div class="effects-grid reveal">
       <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
         <div class="effect-card-title" style="color:var(--violet-bright);">Grain Texture Overlay</div>
         <div class="effect-card-desc">Applied to the entire page via a fixed pseudo-element. Creates organic,
@@ -1672,15 +1721,15 @@
   <!-- 6. MOTION -->
   <!-- ══════════════════════════════════════ -->
   <section class="doc-section" id="motion">
-    <div class="sec-label">
+    <div class="sec-label reveal">
       <span class="sec-label-text">Motion Design</span>
       <span class="sec-label-num">/ 06</span>
     </div>
-    <h2 class="sec-title">Motion rules that feel intentional.</h2>
-    <p class="sec-desc">Every animation serves a purpose: revealing content, confirming interaction, or creating
+    <h2 class="sec-title reveal">Motion rules that feel intentional.</h2>
+    <p class="sec-desc reveal">Every animation serves a purpose: revealing content, confirming interaction, or creating
       hierarchy. Never animate for decoration.</p>
 
-    <div class="motion-grid">
+    <div class="motion-grid reveal">
       <div class="motion-row">
         <div>
           <div class="motion-name">Fade Up (entry)</div>
@@ -1744,7 +1793,7 @@
     </div>
 
     <!-- Animation code -->
-    <div class="css-vars-block" style="margin-top:40px;">
+    <div class="css-vars-block reveal" style="margin-top:40px;">
       <div class="css-vars-header">Core Animation CSS</div>
       <div class="css-vars-body">
         <span class="cv-comment">/* The only keyframe you need */</span>
@@ -1784,16 +1833,16 @@
   <!-- 7. FULL CSS VARS REFERENCE -->
   <!-- ══════════════════════════════════════ -->
   <section class="doc-section" id="code">
-    <div class="sec-label">
+    <div class="sec-label reveal">
       <span class="sec-label-text">Code Reference</span>
       <span class="sec-label-num">/ 07</span>
     </div>
-    <h2 class="sec-title">Copy-paste this to start any project.</h2>
-    <p class="sec-desc">The complete :root variable block, base reset, and body styles. Paste this at the top of your
+    <h2 class="sec-title reveal">Copy-paste this to start any project.</h2>
+    <p class="sec-desc reveal">The complete :root variable block, base reset, and body styles. Paste this at the top of your
       CSS and you have the full foundation.</p>
 
-    <div class="css-vars-block">
-      <div class="css-vars-header">Complete CSS Foundation — Copy This</div>
+    <div class="css-vars-block reveal">
+      <div class="css-vars-header">Complete CSS Foundation: Copy This</div>
       <div class="css-vars-body">
         <span class="cv-comment">/* ── GOOGLE FONTS IMPORT (in &lt;head&gt;) ─── */</span>
         <span class="cv-comment">/* Syne + DM Mono + Fraunces */</span>
@@ -1885,6 +1934,19 @@
     </div>
   </footer>
 
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </body>
 
 </html>

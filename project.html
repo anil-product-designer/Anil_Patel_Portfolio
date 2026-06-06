@@ -1,153 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Name - Anil Patel</title>
-    <meta name="description" content="Case study of Project Name">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zenisth Transify: Case Study</title>
+  <meta name="description" content="Case study of Zenisth Transify">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080808; --bg2: #0f0f0f; --bg3: #161616; --bg4: #1c1c1c;
+      --purple: #7c3aed; --purple-bright: #a855f7; --purple-dim: #3b0764;
+      --purple-glow: rgba(124, 58, 237, 0.13);
+      --white: #ffffff; --text: #f5f5f5; --text-muted: #888888; --text-dim: #444444;
+      --line: rgba(255, 255, 255, 0.07); --line-purple: rgba(124, 58, 237, 0.2);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: 'DM Mono', monospace; font-size: 14px; line-height: 1.7; overflow-x: hidden; }
+    body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.55; }
 
+    /* ── NAV ── */
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(8,8,8,0.88); backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); }
+    .nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.15em; color: var(--purple-bright); text-transform: uppercase; text-decoration: none; }
+    .nav-meta { display: flex; gap: 32px; align-items: center; }
+    .nav-meta span { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
+    .nav-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--purple-dim); color: var(--purple-bright); padding: 4px 10px; border-radius: 2px; border: 1px solid var(--purple); }
+
+    /* ── SECTIONS ── */
+    section { padding: 112px 48px; border-top: 1px solid var(--line); }
+    section:nth-child(odd)  { background: var(--bg); }
+    section:nth-child(even) { background: var(--bg2); }
+    .hero { padding: 0 48px 80px; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; position: relative; overflow: hidden; border-top: none; }
+
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 65% 60% at 5% 55%, rgba(124, 58, 237, 0.12) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 95% 15%, rgba(168, 85, 247, 0.06) 0%, transparent 55%); }
+    .hero-eyebrow { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; position: relative; z-index: 1; animation: fadeUp 0.7s 0.05s ease both; }
+    .hero-eyebrow::before { content: ''; width: 48px; height: 1px; background: var(--purple-bright); }
+    .hero-eyebrow span { font-size: 11px; letter-spacing: 0.2em; color: var(--purple-bright); text-transform: uppercase; }
+    
+    .hero-title { position: relative; z-index: 1; font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(40px, 9vw, 118px); line-height: 0.92; letter-spacing: -0.03em; margin-bottom: 32px; }
+    .hero-title .line1 { display: block; color: var(--white); animation: fadeUp 0.7s 0.12s ease both; }
+    .hero-title .line2 { display: block; background: linear-gradient(135deg, var(--purple-bright) 0%, #c084fc 50%, var(--purple-bright) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: fadeUp 0.7s 0.22s ease both; }
+    .hero-title .line3 { display: block; color: var(--text-dim); font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; animation: fadeUp 0.7s 0.32s ease both; }
+    .hero-subtitle { position: relative; z-index: 1; font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 20px; color: var(--text-muted); max-width: 580px; margin-bottom: 48px; animation: fadeUp 0.7s 0.4s ease both; }
+    .hero-meta { position: relative; z-index: 1; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid var(--line); padding-top: 40px; animation: fadeUp 0.7s 0.5s ease both; }
+    .hero-meta-item { padding-right: 32px; border-right: 1px solid var(--line); }
+    .hero-meta-item:last-child { border-right: none; }
+    .hero-meta-item:not(:first-child) { padding-left: 32px; }
+    .meta-label { font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; }
+    .meta-val { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 14px; color: var(--white); }
+    .scroll-hint { position: relative; z-index: 1; font-size: 11px; letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase; margin-top: 32px; display: flex; align-items: center; gap: 10px; animation: fadeUp 0.7s 0.6s ease both; }
+    .scroll-hint::after { content: '↓'; color: var(--purple-bright); }
+
+    /* ── SECTION LABEL ── */
+    .section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 56px; }
+    .section-label::before { content: ''; width: 24px; height: 1px; background: var(--purple); }
+    .sl-text { font-size: 10px; letter-spacing: 0.25em; color: var(--purple-bright); text-transform: uppercase; }
+    .sl-num  { font-size: 10px; color: var(--text-dim); letter-spacing: 0.2em; }
+    .section-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(28px, 5vw, 52px); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 20px; color: var(--white); }
+    .section-sub   { font-family: 'Fraunces', serif; font-weight: 300; font-style: italic; font-size: 20px; color: var(--text-muted); margin-bottom: 56px; max-width: 540px; }
+    
+    .content-body p { margin-bottom: 24px; font-size: 15px; color: var(--text); max-width: 720px; }
+    .project-image { margin-top: 48px; margin-bottom: 48px; background: var(--bg3); width: 100%; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* ── PROJECT NAV ── */
+    .project-nav-section { padding: 120px 48px; background: var(--bg2); border-top: 1px solid var(--line); }
+    .project-nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
+    .nav-project-card { text-align: center; padding: 48px; border: 1px solid var(--line); border-radius: 4px; transition: all 0.3s ease; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
+    .nav-project-card:hover { background: var(--bg3); border-color: var(--purple-bright); transform: translateY(-4px); }
+    .nav-project-label { font-size: 10px; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 16px; }
+    .nav-project-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 24px; color: var(--text); }
+    .nav-project-btn   { display: inline-flex; align-items: center; gap: 12px; font-family: 'DM Mono', monospace; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple-bright); }
+
+    /* ── RESPONSIVE ── */
+    @media (min-width: 1600px) {
+      nav { padding: 20px 80px; }
+      section { padding: 120px 80px; }
+      .hero { padding: 0 80px 80px; }
+    }
+    @media (max-width: 1024px) {
+      /* Stack two-column grids → single column */
+    }
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      section { padding: 72px 24px; }
+      .hero { padding: 0 24px 60px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; gap: 20px; }
+      .hero-meta-item { border-right: none; padding: 0 !important; }
+    }
+    @media (max-width: 768px) {
+      .project-nav-grid { grid-template-columns: 1fr; }
+      .project-nav-section { padding: 80px 24px; }
+    }
+    @media (max-width: 600px) {
+      .nav-meta span:not(.nav-tag) { display: none; }
+      section { padding: 60px 16px; }
+      .hero { padding: 0 16px 40px; }
+      .hero-title { font-size: clamp(36px, 10vw, 64px); }
+      .hero-subtitle { font-size: 16px; margin-bottom: 32px; }
+      .hero-meta { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .section-label { margin-bottom: 32px; }
+      .section-title { font-size: clamp(26px, 8vw, 36px); }
+      .section-sub   { font-size: 16px; margin-bottom: 32px; }
+    }
+  
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2, #A09CB8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-btn:hover {
+    color: var(--text, #F0EFF8);
+  }
+</style>
+</head>
 <body>
 
-    <!-- Header & Nav -->
-    <header class="header">
-        <div class="container">
-            <nav class="nav">
-                <a href="index.html" class="nav__logo">Anil Patel</a>
+  <!-- NAV -->
+  <nav>
+  <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
+    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html" class="nav-logo">ZENISTH TRANSIFY</a>
+  </div>
+    <div class="nav-meta">
+      <a href="index.html" style="font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;text-decoration:none;" onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
+      <span>Web App · SaaS · Design</span>
+      <span class="nav-tag">Case Study · 2026</span>
+    </div>
+  </nav>
 
-                <ul class="nav__links">
-                    <li><a href="index.html" class="nav__link">Home</a></li>
-                    <li><a href="index.html#work" class="nav__link nav__link--active">Work</a></li>
-                    <li><a href="about.html" class="nav__link">About</a></li>
-                    <li><a href="contact.html" class="nav__link">Contact</a></li>
-                    <li><a href="https://drive.google.com/file/d/1BBnAo2b5aryfHrwjOLvC19Bb_kDSdgzV/view?usp=sharing"
-                            class="nav__link" target="_blank">Resume</a></li>
-                </ul>
+  <!-- HERO -->
+  <section class="hero" style="padding-top:120px; border-top:none;">
+    <div class="hero-bg"></div>
+    <div class="hero-eyebrow"><span>Product Designer · Web App · B2B</span></div>
+    <h1 class="hero-title">
+      <span class="line1">Zenisth</span>
+      <span class="line2">Transify</span>
+      <span class="line3">document automation.</span>
+    </h1>
+    <p class="hero-subtitle">Designing a platform-level workflow for document processing automation.</p>
+    <div class="hero-meta">
+      <div class="hero-meta-item"><div class="meta-label">Role</div><div class="meta-val">Product Designer</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Timeline</div><div class="meta-val">3 Months</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Platform</div><div class="meta-val">Web App (SaaS)</div></div>
+      <div class="hero-meta-item"><div class="meta-label">Status</div><div class="meta-val">In Development</div></div>
+    </div>
+    <div class="scroll-hint">Scroll to explore</div>
+  </section>
 
-                <div class="nav__actions">
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-                        <span class="sun-icon">☀️</span>
-                        <span class="moon-icon">🌑</span>
-                    </button>
+  <!-- SECTION 01 -->
+  <section>
+    <div class="section-label reveal"><span class="sl-text">The Challenge</span><span class="sl-num">/ 01</span></div>
+    <div class="section-title reveal">Unifying Disjointed Tools</div>
+    <p class="section-sub reveal">Moving from manual entry to automated data extraction.</p>
+    
+    <div class="content-body reveal">
+        <p>Enterprise users were struggling to manage thousands of documents across multiple disjointed tools. The existing process required manual data entry, leading to high error rates and significant time loss.</p>
+        <p>Our goal was to unify these workflows into a single, intelligent platform that could automate data extraction and provide clear oversight for human review.</p>
+    </div>
+    
+    <div class="project-image reveal" style="min-height: 400px; border-radius: 4px; background: linear-gradient(135deg, var(--bg3), var(--bg2));"></div>
+  </section>
 
-                    <button class="menu-toggle" aria-label="Toggle Navigation">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </button>
-                </div>
-            </nav>
-        </div>
-    </header>
+  <!-- SECTION 02 -->
+  <section>
+    <div class="section-label reveal"><span class="sl-text">The Solution</span><span class="sl-num">/ 02</span></div>
+    <div class="section-title reveal">Prioritized Dashboard</div>
+    <p class="section-sub reveal">Focusing human attention only where it's needed.</p>
+    
+    <div class="content-body reveal">
+        <p>I designed a unified dashboard that prioritizes items requiring attention while automating the routine processing. By introducing a confidence-score system, users only needed to review low-confidence extractions, reducing manual workload by 80%.</p>
+    </div>
 
-    <!-- Project Hero -->
-    <section class="project-hero">
-        <div class="container">
-            <h1 class="project-title">
-                <span class="dim">Zenisth</span> <span class="bright">Transify</span>
-            </h1>
-            <p class="hero__subline">Designing a platform-level workflow for document processing automation.</p>
+    <div class="project-image reveal" style="min-height: 400px; border-radius: 4px; background: linear-gradient(135deg, var(--purple-dim), var(--bg2));"></div>
+  </section>
 
-            <div class="project-meta">
-                <div class="meta-item">
-                    <h4>Role</h4>
-                    <p>Product Designer</p>
-                </div>
-                <div class="meta-item">
-                    <h4>Timeline</h4>
-                    <p>3 Months</p>
-                </div>
-                <div class="meta-item">
-                    <h4>Platform</h4>
-                    <p>Web App (SaaS)</p>
-                </div>
-                <div class="meta-item">
-                    <h4>Status</h4>
-                    <p>In Development</p>
-                </div>
-            </div>
-        </div>
-    </section>
+  <!-- SECTION 03 -->
+  <section>
+    <div class="section-label reveal"><span class="sl-text">Results</span><span class="sl-num">/ 03</span></div>
+    <div class="section-title reveal">Impact & Delivery</div>
+    <p class="section-sub reveal">Significant improvements in speed and accuracy.</p>
+    
+    <div class="content-body reveal">
+        <p>Early testing with beta partners showed a 3x increase in processing speed and a 95% reduction in data entry errors. The new design system also reduced development time for future features.</p>
+    </div>
+  </section>
 
-    <!-- Project Content -->
-    <section class="project-content">
-        <div class="container">
+  <!-- PROJECT NAV FOOTER -->
+  <div class="project-nav-section">
+    <div class="project-nav-grid">
+      <a href="index.html#work" class="nav-project-card">
+        <div class="nav-project-label">← Return to Work</div>
+        <div class="nav-project-title">Portfolio</div>
+        <div class="nav-project-btn">View All Projects →</div>
+      </a>
+      <a href="idp-case-study.html" class="nav-project-card">
+        <div class="nav-project-label">Next Project →</div>
+        <div class="nav-project-title">IDP Case Study</div>
+        <div class="nav-project-btn">View Case Study →</div>
+      </a>
+    </div>
+  </div>
 
-            <!-- Hero Image -->
-            <div class="project-image placeholder-gradient" style="min-height: 400px; border-radius: 4px;"></div>
-
-            <div class="content-block">
-                <h2>The Challenge</h2>
-                <p>Enterprise users were struggling to manage thousands of documents across multiple disjointed tools.
-                    The existing process required manual data entry, leading to high error rates and significant time
-                    loss.</p>
-                <p>Our goal was to unify these workflows into a single, intelligent platform that could automate data
-                    extraction and provide clear oversight for human review.</p>
-            </div>
-
-            <div class="content-block">
-                <h2>The Solution</h2>
-                <p>I designed a unified dashboard that prioritizes items requiring attention while automating the
-                    routine processing. By introducing a confidence-score system, users only needed to review
-                    low-confidence extractions, reducing manual workload by 80%.</p>
-                <div class="project-image placeholder-system" style="min-height: 300px; border-radius: 4px;"></div>
-            </div>
-
-            <div class="content-block">
-                <h2>Results</h2>
-                <p>Early testing with beta partners showed a 3x increase in processing speed and a 95% reduction in data
-                    entry errors. The new design system also reduced development time for future features.</p>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer__grid">
-                <div class="footer__brand">
-                    <h3>Anil Patel</h3>
-                    <p>Product Designer</p>
-                    <p>India</p>
-                </div>
-
-                <div class="footer__nav">
-                    <h4 class="footer__nav-title">Navigation</h4>
-                    <nav class="footer__links">
-                        <a href="index.html">Home</a>
-                        <a href="index.html#work">Work</a>
-                        <a href="about.html">About</a>
-                        <a href="contact.html">Contact</a>
-                    </nav>
-                </div>
-
-                <div class="footer__social">
-                    <h4 class="footer__nav-title">Connect</h4>
-                    <nav class="footer__links">
-                        <a href="https://www.linkedin.com/in/anil-patel-28543024a" target="_blank">LinkedIn</a>
-                        <a href="mailto:anil.patelit8266@gmail.com">Email</a>
-                        <a href="https://drive.google.com/file/d/1BBnAo2b5aryfHrwjOLvC19Bb_kDSdgzV/view?usp=sharing"
-                            target="_blank">Read CV</a>
-                    </nav>
-                </div>
-            </div>
-
-            <div class="footer__bottom">
-                <span>&copy; 2026 Anil Patel. All rights reserved.</span>
-                <span>Designed with simplicity.</span>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script>
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+  </script>
 </body>
-
 </html>

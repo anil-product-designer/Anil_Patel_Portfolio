@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zenisth IDP — Case Study</title>
+  <title>Zenisth IDP: Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -1300,7 +1300,7 @@
         padding-left: 0;
       }
 
-      /* Decision card: stack meta above content */
+      /* Decision card - stack meta above content */
       .decision-card {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1315,7 +1315,7 @@
         font-size: 48px;
       }
 
-      /* Impact row: single column */
+      /* Impact row - single column */
       .impact-row {
         grid-template-columns: 1fr;
       }
@@ -1440,14 +1440,30 @@
         height: 200px;
       }
     }
-  </style>
+  
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2, #A09CB8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-btn:hover {
+    color: var(--text, #F0EFF8);
+  }
+</style>
 </head>
 
 <body>
 
   <!-- NAV -->
   <nav>
+  <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
+    <a href="index.html#work" class="back-btn">← Back</a>
     <a href="index.html" class="nav-logo" style="text-decoration: none;">Zenisth · IDP</a>
+  </div>
     <div class="nav-meta">
       <a href="index.html"
         style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
@@ -1593,14 +1609,14 @@
       <div class="pain-item">
         <div class="pain-number">01</div>
         <div class="pain-title">Manual Data Entry</div>
-        <p class="pain-text">Teams were re-keying invoice data, contract terms, and report values — spending hours on
+        <p class="pain-text">Teams were re-keying invoice data, contract terms, and report values: spending hours on
           work that should take seconds.</p>
       </div>
       <div class="pain-item">
         <div class="pain-number">02</div>
         <div class="pain-title">Rechecking AI Outputs</div>
         <p class="pain-text">Existing tools produced unpredictable extractions. Every result required manual
-          verification — erasing the automation benefit.</p>
+          verification: erasing the automation benefit.</p>
       </div>
       <div class="pain-item">
         <div class="pain-number">03</div>
@@ -1638,7 +1654,7 @@
 
     <!-- MODULE 1 -->
     <div class="module-divider">
-      <div class="module-label">Module 1 — Upload &amp; Ingestion</div>
+      <div class="module-label">Module 1: Upload &amp; Ingestion</div>
     </div>
 
     <!-- D1 -->
@@ -1660,12 +1676,12 @@
         </p>
         <div class="vs-box">
           <div class="vs-before">
-            <div class="vs-label">Rejected — Process Immediately</div>
+            <div class="vs-label">Rejected: Process Immediately</div>
             <p class="vs-text">Upload triggers processing instantly. Wrong files waste credits. Re-runs are required.
               Frustration compounds.</p>
           </div>
           <div class="vs-after">
-            <div class="vs-label">Chosen — Staging Area</div>
+            <div class="vs-label">Chosen: Staging Area</div>
             <p class="vs-text">Upload lands in preview. User confirms the batch. Only then does processing begin. Full
               control maintained.</p>
           </div>
@@ -1698,7 +1714,7 @@
 
     <!-- MODULE 2 -->
     <div class="module-divider" style="padding-top: 24px;">
-      <div class="module-label">Module 2 — Tag-Based Schema System</div>
+      <div class="module-label">Module 2: Tag-Based Schema System</div>
     </div>
 
     <!-- D2 -->
@@ -1747,7 +1763,7 @@
 
     <!-- MODULE 3 -->
     <div class="module-divider" style="padding-top: 24px;">
-      <div class="module-label">Module 3 — Credit Transparency</div>
+      <div class="module-label">Module 3: Credit Transparency</div>
     </div>
 
     <!-- D3 -->
@@ -1805,7 +1821,7 @@
 
     <!-- MODULE 4 -->
     <div class="module-divider" style="padding-top: 24px;">
-      <div class="module-label">Module 4 — Classification Removal (V1)</div>
+      <div class="module-label">Module 4: Classification Removal (V1)</div>
     </div>
 
     <!-- D4 -->
@@ -1851,7 +1867,7 @@
 
     <!-- MODULE 5 -->
     <div class="module-divider" style="padding-top: 24px;">
-      <div class="module-label">Module 5 — Review Queue Removal (V1)</div>
+      <div class="module-label">Module 5: Review Queue Removal (V1)</div>
     </div>
 
     <!-- D5 -->
@@ -1895,7 +1911,7 @@
 
     <!-- MODULE 6 -->
     <div class="module-divider" style="padding-top: 24px;">
-      <div class="module-label">Module 6 — Output Format</div>
+      <div class="module-label">Module 6: Output Format</div>
     </div>
 
     <!-- D6 -->
@@ -1941,7 +1957,7 @@
 
     <!-- MODULE 7 -->
     <div class="module-divider" style="padding-top: 24px;">
-      <div class="module-label">Module 7 — Design System</div>
+      <div class="module-label">Module 7: Design System</div>
     </div>
 
     <!-- D7 -->

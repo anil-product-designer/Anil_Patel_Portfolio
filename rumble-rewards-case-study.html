@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rumble Rewards — Case Study</title>
+  <title>Rumble Rewards: Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -1550,7 +1550,7 @@
         padding-left: 0;
       }
 
-      /* Decision card: stack on mobile */
+      /* Decision card - stack on mobile */
       .decision-card {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1565,7 +1565,7 @@
         font-size: 48px;
       }
 
-      /* Hero meta: 2-col on mobile */
+      /* Hero meta - 2-col on mobile */
       .hero-meta {
         grid-template-columns: 1fr 1fr;
         gap: 20px;
@@ -1597,14 +1597,30 @@
         padding: 80px 24px;
       }
     }
-  </style>
+  
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2, #A09CB8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-btn:hover {
+    color: var(--text, #F0EFF8);
+  }
+</style>
 </head>
 
 <body>
 
   <!-- NAV -->
   <nav>
+  <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
+    <a href="index.html#work" class="back-btn">← Back</a>
     <a href="index.html" class="nav-logo" style="text-decoration: none;">Rumble Rewards</a>
+  </div>
     <div class="nav-meta">
       <a href="index.html"
         style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
@@ -1808,11 +1824,11 @@
           </div>
           <div class="behavior-item">
             <div class="behavior-pct">Fast</div>
-            <div class="behavior-text">Scan quickly — no time for long explanations</div>
+            <div class="behavior-text">Scan quickly: no time for long explanations</div>
           </div>
           <div class="behavior-item">
             <div class="behavior-pct">Low</div>
-            <div class="behavior-text">Reading intent — visual hierarchy does the talking</div>
+            <div class="behavior-text">Reading intent: visual hierarchy does the talking</div>
           </div>
         </div>
         <div class="challenge-block">
@@ -1941,11 +1957,11 @@
         </p>
         <div class="before-after">
           <div class="ba-before">
-            <div class="ba-label">Old Order — Emotion First</div>
+            <div class="ba-label">Old Order: Emotion First</div>
             <p class="ba-text">Emotional message → Features → Trust → Value → Social proof</p>
           </div>
           <div class="ba-after">
-            <div class="ba-label">New Order — Value First</div>
+            <div class="ba-label">New Order: Value First</div>
             <p class="ba-text">Value → Simplification → Rewards → Flexibility → Habit building → Perks → Security →
               Social proof</p>
           </div>
@@ -1967,18 +1983,18 @@
           <strong>conversation starter</strong>.
         </p>
         <p class="decision-rationale">
-          Users scan — they do not read. Every extra word is a decision to keep reading, and most users won't make that
+          Users scan: they do not read. Every extra word is a decision to keep reading, and most users won't make that
           decision more than once. I cut every headline to 5–8 words maximum, focusing on a single concrete benefit per
           screen. The result is copy that registers in the time it takes to blink past it.
         </p>
         <div class="before-after">
           <div class="ba-before">
-            <div class="ba-label">Before — Long Emotional Copy</div>
+            <div class="ba-label">Before: Long Emotional Copy</div>
             <p class="ba-text" style="margin-bottom:10px;">Descriptive headline:</p>
             <p class="ba-quote">"Make rent day easier."</p>
           </div>
           <div class="ba-after">
-            <div class="ba-label">After — Short Value Copy</div>
+            <div class="ba-label">After: Short Value Copy</div>
             <p class="ba-text" style="margin-bottom:10px;">Action + reward in 4 words:</p>
             <p class="ba-quote">"Pay rent. Earn rewards."</p>
           </div>
@@ -1996,7 +2012,7 @@
       </div>
       <div class="decision-body">
         <p class="decision-headline">
-          In fintech, <strong>trust is not a section</strong> — it is a layer that runs through <strong>every
+          In fintech, <strong>trust is not a section</strong>: it is a layer that runs through <strong>every
             screen</strong>.
         </p>
         <p class="decision-rationale">
@@ -2007,12 +2023,12 @@
         </p>
         <div class="before-after">
           <div class="ba-before">
-            <div class="ba-label">Before — Trust as afterthought</div>
+            <div class="ba-label">Before: Trust as afterthought</div>
             <p class="ba-text">Security messaging appeared once, near the end of the flow. Easy to miss for most users
               who don't scroll that far.</p>
           </div>
           <div class="ba-after">
-            <div class="ba-label">After — Trust distributed across flow</div>
+            <div class="ba-label">After: Trust distributed across flow</div>
             <p class="ba-text">Security messaging, bank-grade phrasing, and responsible renter framing appear across
               multiple screens not just one.</p>
           </div>
@@ -2036,17 +2052,17 @@
         <p class="decision-rationale">
           I designed the screenshots to alternate between three visual modes: UI mockup screens (showing the actual app
           interface), concept visuals (illustrating the Pay Now, Rent Later idea), and reward visuals (showing the
-          rewards and perks system). This rhythm prevents the eye from habituating to a single layout — each swipe feels
+          rewards and perks system). This rhythm prevents the eye from habituating to a single layout: each swipe feels
           like a new frame, not a repeat.
         </p>
         <div class="before-after">
           <div class="ba-before">
-            <div class="ba-label">Before — Uniform Visual Style</div>
+            <div class="ba-label">Before: Uniform Visual Style</div>
             <p class="ba-text">All screens used the same layout pattern UI mockup with text overlay. Predictable and
               fatiguing.</p>
           </div>
           <div class="ba-after">
-            <div class="ba-label">After — Alternating Visual Modes</div>
+            <div class="ba-label">After: Alternating Visual Modes</div>
             <p class="ba-text">UI mockups → Concept visuals → Reward visuals three modes cycling across 8 screens.</p>
           </div>
         </div>
@@ -2068,18 +2084,18 @@
         </p>
         <p class="decision-rationale">
           I structured each screen to answer exactly one user question. Screen 1: "What is this?" Screen 2: "Why should
-          I care?" Screen 3: "Is it safe?" Screen 4: "What do I gain?" This creates a logical mental progression — each
+          I care?" Screen 3: "Is it safe?" Screen 4: "What do I gain?" This creates a logical mental progression: each
           screen builds on the previous one, moving the user from comprehension to consideration to confidence. Install
           intent follows naturally at the end of a complete mental journey.
         </p>
         <div class="before-after">
           <div class="ba-before">
-            <div class="ba-label">Before — Multiple Messages Per Screen</div>
-            <p class="ba-text">Screens tried to communicate value, trust, and features simultaneously — leaving users
+            <div class="ba-label">Before: Multiple Messages Per Screen</div>
+            <p class="ba-text">Screens tried to communicate value, trust, and features simultaneously: leaving users
               without a clear takeaway.</p>
           </div>
           <div class="ba-after">
-            <div class="ba-label">After — One Question Per Screen</div>
+            <div class="ba-label">After: One Question Per Screen</div>
             <p class="ba-text">What is this? → Why care? → Is it safe? → What do I gain? Each screen owns its question
               completely.</p>
           </div>
@@ -2293,7 +2309,7 @@
       <div class="impact-item">
         <div class="impact-icon">🔄</div>
         <div class="impact-title">Structured Flow</div>
-        <div class="impact-desc">The 8 screenshots now function as a single narrative arc — not 8 independent marketing
+        <div class="impact-desc">The 8 screenshots now function as a single narrative arc: not 8 independent marketing
           slides.</div>
       </div>
     </div>
@@ -2318,13 +2334,13 @@
       <div class="learning-card">
         <div class="learning-num">01</div>
         <div class="learning-title">Clarity Increases Trust</div>
-        <div class="learning-desc">When users understand what an app does immediately, they trust it more — even before
+        <div class="learning-desc">When users understand what an app does immediately, they trust it more: even before
           seeing any security signals.</div>
       </div>
       <div class="learning-card">
         <div class="learning-num">02</div>
         <div class="learning-title">Less Text, More Comprehension</div>
-        <div class="learning-desc">Cutting copy in half didn't reduce communication — it doubled it. Short text that
+        <div class="learning-desc">Cutting copy in half didn't reduce communication: it doubled it. Short text that
           lands beats long text that gets skipped.</div>
       </div>
       <div class="learning-card">

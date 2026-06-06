@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Zenisth Transify — Case Study</title>
+  <title>Zenisth Transify: Case Study</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -1285,7 +1285,7 @@
         padding-left: 0;
       }
 
-      /* Decision card: stack meta above content */
+      /* Decision card - stack meta above content */
       .decision-card {
         grid-template-columns: 1fr;
         gap: 32px;
@@ -1300,7 +1300,7 @@
         font-size: 48px;
       }
 
-      /* Impact row: single column */
+      /* Impact row - single column */
       .impact-row {
         grid-template-columns: 1fr;
       }
@@ -1425,14 +1425,30 @@
         height: 200px;
       }
     }
-  </style>
+  
+  .back-btn {
+    display: inline-flex;
+    align-items: center;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text-2, #A09CB8);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .back-btn:hover {
+    color: var(--text, #F0EFF8);
+  }
+</style>
 </head>
 
 <body>
 
   <!-- NAV -->
   <nav>
+  <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
+    <a href="index.html#work" class="back-btn">← Back</a>
     <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">Zenisth Transify</a>
+  </div>
     <div class="nav-meta">
       <a href="index.html"
         style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
@@ -1741,7 +1757,7 @@
             <div class="impact-item">Predictable backend transitions</div>
           </div>
         </div>
-        <div class="principle-tag">Hick's Law — Reduce choices at every decision point</div>
+        <div class="principle-tag">Hick's Law: Reduce choices at every decision point</div>
       </div>
     </div>
     <!-- Visual Breaker 1 -->
@@ -1752,7 +1768,7 @@
       <div class="decision-meta">
         <div class="decision-number">02</div>
         <div class="decision-badge badge-arch">Architecture</div>
-        <div class="decision-title">Tag System — Reusable Translation Configurations</div>
+        <div class="decision-title">Tag System: Reusable Translation Configurations</div>
       </div>
       <div class="decision-body">
         <p class="decision-headline">
@@ -1778,7 +1794,7 @@
             <div class="impact-item">Clean schema storage</div>
           </div>
         </div>
-        <div class="principle-tag">Progressive Disclosure — hide complexity, surface control</div>
+        <div class="principle-tag">Progressive Disclosure: hide complexity, surface control</div>
       </div>
     </div>
     <!-- Visual Breaker 1 -->
@@ -1808,7 +1824,7 @@
           </div>
           <div class="vs-after">
             <div class="vs-label">Transify Approach</div>
-            <p class="vs-text">Explicit confirmation moment — users see cost before committing, maintaining complete
+            <p class="vs-text">Explicit confirmation moment: users see cost before committing, maintaining complete
               control of spend.</p>
           </div>
         </div>
@@ -1824,7 +1840,7 @@
             <div class="impact-item">Clear audit trail for finance teams</div>
           </div>
         </div>
-        <div class="principle-tag">Loss Aversion — make cost visible before loss occurs</div>
+        <div class="principle-tag">Loss Aversion: make cost visible before loss occurs</div>
       </div>
     </div>
 
@@ -1965,7 +1981,7 @@
             <div class="impact-item">Self-serve recovery reduces load</div>
           </div>
         </div>
-        <div class="principle-tag">Error Recovery — give users a path forward, not a dead end</div>
+        <div class="principle-tag">Error Recovery: give users a path forward, not a dead end</div>
       </div>
     </div>
     <!-- Visual Breaker 1 -->
@@ -2010,7 +2026,7 @@
       <div class="decision-meta">
         <div class="decision-number">09</div>
         <div class="decision-badge badge-biz">Product Strategy</div>
-        <div class="decision-title">V1 Scope Reduction — What I Removed</div>
+        <div class="decision-title">V1 Scope Reduction: What I Removed</div>
       </div>
       <div class="decision-body">
         <p class="decision-headline">

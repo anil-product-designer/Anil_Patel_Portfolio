@@ -1,4 +1,4 @@
-﻿:root {
+:root {
   --bg: #0a0a0f;
   --bg2: #10101a;
   --bg3: #16162a;
@@ -1942,16 +1942,24 @@ ul {
 }
 
 /* Delay modifiers for staggered children */
-.reveal--delay-1 {
+.reveal--delay-1, [data-reveal-delay="1"] {
   transition-delay: 0.1s;
 }
 
-.reveal--delay-2 {
+.reveal--delay-2, [data-reveal-delay="2"] {
   transition-delay: 0.2s;
 }
 
-.reveal--delay-3 {
+.reveal--delay-3, [data-reveal-delay="3"] {
   transition-delay: 0.3s;
+}
+
+.reveal--delay-4, [data-reveal-delay="4"] {
+  transition-delay: 0.4s;
+}
+
+.reveal--delay-5, [data-reveal-delay="5"] {
+  transition-delay: 0.5s;
 }
 
 /* Hover Enhancements */

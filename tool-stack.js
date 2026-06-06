@@ -211,7 +211,7 @@ document.addEventListener('mousemove', e => {
       width: '4px',
       height: '4px',
       borderRadius: '50%',
-      background: Math.random() > .5 ? '#6ee7b7' : '#818cf8',
+      background: Math.random() > .5 ? '#a855f7' : '#7c3aed',
       pointerEvents: 'none',
       zIndex: 9999,
       transform: 'translate(-50%,-50%)',

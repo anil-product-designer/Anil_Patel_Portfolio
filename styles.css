@@ -114,6 +114,25 @@ body {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+@keyframes wave-animation {
+  0% { transform: rotate(0.0deg) }
+  10% { transform: rotate(14.0deg) }
+  20% { transform: rotate(-8.0deg) }
+  30% { transform: rotate(14.0deg) }
+  40% { transform: rotate(-4.0deg) }
+  50% { transform: rotate(10.0deg) }
+  60% { transform: rotate(0.0deg) }
+  100% { transform: rotate(0.0deg) }
+}
+
+.wave-icon {
+  animation-name: wave-animation;
+  animation-duration: 2.5s;
+  animation-iteration-count: infinite;
+  display: inline-block;
+  transform-origin: 70% 70%;
+}
+
 @keyframes noise-anim {
   0%, 100% { transform: translate(0, 0); }
   10% { transform: translate(-2%, -2%); }
@@ -436,6 +455,26 @@ ul {
   margin-bottom: 40px;
   max-width: 1000px;
   line-height: 1.4;
+}
+
+.hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 40px;
+}
+
+.hero__tag {
+  font-family: 'DM Mono', monospace;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background-color: transparent;
 }
 
 .hero__cta {

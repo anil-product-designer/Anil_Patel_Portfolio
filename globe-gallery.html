@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Space Gallery</title>
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%; height: 100%;
+    background: #020408;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, sans-serif;
+    touch-action: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+  }
+  body { cursor: grab; }
+  body.dragging { cursor: grabbing; }
+
+  #canvas-bg {
+    position: fixed;
+    inset: 0;
+    width: 100%; height: 100%;
+    z-index: 0;
+  }
+
+  #lines-svg {
+    position: fixed;
+    inset: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Invisible anchor point at center */
+  #anchor {
+    position: fixed;
+    left: 50%; top: 50%;
+    width: 12px; height: 12px;
+    margin: -6px 0 0 -6px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(140,120,255,0.9), rgba(90,70,199,0.5));
+    box-shadow: 0 0 18px rgba(120,100,220,0.8), 0 0 40px rgba(90,70,199,0.4);
+    z-index: 10;
+    animation: anchorPulse 3s ease-in-out infinite;
+  }
+  @keyframes anchorPulse {
+    0%,100% { box-shadow: 0 0 18px rgba(120,100,220,0.8), 0 0 40px rgba(90,70,199,0.4); transform: scale(1); }
+    50%      { box-shadow: 0 0 28px rgba(140,120,255,1),   0 0 65px rgba(90,70,199,0.6); transform: scale(1.2); }
+  }
+
+  /* Photo cards */
+  .photo-card {
+    position: fixed;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1.5px solid rgba(120,100,220,0.45);
+    box-shadow: 0 0 16px rgba(90,70,199,0.25), 0 6px 22px rgba(0,0,0,0.7);
+    cursor: pointer;
+    will-change: transform, opacity;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .photo-card:hover {
+    border-color: rgba(180,160,255,0.85);
+    box-shadow: 0 0 32px rgba(90,70,199,0.65), 0 10px 36px rgba(0,0,0,0.85);
+  }
+  .photo-card img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    display: block;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+  .card-shine {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(160,140,255,0.1) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  /* Dot at line endpoint on card */
+  .card-dot {
+    position: fixed;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: rgba(160,140,255,0.95);
+    box-shadow: 0 0 6px rgba(150,130,255,0.9);
+    pointer-events: none;
+    z-index: 6;
+    transform: translate(-50%,-50%);
+  }
+
+  /* Lightbox */
+  #lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(2,4,8,0.94);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px;
+  }
+  #lightbox.active { display: flex; }
+  #lightbox img {
+    max-width: min(94vw, 960px);
+    max-height: 90vh;
+    border-radius: 14px;
+    border: 1px solid rgba(120,100,220,0.3);
+    box-shadow: 0 0 80px rgba(90,70,199,0.45);
+    object-fit: contain;
+  }
+  #lightbox-close {
+    position: absolute;
+    top: 16px; right: 20px;
+    color: rgba(255,255,255,0.55);
+    font-size: clamp(22px,5vw,34px);
+    cursor: pointer;
+    padding: 8px;
+    z-index: 201;
+    line-height: 1;
+    transition: color 0.2s;
+  }
+  #lightbox-close:hover { color: #fff; }
+
+  /* UI chrome */
+  #title {
+    position: fixed;
+    top: clamp(14px,3vw,26px);
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.78);
+    font-size: clamp(10px,2vw,13px);
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 50;
+    pointer-events: none;
+  }
+  #title span { color: rgba(150,130,245,0.95); }
+
+  #hint {
+    position: fixed;
+    bottom: clamp(14px,3vw,26px);
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.25);
+    font-size: clamp(9px,1.8vw,11px);
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    z-index: 50;
+    pointer-events: none;
+    opacity: 0;
+    animation: fadeHint 5s ease-in-out forwards;
+    animation-delay: 1s;
+  }
+  @keyframes fadeHint {
+    0%   { opacity: 0; }
+    12%  { opacity: 1; }
+    78%  { opacity: 1; }
+    100% { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="canvas-bg"></canvas>
+<svg id="lines-svg">
+  <defs>
+    <linearGradient id="lg" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgba(110,90,220,0.9)"/>
+      <stop offset="100%" stop-color="rgba(160,145,255,0.12)"/>
+    </linearGradient>
+  </defs>
+</svg>
+
+<div id="anchor"></div>
+<div id="title">My <span>Universe</span> · Gallery</div>
+<div id="hint">Drag to explore · Tap to open</div>
+
+<div id="lightbox">
+  <div id="lightbox-close">✕</div>
+  <img id="lightbox-img" src="" alt="">
+</div>
+
+<script>
+// ─── Photos ────────────────────────────────────────────────────────────────────
+const photos = [
+  'assets/images/1.png',
+  'assets/images/2.png',
+  'assets/images/3.png',
+  'assets/images/4.jpeg',
+  'assets/images/5.png',
+  'assets/images/6.jpeg',
+  'assets/images/7.png',
+  'assets/images/8.png',
+  'assets/images/9.png',
+  'assets/images/10.png',
+  'assets/images/11.png',
+  'assets/images/111.png',
+  'assets/images/222.png',
+  'assets/images/56.jpg',
+  'assets/images/57.jpg',
+  'assets/images/Bluesuit.png'
+];
+
+// ─── Responsive orbit scale ────────────────────────────────────────────────────
+function orbitScale() {
+  const vw = window.innerWidth, vh = window.innerHeight;
+  if (vw < 480)  return { rx: vw*0.38, ry: vh*0.32, rz: vw*0.30, fov: 600, base: 90 };
+  if (vw < 768)  return { rx: vw*0.40, ry: vh*0.30, rz: vw*0.32, fov: 720, base: 110 };
+  if (vw < 1100) return { rx: vw*0.42, ry: vh*0.30, rz: vw*0.34, fov: 820, base: 130 };
+  return               { rx: 480,      ry: 290,      rz: 380,     fov: 950, base: 150 };
+}
+
+// ─── Stars ────────────────────────────────────────────────────────────────────
+const canvas = document.getElementById('canvas-bg');
+const ctx    = canvas.getContext('2d');
+let stars = [];
+
+function initStars() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const n = Math.floor(canvas.width * canvas.height / 5000);
+  stars = Array.from({ length: n }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.3 + 0.2,
+    a: Math.random() * 0.75 + 0.2,
+    spd: Math.random() * 0.007 + 0.002,
+    ph: Math.random() * Math.PI * 2
+  }));
+}
+function drawStars(t) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  for (const s of stars) {
+    const a = s.a * (0.5 + 0.5 * Math.sin(t * s.spd + s.ph));
+    ctx.beginPath();
+    ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+    ctx.fillStyle = `rgba(215,210,255,${a})`;
+    ctx.fill();
+  }
+}
+
+// ─── Fibonacci sphere positions (normalized) ───────────────────────────────────
+function fibPoint(i, n) {
+  const phi   = Math.acos(1 - 2*(i+0.5)/n);
+  const theta = Math.PI * (1 + Math.sqrt(5)) * i;
+  return {
+    nx: Math.sin(phi) * Math.cos(theta),
+    ny: Math.cos(phi) * 0.60,
+    nz: Math.sin(phi) * Math.sin(theta),
+  };
+}
+const N = photos.length;
+const fibPts = photos.map((_, i) => fibPoint(i, N));
+
+// ─── Image natural ratios ──────────────────────────────────────────────────────
+// We'll measure each image once loaded, then store aspect ratio
+const ratios = new Array(N).fill(4/3); // default until loaded
+
+// ─── Build DOM ────────────────────────────────────────────────────────────────
+const svgEl    = document.getElementById('lines-svg');
+const lightbox = document.getElementById('lightbox');
+const lbImg    = document.getElementById('lightbox-img');
+let wasDragging = false;
+
+const cards = photos.map((src, i) => {
+  // Preload to get natural ratio
+  const probe = new Image();
+  probe.src = src;
+  probe.onload = () => {
+    if (probe.naturalWidth && probe.naturalHeight) {
+      ratios[i] = probe.naturalWidth / probe.naturalHeight;
+    }
+  };
+
+  const el  = document.createElement('div');
+  el.className = 'photo-card';
+
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = `Memory ${i+1}`;
+  img.draggable = false;
+  img.loading = 'eager';
+
+  const shine = document.createElement('div');
+  shine.className = 'card-shine';
+
+  el.appendChild(img);
+  el.appendChild(shine);
+  document.body.appendChild(el);
+
+  // Click / tap
+  const open = () => {
+    if (!wasDragging) {
+      lbImg.src = src;
+      lightbox.classList.add('active');
+    }
+  };
+  el.addEventListener('click', open);
+  el.addEventListener('touchend', e => { e.preventDefault(); open(); }, { passive: false });
+
+  // Dot
+  const dot = document.createElement('div');
+  dot.className = 'card-dot';
+  document.body.appendChild(dot);
+
+  // SVG line
+  const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+  line.setAttribute('stroke', 'url(#lg)');
+  svgEl.appendChild(line);
+
+  return { el, dot, line };
+});
+
+// Update SVG gradient based on current center
+function updateGradient(gx, gy, ex, ey) {
+  const grad = svgEl.querySelector('#lg');
+  if (grad) {
+    grad.setAttribute('x1', gx); grad.setAttribute('y1', gy);
+    grad.setAttribute('x2', ex); grad.setAttribute('y2', ey);
+  }
+}
+
+// Lightbox close
+lightbox.addEventListener('click', e => {
+  if (e.target === lightbox || e.target.id === 'lightbox-close') {
+    lightbox.classList.remove('active');
+  }
+});
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') lightbox.classList.remove('active');
+});
+
+// ─── Drag ─────────────────────────────────────────────────────────────────────
+let rotY = 0, rotX = 0, velY = 0.0025;
+let isDragging = false, lastMX = 0, lastMY = 0, dragVX = 0, dragVY = 0, dragDist = 0;
+
+function startDrag(mx, my) {
+  isDragging = true; wasDragging = false; dragDist = 0;
+  lastMX = mx; lastMY = my; dragVX = 0; dragVY = 0;
+  document.body.classList.add('dragging');
+}
+function moveDrag(mx, my) {
+  if (!isDragging) return;
+  const dx = mx - lastMX, dy = my - lastMY;
+  dragDist += Math.abs(dx) + Math.abs(dy);
+  if (dragDist > 5) wasDragging = true;
+  dragVX = dx * 0.003; dragVY = dy * 0.002;
+  rotY += dragVX;
+  rotX  = Math.max(-0.65, Math.min(0.65, rotX + dragVY));
+  lastMX = mx; lastMY = my;
+}
+function endDrag() {
+  isDragging = false;
+  velY = dragVX * 0.5 || 0.0025;
+  document.body.classList.remove('dragging');
+  setTimeout(() => { wasDragging = false; }, 60);
+}
+
+document.addEventListener('mousedown',  e => startDrag(e.clientX, e.clientY));
+document.addEventListener('mousemove',  e => moveDrag(e.clientX, e.clientY));
+document.addEventListener('mouseup',    endDrag);
+document.addEventListener('mouseleave', endDrag);
+
+document.addEventListener('touchstart', e => {
+  if (lightbox.classList.contains('active') || e.touches.length !== 1) return;
+  startDrag(e.touches[0].clientX, e.touches[0].clientY);
+}, { passive: true });
+document.addEventListener('touchmove', e => {
+  if (lightbox.classList.contains('active') || e.touches.length !== 1) return;
+  moveDrag(e.touches[0].clientX, e.touches[0].clientY);
+  if (wasDragging) e.preventDefault();
+}, { passive: false });
+document.addEventListener('touchend',    endDrag, { passive: true });
+document.addEventListener('touchcancel', endDrag, { passive: true });
+
+// ─── 3D math ──────────────────────────────────────────────────────────────────
+function rotate3D(nx, ny, nz, ry, rx) {
+  const x1 =  nx*Math.cos(ry) + nz*Math.sin(ry);
+  const z1 = -nx*Math.sin(ry) + nz*Math.cos(ry);
+  const y1 =  ny*Math.cos(rx) - z1*Math.sin(rx);
+  const z2 =  ny*Math.sin(rx) + z1*Math.cos(rx);
+  return { x: x1, y: y1, z: z2 };
+}
+
+// ─── Card sizing based on ratio + depth ───────────────────────────────────────
+function cardSize(ratio, depth, base) {
+  // base = reference width for front cards; shrinks with depth
+  const w = base * (0.55 + depth * 0.55);
+  const h = w / ratio;
+  return { w, h };
+}
+
+// ─── Resize ───────────────────────────────────────────────────────────────────
+function onResize() {
+  initStars();
+  svgEl.setAttribute('width',  window.innerWidth);
+  svgEl.setAttribute('height', window.innerHeight);
+}
+window.addEventListener('resize', onResize);
+onResize();
+
+// ─── Animation ────────────────────────────────────────────────────────────────
+let t = 0;
+function animate() {
+  t++;
+  drawStars(t);
+
+  if (!isDragging) {
+    velY += (0.0025 - velY) * 0.018;
+    rotY += velY;
+    rotX += (0 - rotX) * 0.012;
+  }
+
+  const cfg = orbitScale();
+  const gx  = window.innerWidth  / 2;
+  const gy  = window.innerHeight / 2;
+
+  // Project all cards
+  const projected = fibPts.map((fp, i) => {
+    const r = rotate3D(fp.nx, fp.ny, fp.nz, rotY, rotX);
+    const fov = cfg.fov;
+    const scale = fov / (fov + r.z * cfg.rz);
+    return {
+      i,
+      sx: gx + r.x * cfg.rx * scale,
+      sy: gy + r.y * cfg.ry * scale,
+      rz: r.z
+    };
+  });
+
+  // Painter's sort
+  projected.sort((a, b) => a.rz - b.rz);
+
+  projected.forEach(({ i, sx, sy, rz }) => {
+    const { el, dot, line } = cards[i];
+    const depth   = (rz + 1) / 2;           // 0=back 1=front
+    const opacity = 0.25 + depth * 0.75;
+    const { w, h } = cardSize(ratios[i], depth, cfg.base);
+
+    el.style.left      = sx + 'px';
+    el.style.top       = sy + 'px';
+    el.style.width     = w + 'px';
+    el.style.height    = h + 'px';
+    el.style.transform = `translate(-50%,-50%)`;
+    el.style.opacity   = opacity;
+    el.style.zIndex    = Math.round(depth * 15);
+
+    // Nearest point on card edge toward center
+    const ddx = gx - sx, ddy = gy - sy;
+    const dl  = Math.sqrt(ddx*ddx + ddy*ddy) || 1;
+    const nx  = ddx/dl, ny = ddy/dl;
+    const hw  = w/2, hh = h/2;
+
+    // Parametric clip to rect
+    const tx = nx !== 0 ? hw / Math.abs(nx) : Infinity;
+    const ty = ny !== 0 ? hh / Math.abs(ny) : Infinity;
+    const t0 = Math.min(tx, ty);
+    const ex  = sx + nx * t0;
+    const ey  = sy + ny * t0;
+
+    dot.style.left    = ex + 'px';
+    dot.style.top     = ey + 'px';
+    dot.style.opacity = opacity;
+    dot.style.zIndex  = Math.round(depth * 15) + 1;
+
+    // Line: center → card edge
+    line.setAttribute('x1', gx);
+    line.setAttribute('y1', gy);
+    line.setAttribute('x2', ex);
+    line.setAttribute('y2', ey);
+    line.setAttribute('opacity', (0.12 + depth * 0.38).toFixed(2));
+    line.setAttribute('stroke-width', (0.5 + depth * 1.0).toFixed(2));
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+</script>
+</body>
+</html>

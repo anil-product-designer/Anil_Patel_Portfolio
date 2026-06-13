@@ -1017,13 +1017,21 @@ ul {
 }
 
 .about-hero__image {
-  grid-column: 7 / span 6;
+  grid-column: 8 / span 5;
   width: 100%;
-  height: 500px;
-  border-radius: 4px;
+  aspect-ratio: 4 / 5;
+  height: auto;
+  border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--line);
   position: relative;
+  justify-self: end;
+}
+.about-hero__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 15%;
 }
 
 /* Animated gradient placeholder when no portrait is provided */
@@ -1502,7 +1510,8 @@ ul {
 
   .about-hero__image {
     grid-column: 5 / span 4;
-    height: 400px;
+    aspect-ratio: 4 / 5;
+    height: auto;
     order: 1;
   }
 
@@ -1825,7 +1834,8 @@ ul {
   .about-hero__image {
     grid-column: span 4;
     width: 100%;
-    height: 260px;
+    aspect-ratio: 1 / 1;
+    height: auto;
     order: 1;
     margin-bottom: 0;
   }

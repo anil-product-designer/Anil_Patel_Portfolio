@@ -1329,13 +1329,29 @@
     <meta name="twitter:title" content="Anil Patel - Product Designer">
     <meta name="twitter:description" content="Anil Patel is a Product Designer working across SaaS, AI, and mobile products. View my portfolio and case studies.">
 
+
+  <style>
+    @media (max-width: 900px) {
+      .hero-meta {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 16px !important;
+      }
+      .hero-meta-item, .meta-card {
+        flex: 1 1 calc(50% - 16px) !important;
+        min-width: 140px !important;
+        padding: 0 !important;
+        border: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html#work" class="back-btn">← Back</a>
     <div class="nav-logo">Zenisth AI · Design System</div>
   </div>
   <ul class="nav-links">
@@ -1425,12 +1441,12 @@
 
   <div class="chaos-grid">
     <div class="chaos-card reveal">
-      <div class="chaos-icon">â¬œ</div>
+      <div class="chaos-icon">⬜</div>
       <div class="chaos-title">No Wireframes</div>
       <div class="chaos-desc">No existing UX flows, user journeys, or product screens to reference. Every interaction had to be designed from the ground up.</div>
     </div>
     <div class="chaos-card reveal">
-      <div class="chaos-icon">ðŸ§©</div>
+      <div class="chaos-icon">🧩</div>
       <div class="chaos-title">No Component System</div>
       <div class="chaos-desc">No reusable UI elements, no shared styles, no consistent patterns. Every screen was a potential inconsistency waiting to happen.</div>
     </div>
@@ -1440,7 +1456,7 @@
       <div class="chaos-desc">Six AI tools planned simultaneously. The product needed to move fast: but moving fast without a system would break everything at scale.</div>
     </div>
     <div class="chaos-card reveal">
-      <div class="chaos-icon">ðŸ§ </div>
+      <div class="chaos-icon">🧠</div>
       <div class="chaos-title">Sole Designer</div>
       <div class="chaos-desc">As the only designer on the team, every decision was mine: architecture, visuals, documentation, and handoff. Full ownership, full responsibility.</div>
     </div>
@@ -1638,7 +1654,7 @@
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(90,70,199,0.25); border: 1px solid rgba(90,70,199,0.5);">
-        <span style="font-size:12px;">ðŸ–±</span>
+        <span style="font-size:12px;">🖱</span>
       </div>
       <div class="state-name">Hover</div>
     </div>
@@ -1662,13 +1678,13 @@
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(220,60,60,0.12); border: 1px solid rgba(220,60,60,0.3);">
-        <span style="font-size:12px;">âš </span>
+        <span style="font-size:12px;">⚠</span>
       </div>
       <div class="state-name">Error</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(255,180,0,0.12); border: 1px solid rgba(255,180,0,0.3);">
-        <span style="font-size:12px;">â„¹</span>
+        <span style="font-size:12px;">ℹ</span>
       </div>
       <div class="state-name">Info</div>
     </div>
@@ -1769,7 +1785,7 @@
         <div class="ai-pipe-sub">Design_Tokens.md</div>
       </div>
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">ðŸ¤–</div>
+        <div class="ai-pipe-icon">🤖</div>
         <div class="ai-pipe-name">AI Coding</div>
         <div class="ai-pipe-sub">Vibe Code Sessions</div>
       </div>
@@ -1779,7 +1795,7 @@
         <div class="ai-pipe-sub">Token-Consistent UI</div>
       </div>
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">ðŸš€</div>
+        <div class="ai-pipe-icon">🚀</div>
         <div class="ai-pipe-name">Product</div>
         <div class="ai-pipe-sub">Zenisth AI Platform</div>
       </div>

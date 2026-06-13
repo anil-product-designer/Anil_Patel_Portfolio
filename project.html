@@ -153,13 +153,29 @@
     <meta name="twitter:title" content="Anil Patel - Product Designer">
     <meta name="twitter:description" content="Anil Patel is a Product Designer working across SaaS, AI, and mobile products. View my portfolio and case studies.">
 
+
+  <style>
+    @media (max-width: 900px) {
+      .hero-meta {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 16px !important;
+      }
+      .hero-meta-item, .meta-card {
+        flex: 1 1 calc(50% - 16px) !important;
+        min-width: 140px !important;
+        padding: 0 !important;
+        border: none !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html#work" class="back-btn">← Back</a>
     <a href="index.html" class="nav-logo">ZENISTH TRANSIFY</a>
   </div>
     <div class="nav-meta">
@@ -230,7 +246,7 @@
   <div class="project-nav-section">
     <div class="project-nav-grid">
       <a href="index.html#work" class="nav-project-card">
-        <div class="nav-project-label">← Return to Work</div>
+        <div class="nav-project-label">← Return to Work</div>
         <div class="nav-project-title">Portfolio</div>
         <div class="nav-project-btn">View All Projects →</div>
       </a>

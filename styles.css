@@ -1750,7 +1750,7 @@ ul {
 
   .philosophy__content {
     grid-column: span 4;
-    text-align: left;
+    text-align: center;
   }
 
   /* ─ Contact Strip ─ */
@@ -1760,8 +1760,9 @@ ul {
 
   .contact-strip .container {
     gap: var(--space-32);
-    align-items: flex-start;
-    text-align: left;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
   }
 
   .contact-strip h2 {
@@ -1770,9 +1771,10 @@ ul {
 
   .contact-strip__actions {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     width: 100%;
     max-width: 320px;
+    margin: 0 auto;
     gap: 12px;
   }
 

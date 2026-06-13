@@ -54,6 +54,7 @@
   /* Photo cards */
   .photo-card {
     position: fixed;
+    top: 0; left: 0;
     border-radius: 10px;
     overflow: hidden;
     border: 1.5px solid rgba(120,100,220,0.45);
@@ -85,13 +86,13 @@
   /* Dot at line endpoint on card */
   .card-dot {
     position: fixed;
+    top: 0; left: 0;
     width: 6px; height: 6px;
     border-radius: 50%;
     background: rgba(160,140,255,0.95);
     box-shadow: 0 0 6px rgba(150,130,255,0.9);
     pointer-events: none;
     z-index: 6;
-    transform: translate(-50%,-50%);
   }
 
   /* Lightbox */
@@ -223,6 +224,9 @@ const photos = [
   'assets/My Word Images/me.png'
 ];
 
+const isMobile = window.innerWidth < 768;
+const activePhotos = isMobile ? photos.slice(0, 12) : photos;
+
 // ─── Responsive orbit scale ────────────────────────────────────────────────────
 function orbitScale() {
   const vw = window.innerWidth, vh = window.innerHeight;
@@ -271,8 +275,8 @@ function fibPoint(i, n) {
     nz: Math.sin(phi) * Math.sin(theta),
   };
 }
-const N = photos.length;
-const fibPts = photos.map((_, i) => fibPoint(i, N));
+const N = activePhotos.length;
+const fibPts = activePhotos.map((_, i) => fibPoint(i, N));
 
 // ─── Image natural ratios ──────────────────────────────────────────────────────
 // We'll measure each image once loaded, then store aspect ratio
@@ -284,7 +288,7 @@ const lightbox = document.getElementById('lightbox');
 const lbImg    = document.getElementById('lightbox-img');
 let wasDragging = false;
 
-const cards = photos.map((src, i) => {
+const cards = activePhotos.map((src, i) => {
   // Preload to get natural ratio
   const probe = new Image();
   probe.src = src;
@@ -458,15 +462,23 @@ function animate() {
     const { el, dot, line } = cards[i];
     const depth   = (rz + 1) / 2;           // 0=back 1=front
     const opacity = 0.25 + depth * 0.75;
-    const { w, h } = cardSize(ratios[i], depth, cfg.base);
+    
+    const baseW = cfg.base;
+    const baseH = cfg.base / ratios[i];
+    const scaleFact = 0.55 + depth * 0.55;
 
-    el.style.left      = sx + 'px';
-    el.style.top       = sy + 'px';
-    el.style.width     = w + 'px';
-    el.style.height    = h + 'px';
-    el.style.transform = `translate(-50%,-50%)`;
+    if (el._baseW !== baseW) {
+      el.style.width = baseW + 'px';
+      el.style.height = baseH + 'px';
+      el._baseW = baseW;
+    }
+
+    el.style.transform = `translate3d(${sx}px, ${sy}px, 0) translate(-50%,-50%) scale(${scaleFact})`;
     el.style.opacity   = opacity;
     el.style.zIndex    = Math.round(depth * 15);
+
+    const w = baseW * scaleFact;
+    const h = baseH * scaleFact;
 
     // Nearest point on card edge toward center
     const ddx = gx - sx, ddy = gy - sy;
@@ -481,8 +493,7 @@ function animate() {
     const ex  = sx + nx * t0;
     const ey  = sy + ny * t0;
 
-    dot.style.left    = ex + 'px';
-    dot.style.top     = ey + 'px';
+    dot.style.transform = `translate3d(${ex}px, ${ey}px, 0) translate(-50%,-50%)`;
     dot.style.opacity = opacity;
     dot.style.zIndex  = Math.round(depth * 15) + 1;
 

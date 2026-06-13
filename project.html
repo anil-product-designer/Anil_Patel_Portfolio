@@ -189,6 +189,11 @@
       <a href="index.html" style="font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;text-decoration:none;" onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
       <span>Web App · SaaS · Design</span>
       <span class="nav-tag">Case Study · 2026</span>
+    
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
     </div>
   </nav>
 
@@ -278,6 +283,7 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
   </script>
+  <script src="js/theme.js"></script>
 </body>
 </html>
 

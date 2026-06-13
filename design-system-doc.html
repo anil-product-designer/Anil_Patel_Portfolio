@@ -1075,6 +1075,11 @@
       <a href="#effects">Effects</a>
       <a href="#motion">Motion</a>
       <a href="#code">Code</a>
+    
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
+        <span class="sun-icon">☀️</span>
+        <span class="moon-icon">🌙</span>
+      </button>
     </div>
   </nav>
 
@@ -1998,6 +2003,7 @@
     }, { threshold: 0.1 });
     reveals.forEach(el => observer.observe(el));
   </script>
+  <script src="js/theme.js"></script>
 </body>
 
 </html>

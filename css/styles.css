@@ -75,18 +75,18 @@
 
 /* Light Mode Variables */
 .light-mode {
-  --bg: #f8f8fb;
-  --bg2: #f1f0ff;
-  --bg3: #e8e6ff;
+  --bg: #F8F8FB;
+  --bg2: #FFFFFF;
+  --bg3: #F1F0FF;
   --violet: #7c3aed;
   --violet-bright: #6d28d9;
   --violet-dim: #c4b5fd;
   --violet-glow: rgba(124, 58, 237, 0.08);
-  --text: #0a0a14;
-  --text-muted: #5a5775;
-  --text-dim: #9492b0;
-  --line: rgba(124, 58, 237, 0.12);
-  --header-bg: rgba(248, 248, 251, 0.9);
+  --text: #1A1A24;
+  --text-muted: #4A4660;
+  --text-dim: #7A7596;
+  --line: rgba(124, 58, 237, 0.15);
+  --header-bg: rgba(248, 248, 251, 0.95);
 }
 
 *,

@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -52,7 +52,7 @@
       opacity: 0.6;
     }
 
-    /* ── NAV ─────────────────────────── */
+    /* -- NAV --------------------------- */
     nav {
       position: fixed;
       top: 0;
@@ -101,7 +101,7 @@
       border: 1px solid var(--teal);
     }
 
-    /* ── HERO ─────────────────────────── */
+    /* -- HERO --------------------------- */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -223,7 +223,7 @@
       text-transform: uppercase;
     }
 
-    /* ── SECTIONS ─────────────────────── */
+    /* -- SECTIONS ----------------------- */
     section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E');
       padding: 120px 48px;
     }
@@ -264,7 +264,7 @@
       margin-bottom: 24px;
     }
 
-    /* ── CONTEXT ──────────────────────── */
+    /* -- CONTEXT ------------------------ */
     .context-section {
       background-color: var(--bg);
       border-top: 1px solid var(--line);
@@ -353,7 +353,7 @@
       text-transform: uppercase;
     }
 
-    /* ── PRINCIPLES ───────────────────── */
+    /* -- PRINCIPLES --------------------- */
     .principles-section {
       background-color: var(--bg2);
       border-top: 1px solid var(--line);
@@ -402,7 +402,7 @@
       line-height: 1.6;
     }
 
-    /* ── PROBLEM ──────────────────────── */
+    /* -- PROBLEM ------------------------ */
     .problem-section {
       background-color: var(--bg);
       border-top: 1px solid var(--line);
@@ -494,7 +494,7 @@
       font-weight: 400;
     }
 
-    /* ── DECISIONS ────────────────────── */
+    /* -- DECISIONS ---------------------- */
     .decisions-section {
       background-color: var(--bg2);
       border-top: 1px solid var(--line);
@@ -665,7 +665,7 @@
     }
 
     .impact-item::before {
-      content: '→';
+      content: '?';
       color: var(--teal-bright);
       flex-shrink: 0;
     }
@@ -727,11 +727,11 @@
     }
 
     .principle-tag::before {
-      content: '⟡';
+      content: '?';
       font-size: 10px;
     }
 
-    /* ── FLOW ─────────────────────────── */
+    /* -- FLOW --------------------------- */
     .flow-section {
       background-color: var(--bg);
       border-top: 1px solid var(--line);
@@ -799,7 +799,7 @@
       padding: 4px;
     }
 
-    /* ── EDGE CASES ───────────────────── */
+    /* -- EDGE CASES --------------------- */
     .edge-section {
       background-color: var(--bg2);
       border-top: 1px solid var(--line);
@@ -844,7 +844,7 @@
       line-height: 1.5;
     }
 
-    /* ── SCOPE ────────────────────────── */
+    /* -- SCOPE -------------------------- */
     .scope-section {
       background-color: var(--bg);
       border-top: 1px solid var(--line);
@@ -884,7 +884,7 @@
       margin-top: 5px;
     }
 
-    /* ── IMPACT ───────────────────────── */
+    /* -- IMPACT ------------------------- */
     .impact-section {
       background-color: var(--bg2);
       border-top: 1px solid var(--line);
@@ -951,7 +951,7 @@
       text-transform: uppercase;
     }
 
-    /* ── STORY ANGLE ──────────────────── */
+    /* -- STORY ANGLE -------------------- */
     .story-section {
       background-color: var(--bg);
       border-top: 1px solid var(--line);
@@ -991,7 +991,7 @@
       color: var(--text-muted);
     }
 
-    /* ── FOOTER ───────────────────────── */
+    /* -- FOOTER ------------------------- */
     footer {
       padding: 64px 48px;
       border-top: 1px solid var(--line);
@@ -1017,7 +1017,7 @@
       padding-top: 32px;
     }
 
-    /* ── ANIMATIONS ───────────────────── */
+    /* -- ANIMATIONS --------------------- */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -1030,7 +1030,7 @@
       }
     }
 
-    /* ── PROJECT NAVIGATION SECTION ──────────────── */
+    /* -- PROJECT NAVIGATION SECTION ---------------- */
     .project-nav-section {
       padding: 120px 48px;
       background-color: var(--bg2);
@@ -1091,7 +1091,7 @@
       color: var(--teal-bright);
     }
 
-    /* ── VISUAL COMPONENTS ─────────────────────── */
+    /* -- VISUAL COMPONENTS ----------------------- */
     .visual-box {
       width: 100%;
       height: 480px;
@@ -1155,7 +1155,7 @@
       margin: 0;
     }
 
-    /* ── RESPONSIVE RULES ─────────────────── */
+    /* -- RESPONSIVE RULES ------------------- */
     @media (min-width: 1600px) {
       nav { padding: 20px 80px; }
       .hero { padding: 0 80px 80px; }
@@ -1313,18 +1313,18 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
-    <a href="index.html" class="nav-logo" style="text-decoration: none;">Zenisth · IDP</a>
+    <a href="index.html#work" class="back-btn">? Back</a>
+    <a href="index.html" class="nav-logo" style="text-decoration: none;">Zenisth � IDP</a>
   </div>
     <div class="nav-meta">
       <a href="index.html"
         style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
         onmouseover="this.style.color='var(--teal-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>B2B SaaS · Intelligent Document Processing</span>
+      <span>B2B SaaS � Intelligent Document Processing</span>
       <span class="nav-tag">Case Study</span>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌑</span>
+        <span class="sun-icon">??</span>
+        <span class="moon-icon">??</span>
       </button>
     </div>
   </nav>
@@ -1333,7 +1333,7 @@
   <section class="hero" style="padding-top:120px;">
     <div class="hero-bg"></div>
     <div class="hero-eyebrow">
-      <span>Product Design · End-to-End · 2024</span>
+      <span>Product Design � End-to-End � 2024</span>
     </div>
     <h1 class="hero-title">
       <span class="line1">Designing</span>
@@ -1782,7 +1782,7 @@
           Output format is defined once during Tag creation not at the moment of download. This eliminates decision
           fatigue at the worst possible moment (post-extraction, when users just want their data). It also means the
           export pipeline handles one format per batch, simplifying the transformation logic significantly. Predictable
-          in → predictable out.
+          in ? predictable out.
         </p>
         <div class="impact-row">
           <div class="impact-col">
@@ -1873,37 +1873,37 @@
         <div class="flow-step-num">Step 01</div>
         <div class="flow-step-name">Upload</div>
         <div class="flow-step-desc">Documents land in a staging area. Nothing is processed yet.</div>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow">?</span>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">Step 02</div>
         <div class="flow-step-name">Preview</div>
         <div class="flow-step-desc">User reviews, removes, or adds documents before committing.</div>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow">?</span>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">Step 03</div>
         <div class="flow-step-name">Select Tag</div>
         <div class="flow-step-desc">Reusable schema applied. No reconfiguration required.</div>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow">?</span>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">Step 04</div>
         <div class="flow-step-name">See Credits</div>
         <div class="flow-step-desc">Batch summary shows document count and estimated cost.</div>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow">?</span>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">Step 05</div>
         <div class="flow-step-name">Confirm</div>
         <div class="flow-step-desc">Explicit user action triggers processing. Consent recorded.</div>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow">?</span>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">Step 06</div>
         <div class="flow-step-name">Extract</div>
         <div class="flow-step-desc">Structured data extracted against the Tag schema.</div>
-        <span class="flow-arrow">→</span>
+        <span class="flow-arrow">?</span>
       </div>
       <div class="flow-step">
         <div class="flow-step-num">Step 07</div>
@@ -1925,47 +1925,47 @@
       demo-grade.</p>
     <div class="edge-grid">
       <div class="edge-item">
-        <div class="edge-icon">📄</div>\n        <div class="edge-name">Duplicate Uploads</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Duplicate Uploads</div>
         <div class="edge-desc">Preview stage flags duplicates before processing. User decides no silent deduplication.
         </div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">❌</div>\n        <div class="edge-name">Corrupted Documents</div>
+        <div class="edge-icon">?</div>\n        <div class="edge-name">Corrupted Documents</div>
         <div class="edge-desc">Clear failure state with reason, retry option, and file safety confirmation. No red error
           walls.</div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">⚠️</div>\n        <div class="edge-name">Partial Extraction Failures</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Partial Extraction Failures</div>
         <div class="edge-desc">Partial success reported clearly. Successfully extracted documents downloadable
           immediately.</div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">📦</div>\n        <div class="edge-name">Large Batch Processing</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Large Batch Processing</div>
         <div class="edge-desc">Batch summary credit estimate scales with volume. Users see cost before committing large
           batches.</div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">🧮</div>\n        <div class="edge-name">Credit Miscalculation</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Credit Miscalculation</div>
         <div class="edge-desc">Estimates are shown as "up to X credits" conservative framing prevents underbilling
           surprises.</div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">🧩</div>\n        <div class="edge-name">Schema Mismatch</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Schema Mismatch</div>
         <div class="edge-desc">When document type doesn't match Tag schema, extraction reports field-level gaps not
           silent failures.</div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">📏</div>\n        <div class="edge-name">Document Size Limits</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Document Size Limits</div>
         <div class="edge-desc">Size limits communicated at upload, not after processing. Users know before they commit.
         </div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">😕</div>\n        <div class="edge-name">Non-Technical User Confusion</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Non-Technical User Confusion</div>
         <div class="edge-desc">Plain-language microcopy at every step. No technical error codes in user-facing
           interfaces.</div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">🏢</div>\n        <div class="edge-name">Enterprise Governance</div>
+        <div class="edge-icon">??</div>\n        <div class="edge-name">Enterprise Governance</div>
         <div class="edge-desc">Confirmation events and Document History provide audit-ready logs for compliance teams.
         </div>
       </div>
@@ -1981,7 +1981,7 @@
     <h2 class="section-title reveal-text" style="margin-bottom:48px;">What shipped. What was cut.<br>What's next.</h2>
     <div class="scope-grid reveal">
       <div>
-        <div class="scope-block-title" style="color:var(--accent-green);">✓ Shipped in V1</div>
+        <div class="scope-block-title" style="color:var(--accent-green);">? Shipped in V1</div>
         <div class="scope-item">
           <div class="scope-dot" style="background:var(--accent-green);"></div>Document preview staging area
         </div>
@@ -2008,7 +2008,7 @@
         </div>
       </div>
       <div>
-        <div class="scope-block-title" style="color:var(--accent-red);">✗ Cut for V1</div>
+        <div class="scope-block-title" style="color:var(--accent-red);">? Cut for V1</div>
         <div class="scope-item">
           <div class="scope-dot" style="background:var(--accent-red);"></div>Automatic document classification
         </div>
@@ -2025,7 +2025,7 @@
           <div class="scope-dot" style="background:var(--accent-red);"></div>Tag Library analytics
         </div>
 
-        <div class="scope-block-title" style="color:var(--accent-amber);margin-top:40px;">→ Planned for V2</div>
+        <div class="scope-block-title" style="color:var(--accent-amber);margin-top:40px;">? Planned for V2</div>
         <div class="scope-item">
           <div class="scope-dot" style="background:var(--accent-amber);"></div>Smart classification with user override
         </div>
@@ -2052,19 +2052,19 @@
     </h2>
     <div class="metrics-grid reveal">
       <div class="metric-item">
-        <div class="metric-num">↓</div>
+        <div class="metric-num">?</div>
         <div class="metric-label">Billing Disputes Eliminated</div>
       </div>
       <div class="metric-item">
-        <div class="metric-num">↑</div>
+        <div class="metric-num">?</div>
         <div class="metric-label">Enterprise Adoption Rate</div>
       </div>
       <div class="metric-item">
-        <div class="metric-num">7Ã—</div>
+        <div class="metric-num">7×</div>
         <div class="metric-label">Faster Workflow vs Manual Entry</div>
       </div>
       <div class="metric-item">
-        <div class="metric-num">∞</div>
+        <div class="metric-num">8</div>
         <div class="metric-label">Scalability via Design System</div>
       </div>
     </div>
@@ -2089,18 +2089,18 @@
     </div>
   </section>
 
-  <!-- ── PROJECT NAVIGATION ────────────────────── -->
+  <!-- -- PROJECT NAVIGATION ---------------------- -->
   <section class="project-nav-section">
     <div class="project-nav-grid">
       <a href="transify-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Previous Project</span>
         <h2 class="nav-project-title">Zenisth Transify</h2>
-        <div class="nav-project-btn">← View Case Study</div>
+        <div class="nav-project-btn">? View Case Study</div>
       </a>
       <a href="trailtribe-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Next Project</span>
         <h2 class="nav-project-title">TrailTribe App</h2>
-        <div class="nav-project-btn">View Case Study &nbsp; →</div>
+        <div class="nav-project-btn">View Case Study &nbsp; ?</div>
       </a>
     </div>
   </section>
@@ -2108,13 +2108,13 @@
   <!-- FOOTER -->
   <footer>
     <div>
-      <div class="footer-brand">Zenisth · IDP · Case Study</div>
-      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">B2B SaaS · Intelligent Document Processing ·
+      <div class="footer-brand">Zenisth � IDP � Case Study</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">B2B SaaS � Intelligent Document Processing �
         End-to-End Product Design</p>
     </div>
     <div class="footer-meta">
-      <p>7 Decisions · 4 Principles · 9 Edge Cases</p>
-      <p style="margin-top:4px;color:var(--text-dim);">V1 Shipped · V2 In Roadmap</p>
+      <p>7 Decisions � 4 Principles � 9 Edge Cases</p>
+      <p style="margin-top:4px;color:var(--text-dim);">V1 Shipped � V2 In Roadmap</p>
     </div>
   </footer>
 

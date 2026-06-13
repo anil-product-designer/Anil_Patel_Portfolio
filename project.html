@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -21,14 +21,14 @@
     body { background: var(--bg); color: var(--text); font-family: 'Stage Grotesk', sans-serif; letter-spacing: 0.03em; font-size: 14px; line-height: 1.7; overflow-x: hidden; }
     body::before { content: ''; position: fixed; inset: 0; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); pointer-events: none; z-index: 1000; opacity: 0.55; }
 
-    /* ── NAV ── */
+    /* -- NAV -- */
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 900; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: rgba(8,8,8,0.88); backdrop-filter: blur(24px); border-bottom: 1px solid var(--line); }
     .nav-logo { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 13px; letter-spacing: 0.15em; color: var(--purple-bright); text-transform: uppercase; text-decoration: none; }
     .nav-meta { display: flex; gap: 32px; align-items: center; }
     .nav-meta span { font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; }
     .nav-tag { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; background: var(--purple-dim); color: var(--purple-bright); padding: 4px 10px; border-radius: 2px; border: 1px solid var(--purple); }
 
-    /* ── SECTIONS ── */
+    /* -- SECTIONS -- */
     section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E'); padding: 112px 48px; border-top: 1px solid var(--line); background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); }
     section:nth-child(odd)  { background-color: var(--bg); }
     section:nth-child(even) { background-color: var(--bg2); }
@@ -51,9 +51,9 @@
     .meta-label { font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; }
     .meta-val { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 14px; color: var(--white); }
     .scroll-hint { position: relative; z-index: 1; font-size: 11px; letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase; margin-top: 32px; display: flex; align-items: center; gap: 10px; animation: fadeUp 0.7s 0.6s ease both; }
-    .scroll-hint::after { content: '↓'; color: var(--purple-bright); }
+    .scroll-hint::after { content: '?'; color: var(--purple-bright); }
 
-    /* ── SECTION LABEL ── */
+    /* -- SECTION LABEL -- */
     .section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 56px; }
     .section-label::before { content: ''; width: 24px; height: 1px; background-color: var(--purple); }
     .sl-text { font-size: 10px; letter-spacing: 0.25em; color: var(--purple-bright); text-transform: uppercase; }
@@ -64,14 +64,14 @@
     .content-body p { margin-bottom: 24px; font-size: 15px; color: var(--text); max-width: 720px; }
     .project-image { margin-top: 48px; margin-bottom: 48px; background: var(--bg3); width: 100%; border: 1px solid var(--line); border-radius: 4px; overflow: hidden; }
 
-    /* ── REVEAL ── */
+    /* -- REVEAL -- */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
-    /* ── ANIMATIONS ── */
+    /* -- ANIMATIONS -- */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-    /* ── PROJECT NAV ── */
+    /* -- PROJECT NAV -- */
     .project-nav-section { padding: 120px 48px; background-color: var(--bg2); background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E"); border-top: 1px solid var(--line); }
     .project-nav-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1200px; margin: 0 auto; }
     .nav-project-card { color: var(--text) !important;  text-align: center; padding: 48px; border: 1px solid var(--line); border-radius: 4px; transition: all 0.3s ease; text-decoration: none; display: flex; flex-direction: column; align-items: center; }
@@ -80,14 +80,14 @@
     .nav-project-title { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 32px; letter-spacing: -0.02em; margin-bottom: 24px; color: var(--text); }
     .nav-project-btn   { display: inline-flex; align-items: center; gap: 12px; font-family: 'Stage Grotesk', sans-serif; letter-spacing: 0.03em; font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--purple-bright); }
 
-    /* ── RESPONSIVE ── */
+    /* -- RESPONSIVE -- */
     @media (min-width: 1600px) {
       nav { padding: 20px 80px; }
       section { padding: 120px 80px; }
       .hero { padding: 0 80px 80px; }
     }
     @media (max-width: 1024px) {
-      /* Stack two-column grids → single column */
+      /* Stack two-column grids ? single column */
     }
     @media (max-width: 900px) {
       nav { padding: 16px 24px; }
@@ -183,17 +183,17 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html#work" class="back-btn">? Back</a>
     <a href="index.html" class="nav-logo">ZENISTH TRANSIFY</a>
   </div>
     <div class="nav-meta">
       <a href="index.html" style="font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;text-decoration:none;" onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>Web App · SaaS · Design</span>
-      <span class="nav-tag">Case Study · 2026</span>
+      <span>Web App � SaaS � Design</span>
+      <span class="nav-tag">Case Study � 2026</span>
     
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
+        <span class="sun-icon">??</span>
+        <span class="moon-icon">??</span>
       </button>
     </div>
   </nav>
@@ -201,7 +201,7 @@
   <!-- HERO -->
   <section class="hero" style="padding-top:120px; border-top:none;">
     <div class="hero-bg"></div>
-    <div class="hero-eyebrow"><span>Product Designer · Web App · B2B</span></div>
+    <div class="hero-eyebrow"><span>Product Designer � Web App � B2B</span></div>
     <h1 class="hero-title">
       <span class="line1">Zenisth</span>
       <span class="line2">Transify</span>
@@ -259,14 +259,14 @@
   <div class="project-nav-section">
     <div class="project-nav-grid">
       <a href="index.html#work" class="nav-project-card">
-        <div class="nav-project-label">← Return to Work</div>
+        <div class="nav-project-label">? Return to Work</div>
         <div class="nav-project-title">Portfolio</div>
-        <div class="nav-project-btn">View All Projects →</div>
+        <div class="nav-project-btn">View All Projects ?</div>
       </a>
       <a href="idp-case-study.html" class="nav-project-card">
-        <div class="nav-project-label">Next Project →</div>
+        <div class="nav-project-label">Next Project ?</div>
         <div class="nav-project-title">IDP Case Study</div>
-        <div class="nav-project-btn">View Case Study →</div>
+        <div class="nav-project-btn">View Case Study ?</div>
       </a>
     </div>
   </div>

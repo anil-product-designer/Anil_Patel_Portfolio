@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -234,7 +234,7 @@
       line-height: 1.7;
     }
 
-    /* ── 1. COLOR SYSTEM ──────────────── */
+    /* -- 1. COLOR SYSTEM ---------------- */
     .color-grid {
       display: flex;
       flex-direction: column;
@@ -291,7 +291,7 @@
       line-height: 1.4;
     }
 
-    /* ── 2. TYPOGRAPHY ──────────────────── */
+    /* -- 2. TYPOGRAPHY -------------------- */
     .type-grid {
       display: flex;
       flex-direction: column;
@@ -394,7 +394,7 @@
       margin-top: 4px;
     }
 
-    /* ── 3. SPACING ─────────────────── */
+    /* -- 3. SPACING ------------------- */
     .spacing-grid {
       display: flex;
       flex-direction: column;
@@ -434,7 +434,7 @@
       color: var(--text-dim);
     }
 
-    /* ── 4. COMPONENTS ──────────────── */
+    /* -- 4. COMPONENTS ---------------- */
     .component-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -568,7 +568,7 @@
     }
 
     .demo-impact-item::before {
-      content: '→';
+      content: '?';
       color: var(--violet-bright);
       flex-shrink: 0;
     }
@@ -675,11 +675,11 @@
     }
 
     .demo-principle::before {
-      content: '⟡';
+      content: '?';
       font-size: 10px;
     }
 
-    /* ── 5. BORDERS & EFFECTS ───────── */
+    /* -- 5. BORDERS & EFFECTS --------- */
     .effects-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -712,7 +712,7 @@
       line-height: 1.6;
     }
 
-    /* ── 6. MOTION ──────────────────── */
+    /* -- 6. MOTION -------------------- */
     .motion-grid {
       display: flex;
       flex-direction: column;
@@ -782,7 +782,7 @@
       }
     }
 
-    /* ── 7. CSS VARS BLOCK ──────────── */
+    /* -- 7. CSS VARS BLOCK ------------ */
     .css-vars-block {
       background: var(--bg);
       border: 1px solid var(--line);
@@ -804,7 +804,7 @@
     }
 
     .css-vars-header::before {
-      content: '●';
+      content: '?';
       color: var(--accent-red);
     }
 
@@ -828,7 +828,7 @@
       color: var(--text-dim);
     }
 
-    /* ── 8. GOOGLE FONTS BLOCK ──────── */
+    /* -- 8. GOOGLE FONTS BLOCK -------- */
     .import-block {
       background: var(--bg);
       border: 1px solid var(--line);
@@ -895,7 +895,7 @@
       text-align: right;
     }
 
-    /* ── REVEAL ── */
+    /* -- REVEAL -- */
     .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.55s ease, transform 0.55s ease; }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
@@ -1064,11 +1064,11 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html#work" class="back-btn">? Back</a>
     <div class="nav-title"><a href="index.html" style="text-decoration:none; color:inherit;">Design System Doc</a></div>
   </div>
     <div class="nav-links">
-      <a href="index.html" style="opacity:0.6;">← Portfolio</a>
+      <a href="index.html" style="opacity:0.6;">? Portfolio</a>
       <a href="#colors">Colors</a>
       <a href="#typography">Typography</a>
       <a href="#spacing">Spacing</a>
@@ -1078,8 +1078,8 @@
       <a href="#code">Code</a>
     
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌙</span>
+        <span class="sun-icon">??</span>
+        <span class="moon-icon">??</span>
       </button>
     </div>
   </nav>
@@ -1087,7 +1087,7 @@
   <!-- HERO -->
   <div class="doc-hero">
     <div class="doc-hero-eyebrow reveal">
-      <span>Dark Editorial Design System · v1.0</span>
+      <span>Dark Editorial Design System � v1.0</span>
     </div>
     <h1 class="doc-hero-title reveal-text">
       <span class="dim">Everything you need</span><br>
@@ -1106,9 +1106,9 @@
     </div>
   </div>
 
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <!-- 1. COLOR SYSTEM -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <section class="doc-section" id="colors">
     <div class="sec-label reveal">
       <span class="sec-label-text">Color System</span>
@@ -1174,7 +1174,7 @@
             <div class="swatch-info">
               <div class="swatch-name">--violet-bright</div>
               <div class="swatch-hex">#a855f7</div>
-              <div class="swatch-use">Labels, arrows (→), tags, highlights.</div>
+              <div class="swatch-use">Labels, arrows (?), tags, highlights.</div>
             </div>
           </div>
           <div class="color-swatch">
@@ -1274,9 +1274,9 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <!-- 2. TYPOGRAPHY -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <section class="doc-section" id="typography">
     <div class="sec-label reveal">
       <span class="sec-label-text">Typography</span>
@@ -1290,7 +1290,7 @@
       <div class="type-row">
         <div class="type-meta">
           <div class="type-role">Display / Headlines</div>
-          <div class="type-spec">Bricolage Grotesque · 700 / 800</div>
+          <div class="type-spec">Bricolage Grotesque � 700 / 800</div>
         </div>
         <div class="type-preview">
           <div
@@ -1305,7 +1305,7 @@
       <div class="type-row">
         <div class="type-meta">
           <div class="type-role">Italic / Emphasis</div>
-          <div class="type-spec">Fraunces · 300 italic</div>
+          <div class="type-spec">Fraunces � 300 italic</div>
         </div>
         <div class="type-preview">
           <div
@@ -1320,14 +1320,14 @@
       <div class="type-row">
         <div class="type-meta">
           <div class="type-role">Body / UI / Code</div>
-          <div class="type-spec">DM Mono · 300 / 400 / 500</div>
+          <div class="type-spec">DM Mono � 300 / 400 / 500</div>
         </div>
         <div class="type-preview">
           <div style="font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;color:var(--text-muted);">
             Enterprise teams translating documents face<br>
-            <span style="color:var(--accent-green)">→ inconsistent terminology</span><br>
-            <span style="color:var(--accent-green)">→ no batch control</span><br>
-            <span style="color:var(--accent-green)">→ unclear cost estimation</span>
+            <span style="color:var(--accent-green)">? inconsistent terminology</span><br>
+            <span style="color:var(--accent-green)">? no batch control</span><br>
+            <span style="color:var(--accent-green)">? unclear cost estimation</span>
           </div>
         </div>
         <div class="type-usage">Used for: Body copy, labels, badges, code blocks, metadata, captions, nav items.
@@ -1337,35 +1337,35 @@
       <div class="type-row">
         <div class="type-meta">
           <div class="type-role">Labels / Eyebrows</div>
-          <div class="type-spec">DM Mono · letter-spacing: 0.15–0.25em · uppercase</div>
+          <div class="type-spec">DM Mono � letter-spacing: 0.15�0.25em � uppercase</div>
         </div>
         <div class="type-preview">
           <div
             style="font-family:'DM Mono',monospace;font-size:11px;letter-spacing:0.22em;text-transform:uppercase;color:var(--violet-bright);">
-            Design Decisions · / 03
+            Design Decisions � / 03
           </div>
         </div>
         <div class="type-usage">Used for: Section labels, eyebrow text above headings, badge text, nav links. Always
-          uppercase, always spaced out, always small (10–12px).</div>
+          uppercase, always spaced out, always small (10�12px).</div>
       </div>
     </div>
 
     <!-- Font pairing demo -->
     <div class="pairing-box reveal">
-      <div class="pairing-header">▶ Live Pairing Demo</div>
+      <div class="pairing-header">? Live Pairing Demo</div>
       <div class="pairing-body">
         <div class="pairing-display">Enterprise Translation<br><span style="color:var(--text-dim)">Redesigned.</span>
         </div>
         <div class="pairing-italic">not just an AI tool: <strong
             style="color:var(--text);font-style:normal;font-weight:400;">a controlled workflow.</strong></div>
-        <p class="pairing-body-text">I structured the workflow into four explicit states: Upload → Select Tag →
-          Translate → Download. Each step is atomic: the user completes one cognitive task before advancing. This isn't
+        <p class="pairing-body-text">I structured the workflow into four explicit states: Upload ? Select Tag ?
+          Translate ? Download. Each step is atomic: the user completes one cognitive task before advancing. This isn't
           just UX polish; it maps directly to backend state management.</p>
         <div style="margin-top:20px;">
-          <span class="pairing-code">font-family: 'Bricolage Grotesque' → Heroes & Titles</span>
-          <span class="pairing-code" style="color:var(--violet-bright);">font-family: 'Fraunces' → Italic
+          <span class="pairing-code">font-family: 'Bricolage Grotesque' ? Heroes & Titles</span>
+          <span class="pairing-code" style="color:var(--violet-bright);">font-family: 'Fraunces' ? Italic
             Subtitles</span>
-          <span class="pairing-code" style="color:var(--text-muted);">font-family: 'DM Mono' → Body & UI</span>
+          <span class="pairing-code" style="color:var(--text-muted);">font-family: 'DM Mono' ? Body & UI</span>
         </div>
       </div>
     </div>
@@ -1384,9 +1384,9 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <!-- 3. SPACING -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <section class="doc-section" id="spacing">
     <div class="sec-label reveal">
       <span class="sec-label-text">Spacing Scale</span>
@@ -1450,7 +1450,7 @@
         <div class="spacing-bar-wrap">
           <div class="spacing-bar" style="width:96px;"></div>
         </div>
-        <div class="spacing-px">96–120px</div>
+        <div class="spacing-px">96�120px</div>
         <div class="spacing-use">Section vertical padding (top & bottom)</div>
       </div>
       <div class="spacing-row">
@@ -1464,9 +1464,9 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <!-- 4. COMPONENTS -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <section class="doc-section" id="components">
     <div class="sec-label reveal">
       <span class="sec-label-text">Components</span>
@@ -1691,7 +1691,7 @@
           border-radius: <span class="c-amber">2px</span>;
           }
           <span class="c-purple">.principle-tag::before</span> {
-          content: <span class="c-green">'⟡'</span>;
+          content: <span class="c-green">'?'</span>;
           font-size: <span class="c-amber">10px</span>;
           }
         </div>
@@ -1700,9 +1700,9 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <!-- 5. EFFECTS -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <section class="doc-section" id="effects">
     <div class="sec-label reveal">
       <span class="sec-label-text">Visual Effects</span>
@@ -1758,9 +1758,9 @@
         <div class="effect-card-desc">Instead of adding individual borders to grid children, set gap:1px and
           background:var(--line) on the parent. The gap color becomes the border.</div>
         <div class="effect-code">.grid-parent {<br>&nbsp;&nbsp;display: grid;<br>&nbsp;&nbsp;grid-template-columns: 1fr
-          1fr;<br>&nbsp;&nbsp;gap: 1px;<br>&nbsp;&nbsp;background: var(--line); /* ← border */<br>&nbsp;&nbsp;border:
+          1fr;<br>&nbsp;&nbsp;gap: 1px;<br>&nbsp;&nbsp;background: var(--line); /* ? border */<br>&nbsp;&nbsp;border:
           1px solid var(--line);<br>&nbsp;&nbsp;overflow: hidden;<br>}<br>.grid-child {<br>&nbsp;&nbsp;background:
-          var(--bg2); /* ← fill */<br>}</div>
+          var(--bg2); /* ? fill */<br>}</div>
       </div>
 
       <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
@@ -1774,9 +1774,9 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <!-- 6. MOTION -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <section class="doc-section" id="motion">
     <div class="sec-label reveal">
       <span class="sec-label-text">Motion Design</span>
@@ -1790,7 +1790,7 @@
       <div class="motion-row">
         <div>
           <div class="motion-name">Fade Up (entry)</div>
-          <div class="motion-val">opacity 0→1 + translateY 24px→0</div>
+          <div class="motion-val">opacity 0?1 + translateY 24px?0</div>
         </div>
         <div class="motion-demo">
           <div class="motion-bar"></div>
@@ -1810,10 +1810,10 @@
       <div class="motion-row">
         <div>
           <div class="motion-name">Duration</div>
-          <div class="motion-val">0.5s – 0.7s</div>
+          <div class="motion-val">0.5s � 0.7s</div>
         </div>
         <div class="motion-demo">
-          <div style="font-size:11px;color:var(--text-dim);">— standard —</div>
+          <div style="font-size:11px;color:var(--text-dim);">� standard �</div>
         </div>
         <div class="motion-use">Long enough to feel intentional, short enough to feel snappy.</div>
       </div>
@@ -1823,27 +1823,27 @@
           <div class="motion-val">ease (CSS default)</div>
         </div>
         <div class="motion-demo">
-          <div style="font-size:11px;color:var(--text-dim);">— smooth —</div>
+          <div style="font-size:11px;color:var(--text-dim);">� smooth �</div>
         </div>
         <div class="motion-use">No cubic-bezier complexity needed. ease-in-out for emphasis.</div>
       </div>
       <div class="motion-row">
         <div>
           <div class="motion-name">Hover Transitions</div>
-          <div class="motion-val">0.2s – 0.3s</div>
+          <div class="motion-val">0.2s � 0.3s</div>
         </div>
         <div class="motion-demo">
-          <div style="font-size:11px;color:var(--text-dim);">— instant feel —</div>
+          <div style="font-size:11px;color:var(--text-dim);">� instant feel �</div>
         </div>
         <div class="motion-use">Color and background changes on hover. Never 0s (jarring) or 0.5s+ (laggy).</div>
       </div>
       <div class="motion-row">
         <div>
           <div class="motion-name">Scroll Observer</div>
-          <div class="motion-val">IntersectionObserver · threshold: 0.1</div>
+          <div class="motion-val">IntersectionObserver � threshold: 0.1</div>
         </div>
         <div class="motion-demo">
-          <div style="font-size:11px;color:var(--text-dim);">— on viewport —</div>
+          <div style="font-size:11px;color:var(--text-dim);">� on viewport �</div>
         </div>
         <div class="motion-use">Trigger fadeUp when card enters viewport. No libraries needed.</div>
       </div>
@@ -1886,9 +1886,9 @@
     </div>
   </section>
 
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <!-- 7. FULL CSS VARS REFERENCE -->
-  <!-- ══════════════════════════════════════ -->
+  <!-- -------------------------------------- -->
   <section class="doc-section" id="code">
     <div class="sec-label reveal">
       <span class="sec-label-text">Code Reference</span>
@@ -1901,11 +1901,11 @@
     <div class="css-vars-block reveal">
       <div class="css-vars-header">Complete CSS Foundation: Copy This</div>
       <div class="css-vars-body">
-        <span class="cv-comment">/* ── GOOGLE FONTS IMPORT (in &lt;head&gt;) ─── */</span>
+        <span class="cv-comment">/* -- GOOGLE FONTS IMPORT (in &lt;head&gt;) --- */</span>
         <span class="cv-comment">/* Bricolage Grotesque + DM Mono + Fraunces */</span>
         <span class="cv-comment">/* URL in Typography section above */</span>
 
-        <span class="cv-comment">/* ── CSS CUSTOM PROPERTIES ─────────────── */</span>
+        <span class="cv-comment">/* -- CSS CUSTOM PROPERTIES --------------- */</span>
         <span class="cv">:root</span> {
         <span class="cv-comment">/* Backgrounds */</span>
         <span class="cv">--bg</span>: <span class="cv-val">#0a0a0f</span>;
@@ -1933,13 +1933,13 @@
         <span class="cv">--accent-indigo</span>: <span class="cv-val">#818cf8</span>;
         }
 
-        <span class="cv-comment">/* ── BASE RESET ─────────────────────────── */</span>
+        <span class="cv-comment">/* -- BASE RESET --------------------------- */</span>
         <span class="cv">*, *::before, *::after</span> {
         box-sizing: <span class="cv-val">border-box</span>;
         margin: <span class="cv-val">0</span>; padding: <span class="cv-val">0</span>;
         }
 
-        <span class="cv-comment">/* ── BODY ───────────────────────────────── */</span>
+        <span class="cv-comment">/* -- BODY --------------------------------- */</span>
         <span class="cv">body</span> {
         background: var(<span class="cv">--bg</span>);
         color: var(<span class="cv">--text</span>);
@@ -1949,7 +1949,7 @@
         overflow-x: <span class="cv-val">hidden</span>;
         }
 
-        <span class="cv-comment">/* ── GRAIN OVERLAY ──────────────────────── */</span>
+        <span class="cv-comment">/* -- GRAIN OVERLAY ------------------------ */</span>
         <span class="cv">body::before</span> {
         content: <span class="cv-val">''</span>;
         position: <span class="cv-val">fixed</span>; inset: <span class="cv-val">0</span>;
@@ -1961,14 +1961,14 @@
         z-index: <span class="cv-val">1000</span>; opacity: <span class="cv-val">0.6</span>;
         }
 
-        <span class="cv-comment">/* ── TYPOGRAPHY SHORTCUTS ───────────────── */</span>
+        <span class="cv-comment">/* -- TYPOGRAPHY SHORTCUTS ----------------- */</span>
         <span class="cv">.font-display</span> { font-family: <span class="cv-val">'Bricolage Grotesque'</span>, sans-serif;
         font-weight: <span class="cv-val">800</span>; }
         <span class="cv">.font-italic</span> { font-family: <span class="cv-val">'Fraunces'</span>, serif; font-weight:
         <span class="cv-val">300</span>; font-style: <span class="cv-val">italic</span>; }
         <span class="cv">.font-mono</span> { font-family: <span class="cv-val">'DM Mono'</span>, monospace; }
 
-        <span class="cv-comment">/* ── GRADIENT TEXT ──────────────────────── */</span>
+        <span class="cv-comment">/* -- GRADIENT TEXT ------------------------ */</span>
         <span class="cv">.text-gradient</span> {
         background: <span class="cv-val">linear-gradient(135deg, #a855f7 0%, #c084fc 100%)</span>;
         -webkit-background-clip: <span class="cv-val">text</span>;
@@ -1982,12 +1982,12 @@
   <!-- FOOTER -->
   <footer>
     <div>
-      <div class="footer-brand">Dark Editorial Design System · v1.0</div>
+      <div class="footer-brand">Dark Editorial Design System � v1.0</div>
       <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Extracted from Zenisth Transify Case Study</p>
     </div>
     <div class="footer-note">
-      <p>Bricolage Grotesque · DM Mono · Fraunces</p>
-      <p style="color:var(--text-dim);margin-top:4px;">Pure HTML + CSS · No dependencies</p>
+      <p>Bricolage Grotesque � DM Mono � Fraunces</p>
+      <p style="color:var(--text-dim);margin-top:4px;">Pure HTML + CSS � No dependencies</p>
     </div>
   </footer>
 

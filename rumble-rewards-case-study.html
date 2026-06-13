@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -63,7 +63,7 @@
       opacity: 0.55;
     }
 
-    /* ── NAV ─────────────────────────── */
+    /* -- NAV --------------------------- */
     nav {
       position: fixed;
       top: 0;
@@ -112,7 +112,7 @@
       border: 1px solid var(--purple);
     }
 
-    /* ── THEME TOGGLE ─────────────────── */
+    /* -- THEME TOGGLE ------------------- */
     .theme-toggle {
       background: none;
       border: 1px solid var(--line);
@@ -150,7 +150,7 @@
       display: none;
     }
 
-    /* ── NEXT PROJECT ─────────────────── */
+    /* -- NEXT PROJECT ------------------- */
     .next-project {
       padding: 120px 48px;
       text-align: center;
@@ -197,7 +197,7 @@
       transform: translateY(-2px);
     }
 
-    /* ── HERO ─────────────────────────── */
+    /* -- HERO --------------------------- */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -352,11 +352,11 @@
     }
 
     .scroll-hint::after {
-      content: '↓';
+      content: '?';
       color: var(--purple-bright);
     }
 
-    /* ── COMMON SECTION ───────────────── */
+    /* -- COMMON SECTION ----------------- */
     section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E');
       padding: 112px 48px;
       border-top: 1px solid var(--line);
@@ -416,7 +416,7 @@
       max-width: 540px;
     }
 
-    /* ── PLATFORM OVERVIEW ─────────────── */
+    /* -- PLATFORM OVERVIEW --------------- */
     .platform-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -516,7 +516,7 @@
       display: inline-block;
     }
 
-    /* ── MY ROLE ──────────────────────── */
+    /* -- MY ROLE ------------------------ */
     .role-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -547,7 +547,7 @@
     }
 
     .role-focus-item::before {
-      content: '→';
+      content: '?';
       color: var(--purple-bright);
       flex-shrink: 0;
       margin-top: 0;
@@ -585,7 +585,7 @@
       color: var(--text-muted);
     }
 
-    /* ── PROBLEM ──────────────────────── */
+    /* -- PROBLEM ------------------------ */
     .problem-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -653,7 +653,7 @@
       font-weight: 400;
     }
 
-    /* ── OBJECTIVE ────────────────────── */
+    /* -- OBJECTIVE ---------------------- */
     .objective-center {
       max-width: 860px;
       margin: 0 auto;
@@ -695,7 +695,7 @@
       line-height: 1.5;
     }
 
-    /* ── RESEARCH ─────────────────────── */
+    /* -- RESEARCH ----------------------- */
     .research-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -734,7 +734,7 @@
     }
 
     .research-item::before {
-      content: '·';
+      content: '�';
       color: var(--purple-bright);
       font-size: 18px;
       flex-shrink: 0;
@@ -776,7 +776,7 @@
       line-height: 1.5;
     }
 
-    /* ── DECISIONS ────────────────────── */
+    /* -- DECISIONS ---------------------- */
     .decisions-intro {
       font-size: 16px;
       color: var(--text-muted);
@@ -950,11 +950,11 @@
     }
 
     .reason-tag::before {
-      content: '⟡';
+      content: '?';
       font-size: 10px;
     }
 
-    /* ── SCREENSHOT FLOW ──────────────── */
+    /* -- SCREENSHOT FLOW ---------------- */
 
     .screen-row {
       display: grid;
@@ -1063,7 +1063,7 @@
       color: var(--text-muted);
     }
 
-    /* ── IMPACT ───────────────────────── */
+    /* -- IMPACT ------------------------- */
     .impact-headline {
       font-family: 'Bricolage Grotesque', sans-serif;
       font-weight: 800;
@@ -1154,7 +1154,7 @@
       font-weight: 400;
     }
 
-    /* ── LEARNINGS ────────────────────── */
+    /* -- LEARNINGS ---------------------- */
     .learnings-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -1203,7 +1203,7 @@
       line-height: 1.6;
     }
 
-    /* ── WHAT THIS SHOWS ──────────────── */
+    /* -- WHAT THIS SHOWS ---------------- */
 
     .dem-grid {
       display: grid;
@@ -1239,7 +1239,7 @@
       line-height: 1.3;
     }
 
-    /* ── FOOTER ───────────────────────── */
+    /* -- FOOTER ------------------------- */
     footer {
       padding: 60px 48px;
       border-top: 1px solid var(--line);
@@ -1265,7 +1265,7 @@
       padding-top: 32px;
     }
 
-    /* ── ANIMATIONS ───────────────────── */
+    /* -- ANIMATIONS --------------------- */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -1278,7 +1278,7 @@
       }
     }
 
-    /* ── PROJECT NAVIGATION SECTION ──────────────── */
+    /* -- PROJECT NAVIGATION SECTION ---------------- */
     .project-nav-section {
       padding: 120px 48px;
       background-color: var(--bg2);
@@ -1339,7 +1339,7 @@
       color: var(--purple-bright);
     }
 
-    /* ── RESPONSIVE RULES ─────────────────── */
+    /* -- RESPONSIVE RULES ------------------- */
     @media (min-width: 1600px) {
       nav { padding: 20px 80px; }
       .hero { padding: 0 80px 80px; }
@@ -1519,23 +1519,23 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html#work" class="back-btn">? Back</a>
     <a href="index.html" class="nav-logo" style="text-decoration: none;">Rumble Rewards</a>
   </div>
     <div class="nav-meta">
       <a href="index.html"
         style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
         onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>Fintech · Play Store · Conversion</span>
-      <span class="nav-tag">Case Study · 2026</span>
+      <span>Fintech � Play Store � Conversion</span>
+      <span class="nav-tag">Case Study � 2026</span>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌑</span>
+        <span class="sun-icon">??</span>
+        <span class="moon-icon">??</span>
       </button>
     </div>
   </nav>
 
-  <!-- ── HERO ─────────────────────────────────── -->
+  <!-- -- HERO ----------------------------------- -->
   <section class="hero" style="padding-top:120px; border-top:none;">
     <div class="hero-bg"></div>
 
@@ -1553,7 +1553,7 @@
       <rect x="60" y="320" width="100" height="28" rx="14" fill="#7c3aed" opacity="0.3" />
     </svg>
 
-    <div class="hero-eyebrow"><span>Product Design · Play Store · Conversion Focus</span></div>
+    <div class="hero-eyebrow"><span>Product Design � Play Store � Conversion Focus</span></div>
     <h1 class="hero-title">
       <span class="line1">Rumble</span>
       <span class="line2">Rewards</span>
@@ -1584,7 +1584,7 @@
     <div class="scroll-hint">Scroll to explore</div>
   </section>
 
-  <!-- ── 01. PLATFORM OVERVIEW ────────────────── -->
+  <!-- -- 01. PLATFORM OVERVIEW ------------------ -->
   <section>
     <div class="section-label reveal">
       <span class="sl-text">Platform Overview</span>
@@ -1599,24 +1599,24 @@
         </p>
         <div class="benefit-list">
           <div class="benefit-item">
-            <span class="benefit-icon">🏬</span>
+            <span class="benefit-icon">??</span>
             Pay rent on time, every time
-            <span class="benefit-arrow">→</span>
+            <span class="benefit-arrow">?</span>
           </div>
           <div class="benefit-item">
-            <span class="benefit-icon">🎁</span>
+            <span class="benefit-icon">??</span>
             Earn rewards on every rent payment
-            <span class="benefit-arrow">→</span>
+            <span class="benefit-arrow">?</span>
           </div>
           <div class="benefit-item">
-            <span class="benefit-icon">📈</span>
+            <span class="benefit-icon">??</span>
             Build better payment habits over time
-            <span class="benefit-arrow">→</span>
+            <span class="benefit-arrow">?</span>
           </div>
           <div class="benefit-item">
-            <span class="benefit-icon">💳</span>
+            <span class="benefit-icon">??</span>
             Access financial flexibility when needed
-            <span class="benefit-arrow">→</span>
+            <span class="benefit-arrow">?</span>
           </div>
         </div>
       </div>
@@ -1626,7 +1626,7 @@
           The goal of the platform is to reduce stress around rent payments while encouraging responsible financial
           behavior giving users rewards and flexibility in a space that typically offers neither.
         </p>
-        <div class="concept-badge" style="margin-bottom:12px;">Fintech · Consumer</div>
+        <div class="concept-badge" style="margin-bottom:12px;">Fintech � Consumer</div>
         <div class="concept-badge" style="margin-left:8px;">Rent Payments</div>
         <div
           style="margin-top:32px;padding:20px 24px;background:var(--bg3);border:1px solid var(--line);border-radius:4px;">
@@ -1641,7 +1641,7 @@
     </div>
   </section>
 
-  <!-- ── 02. MY ROLE ───────────────────────────── -->
+  <!-- -- 02. MY ROLE ----------------------------- -->
   <section>
     <div class="section-label reveal">
       <span class="sl-text">My Role</span>
@@ -1691,7 +1691,7 @@
     </div>
   </section>
 
-  <!-- ── 03. PROBLEM ───────────────────────────── -->
+  <!-- -- 03. PROBLEM ----------------------------- -->
   <section>
     <div class="section-label reveal">
       <span class="sl-text">The Problem</span>
@@ -1742,7 +1742,7 @@
     </div>
   </section>
 
-  <!-- ── 04. OBJECTIVE ─────────────────────────── -->
+  <!-- -- 04. OBJECTIVE --------------------------- -->
   <section>
     <div class="section-label reveal">
       <span class="sl-text">Objective</span>
@@ -1779,7 +1779,7 @@
     </div>
   </section>
 
-  <!-- ── 05. RESEARCH ──────────────────────────── -->
+  <!-- -- 05. RESEARCH ---------------------------- -->
   <section>
     <div class="section-label reveal">
       <span class="sl-text">Research &amp; Insights</span>
@@ -1828,7 +1828,7 @@
     </div>
   </section>
 
-  <!-- ── 06. DESIGN DECISIONS ──────────────────── -->
+  <!-- -- 06. DESIGN DECISIONS -------------------- -->
   <section>
     <div class="section-label reveal">
       <span class="sl-text">Design Decisions</span>
@@ -1859,11 +1859,11 @@
         <div class="before-after">
           <div class="ba-before">
             <div class="ba-label">Old Order: Emotion First</div>
-            <p class="ba-text">Emotional message → Features → Trust → Value → Social proof</p>
+            <p class="ba-text">Emotional message ? Features ? Trust ? Value ? Social proof</p>
           </div>
           <div class="ba-after">
             <div class="ba-label">New Order: Value First</div>
-            <p class="ba-text">Value → Simplification → Rewards → Flexibility → Habit building → Perks → Security →
+            <p class="ba-text">Value ? Simplification ? Rewards ? Flexibility ? Habit building ? Perks ? Security ?
               Social proof</p>
           </div>
         </div>
@@ -1876,7 +1876,7 @@
       <div class="decision-meta">
         <div class="decision-number">02</div>
         <div class="decision-badge badge-white">Microcopy</div>
-        <div class="decision-title">Reduced Text Length to 5–8 Word Headlines</div>
+        <div class="decision-title">Reduced Text Length to 5�8 Word Headlines</div>
       </div>
       <div class="decision-body">
         <p class="decision-headline">
@@ -1885,7 +1885,7 @@
         </p>
         <p class="decision-rationale">
           Users scan: they do not read. Every extra word is a decision to keep reading, and most users won't make that
-          decision more than once. I cut every headline to 5–8 words maximum, focusing on a single concrete benefit per
+          decision more than once. I cut every headline to 5�8 words maximum, focusing on a single concrete benefit per
           screen. The result is copy that registers in the time it takes to blink past it.
         </p>
         <div class="before-after">
@@ -1964,7 +1964,7 @@
           </div>
           <div class="ba-after">
             <div class="ba-label">After: Alternating Visual Modes</div>
-            <p class="ba-text">UI mockups → Concept visuals → Reward visuals three modes cycling across 8 screens.</p>
+            <p class="ba-text">UI mockups ? Concept visuals ? Reward visuals three modes cycling across 8 screens.</p>
           </div>
         </div>
         <div class="reason-tag">Visual variety prevents fatigue and sustains attention</div>
@@ -1997,7 +1997,7 @@
           </div>
           <div class="ba-after">
             <div class="ba-label">After: One Question Per Screen</div>
-            <p class="ba-text">What is this? → Why care? → Is it safe? → What do I gain? Each screen owns its question
+            <p class="ba-text">What is this? ? Why care? ? Is it safe? ? What do I gain? Each screen owns its question
               completely.</p>
           </div>
         </div>
@@ -2007,7 +2007,7 @@
 
   </section>
 
-  <!-- ── 07. SCREENSHOT FLOW ───────────────────── -->
+  <!-- -- 07. SCREENSHOT FLOW --------------------- -->
   <section class="screens-section">
     <div class="section-label reveal">
       <span class="sl-text">Final Screenshot Flow</span>
@@ -2166,7 +2166,7 @@
     </div>
   </section>
 
-  <!-- ── 08. IMPACT ─────────────────────────────── -->
+  <!-- -- 08. IMPACT ------------------------------- -->
   <section class="impact-section">
     <div class="section-label reveal">
       <span class="sl-text">Expected Impact</span>
@@ -2178,37 +2178,37 @@
     </h2>
     <div class="impact-items reveal">
       <div class="impact-item">
-        <div class="impact-icon">🎯</div>
+        <div class="impact-icon">??</div>
         <div class="impact-title">Product Clarity</div>
         <div class="impact-desc">Pay Now, Rent Later is now understandable within the first two screens before users
           have to decide anything.</div>
       </div>
       <div class="impact-item">
-        <div class="impact-icon">⚡</div>
+        <div class="impact-icon">?</div>
         <div class="impact-title">First Impression Strength</div>
         <div class="impact-desc">Screen 1 leads with concrete value not an emotion that requires context the user
           doesn't yet have.</div>
       </div>
       <div class="impact-item">
-        <div class="impact-icon">🔒</div>
+        <div class="impact-icon">??</div>
         <div class="impact-title">Trust Perception</div>
         <div class="impact-desc">Security and credibility signals distributed across the flow ambient, not
           conspicuous.</div>
       </div>
       <div class="impact-item">
-        <div class="impact-icon">🚀</div>
+        <div class="impact-icon">??</div>
         <div class="impact-title">Differentiation</div>
         <div class="impact-desc">Rumble Rewards now reads distinctly different from generic payment apps the rewards
           mechanic is front and center.</div>
       </div>
       <div class="impact-item">
-        <div class="impact-icon">📲</div>
+        <div class="impact-icon">??</div>
         <div class="impact-title">Download Confidence</div>
         <div class="impact-desc">Users end the scroll having answered the four questions that drive install decisions
           what, why, safe, and worth it.</div>
       </div>
       <div class="impact-item">
-        <div class="impact-icon">ðŸ”„</div>
+        <div class="impact-icon">🔄</div>
         <div class="impact-title">Structured Flow</div>
         <div class="impact-desc">The 8 screenshots now function as a single narrative arc: not 8 independent marketing
           slides.</div>
@@ -2223,7 +2223,7 @@
     </div>
   </section>
 
-  <!-- ── 09. KEY LEARNINGS ──────────────────────── -->
+  <!-- -- 09. KEY LEARNINGS ------------------------ -->
   <section>
     <div class="section-label reveal">
       <span class="sl-text">Key Learnings</span>
@@ -2259,13 +2259,13 @@
       <div class="learning-card">
         <div class="learning-num">05</div>
         <div class="learning-title">Most Users Stop at Screen 2</div>
-        <div class="learning-desc">Designing screens 3–8 to convert screen-2 stoppers is good hygiene. But screens 1 and
+        <div class="learning-desc">Designing screens 3�8 to convert screen-2 stoppers is good hygiene. But screens 1 and
           2 must close on their own, without backup.</div>
       </div>
     </div>
   </section>
 
-  <!-- ── 10. WHAT THIS DEMONSTRATES ────────────── -->
+  <!-- -- 10. WHAT THIS DEMONSTRATES -------------- -->
   <section class="demonstrates-section">
     <div class="section-label reveal">
       <span class="sl-text">What This Case Study Demonstrates</span>
@@ -2274,40 +2274,40 @@
     <div class="section-title reveal" style="margin-bottom:48px;">The thinking behind the screens.</div>
     <div class="dem-grid reveal">
       <div class="dem-item">
-        <div class="dem-icon">🧱</div>
+        <div class="dem-icon">??</div>
         <div class="dem-label">Product Positioning Thinking</div>
       </div>
       <div class="dem-item">
-        <div class="dem-icon">📊</div>
+        <div class="dem-icon">??</div>
         <div class="dem-label">Conversion Awareness</div>
       </div>
       <div class="dem-item">
-        <div class="dem-icon">✍️</div>
+        <div class="dem-icon">??</div>
         <div class="dem-label">Messaging Clarity</div>
       </div>
       <div class="dem-item">
-        <div class="dem-icon">📱</div>
+        <div class="dem-icon">??</div>
         <div class="dem-label">Mobile-First Layout Logic</div>
       </div>
       <div class="dem-item">
-        <div class="dem-icon">🔒</div>
+        <div class="dem-icon">??</div>
         <div class="dem-label">Trust-Oriented Design</div>
       </div>
     </div>
   </section>
 
-  <!-- ── PROJECT NAVIGATION ────────────────────── -->
+  <!-- -- PROJECT NAVIGATION ---------------------- -->
   <section class="project-nav-section">
     <div class="project-nav-grid">
       <a href="trailtribe-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Previous Project</span>
         <h2 class="nav-project-title">TrailTribe App</h2>
-        <div class="nav-project-btn">← View Case Study</div>
+        <div class="nav-project-btn">? View Case Study</div>
       </a>
       <a href="transify-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Next Project</span>
         <h2 class="nav-project-title">Zenisth Transify</h2>
-        <div class="nav-project-btn">View Case Study &nbsp; →</div>
+        <div class="nav-project-btn">View Case Study &nbsp; ?</div>
       </a>
     </div>
   </section>
@@ -2315,12 +2315,12 @@
   <!-- FOOTER -->
   <footer>
     <div>
-      <div class="footer-brand">Rumble Rewards · Play Store Case Study · 2025</div>
-      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Fintech · Conversion Design · Product Designer:
+      <div class="footer-brand">Rumble Rewards � Play Store Case Study � 2025</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Fintech � Conversion Design � Product Designer:
         Anil Patel</p>
     </div>
     <div class="footer-meta">
-      <p>5 Decisions · 8 Screens · 5 Learnings</p>
+      <p>5 Decisions � 8 Screens � 5 Learnings</p>
       <p style="margin-top:4px;color:var(--text-dim);">Pay Now, Rent Later</p>
     </div>
   </footer>

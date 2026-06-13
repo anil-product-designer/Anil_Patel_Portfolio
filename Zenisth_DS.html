@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -1301,14 +1301,23 @@
   .light-mode .moon-icon { display: inline; }
 </style>
 <script src="theme.js"></script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRVRBRC9ZQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRVRBRC9ZQ');
+</script>
 </head>
 <body>
 
 <!-- NAV -->
 <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
-    <div class="nav-logo">Zenisth AI · Design System</div>
+    <a href="index.html#work" class="back-btn">â† Back</a>
+    <div class="nav-logo">Zenisth AI Â· Design System</div>
   </div>
   <ul class="nav-links">
     <li><a href="#beginning">Beginning</a></li>
@@ -1319,8 +1328,8 @@
     <li><a href="#reflection">Reflection</a></li>
     <li>
       <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
-        <span class="sun-icon">☀️</span>
-        <span class="moon-icon">🌑</span>
+        <span class="sun-icon">â˜€ï¸</span>
+        <span class="moon-icon">ðŸŒ‘</span>
       </button>
     </li>
   </ul>
@@ -1332,7 +1341,7 @@
   <div class="hero-orb"></div>
   <div class="hero-orb-2"></div>
 
-  <div class="hero-tag">Case Study · Product Design · 2026</div>
+  <div class="hero-tag">Case Study Â· Product Design Â· 2026</div>
 
   <h1 class="hero-title">
     <span class="hero-title-line">From Zero</span>
@@ -1397,22 +1406,22 @@
 
   <div class="chaos-grid">
     <div class="chaos-card reveal">
-      <div class="chaos-icon">⬜</div>
+      <div class="chaos-icon">â¬œ</div>
       <div class="chaos-title">No Wireframes</div>
       <div class="chaos-desc">No existing UX flows, user journeys, or product screens to reference. Every interaction had to be designed from the ground up.</div>
     </div>
     <div class="chaos-card reveal">
-      <div class="chaos-icon">🧩</div>
+      <div class="chaos-icon">ðŸ§©</div>
       <div class="chaos-title">No Component System</div>
       <div class="chaos-desc">No reusable UI elements, no shared styles, no consistent patterns. Every screen was a potential inconsistency waiting to happen.</div>
     </div>
     <div class="chaos-card reveal">
-      <div class="chaos-icon">⚡</div>
+      <div class="chaos-icon">âš¡</div>
       <div class="chaos-title">Startup Velocity</div>
       <div class="chaos-desc">Six AI tools planned simultaneously. The product needed to move fast: but moving fast without a system would break everything at scale.</div>
     </div>
     <div class="chaos-card reveal">
-      <div class="chaos-icon">🧠</div>
+      <div class="chaos-icon">ðŸ§ </div>
       <div class="chaos-title">Sole Designer</div>
       <div class="chaos-desc">As the only designer on the team, every decision was mine: architecture, visuals, documentation, and handoff. Full ownership, full responsibility.</div>
     </div>
@@ -1584,17 +1593,17 @@
 
   <div class="component-flow reveal">
     <div class="flow-step">PRD Requirements</div>
-    <div class="flow-arrow">→</div>
+    <div class="flow-arrow">â†’</div>
     <div class="flow-step">Full UX Flows</div>
-    <div class="flow-arrow">→</div>
+    <div class="flow-arrow">â†’</div>
     <div class="flow-step">Wireframes</div>
-    <div class="flow-arrow">→</div>
+    <div class="flow-arrow">â†’</div>
     <div class="flow-step">Screen Audit</div>
-    <div class="flow-arrow">→</div>
+    <div class="flow-arrow">â†’</div>
     <div class="flow-step">Component List</div>
-    <div class="flow-arrow">→</div>
+    <div class="flow-arrow">â†’</div>
     <div class="flow-step">MVP Prioritization</div>
-    <div class="flow-arrow">→</div>
+    <div class="flow-arrow">â†’</div>
     <div class="flow-step">Build & Variant</div>
   </div>
 
@@ -1604,49 +1613,49 @@
   <div class="states-grid reveal">
     <div class="state-card">
       <div class="state-dot" style="background: rgba(90,70,199,0.15); border: 1px solid rgba(90,70,199,0.3);">
-        <span style="font-size:12px; color: var(--brand-light);">●</span>
+        <span style="font-size:12px; color: var(--brand-light);">â—</span>
       </div>
       <div class="state-name">Default</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(90,70,199,0.25); border: 1px solid rgba(90,70,199,0.5);">
-        <span style="font-size:12px;">🖱</span>
+        <span style="font-size:12px;">ðŸ–±</span>
       </div>
       <div class="state-name">Hover</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(90,70,199,0.35); border: 1px solid var(--brand);">
-        <span style="font-size:12px;">⚡</span>
+        <span style="font-size:12px;">âš¡</span>
       </div>
       <div class="state-name">Active</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(90,70,199,0.2); border: 2px solid var(--brand-light);">
-        <span style="font-size:12px; color:var(--brand-light);">◎</span>
+        <span style="font-size:12px; color:var(--brand-light);">â—Ž</span>
       </div>
       <div class="state-name">Focus</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(40,200,100,0.12); border: 1px solid rgba(40,200,100,0.3);">
-        <span style="font-size:12px;">✓</span>
+        <span style="font-size:12px;">âœ“</span>
       </div>
       <div class="state-name">Success</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(220,60,60,0.12); border: 1px solid rgba(220,60,60,0.3);">
-        <span style="font-size:12px;">⚠</span>
+        <span style="font-size:12px;">âš </span>
       </div>
       <div class="state-name">Error</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(255,180,0,0.12); border: 1px solid rgba(255,180,0,0.3);">
-        <span style="font-size:12px;">ℹ</span>
+        <span style="font-size:12px;">â„¹</span>
       </div>
       <div class="state-name">Info</div>
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(120,120,120,0.1); border: 1px solid rgba(120,120,120,0.2);">
-        <span style="font-size:12px; opacity:0.4;">○</span>
+        <span style="font-size:12px; opacity:0.4;">â—‹</span>
       </div>
       <div class="state-name">Disabled</div>
     </div>
@@ -1710,7 +1719,7 @@
 <!-- CHAPTER 5 BANNER - THE CLIMAX -->
 <div class="chapter-banner reveal" id="ai-twist">
   <div class="chapter-dot" style="background: #7B6BD4;"></div>
-  <span class="chapter-label" style="color: var(--brand-light);">Chapter 05 · The Twist</span>
+  <span class="chapter-label" style="color: var(--brand-light);">Chapter 05 Â· The Twist</span>
   <span class="chapter-name" style="margin-left:8px; color: var(--brand-light);">When the System Met the AI Era</span>
 </div>
 
@@ -1718,7 +1727,7 @@
 <div class="ai-section">
   <div class="ai-bg-pattern"></div>
   <div class="ai-section-inner">
-    <span class="ai-twist-label reveal">⚡ The Defining Moment</span>
+    <span class="ai-twist-label reveal">âš¡ The Defining Moment</span>
 
     <h2 style="font-family: var(--display); font-size: clamp(36px, 5vw, 72px); font-weight: 500; line-height: 1.05; letter-spacing: -2px; max-width: 800px; margin-bottom: 32px;">
       The Design System Needed to Work<br>With <span style="color: var(--brand-light);">AI.</span>
@@ -1731,27 +1740,27 @@
     <!-- AI PIPELINE -->
     <div class="ai-pipeline reveal">
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">🎨</div>
+        <div class="ai-pipe-icon">ðŸŽ¨</div>
         <div class="ai-pipe-name">Design System</div>
         <div class="ai-pipe-sub">Figma Tokens</div>
       </div>
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">📋</div>
+        <div class="ai-pipe-icon">ðŸ“‹</div>
         <div class="ai-pipe-name">Documentation</div>
         <div class="ai-pipe-sub">Design_Tokens.md</div>
       </div>
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">🤖</div>
+        <div class="ai-pipe-icon">ðŸ¤–</div>
         <div class="ai-pipe-name">AI Coding</div>
         <div class="ai-pipe-sub">Vibe Code Sessions</div>
       </div>
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">⚡</div>
+        <div class="ai-pipe-icon">âš¡</div>
         <div class="ai-pipe-name">Frontend</div>
         <div class="ai-pipe-sub">Token-Consistent UI</div>
       </div>
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">🚀</div>
+        <div class="ai-pipe-icon">ðŸš€</div>
         <div class="ai-pipe-name">Product</div>
         <div class="ai-pipe-sub">Zenisth AI Platform</div>
       </div>
@@ -1838,22 +1847,22 @@
       <div class="timeline-desc">Studied design system fundamentals through industry tutorials and guidance from mentors. Applied learnings immediately to the Zenisth architecture plan.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Week 02–03</div>
+      <div class="timeline-month">Week 02â€“03</div>
       <div class="timeline-event">Token Foundation Complete</div>
       <div class="timeline-desc">181 foundational tokens defined across color, typography, and numerical values. Three-layer token architecture established in Figma variables.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 01–02</div>
+      <div class="timeline-month">Month 01â€“02</div>
       <div class="timeline-event">MVP Component Library</div>
       <div class="timeline-desc">Core reusable components built from wireframe audits. Full state coverage, dark theme support, and responsive behavior for every component.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 02–03</div>
+      <div class="timeline-month">Month 02â€“03</div>
       <div class="timeline-event">Developer Enablement</div>
       <div class="timeline-desc">Figma Dev Mode configured with full component specs. Design_Tokens.md created to bridge design, development, and AI coding workflows.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 03–06</div>
+      <div class="timeline-month">Month 03â€“06</div>
       <div class="timeline-event">System Scales With Platform</div>
       <div class="timeline-desc">As new AI tools were introduced, the system expanded. New variants, updated patterns, refined documentation: all while maintaining backward compatibility across existing products.</div>
     </div>
@@ -1938,14 +1947,14 @@
     <p>
       The future of design systems isn't only visual consistency. It's creating systems that <em>humans and machines can build from together.</em>
     </p>
-    <div class="final-quote-author">— Founding Designer, Zenisth AI · 2026</div>
+    <div class="final-quote-author">â€” Founding Designer, Zenisth AI Â· 2026</div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Zenisth AI Design System</div>
-  <div class="footer-meta">Case Study · Product Design · 2026 · Built by the Founding Designer</div>
+  <div class="footer-meta">Case Study Â· Product Design Â· 2026 Â· Built by the Founding Designer</div>
 </footer>
 
 <script>
@@ -1993,3 +2002,4 @@
 
 </body>
 </html>
+

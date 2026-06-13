@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -31,7 +31,7 @@
     overflow-x: hidden;
   }
 
-  /* ─── noise overlay ─── */
+  /* â”€â”€â”€ noise overlay â”€â”€â”€ */
   body::before {
     content: '';
     position: fixed; inset: 0;
@@ -39,7 +39,7 @@
     pointer-events: none; z-index: 0; opacity: .6;
   }
 
-  /* ─── hero header ─── */
+  /* â”€â”€â”€ hero header â”€â”€â”€ */
   .hero {
     position: relative;
     padding: 120px 40px 80px;
@@ -101,7 +101,7 @@
     to   { opacity: 1; transform: translateY(0); }
   }
 
-  /* ─── divider line ─── */
+  /* â”€â”€â”€ divider line â”€â”€â”€ */
   .divider {
     width: 100%;
     height: 1px;
@@ -109,7 +109,7 @@
     margin: 0 auto 80px;
   }
 
-  /* ─── section titles ─── */
+  /* â”€â”€â”€ section titles â”€â”€â”€ */
   .section-label {
     font-family: 'Stage Grotesk', sans-serif; letter-spacing: 0.03em;
     font-size: 10px;
@@ -134,7 +134,7 @@
     background-color: var(--border);
   }
 
-  /* ─── grid ─── */
+  /* â”€â”€â”€ grid â”€â”€â”€ */
   .grid-wrapper {
     max-width: 1100px;
     margin: 0 auto;
@@ -147,7 +147,7 @@
     gap: 16px;
   }
 
-  /* ─── card ─── */
+  /* â”€â”€â”€ card â”€â”€â”€ */
   .tool-card {
     position: relative;
     background: var(--surface);
@@ -193,7 +193,7 @@
     transform: scale(1.1) rotate(-3deg);
   }
 
-  /* ─── icon wrapper ─── */
+  /* â”€â”€â”€ icon wrapper â”€â”€â”€ */
   .tool-icon {
     width: 60px; height: 60px;
     background: rgba(255,255,255,0.04);
@@ -237,7 +237,7 @@
     text-align: center;
   }
 
-  /* ─── category badge ─── */
+  /* â”€â”€â”€ category badge â”€â”€â”€ */
   .cat-dot {
     position: absolute;
     top: 12px; right: 12px;
@@ -245,7 +245,7 @@
     border-radius: 50%;
   }
 
-  /* ─── marquee strip ─── */
+  /* â”€â”€â”€ marquee strip â”€â”€â”€ */
   .marquee-section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E');
     padding: 40px 0;
     border-top: 1px solid var(--border);
@@ -290,7 +290,7 @@
     to   { transform: translateX(-50%); }
   }
 
-  /* ─── footer ─── */
+  /* â”€â”€â”€ footer â”€â”€â”€ */
   .footer {
     text-align: center;
     padding: 60px 40px;
@@ -303,12 +303,12 @@
 
   .footer em { color: var(--accent); font-style: normal; }
 
-  /* ─── scrollbar ─── */
+  /* â”€â”€â”€ scrollbar â”€â”€â”€ */
   ::-webkit-scrollbar { width: 4px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-  /* ─── stagger delays ─── */
+  /* â”€â”€â”€ stagger delays â”€â”€â”€ */
   .tool-card:nth-child(1)  { transition-delay: 0.00s; }
   .tool-card:nth-child(2)  { transition-delay: 0.04s; }
   .tool-card:nth-child(3)  { transition-delay: 0.08s; }
@@ -341,27 +341,36 @@
     transform: translateY(-6px) scale(1.03) !important;
   }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RRVRBRC9ZQ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RRVRBRC9ZQ');
+</script>
 </head>
 <body>
 
-<!-- ── Hero ── -->
+<!-- â”€â”€ Hero â”€â”€ -->
 <header class="hero">
   <div class="hero-glow"></div>
-  <p class="hero-label">✦ Design · Build · Ship · Repeat</p>
+  <p class="hero-label">âœ¦ Design Â· Build Â· Ship Â· Repeat</p>
   <h1>My Tool Stack</h1>
   <p class="hero-sub">// the exact tools powering every project</p>
 </header>
 
 <div class="divider"></div>
 
-<!-- ── Marquee ── -->
+<!-- â”€â”€ Marquee â”€â”€ -->
 <div class="marquee-section">
   <div class="marquee-track" id="marquee">
     <!-- filled by JS -->
   </div>
 </div>
 
-<!-- ── Grid ── -->
+<!-- â”€â”€ Grid â”€â”€ -->
 <div class="grid-wrapper">
 
   <p class="section-label"><span>Design & Prototyping</span></p>
@@ -377,13 +386,13 @@
 
 </div>
 
-<!-- ── Footer ── -->
+<!-- â”€â”€ Footer â”€â”€ -->
 <footer class="footer">
-  Crafted with ♥ &nbsp;·&nbsp; <em>My Tool Stack</em> &nbsp;·&nbsp; Always Evolving
+  Crafted with â™¥ &nbsp;Â·&nbsp; <em>My Tool Stack</em> &nbsp;Â·&nbsp; Always Evolving
 </footer>
 
 <script>
-// ─── Tool data ──────────────────────────────────────────────────
+// â”€â”€â”€ Tool data â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const tools = {
   design: [
     {
@@ -532,7 +541,7 @@ const tools = {
   ]
 };
 
-// ─── Marquee fill ────────────────────────────────────────────────
+// â”€â”€â”€ Marquee fill â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const allNames = [
   ...tools.design.map(t=>t.name),
   ...tools.build.map(t=>t.name),
@@ -547,7 +556,7 @@ doubled.forEach(name => {
   marquee.appendChild(item);
 });
 
-// ─── Card builder ────────────────────────────────────────────────
+// â”€â”€â”€ Card builder â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 function buildCards(containerId, list) {
   const grid = document.getElementById(containerId);
   list.forEach(tool => {
@@ -573,7 +582,7 @@ buildCards('grid-design', tools.design);
 buildCards('grid-build', tools.build);
 buildCards('grid-ai', tools.ai);
 
-// ─── Scroll-triggered reveal ─────────────────────────────────────
+// â”€â”€â”€ Scroll-triggered reveal â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 const observer = new IntersectionObserver(entries => {
   entries.forEach(e => {
     if (e.isIntersecting) {
@@ -585,7 +594,7 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.tool-card').forEach(card => observer.observe(card));
 
-// ─── Cursor sparkle ──────────────────────────────────────────────
+// â”€â”€â”€ Cursor sparkle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 document.addEventListener('mousemove', e => {
   if (Math.random() > 0.92) {
     const spark = document.createElement('div');
@@ -614,3 +623,4 @@ document.addEventListener('mousemove', e => {
 </script>
 </body>
 </html>
+

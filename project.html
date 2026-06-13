@@ -177,49 +177,7 @@
     }
   </style>
 
-  <!-- Universal Mobile Sizing & Alignment Fix -->
-  <style>
-    @media (max-width: 768px) {
-      /* Prevent horizontal scrolling globally */
-      body, html {
-        overflow-x: hidden !important;
-        width: 100% !important;
-      }
-
-      /* Reduce massive side paddings on containers */
-      section, .hero, footer, main, .section-wrapper, [class*="-section"], [class*="-container"], [class*="-wrapper"] {
-        padding-left: 16px !important;
-        padding-right: 16px !important;
-      }
-
-      /* Force common grids to single column */
-      [class*="-grid"]:not(.project-nav-grid) {
-        grid-template-columns: 1fr !important;
-      }
-
-      /* Reset excessive horizontal margins */
-      .box, .meta-card, .tool-card, [class*="-card"], [class*="-box"] {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
-      }
-
-      /* Ensure images don't break layout */
-      img, video {
-        max-width: 100% !important;
-        height: auto !important;
-      }
-
-      /* Exceptions for specific alignments */
-      .contact-strip {
-        flex-direction: column !important;
-        text-align: center !important;
-        align-items: center !important;
-      }
-    }
-  </style>
-</head>
+  </head>
 <body>
 
   <!-- NAV -->

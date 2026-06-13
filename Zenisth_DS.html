@@ -1360,6 +1360,49 @@
       }
     }
   </style>
+
+  <!-- Universal Mobile Sizing & Alignment Fix -->
+  <style>
+    @media (max-width: 768px) {
+      /* Prevent horizontal scrolling globally */
+      body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+      }
+
+      /* Reduce massive side paddings on containers */
+      section, .hero, footer, main, .section-wrapper, [class*="-section"], [class*="-container"], [class*="-wrapper"] {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Force common grids to single column */
+      [class*="-grid"]:not(.project-nav-grid) {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Reset excessive horizontal margins */
+      .box, .meta-card, .tool-card, [class*="-card"], [class*="-box"] {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      /* Ensure images don't break layout */
+      img, video {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* Exceptions for specific alignments */
+      .contact-strip {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -1681,7 +1724,7 @@
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(90,70,199,0.2); border: 2px solid var(--brand-light);">
-        <span style="font-size:12px; color:var(--brand-light);">â—Ž</span>
+        <span style="font-size:12px; color:var(--brand-light);">◎</span>
       </div>
       <div class="state-name">Focus</div>
     </div>
@@ -1705,7 +1748,7 @@
     </div>
     <div class="state-card">
       <div class="state-dot" style="background: rgba(120,120,120,0.1); border: 1px solid rgba(120,120,120,0.2);">
-        <span style="font-size:12px; opacity:0.4;">â—‹</span>
+        <span style="font-size:12px; opacity:0.4;">○</span>
       </div>
       <div class="state-name">Disabled</div>
     </div>
@@ -1790,12 +1833,12 @@
     <!-- AI PIPELINE -->
     <div class="ai-pipeline reveal">
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">ðŸŽ¨</div>
+        <div class="ai-pipe-icon">🎨</div>
         <div class="ai-pipe-name">Design System</div>
         <div class="ai-pipe-sub">Figma Tokens</div>
       </div>
       <div class="ai-pipe-step">
-        <div class="ai-pipe-icon">ðŸ“‹</div>
+        <div class="ai-pipe-icon">📋</div>
         <div class="ai-pipe-name">Documentation</div>
         <div class="ai-pipe-sub">Design_Tokens.md</div>
       </div>

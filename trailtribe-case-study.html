@@ -1715,6 +1715,49 @@
       }
     }
   </style>
+
+  <!-- Universal Mobile Sizing & Alignment Fix -->
+  <style>
+    @media (max-width: 768px) {
+      /* Prevent horizontal scrolling globally */
+      body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+      }
+
+      /* Reduce massive side paddings on containers */
+      section, .hero, footer, main, .section-wrapper, [class*="-section"], [class*="-container"], [class*="-wrapper"] {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Force common grids to single column */
+      [class*="-grid"]:not(.project-nav-grid) {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Reset excessive horizontal margins */
+      .box, .meta-card, .tool-card, [class*="-card"], [class*="-box"] {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      /* Ensure images don't break layout */
+      img, video {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* Exceptions for specific alignments */
+      .contact-strip {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
@@ -1810,7 +1853,7 @@
               class="integration-arrow">→</span></div>
           <div class="integration-item"><span class="integration-icon">✅</span> Trust verification system<span
               class="integration-arrow">→</span></div>
-          <div class="integration-item"><span class="integration-icon">ðŸ“‹</span> Preparation checklists<span
+          <div class="integration-item"><span class="integration-icon">📋</span> Preparation checklists<span
               class="integration-arrow">→</span></div>
           <div class="integration-item"><span class="integration-icon">👥</span> Community engagement layer<span
               class="integration-arrow">→</span></div>
@@ -1849,12 +1892,12 @@
         <div class="flow-item-task">Location</div>
       </div>
       <div class="flow-item">
-        <div class="flow-item-icon">ðŸ›’</div>
+        <div class="flow-item-icon">🛒</div>
         <div class="flow-item-tool">Amazon</div>
         <div class="flow-item-task">Gear</div>
       </div>
       <div class="flow-item">
-        <div class="flow-item-icon">ðŸ </div>
+        <div class="flow-item-icon">🏬</div>
         <div class="flow-item-tool">Booking Apps</div>
         <div class="flow-item-task">Stay</div>
       </div>
@@ -2022,7 +2065,7 @@
 
     <div class="kpi-grid">
       <div class="kpi-item">
-        <div class="kpi-icon">â±ï¸</div>
+        <div class="kpi-icon">⏱️</div>
         <div class="kpi-name">Time to First RSVP</div>
         <div class="kpi-desc">How quickly new users commit to their first trek</div>
       </div>
@@ -2037,7 +2080,7 @@
         <div class="kpi-desc">Users who complete preparation after RSVP</div>
       </div>
       <div class="kpi-item">
-        <div class="kpi-icon">ðŸ“…</div>
+        <div class="kpi-icon">📅</div>
         <div class="kpi-name">DAU / MAU Ratio</div>
         <div class="kpi-desc">Habit formation and daily engagement depth</div>
       </div>
@@ -2047,17 +2090,17 @@
         <div class="kpi-desc">Free users upgrading to premium plan</div>
       </div>
       <div class="kpi-item">
-        <div class="kpi-icon">ðŸ•ï¸</div>
+        <div class="kpi-icon">🛎️</div>
         <div class="kpi-name">Organizer Retention Rate</div>
         <div class="kpi-desc">Organizers posting treks in subsequent months</div>
       </div>
       <div class="kpi-item">
-        <div class="kpi-icon">ðŸ›’</div>
+        <div class="kpi-icon">🛒</div>
         <div class="kpi-name">Marketplace Transactions</div>
         <div class="kpi-desc">Gear and kit purchases via the platform</div>
       </div>
       <div class="kpi-item">
-        <div class="kpi-icon">ðŸ“ˆ</div>
+        <div class="kpi-icon">📈</div>
         <div class="kpi-name">Day 7 Retention</div>
         <div class="kpi-desc">Users still active one week after signup</div>
       </div>
@@ -2375,14 +2418,14 @@
           revenue from power users.</div>
       </div>
       <div class="mono-item">
-        <div class="mono-icon">ðŸ›’</div>
+        <div class="mono-icon">🛒</div>
         <div class="mono-title">Marketplace Commission</div>
         <div class="mono-price">Commission-based</div>
         <div class="mono-desc">Trek kits, gear bundles, and accessories sold within the app. Revenue on every
           transaction without inventory risk.</div>
       </div>
       <div class="mono-item">
-        <div class="mono-icon">ðŸ·ï¸</div>
+        <div class="mono-icon">🍷</div>
         <div class="mono-title">Sponsored Brand Placements</div>
         <div class="mono-price">CPM / CPA</div>
         <div class="mono-desc">Contextual placements inside resource guides and trek listings. Outdoor brand
@@ -2419,7 +2462,7 @@
     <p class="section-sub reveal">Five tabs. Each one owns a stage of the trekker's lifecycle.</p>
     <div class="ia-nav reveal">
       <div class="ia-tab">
-        <div class="ia-icon">ðŸ </div>
+        <div class="ia-icon">🏬</div>
         <div class="ia-label">Home</div>
       </div>
       <div class="ia-tab">
@@ -2431,11 +2474,11 @@
         <div class="ia-label">Treks</div>
       </div>
       <div class="ia-tab">
-        <div class="ia-icon">ðŸ“š</div>
+        <div class="ia-icon">📚</div>
         <div class="ia-label">Resources</div>
       </div>
       <div class="ia-tab">
-        <div class="ia-icon">ðŸ‘¤</div>
+        <div class="ia-icon">👤</div>
         <div class="ia-label">Profile</div>
       </div>
     </div>
@@ -2524,13 +2567,13 @@
       enterprise-grade from demo-grade.</p>
     <div class="edge-grid reveal">
       <div class="edge-item">
-        <div class="edge-icon">âŒ</div>
+        <div class="edge-icon">❌</div>
         <div class="edge-name">Trek Cancellation</div>
         <div class="edge-desc">Clear notification flow with refund confirmation and alternative trek suggestions
           surfaced immediately.</div>
       </div>
       <div class="edge-item">
-        <div class="edge-icon">â³</div>
+        <div class="edge-icon">⏳</div>
         <div class="edge-name">Waitlist Logic</div>
         <div class="edge-desc">Transparent waitlist position shown with auto-upgrade notification when spots open.</div>
       </div>

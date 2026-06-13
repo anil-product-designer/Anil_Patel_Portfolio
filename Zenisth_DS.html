@@ -998,6 +998,13 @@
     line-height: 1.7;
   }
 
+
+  .final-quote-wrapper {
+    padding: 0 80px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
   /* FINAL QUOTE */
   .final-quote {
     background: linear-gradient(135deg, rgba(90,70,199,0.1) 0%, rgba(90,70,199,0.03) 100%);
@@ -1244,6 +1251,7 @@
     .chapter-banner { padding: 16px 16px; }
     
     .final-quote { padding: 48px 24px; }
+      .final-quote-wrapper { padding: 0 16px 80px; }
     .outcome-row { grid-template-columns: 1fr; }
     .states-grid { grid-template-columns: 1fr; }
     .hero-title { font-size: clamp(36px, 10vw, 64px); }
@@ -1981,7 +1989,7 @@
 </div>
 
 <!-- FINAL QUOTE -->
-<div style="padding: 0 80px 120px; max-width:1200px; margin:0 auto;">
+<div class="final-quote-wrapper">
   <div class="final-quote reveal">
     <p>
       I no longer see design systems as static UI libraries. I see them as <em>scalable operational systems</em> that connect product thinking, developer workflows, and increasingly: AI-assisted implementation.

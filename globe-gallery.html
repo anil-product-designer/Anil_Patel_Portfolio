@@ -193,22 +193,34 @@
 <script>
 // ─── Photos ────────────────────────────────────────────────────────────────────
 const photos = [
-  'assets/images/1.png',
-  'assets/images/2.png',
-  'assets/images/3.png',
-  'assets/images/4.jpeg',
-  'assets/images/5.png',
-  'assets/images/6.jpeg',
-  'assets/images/7.png',
-  'assets/images/8.png',
-  'assets/images/9.png',
-  'assets/images/10.png',
-  'assets/images/11.png',
-  'assets/images/111.png',
-  'assets/images/222.png',
-  'assets/images/56.jpg',
-  'assets/images/57.jpg',
-  'assets/images/Bluesuit.png'
+  'assets/My Word Images/5.png',
+  'assets/My Word Images/IMG-20250115-WA0030~2.jpg',
+  'assets/My Word Images/IMG-20260205-WA0060 (1).jpg',
+  'assets/My Word Images/IMG-20260205-WA0063 (1) (1).jpg',
+  'assets/My Word Images/IMG-20260406-WA0010.jpg',
+  'assets/My Word Images/IMG-20260406-WA0015.jpg',
+  'assets/My Word Images/IMG-20260424-WA0005.jpg',
+  'assets/My Word Images/IMG-20260424-WA0015.jpg',
+  'assets/My Word Images/IMG-20260426-WA0049.jpg',
+  'assets/My Word Images/IMG-20260426-WA0312.jpg',
+  'assets/My Word Images/IMG-20260426-WA0791.jpg',
+  'assets/My Word Images/IMG-20260426-WA0814.jpg',
+  'assets/My Word Images/IMG-20260505-WA0020.jpg',
+  'assets/My Word Images/IMG-20260508-WA0005.jpg',
+  'assets/My Word Images/IMG-20260508-WA0156.jpg',
+  'assets/My Word Images/IMG-20260522-WA0061.jpg',
+  'assets/My Word Images/IMG-20260522-WA0068.jpg',
+  'assets/My Word Images/IMG-20260525-WA0014.jpg',
+  'assets/My Word Images/IMG-20260525-WA0015.jpg',
+  'assets/My Word Images/IMG_20241126_111050_195.jpg',
+  'assets/My Word Images/IMG_20241207_160120_015.webp',
+  'assets/My Word Images/IMG_20250910_181032_221.webp',
+  'assets/My Word Images/IMG_20260420_232627_831.webp',
+  'assets/My Word Images/IMG_20260520_104148_573.jpg',
+  'assets/My Word Images/IMG_20260520_104302_728.jpg',
+  'assets/My Word Images/IMG_20260522_152642_905.jpg',
+  'assets/My Word Images/IMG_20260522_162734_763.jpg',
+  'assets/My Word Images/me.png'
 ];
 
 // ─── Responsive orbit scale ────────────────────────────────────────────────────
@@ -290,6 +302,7 @@ const cards = photos.map((src, i) => {
   img.alt = `Memory ${i+1}`;
   img.draggable = false;
   img.loading = 'eager';
+  img.decoding = 'async';
 
   const shine = document.createElement('div');
   shine.className = 'card-shine';

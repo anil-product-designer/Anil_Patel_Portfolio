@@ -215,7 +215,7 @@
 <div id="hint">Drag to explore · Tap to open</div>
 
 <div id="lightbox">
-  <div id="lightbox-close">✕</div>
+  <div id="lightbox-close"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></div>
   <img id="lightbox-img" src="" alt="" loading="lazy">
 </div>
 
@@ -543,7 +543,7 @@ function animate() {
     dot.style.opacity = opacity;
     dot.style.zIndex  = Math.round(depth * 15) + 1;
 
-    // Line: center → card edge
+    // Line: center <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg> card edge
     line.setAttribute('x1', gx);
     line.setAttribute('y1', gy);
     line.setAttribute('x2', ex);

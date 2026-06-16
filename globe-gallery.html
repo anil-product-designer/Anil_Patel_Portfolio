@@ -7,6 +7,12 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+  :root {
+    --pad-y: 120px;
+  }
+  @media (max-width: 768px) { :root { --pad-y: 80px; } }
+  @media (max-width: 480px) { :root { --pad-y: 40px; } }
+
   html, body {
     width: 100%; height: 100%;
     background: #020408;
@@ -27,18 +33,28 @@
       padding: 40px 0;
     }
   }
-  body { cursor: grab; }
+  body { 
+    cursor: grab; 
+    padding: var(--pad-y) 0;
+    box-sizing: border-box;
+  }
+  #gallery-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
   body.dragging { cursor: grabbing; }
 
   #canvas-bg {
-    position: fixed;
+    position: absolute;
     inset: 0;
     width: 100%; height: 100%;
     z-index: 0;
   }
 
   #lines-svg {
-    position: fixed;
+    position: absolute;
     inset: 0;
     width: 100%; height: 100%;
     pointer-events: none;
@@ -47,7 +63,7 @@
 
   /* Invisible anchor point at center */
   #anchor {
-    position: fixed;
+    position: absolute;
     left: 50%; top: 50%;
     width: 12px; height: 12px;
     margin: -6px 0 0 -6px;
@@ -64,7 +80,7 @@
 
   /* Photo cards */
   .photo-card {
-    position: fixed;
+    position: absolute;
     top: 0; left: 0;
     border-radius: 10px;
     overflow: hidden;
@@ -96,7 +112,7 @@
 
   /* Dot at line endpoint on card */
   .card-dot {
-    position: fixed;
+    position: absolute;
     top: 0; left: 0;
     width: 6px; height: 6px;
     border-radius: 50%;
@@ -143,7 +159,7 @@
 
   /* UI chrome */
   #title {
-    position: fixed;
+    position: absolute;
     top: clamp(14px,3vw,26px);
     left: 50%;
     transform: translateX(-50%);
@@ -158,7 +174,7 @@
   #title span { color: rgba(150,130,245,0.95); }
 
   #hint {
-    position: fixed;
+    position: absolute;
     bottom: clamp(14px,3vw,26px);
     left: 50%;
     transform: translateX(-50%);
@@ -182,6 +198,7 @@
 </style>
 </head>
 <body>
+<div id="gallery-wrapper">
 
 <canvas id="canvas-bg"></canvas>
 <svg id="lines-svg">
@@ -202,7 +219,9 @@
   <img id="lightbox-img" src="" alt="">
 </div>
 
+</div>
 <script>
+const wrapper = document.getElementById('gallery-wrapper');
 // ─── Photos ────────────────────────────────────────────────────────────────────
 const photos = [
   'assets/My Word Images/5.png',
@@ -235,12 +254,12 @@ const photos = [
   'assets/My Word Images/me.png'
 ];
 
-const isMobile = window.innerWidth < 768;
+const isMobile = wrapper.clientWidth < 768;
 const activePhotos = isMobile ? photos.slice(0, 12) : photos;
 
 // ─── Responsive orbit scale ────────────────────────────────────────────────────
 function orbitScale() {
-  const vw = window.innerWidth, vh = window.innerHeight;
+  const vw = wrapper.clientWidth, vh = wrapper.clientHeight;
   if (vw < 480)  return { rx: vw*0.38, ry: vh*0.32, rz: vw*0.30, fov: 600, base: 90 };
   if (vw < 768)  return { rx: vw*0.40, ry: vh*0.30, rz: vw*0.32, fov: 720, base: 110 };
   if (vw < 1100) return { rx: vw*0.42, ry: vh*0.30, rz: vw*0.34, fov: 820, base: 130 };
@@ -253,8 +272,8 @@ const ctx    = canvas.getContext('2d');
 let stars = [];
 
 function initStars() {
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
+  canvas.width  = wrapper.clientWidth;
+  canvas.height = wrapper.clientHeight;
   const n = Math.floor(canvas.width * canvas.height / 5000);
   stars = Array.from({ length: n }, () => ({
     x: Math.random() * canvas.width,
@@ -431,8 +450,8 @@ function cardSize(ratio, depth, base) {
 // ─── Resize ───────────────────────────────────────────────────────────────────
 function onResize() {
   initStars();
-  svgEl.setAttribute('width',  window.innerWidth);
-  svgEl.setAttribute('height', window.innerHeight);
+  svgEl.setAttribute('width',  wrapper.clientWidth);
+  svgEl.setAttribute('height', wrapper.clientHeight);
 }
 window.addEventListener('resize', onResize);
 onResize();
@@ -450,8 +469,8 @@ function animate() {
   }
 
   const cfg = orbitScale();
-  const gx  = window.innerWidth  / 2;
-  const gy  = window.innerHeight / 2;
+  const gx  = wrapper.clientWidth  / 2;
+  const gy  = wrapper.clientHeight / 2;
 
   // Project all cards
   const projected = fibPts.map((fp, i) => {

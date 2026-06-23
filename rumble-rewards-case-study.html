@@ -352,7 +352,7 @@
     }
 
     .scroll-hint::after {
-      content: '?';
+      content: '↓';
       color: var(--purple-bright);
     }
 
@@ -547,7 +547,7 @@
     }
 
     .role-focus-item::before {
-      content: '?';
+      content: '→';
       color: var(--purple-bright);
       flex-shrink: 0;
       margin-top: 0;
@@ -734,7 +734,7 @@
     }
 
     .research-item::before {
-      content: '�';
+      content: '›';
       color: var(--purple-bright);
       font-size: 18px;
       flex-shrink: 0;
@@ -950,7 +950,7 @@
     }
 
     .reason-tag::before {
-      content: '?';
+      content: '→';
       font-size: 10px;
     }
 
@@ -1513,6 +1513,8 @@
   </style>
 
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>.sep{margin:0 0.35em;opacity:0.4;font-style:normal;}</style>
 </head>
 
 <body>
@@ -1520,19 +1522,16 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">? Back</a>
+    <a href="index.html#work" class="back-btn">← Back</a>
     <a href="index.html" class="nav-logo" style="text-decoration: none;">Rumble Rewards</a>
   </div>
     <div class="nav-meta">
       <a href="index.html"
         style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
         onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>Fintech � Play Store � Conversion</span>
-      <span class="nav-tag">Case Study � 2026</span>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-        <span class="sun-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
-        <span class="moon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
-      </button>
+      <span>Fintech <span class="sep" aria-hidden="true">·</span> Play Store <span class="sep" aria-hidden="true">·</span> Conversion</span>
+      <span class="nav-tag">Case Study <span class="sep" aria-hidden="true">·</span> 2026</span>
+      <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
     </div>
   </nav>
 
@@ -1554,7 +1553,7 @@
       <rect x="60" y="320" width="100" height="28" rx="14" fill="#7c3aed" opacity="0.3" />
     </svg>
 
-    <div class="hero-eyebrow"><span>Product Design � Play Store � Conversion Focus</span></div>
+    <div class="hero-eyebrow"><span>Product Design <span class="sep" aria-hidden="true">·</span> Play Store <span class="sep" aria-hidden="true">·</span> Conversion Focus</span></div>
     <h1 class="hero-title">
       <span class="line1">Rumble</span>
       <span class="line2">Rewards</span>
@@ -1627,7 +1626,7 @@
           The goal of the platform is to reduce stress around rent payments while encouraging responsible financial
           behavior giving users rewards and flexibility in a space that typically offers neither.
         </p>
-        <div class="concept-badge" style="margin-bottom:12px;">Fintech � Consumer</div>
+        <div class="concept-badge" style="margin-bottom:12px;">Fintech <span class="sep" aria-hidden="true">·</span> Consumer</div>
         <div class="concept-badge" style="margin-left:8px;">Rent Payments</div>
         <div
           style="margin-top:32px;padding:20px 24px;background:var(--bg3);border:1px solid var(--line);border-radius:4px;">
@@ -1860,11 +1859,11 @@
         <div class="before-after">
           <div class="ba-before">
             <div class="ba-label">Old Order: Emotion First</div>
-            <p class="ba-text">Emotional message ? Features ? Trust ? Value ? Social proof</p>
+            <p class="ba-text">Emotional message → Features → Trust → Value → Social proof</p>
           </div>
           <div class="ba-after">
             <div class="ba-label">New Order: Value First</div>
-            <p class="ba-text">Value ? Simplification ? Rewards ? Flexibility ? Habit building ? Perks ? Security ?
+            <p class="ba-text">Value → Simplification → Rewards → Flexibility → Habit building → Perks → Security →
               Social proof</p>
           </div>
         </div>
@@ -1877,7 +1876,7 @@
       <div class="decision-meta">
         <div class="decision-number">02</div>
         <div class="decision-badge badge-white">Microcopy</div>
-        <div class="decision-title">Reduced Text Length to 5�8 Word Headlines</div>
+        <div class="decision-title">Reduced Text Length to 5–8 Word Headlines</div>
       </div>
       <div class="decision-body">
         <p class="decision-headline">
@@ -1886,7 +1885,7 @@
         </p>
         <p class="decision-rationale">
           Users scan: they do not read. Every extra word is a decision to keep reading, and most users won't make that
-          decision more than once. I cut every headline to 5�8 words maximum, focusing on a single concrete benefit per
+          decision more than once. I cut every headline to 5–8 words maximum, focusing on a single concrete benefit per
           screen. The result is copy that registers in the time it takes to blink past it.
         </p>
         <div class="before-after">
@@ -1965,7 +1964,7 @@
           </div>
           <div class="ba-after">
             <div class="ba-label">After: Alternating Visual Modes</div>
-            <p class="ba-text">UI mockups ? Concept visuals ? Reward visuals three modes cycling across 8 screens.</p>
+            <p class="ba-text">UI mockups → Concept visuals → Reward visuals three modes cycling across 8 screens.</p>
           </div>
         </div>
         <div class="reason-tag">Visual variety prevents fatigue and sustains attention</div>
@@ -1998,7 +1997,7 @@
           </div>
           <div class="ba-after">
             <div class="ba-label">After: One Question Per Screen</div>
-            <p class="ba-text">What is this? ? Why care? ? Is it safe? ? What do I gain? Each screen owns its question
+            <p class="ba-text">What is this? → Why care? → Is it safe? → What do I gain? Each screen owns its question
               completely.</p>
           </div>
         </div>
@@ -2260,7 +2259,7 @@
       <div class="learning-card">
         <div class="learning-num">05</div>
         <div class="learning-title">Most Users Stop at Screen 2</div>
-        <div class="learning-desc">Designing screens 3�8 to convert screen-2 stoppers is good hygiene. But screens 1 and
+        <div class="learning-desc">Designing screens 3–8 to convert screen-2 stoppers is good hygiene. But screens 1 and
           2 must close on their own, without backup.</div>
       </div>
     </div>
@@ -2303,12 +2302,12 @@
       <a href="trailtribe-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Previous Project</span>
         <h2 class="nav-project-title">TrailTribe App</h2>
-        <div class="nav-project-btn">? View Case Study</div>
+        <div class="nav-project-btn">← View Case Study</div>
       </a>
       <a href="transify-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Next Project</span>
         <h2 class="nav-project-title">Zenisth Transify</h2>
-        <div class="nav-project-btn">View Case Study &nbsp; ?</div>
+        <div class="nav-project-btn">View Case Study →</div>
       </a>
     </div>
   </section>
@@ -2316,12 +2315,12 @@
   <!-- FOOTER -->
   <footer>
     <div>
-      <div class="footer-brand">Rumble Rewards � Play Store Case Study � 2025</div>
-      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Fintech � Conversion Design � Product Designer:
+      <div class="footer-brand">Rumble Rewards <span class="sep" aria-hidden="true">·</span> Play Store Case Study <span class="sep" aria-hidden="true">·</span> 2025</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">Fintech <span class="sep" aria-hidden="true">·</span> Conversion Design <span class="sep" aria-hidden="true">·</span> Product Designer:
         Anil Patel</p>
     </div>
     <div class="footer-meta">
-      <p>5 Decisions � 8 Screens � 5 Learnings</p>
+      <p>5 Decisions <span class="sep" aria-hidden="true">·</span> 8 Screens <span class="sep" aria-hidden="true">·</span> 5 Learnings</p>
       <p style="margin-top:4px;color:var(--text-dim);">Pay Now, Rent Later</p>
     </div>
   </footer>

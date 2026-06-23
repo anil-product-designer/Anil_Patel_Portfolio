@@ -665,7 +665,7 @@
     }
 
     .impact-item::before {
-      content: '?';
+      content: '→';
       color: var(--teal-bright);
       flex-shrink: 0;
     }
@@ -727,7 +727,7 @@
     }
 
     .principle-tag::before {
-      content: '?';
+      content: '→';
       font-size: 10px;
     }
 
@@ -1307,6 +1307,8 @@
   </style>
 
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>.sep{margin:0 0.35em;opacity:0.4;font-style:normal;}</style>
 </head>
 
 <body>
@@ -1314,19 +1316,16 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">? Back</a>
-    <a href="index.html" class="nav-logo" style="text-decoration: none;">Zenisth � IDP</a>
+    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html" class="nav-logo" style="text-decoration: none;">Zenisth <span class="sep" aria-hidden="true">·</span> IDP</a>
   </div>
     <div class="nav-meta">
       <a href="index.html"
         style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
         onmouseover="this.style.color='var(--teal-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>B2B SaaS � Intelligent Document Processing</span>
+      <span>B2B SaaS <span class="sep" aria-hidden="true">·</span> Intelligent Document Processing</span>
       <span class="nav-tag">Case Study</span>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-        <span class="sun-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
-        <span class="moon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
-      </button>
+      <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
     </div>
   </nav>
 
@@ -1334,7 +1333,7 @@
   <section class="hero" style="padding-top:120px;">
     <div class="hero-bg"></div>
     <div class="hero-eyebrow">
-      <span>Product Design � End-to-End � 2024</span>
+      <span>Product Design <span class="sep" aria-hidden="true">·</span> End-to-End <span class="sep" aria-hidden="true">·</span> 2024</span>
     </div>
     <h1 class="hero-title">
       <span class="line1">Designing</span>
@@ -1783,7 +1782,7 @@
           Output format is defined once during Tag creation not at the moment of download. This eliminates decision
           fatigue at the worst possible moment (post-extraction, when users just want their data). It also means the
           export pipeline handles one format per batch, simplifying the transformation logic significantly. Predictable
-          in ? predictable out.
+          in → predictable out.
         </p>
         <div class="impact-row">
           <div class="impact-col">
@@ -1982,7 +1981,7 @@
     <h2 class="section-title reveal-text" style="margin-bottom:48px;">What shipped. What was cut.<br>What's next.</h2>
     <div class="scope-grid reveal">
       <div>
-        <div class="scope-block-title" style="color:var(--accent-green);">? Shipped in V1</div>
+        <div class="scope-block-title" style="color:var(--accent-green);">✓ Shipped in V1</div>
         <div class="scope-item">
           <div class="scope-dot" style="background:var(--accent-green);"></div>Document preview staging area
         </div>
@@ -2009,7 +2008,7 @@
         </div>
       </div>
       <div>
-        <div class="scope-block-title" style="color:var(--accent-red);">? Cut for V1</div>
+        <div class="scope-block-title" style="color:var(--accent-red);">✕ Cut for V1</div>
         <div class="scope-item">
           <div class="scope-dot" style="background:var(--accent-red);"></div>Automatic document classification
         </div>
@@ -2026,7 +2025,7 @@
           <div class="scope-dot" style="background:var(--accent-red);"></div>Tag Library analytics
         </div>
 
-        <div class="scope-block-title" style="color:var(--accent-amber);margin-top:40px;">? Planned for V2</div>
+        <div class="scope-block-title" style="color:var(--accent-amber);margin-top:40px;">◷ Planned for V2</div>
         <div class="scope-item">
           <div class="scope-dot" style="background:var(--accent-amber);"></div>Smart classification with user override
         </div>
@@ -2096,12 +2095,12 @@
       <a href="transify-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Previous Project</span>
         <h2 class="nav-project-title">Zenisth Transify</h2>
-        <div class="nav-project-btn">? View Case Study</div>
+        <div class="nav-project-btn">← View Case Study</div>
       </a>
       <a href="trailtribe-case-study.html" class="nav-project-card">
         <span class="nav-project-label">Next Project</span>
         <h2 class="nav-project-title">TrailTribe App</h2>
-        <div class="nav-project-btn">View Case Study &nbsp; ?</div>
+        <div class="nav-project-btn">View Case Study →</div>
       </a>
     </div>
   </section>
@@ -2109,13 +2108,13 @@
   <!-- FOOTER -->
   <footer>
     <div>
-      <div class="footer-brand">Zenisth � IDP � Case Study</div>
-      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">B2B SaaS � Intelligent Document Processing �
+      <div class="footer-brand">Zenisth <span class="sep" aria-hidden="true">·</span> IDP <span class="sep" aria-hidden="true">·</span> Case Study</div>
+      <p style="font-size:11px;color:var(--text-dim);margin-top:8px;">B2B SaaS <span class="sep" aria-hidden="true">·</span> Intelligent Document Processing <span class="sep" aria-hidden="true">·</span>
         End-to-End Product Design</p>
     </div>
     <div class="footer-meta">
-      <p>7 Decisions � 4 Principles � 9 Edge Cases</p>
-      <p style="margin-top:4px;color:var(--text-dim);">V1 Shipped � V2 In Roadmap</p>
+      <p>7 Decisions <span class="sep" aria-hidden="true">·</span> 4 Principles <span class="sep" aria-hidden="true">·</span> 9 Edge Cases</p>
+      <p style="margin-top:4px;color:var(--text-dim);">V1 Shipped <span class="sep" aria-hidden="true">·</span> V2 In Roadmap</p>
     </div>
   </footer>
 

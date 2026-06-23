@@ -51,12 +51,15 @@
 </head>
 
 <body>
-
+    <canvas id="architectural-bg" class="architectural-bg"></canvas>
     <!-- Header & Nav -->
     <header class="header">
         <div class="container">
             <nav class="nav">
-                <a href="index.html" class="nav__logo">Anil Patel</a>
+                <a href="index.html" class="nav__logo-wrapper">
+                    <img src="assets/images/1.webp" alt="Anil Avatar" class="nav__logo-img" loading="lazy">
+                    <span class="nav__logo-text">Anil Patel</span>
+                </a>
 
                 <ul class="nav__links">
                     <li><a href="#home" class="nav__link nav__link--active">Home</a></li>
@@ -68,10 +71,7 @@
                 </ul>
 
                 <div class="nav__actions">
-                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
-                        <span class="sun-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
-                        <span class="moon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
-                    </button>
+                    <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
 
                     <button class="menu-toggle" aria-label="Toggle Navigation">
                         <span></span>
@@ -85,28 +85,25 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero__bg-pattern"></div>
-        <div class="hero__bg-glow"></div>
+
         <div class="container grid">
             <div class="hero__content">
                 <p class="hero__intro reveal"
                     style="font-size: 1.125rem; font-weight: 500; margin-bottom: 0.75rem; color: var(--text-muted, #888);">
                     Hi, I'm Anil <span class="wave-icon"
-                        style="display: inline-block; transform-origin: 70% 70%;"><i data-lucide="hand"></i></span></p>
+                        style="display: inline-block; transform-origin: 70% 70%; color: #fbbf24; margin-left: 4px; vertical-align: middle;"><i data-lucide="hand" style="width: 20px; height: 20px; vertical-align: middle;"></i></span></p>
                 <h1 class="hero__headline reveal">
                     <span class="dim">I design complex products</span><br>
                     <span class="bright">that feel simple to use.</span>
                 </h1>
-                <p class="hero__subline reveal" data-reveal-delay="1">Product Designer at <span
-                        class="highlight">Zenisth AI</span>, across <span class="highlight">B2B AI tools and B2C
-                        mobile</span>from strategy and systems to shipping V1.
-                </p>
+
                 <div class="hero__tags reveal" data-reveal-delay="1.5">
-                    <span class="hero__tag">PRODUCT STRATEGY</span>
-                    <span class="hero__tag">DESIGN SYSTEMS</span>
+                    <span class="hero__tag">PRODUCT DESIGN</span>
                     <span class="hero__tag">B2B SAAS</span>
                     <span class="hero__tag">B2C MOBILE</span>
+                    <span class="hero__tag">DESIGN SYSTEMS</span>
                     <span class="hero__tag">AI WORKFLOWS</span>
+                    <span class="hero__tag">PRODUCT STRATEGY</span>
                 </div>
                 <div class="hero__cta reveal" data-reveal-delay="2">
                     <a href="#work" class="btn">View Work</a>
@@ -121,28 +118,26 @@
         </div>
     </section>
 
-    <!-- Metrics Section (Credibility Strip) -->
-    <section class="metrics">
-        <div class="container grid metrics__grid reveal">
-            <div class="metric-card reveal" data-reveal-delay="1">
-                <h3><span class="highlight">END-TO-END PRODUCT DESIGN</span></h3>
-                <p>At Zenisth AI, I was the only designer across 6 AI tools with no template to follow. I mapped full
-                    system flows what happens before the user arrives, what happens when things break, what brings
-                    them back. I do not start with screens. I start with the structural problem.</p>
-            </div>
-            <div class="metric-card reveal" data-reveal-delay="2">
-                <h3>B2B and B2C Experience</h3>
-                <p>In a voice agent, one bad conversation loses a real customer. I designed not just the interface but
-                    the fallback logic, knowledge base structure, and the feedback loop that shows where the agent fails
-                    so the system prompt improves over time. On the B2C side I've designed for people who owe you
-                    nothing. No patience, no second chances. Same standard, different stakes.</p>
-            </div>
-            <div class="metric-card reveal" data-reveal-delay="3">
-                <h3><span class="highlight">Design Systems and Strategy</span></h3>
-                <p>Built the Zenisth design system from scratch three layers of tokens primitive semantic and
-                    component-level. Every component documented with all states variants and modes. Then structured
-                    the entire system into a single design_tokens.md file so AI tools and IDEs could read it directly
-                    and generate accurate UI. A design system today has to speak to machines not just designers.</p>
+    <!-- Summary Section -->
+    <section class="summary-section reveal">
+        <div class="container grid summary__grid">
+            <div class="summary__stats">
+                <div class="stat-item">
+                    <span class="stat-num"><span class="counter" data-target="2">0</span>+</span>
+                    <span class="stat-label">Years Exp</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num"><span class="counter" data-target="3">0</span></span>
+                    <span class="stat-label">AI Platforms</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num"><span class="counter" data-target="181">0</span></span>
+                    <span class="stat-label">System Tokens</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num"><span class="counter" data-target="20">0</span>+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
             </div>
         </div>
     </section>
@@ -178,48 +173,114 @@
     <section id="work" class="work">
         <div class="container">
             <h2 class="section-title reveal">Selected Work</h2>
-            <div class="work__list">
+            <div class="work__grid">
 
-                <a href="Zenisth_DS.html" class="project-card reveal">
-                    <div class="project-card__year">2026</div>
-                    <div class="project-card__title">Zenisth Design System</div>
-                    <div class="project-card__desc">Design foundation for a multi-tool AI SaaS ecosystem built entirely
-                        from scratch, establishing token architecture and component systems.</div>
-                    <div class="project-card__arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                <a href="Zenisth_DS.html" class="work-card reveal">
+                    <div class="work-card__image-wrap">
+                        <img src="assets/images/10.webp" alt="Zenisth Design System" class="work-card__image" loading="lazy">
+                        <div class="work-card__overlay">
+                            <span class="work-card__cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="work-card__year">2026</span>
+                            <span class="work-card__tag">Design System</span>
+                        </div>
+                        <h3 class="work-card__title">Zenisth Design System</h3>
+                        <p class="work-card__desc">Design foundation for a multi-tool AI SaaS ecosystem built entirely from scratch, establishing token architecture and component systems.</p>
+                    </div>
                 </a>
 
-                <a href="transify-case-study.html" class="project-card reveal">
-                    <div class="project-card__year">2025</div>
-                    <div class="project-card__title">Zenisth Transify ( V1 Launched )</div>
-                    <div class="project-card__desc">B2B SaaS: AI document translation workflow with reusable tag-based
-                        system and credit-based processing</div>
-                    <div class="project-card__arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                <a href="transify-case-study.html" class="work-card reveal" data-reveal-delay="1">
+                    <div class="work-card__image-wrap">
+                        <img src="assets/images/4.webp" alt="Zenisth Transify" class="work-card__image" loading="lazy">
+                        <div class="work-card__overlay">
+                            <span class="work-card__cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="work-card__year">2025</span>
+                            <span class="work-card__tag">B2B SaaS · V1 Launched</span>
+                        </div>
+                        <h3 class="work-card__title">Zenisth Transify</h3>
+                        <p class="work-card__desc">AI document translation workflow with reusable tag-based system and credit-based processing.</p>
+                    </div>
                 </a>
 
-                <a href="idp-case-study.html" class="project-card reveal">
-                    <div class="project-card__year">2026</div>
-                    <div class="project-card__title">Zenisth IDP ( V1 Launched )</div>
-                    <div class="project-card__desc">B2B SaaS: AI document extraction platform designed for structured
-                        data workflows and batch processing</div>
-                    <div class="project-card__arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                <a href="idp-case-study.html" class="work-card reveal" data-reveal-delay="2">
+                    <div class="work-card__image-wrap">
+                        <img src="assets/images/5.webp" alt="Zenisth IDP" class="work-card__image" loading="lazy">
+                        <div class="work-card__overlay">
+                            <span class="work-card__cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="work-card__year">2026</span>
+                            <span class="work-card__tag">B2B SaaS · V1 Launched</span>
+                        </div>
+                        <h3 class="work-card__title">Zenisth IDP</h3>
+                        <p class="work-card__desc">AI document extraction platform designed for structured data workflows and batch processing.</p>
+                    </div>
                 </a>
 
-                <a href="trailtribe-case-study.html" class="project-card reveal">
-                    <div class="project-card__year">2025</div>
-                    <div class="project-card__title">TrailTribe App ( Personal Project )</div>
-                    <div class="project-card__desc">Community-driven trekking platform designed end-to-end, focusing on
-                        trust, discovery, and participation</div>
-                    <div class="project-card__arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                <a href="trailtribe-case-study.html" class="work-card reveal" data-reveal-delay="1">
+                    <div class="work-card__image-wrap">
+                        <img src="assets/images/6.webp" alt="TrailTribe App" class="work-card__image" loading="lazy">
+                        <div class="work-card__overlay">
+                            <span class="work-card__cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="work-card__year">2025</span>
+                            <span class="work-card__tag">Mobile · Personal Project</span>
+                        </div>
+                        <h3 class="work-card__title">TrailTribe App</h3>
+                        <p class="work-card__desc">Community-driven trekking platform designed end-to-end, focusing on trust, discovery, and participation.</p>
+                    </div>
                 </a>
 
-                <a href="rumble-rewards-case-study.html" class="project-card reveal">
-                    <div class="project-card__year">2026</div>
-                    <div class="project-card__title">Rumble Rewards ( Pre Launch )</div>
-                    <div class="project-card__desc">Mobile app store conversion design for a rent rewards fintech
-                        product (Play Store UX)</div>
-                    <div class="project-card__arrow"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+                <a href="rumble-rewards-case-study.html" class="work-card reveal" data-reveal-delay="2">
+                    <div class="work-card__image-wrap">
+                        <img src="assets/images/8.webp" alt="Rumble Rewards" class="work-card__image" loading="lazy">
+                        <div class="work-card__overlay">
+                            <span class="work-card__cta">View Case Study <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                        </div>
+                    </div>
+                    <div class="work-card__body">
+                        <div class="work-card__meta">
+                            <span class="work-card__year">2026</span>
+                            <span class="work-card__tag">Fintech · Pre Launch</span>
+                        </div>
+                        <h3 class="work-card__title">Rumble Rewards</h3>
+                        <p class="work-card__desc">Mobile app store conversion design for a rent rewards fintech product (Play Store UX).</p>
+                    </div>
                 </a>
 
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title reveal">Testimonials</h2>
+            <div class="testimonials__wrapper reveal">
+                <div class="testimonials__carousel" id="testimonialCarousel">
+                    <!-- Cards will be injected by JS -->
+                </div>
+                <div class="testimonials__controls">
+                    <button class="t-btn t-prev" aria-label="Previous Testimonial">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                    </button>
+                    <div class="testimonials__dots" id="testimonialDots"></div>
+                    <button class="t-btn t-next" aria-label="Next Testimonial">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
@@ -323,6 +384,7 @@
     </footer>
 
     <script src="js/tool-stack.js"></script>
+    <script src="js/architectural-bg.js"></script>
     <script src="js/script.js"></script>
     <script src="js/visualizer.js"></script>
   <script>lucide.createIcons();</script>

@@ -51,7 +51,7 @@
     .meta-label { font-size: 10px; letter-spacing: 0.2em; color: var(--text-dim); text-transform: uppercase; margin-bottom: 8px; }
     .meta-val { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 14px; color: var(--white); }
     .scroll-hint { position: relative; z-index: 1; font-size: 11px; letter-spacing: 0.15em; color: var(--text-dim); text-transform: uppercase; margin-top: 32px; display: flex; align-items: center; gap: 10px; animation: fadeUp 0.7s 0.6s ease both; }
-    .scroll-hint::after { content: '?'; color: var(--purple-bright); }
+    .scroll-hint::after { content: '↓'; color: var(--purple-bright); }
 
     /* -- SECTION LABEL -- */
     .section-label { display: flex; align-items: center; gap: 14px; margin-bottom: 56px; }
@@ -178,31 +178,30 @@
   </style>
 
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>.sep{margin:0 0.35em;opacity:0.4;font-style:normal;}</style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">? Back</a>
+    <a href="index.html#work" class="back-btn">← Back</a>
     <a href="index.html" class="nav-logo">ZENISTH TRANSIFY</a>
   </div>
     <div class="nav-meta">
       <a href="index.html" style="font-size:11px;letter-spacing:0.1em;color:var(--text-muted);text-transform:uppercase;text-decoration:none;" onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>Web App � SaaS � Design</span>
-      <span class="nav-tag">Case Study � 2026</span>
+      <span>Web App <span class="sep" aria-hidden="true">·</span> SaaS <span class="sep" aria-hidden="true">·</span> Design</span>
+      <span class="nav-tag">Case Study <span class="sep" aria-hidden="true">·</span> 2026</span>
     
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
-        <span class="sun-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
-        <span class="moon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
-      </button>
+      <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
     </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero" style="padding-top:120px; border-top:none;">
     <div class="hero-bg"></div>
-    <div class="hero-eyebrow"><span>Product Designer � Web App � B2B</span></div>
+    <div class="hero-eyebrow"><span>Product Designer <span class="sep" aria-hidden="true">·</span> Web App <span class="sep" aria-hidden="true">·</span> B2B</span></div>
     <h1 class="hero-title">
       <span class="line1">Zenisth</span>
       <span class="line2">Transify</span>
@@ -260,14 +259,14 @@
   <div class="project-nav-section">
     <div class="project-nav-grid">
       <a href="index.html#work" class="nav-project-card">
-        <div class="nav-project-label">? Return to Work</div>
+        <div class="nav-project-label">← Return to Work</div>
         <div class="nav-project-title">Portfolio</div>
-        <div class="nav-project-btn">View All Projects ?</div>
+        <div class="nav-project-btn">View All Projects →</div>
       </a>
       <a href="idp-case-study.html" class="nav-project-card">
-        <div class="nav-project-label">Next Project ?</div>
+        <div class="nav-project-label">Next Project →</div>
         <div class="nav-project-title">IDP Case Study</div>
-        <div class="nav-project-btn">View Case Study ?</div>
+        <div class="nav-project-btn">View Case Study →</div>
       </a>
     </div>
   </div>

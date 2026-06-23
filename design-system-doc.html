@@ -307,7 +307,7 @@
       border-bottom: 1px solid var(--line);
     }
 
-    .type-meta {}
+
 
     .type-role {
       font-size: 10px;
@@ -416,7 +416,7 @@
       font-family: 'DM Mono', monospace;
     }
 
-    .spacing-bar-wrap {}
+
 
     .spacing-bar {
       height: 4px;
@@ -441,7 +441,7 @@
       gap: 40px;
     }
 
-    .comp-block {}
+
 
     .comp-block-title {
       font-size: 10px;
@@ -804,7 +804,7 @@
     }
 
     .css-vars-header::before {
-      content: '?';
+      content: '→';
       color: var(--accent-red);
     }
 
@@ -1058,6 +1058,8 @@
   </style>
 
     <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>.sep{margin:0 0.35em;opacity:0.4;font-style:normal;}</style>
 </head>
 
 <body>
@@ -1065,11 +1067,11 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">? Back</a>
+    <a href="index.html#work" class="back-btn">← Back</a>
     <div class="nav-title"><a href="index.html" style="text-decoration:none; color:inherit;">Design System Doc</a></div>
   </div>
     <div class="nav-links">
-      <a href="index.html" style="opacity:0.6;">? Portfolio</a>
+      <a href="index.html" style="opacity:0.6;">← Portfolio</a>
       <a href="#colors">Colors</a>
       <a href="#typography">Typography</a>
       <a href="#spacing">Spacing</a>
@@ -1078,10 +1080,7 @@
       <a href="#motion">Motion</a>
       <a href="#code">Code</a>
     
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
-        <span class="sun-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
-        <span class="moon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
-      </button>
+      <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
     </div>
   </nav>
 
@@ -1175,7 +1174,7 @@
             <div class="swatch-info">
               <div class="swatch-name">--violet-bright</div>
               <div class="swatch-hex">#a855f7</div>
-              <div class="swatch-use">Labels, arrows (?), tags, highlights.</div>
+              <div class="swatch-use">Labels, arrows, tags, highlights.</div>
             </div>
           </div>
           <div class="color-swatch">
@@ -1326,9 +1325,9 @@
         <div class="type-preview">
           <div style="font-family:'DM Mono',monospace;font-size:14px;line-height:1.7;color:var(--text-muted);">
             Enterprise teams translating documents face<br>
-            <span style="color:var(--accent-green)">? inconsistent terminology</span><br>
-            <span style="color:var(--accent-green)">? no batch control</span><br>
-            <span style="color:var(--accent-green)">? unclear cost estimation</span>
+            <span style="color:var(--accent-green)">✕ inconsistent terminology</span><br>
+            <span style="color:var(--accent-green)">✕ no batch control</span><br>
+            <span style="color:var(--accent-green)">✕ unclear cost estimation</span>
           </div>
         </div>
         <div class="type-usage">Used for: Body copy, labels, badges, code blocks, metadata, captions, nav items.
@@ -1353,20 +1352,19 @@
 
     <!-- Font pairing demo -->
     <div class="pairing-box reveal">
-      <div class="pairing-header">? Live Pairing Demo</div>
+      <div class="pairing-header">◆ Live Pairing Demo</div>
       <div class="pairing-body">
         <div class="pairing-display">Enterprise Translation<br><span style="color:var(--text-dim)">Redesigned.</span>
         </div>
         <div class="pairing-italic">not just an AI tool: <strong
             style="color:var(--text);font-style:normal;font-weight:400;">a controlled workflow.</strong></div>
-        <p class="pairing-body-text">I structured the workflow into four explicit states: Upload ? Select Tag ?
-          Translate ? Download. Each step is atomic: the user completes one cognitive task before advancing. This isn't
+        <p class="pairing-body-text">I structured the workflow into four explicit states: Upload → Select Tag → Translate → Download. Each step is atomic: the user completes one cognitive task before advancing. This isn't
           just UX polish; it maps directly to backend state management.</p>
         <div style="margin-top:20px;">
-          <span class="pairing-code">font-family: 'Bricolage Grotesque' ? Heroes & Titles</span>
-          <span class="pairing-code" style="color:var(--violet-bright);">font-family: 'Fraunces' ? Italic
-            Subtitles</span>
-          <span class="pairing-code" style="color:var(--text-muted);">font-family: 'DM Mono' ? Body & UI</span>
+          <span class="pairing-code">font-family: 'Bricolage Grotesque' → Heroes & Titles</span>
+          <span class="pairing-code" style="color:var(--violet-bright);">font-family: 'Fraunces' → Italic
+            Accent</span>
+          <span class="pairing-code" style="color:var(--text-muted);">font-family: 'DM Mono' → Body & UI</span>
         </div>
       </div>
     </div>
@@ -1692,7 +1690,7 @@
           border-radius: <span class="c-amber">2px</span>;
           }
           <span class="c-purple">.principle-tag::before</span> {
-          content: <span class="c-green">'?'</span>;
+          content: <span class="c-green">'↓'</span>;
           font-size: <span class="c-amber">10px</span>;
           }
         </div>
@@ -1759,9 +1757,10 @@
         <div class="effect-card-desc">Instead of adding individual borders to grid children, set gap:1px and
           background:var(--line) on the parent. The gap color becomes the border.</div>
         <div class="effect-code">.grid-parent {<br>&nbsp;&nbsp;display: grid;<br>&nbsp;&nbsp;grid-template-columns: 1fr
-          1fr;<br>&nbsp;&nbsp;gap: 1px;<br>&nbsp;&nbsp;background: var(--line); /* ? border */<br>&nbsp;&nbsp;border:
-          1px solid var(--line);<br>&nbsp;&nbsp;overflow: hidden;<br>}<br>.grid-child {<br>&nbsp;&nbsp;background:
-          var(--bg2); /* ? fill */<br>}</div>
+          1fr;<br>&nbsp;&nbsp;gap: 1px;<br>&nbsp;&nbsp;background: var(--line); /* → border */<br>&nbsp;&nbsp;border:
+          none;<br>&nbsp;&nbsp;border-radius: 4px;<br>}<br><br>.objective-item
+          {<br>&nbsp;&nbsp;background:
+          var(--bg2); /* → fill */<br></div>
       </div>
 
       <div class="effect-card" style="border:1px solid var(--line);background:var(--bg2);">
@@ -1791,7 +1790,7 @@
       <div class="motion-row">
         <div>
           <div class="motion-name">Fade Up (entry)</div>
-          <div class="motion-val">opacity 0?1 + translateY 24px?0</div>
+          <div class="motion-val">opacity 0→1 + translateY 24px→0</div>
         </div>
         <div class="motion-demo">
           <div class="motion-bar"></div>

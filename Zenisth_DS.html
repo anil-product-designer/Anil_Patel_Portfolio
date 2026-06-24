@@ -82,7 +82,7 @@
     list-style: none;
   }
 
-  .nav-links a {
+  .nav__links a {
     font-size: 13px;
     font-weight: 500;
     color: var(--text-2);
@@ -91,7 +91,7 @@
     transition: color 0.2s;
   }
 
-  .nav-links a:hover { color: var(--text); }
+  .nav__links a:hover { color: var(--text); }
 
   /* SECTIONS */
   section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E'); position: relative; }
@@ -1473,7 +1473,7 @@
       transform: translateY(-150%);
       opacity: 0;
       transition: transform 0.4s ease, opacity 0.4s ease;
-      z-index: -1;
+      z-index: 999;
       border-bottom: 1px solid var(--line, rgba(255,255,255,0.1));
       pointer-events: none;
     }
@@ -1492,7 +1492,7 @@
 <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
     <a href="index.html#work" class="back-btn">← Back</a>
-    <div class="nav-logo">Zenisth AI � Design System</div>
+    <div class="nav-logo">Zenisth AI · Design System</div>
   </div>
   <ul class="nav__links">
     <li><a href="#beginning">Beginning</a></li>
@@ -1523,7 +1523,7 @@
   <div class="hero-orb"></div>
   <div class="hero-orb-2"></div>
 
-  <div class="hero-tag">Case Study � Product Design � 2026</div>
+  <div class="hero-tag">Case Study · Product Design · 2026</div>
 
   <h1 class="hero-title">
     <span class="hero-title-line">From Zero</span>
@@ -1901,7 +1901,7 @@
 <!-- CHAPTER 5 BANNER - THE CLIMAX -->
 <div class="chapter-banner reveal" id="ai-twist">
   <div class="chapter-dot" style="background: #7B6BD4;"></div>
-  <span class="chapter-label" style="color: var(--brand-light);">Chapter 05 � The Twist</span>
+  <span class="chapter-label" style="color: var(--brand-light);">Chapter 05 — The Twist</span>
   <span class="chapter-name" style="margin-left:8px; color: var(--brand-light);">When the System Met the AI Era</span>
 </div>
 
@@ -2029,22 +2029,22 @@
       <div class="timeline-desc">Studied design system fundamentals through industry tutorials and guidance from mentors. Applied learnings immediately to the Zenisth architecture plan.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Week 02�03</div>
+      <div class="timeline-month">Week 02-03</div>
       <div class="timeline-event">Token Foundation Complete</div>
       <div class="timeline-desc">181 foundational tokens defined across color, typography, and numerical values. Three-layer token architecture established in Figma variables.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 01�02</div>
+      <div class="timeline-month">Month 01-02</div>
       <div class="timeline-event">MVP Component Library</div>
       <div class="timeline-desc">Core reusable components built from wireframe audits. Full state coverage, dark theme support, and responsive behavior for every component.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 02�03</div>
+      <div class="timeline-month">Month 02-03</div>
       <div class="timeline-event">Developer Enablement</div>
       <div class="timeline-desc">Figma Dev Mode configured with full component specs. Design_Tokens.md created to bridge design, development, and AI coding workflows.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 03�06</div>
+      <div class="timeline-month">Month 03-06</div>
       <div class="timeline-event">System Scales With Platform</div>
       <div class="timeline-desc">As new AI tools were introduced, the system expanded. New variants, updated patterns, refined documentation: all while maintaining backward compatibility across existing products.</div>
     </div>
@@ -2129,14 +2129,14 @@
     <p>
       The future of design systems isn't only visual consistency. It's creating systems that <em>humans and machines can build from together.</em>
     </p>
-    <div class="final-quote-author">� Founding Designer, Zenisth AI � 2026</div>
+    <div class="final-quote-author">— Founding Designer, Zenisth AI · 2026</div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Zenisth AI Design System</div>
-  <div class="footer-meta">Case Study � Product Design � 2026 � Built by the Founding Designer</div>
+  <div class="footer-meta">Case Study · Product Design · 2026 · Built by the Founding Designer</div>
 </footer>
 
 <script>
@@ -2153,7 +2153,7 @@
 
   // Nav active state on scroll
   const sections = document.querySelectorAll('section[id], div[id]');
-  const navLinks = document.querySelectorAll('.nav-links a');
+  const navLinks = document.querySelectorAll('.nav__links a');
 
   window.addEventListener('scroll', () => {
     let current = '';
@@ -2183,6 +2183,7 @@
 </script>
 
   <script>lucide.createIcons();</script>
+  <script src="js/script.js"></script>
 </body>
 </html>
 

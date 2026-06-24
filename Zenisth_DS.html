@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Building the Zenisth AI Design System</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Nunito+Sans:wght@300;400;500;600;700&family=Roboto+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300;1,9..144,400&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -24,9 +24,9 @@
     --text: #F0EFF8;
     --text-2: #A09CB8;
     --text-3: #5E5A78;
-    --mono: 'Roboto Mono', monospace;
-    --sans: 'Nunito Sans', sans-serif;
-    --display: 'Nunito', sans-serif;
+    --mono: 'DM Mono', monospace;
+    --sans: 'DM Mono', monospace;
+    --display: 'Syne', sans-serif;
   }
 
   html { scroll-behavior: smooth; }
@@ -1363,7 +1363,48 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <style>.sep{margin:0 0.35em;opacity:0.4;font-style:normal;}</style>
+  <!-- Universal Mobile Sizing & Alignment Fix -->
+  <style>
+    @media (max-width: 768px) {
+      /* Prevent horizontal scrolling globally */
+      body, html {
+        overflow-x: hidden !important;
+        width: 100% !important;
+      }
+
+      /* Reduce massive side paddings on containers */
+      section, .hero, footer, main, .section-wrapper, [class*="-section"], [class*="-container"], [class*="-wrapper"] {
+        padding-left: 16px !important;
+        padding-right: 16px !important;
+      }
+
+      /* Force common grids to single column */
+      [class*="-grid"]:not(.project-nav-grid) {
+        grid-template-columns: 1fr !important;
+      }
+
+      /* Reset excessive horizontal margins */
+      .box, .meta-card, .tool-card, [class*="-card"], [class*="-box"] {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important;
+      }
+
+      /* Ensure images don't break layout */
+      img, video {
+        max-width: 100% !important;
+        height: auto !important;
+      }
+
+      /* Exceptions for specific alignments */
+      .contact-strip {
+        flex-direction: column !important;
+        text-align: center !important;
+        align-items: center !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -1371,7 +1412,7 @@
 <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
     <a href="index.html#work" class="back-btn">← Back</a>
-    <div class="nav-logo">Zenisth AI <span class="sep" aria-hidden="true">·</span> Design System</div>
+    <div class="nav-logo">Zenisth AI � Design System</div>
   </div>
   <ul class="nav-links">
     <li><a href="#beginning">Beginning</a></li>
@@ -1381,7 +1422,10 @@
     <li><a href="#evolution">Evolution</a></li>
     <li><a href="#reflection">Reflection</a></li>
     <li>
-      <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme" style="background:none; border:none; cursor:pointer; font-size:16px; margin-left: 16px;">
+        <span class="sun-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></span>
+        <span class="moon-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg></span>
+      </button>
     </li>
   </ul>
 </nav>
@@ -1392,7 +1436,7 @@
   <div class="hero-orb"></div>
   <div class="hero-orb-2"></div>
 
-  <div class="hero-tag">Case Study <span class="sep" aria-hidden="true">·</span> Product Design <span class="sep" aria-hidden="true">·</span> 2026</div>
+  <div class="hero-tag">Case Study � Product Design � 2026</div>
 
   <h1 class="hero-title">
     <span class="hero-title-line">From Zero</span>
@@ -1770,7 +1814,7 @@
 <!-- CHAPTER 5 BANNER - THE CLIMAX -->
 <div class="chapter-banner reveal" id="ai-twist">
   <div class="chapter-dot" style="background: #7B6BD4;"></div>
-  <span class="chapter-label" style="color: var(--brand-light);">Chapter 05 <span class="sep" aria-hidden="true">·</span> The Twist</span>
+  <span class="chapter-label" style="color: var(--brand-light);">Chapter 05 � The Twist</span>
   <span class="chapter-name" style="margin-left:8px; color: var(--brand-light);">When the System Met the AI Era</span>
 </div>
 
@@ -1898,22 +1942,22 @@
       <div class="timeline-desc">Studied design system fundamentals through industry tutorials and guidance from mentors. Applied learnings immediately to the Zenisth architecture plan.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Week 02 · 03</div>
+      <div class="timeline-month">Week 02�03</div>
       <div class="timeline-event">Token Foundation Complete</div>
       <div class="timeline-desc">181 foundational tokens defined across color, typography, and numerical values. Three-layer token architecture established in Figma variables.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 01 · 02</div>
+      <div class="timeline-month">Month 01�02</div>
       <div class="timeline-event">MVP Component Library</div>
       <div class="timeline-desc">Core reusable components built from wireframe audits. Full state coverage, dark theme support, and responsive behavior for every component.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 02 · 03</div>
+      <div class="timeline-month">Month 02�03</div>
       <div class="timeline-event">Developer Enablement</div>
       <div class="timeline-desc">Figma Dev Mode configured with full component specs. Design_Tokens.md created to bridge design, development, and AI coding workflows.</div>
     </div>
     <div class="timeline-item">
-      <div class="timeline-month">Month 03 · 06</div>
+      <div class="timeline-month">Month 03�06</div>
       <div class="timeline-event">System Scales With Platform</div>
       <div class="timeline-desc">As new AI tools were introduced, the system expanded. New variants, updated patterns, refined documentation: all while maintaining backward compatibility across existing products.</div>
     </div>
@@ -1998,14 +2042,14 @@
     <p>
       The future of design systems isn't only visual consistency. It's creating systems that <em>humans and machines can build from together.</em>
     </p>
-    <div class="final-quote-author"><i data-lucide="pen-tool"></i> Founding Designer, Zenisth AI <span class="sep" aria-hidden="true">·</span> 2026</div>
+    <div class="final-quote-author">� Founding Designer, Zenisth AI � 2026</div>
   </div>
 </div>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Zenisth AI Design System</div>
-  <div class="footer-meta">Case Study <span class="sep" aria-hidden="true">·</span> Product Design <span class="sep" aria-hidden="true">·</span> 2026 <span class="sep" aria-hidden="true">·</span> Built by the Founding Designer</div>
+  <div class="footer-meta">Case Study � Product Design � 2026 � Built by the Founding Designer</div>
 </footer>
 
 <script>

@@ -42,7 +42,7 @@
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
       pointer-events: none;
       z-index: 1000;
-      opacity: 0.6;
+      opacity: 0.55;
     }
 
     /* -- NAV -------------------------------------- */
@@ -223,7 +223,7 @@
 
     /* -- SECTION COMMON --------------------------- */
     section { background-image: url('data:image/svg+xml,%3Csvg viewBox=\'0 0 256 256\' xmlns=\'http://www.w3.org/2000/svg\'%3E%3Cfilter id=\'noise\'%3E%3CfeTurbulence type=\'fractalNoise\' baseFrequency=\'0.9\' numOctaves=\'4\' stitchTiles=\'stitch\'/%3E%3C/filter%3E%3Crect width=\'100%25\' height=\'100%25\' filter=\'url(%23noise)\' opacity=\'0.04\'/%3E%3C/svg%3E');
-      padding: 120px 48px;
+      padding: 112px 48px;
     }
 
     .section-label {
@@ -1047,7 +1047,7 @@
       padding: 48px;
       border: 1px solid var(--line);
       border-radius: 4px;
-      transition: all 0.3s ease;
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
       text-decoration: none;
       display: flex;
       flex-direction: column;
@@ -1307,21 +1307,19 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
+    <a href="index.html#work" class="back-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Back</a>
     <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">Zenisth Transify</a>
   </div>
-    <div class="nav-meta">
-      <a href="index.html"
-        style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
-        onmouseover="this.style.color='var(--violet-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>B2B SaaS <span class="sep" aria-hidden="true">·</span> AI-powered translation Tool</span>
-      <span class="nav-tag">Case Study</span>
-      <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
-    </div>
-  </nav>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#context">Context</a></li>
+    <li><a href="#decisions">Decisions</a></li>
+    <li><a href="#impact">Impact</a></li>
+  </ul>
+</nav>
 
   <!-- HERO -->
-  <section class="hero" style="padding-top: 120px;">
+  <section id="overview" class="hero" style="padding-top: 120px;">
     <div class="hero-bg"></div>
     <div class="hero-eyebrow">
       <span>Product Design <span class="sep" aria-hidden="true">·</span> End-to-End <span class="sep" aria-hidden="true">·</span> 2026</span>
@@ -1348,7 +1346,7 @@
   </section>
 
   <!-- CONTEXT -->
-  <section class="context-section">
+  <section id="context" class="context-section">
     <div class="section-label reveal">
       <span>Context</span>
       <span class="num">/ 01</span>
@@ -1558,7 +1556,7 @@
     </div>
   </section>
   <!-- DECISIONS -->
-  <section class="decisions-section">
+  <section id="decisions" class="decisions-section">
     <div class="section-label reveal">
       <span>Design Decisions</span>
       <span class="num">/ 04</span>
@@ -2029,30 +2027,30 @@
     </div>
     <div class="psych-grid reveal">
       <div class="psych-item">
-        <div class="psych-icon"><i data-lucide="brain"></i></div>
+        <div class="psych-icon"><i data-lucide="split"></i></div>
         <div class="psych-name">Hick's Law</div>
         <p class="psych-desc">Step-based flow reduces choices at each decision point, cutting response time and
           cognitive load.</p>
       </div>
       <div class="psych-item">
-        <div class="psych-icon"><i data-lucide="lightbulb"></i></div>
+        <div class="psych-icon"><i data-lucide="shield-alert"></i></div>
         <div class="psych-name">Loss Aversion</div>
         <p class="psych-desc">Confirmation before credit deduction ensures users experience control, not surprise loss.
         </p>
       </div>
       <div class="psych-item">
-        <div class="psych-icon"><i data-lucide="eye"></i></div>
+        <div class="psych-icon"><i data-lucide="layers"></i></div>
         <div class="psych-name">Progressive Disclosure</div>
         <p class="psych-desc">Tags hide configuration complexity. Users access power without confronting it upfront.</p>
       </div>
       <div class="psych-item">
-        <div class="psych-icon"><i data-lucide="message-circle"></i></div>
+        <div class="psych-icon"><i data-lucide="shield-check"></i></div>
         <div class="psych-name">Trust Framing</div>
         <p class="psych-desc">Microcopy that confirms safety ("your files are safe") directly addresses anxiety at key
           moments.</p>
       </div>
       <div class="psych-item">
-        <div class="psych-icon"><i data-lucide="compass"></i></div>
+        <div class="psych-icon"><i data-lucide="repeat"></i></div>
         <div class="psych-name">Consistency Principle</div>
         <p class="psych-desc">Tags enforce behavioral standards across teams consistent input, consistent output,
           consistent trust.</p>
@@ -2061,7 +2059,7 @@
   </section>
 
   <!-- IMPACT -->
-  <section class="impact-section">
+  <section id="impact" class="impact-section">
     <div class="section-label reveal">
       <span>Impact</span>
       <span class="num">/ 07</span>

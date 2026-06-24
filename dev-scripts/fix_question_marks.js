@@ -5,7 +5,8 @@ const files = [
   'idp-case-study.html',
   'rumble-rewards-case-study.html',
   'transify-case-study.html',
-  'Zenisth_DS.html'
+  'Zenisth_DS.html',
+  'trailtribe-case-study.html'
 ];
 
 files.forEach(file => {

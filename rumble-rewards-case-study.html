@@ -123,7 +123,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s ease;
+      transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
       font-size: 16px;
       margin-left: 16px;
     }
@@ -1429,35 +1429,60 @@
       .scope-block { padding: 20px 16px; }
     }
   
+  /* -- BACK BUTTON -------------------- */
   .back-btn {
     display: inline-flex;
     align-items: center;
     font-size: 13px;
     font-weight: 500;
-    color: var(--text-2, #A09CB8);
+    color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.2s;
+    transition: color 0.2s ease;
   }
   .back-btn:hover {
-    color: var(--text, #F0EFF8);
+    color: var(--text);
   }
-  /* LIGHT MODE (Rumble Rewards Theme) */
+  
+  /* -- LIGHT MODE --------------------- */
   .light-mode {
-      --bg: #F8F8F8;
-      --bg2: #FFFFFF;
-      --bg3: #F0F0F0;
-      --bg4: #E8E8E8;
-      --text: #1A1A1A;
-      --text-muted: #555555;
-      --text-dim: #777777;
-      --line: rgba(124, 58, 237, 0.15);
-      --white: #111111;
-      --purple-glow: rgba(124, 58, 237, 0.08);
-    }
+    --bg: #F8F8F8;
+    --bg2: #FFFFFF;
+    --bg3: #F0F0F0;
+    --bg4: #E8E8E8;
+    --text: #1A1A1A;
+    --text-muted: #555555;
+    --text-dim: #777777;
+    --line: rgba(124, 58, 237, 0.15);
+    --white: #111111;
+    --purple-glow: rgba(124, 58, 237, 0.08);
+  }
   .sun-icon { display: inline; }
   .moon-icon { display: none; }
   .light-mode .sun-icon { display: none; }
   .light-mode .moon-icon { display: inline; }
+  .sep { margin: 0 0.35em; opacity: 0.4; font-style: normal; }
+
+  /* -- HERO-META MOBILE OVERRIDE ------ */
+  @media (max-width: 900px) {
+    .hero-meta {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      gap: 16px !important;
+    }
+    .hero-meta-item {
+      flex: 1 1 calc(50% - 16px) !important;
+      min-width: 140px !important;
+      padding: 0 !important;
+      border: none !important;
+    }
+    .meta-card {
+      flex: 1 1 calc(50% - 16px) !important;
+      min-width: 140px !important;
+      padding: 16px !important;
+      border: 1px solid var(--border) !important;
+    }
+  }
+
 </style>
 <script src="js/theme.js"></script>
 <!-- Google tag (gtag.js) -->
@@ -1488,33 +1513,7 @@
     <meta name="twitter:title" content="Anil Patel - Product Designer">
     <meta name="twitter:description" content="Anil Patel is a Product Designer working across SaaS, AI, and mobile products. View my portfolio and case studies.">
 
-
-  <style>
-    @media (max-width: 900px) {
-      .hero-meta {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        gap: 16px !important;
-      }
-      .hero-meta-item {
-        flex: 1 1 calc(50% - 16px) !important;
-        min-width: 140px !important;
-        padding: 0 !important;
-        border: none !important;
-      }
-      .meta-card {
-        flex: 1 1 calc(50% - 16px) !important;
-        min-width: 140px !important;
-        /* Kept padding and border for .meta-card */
-        padding: 16px !important;
-        border: 1px solid var(--border) !important;
-      }
-    }
-  </style>
-
     <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>.sep{margin:0 0.35em;opacity:0.4;font-style:normal;}</style>
 </head>
 
 <body>
@@ -1522,21 +1521,19 @@
   <!-- NAV -->
   <nav>
   <div class="nav-left" style="display:flex; align-items:center; gap:24px;">
-    <a href="index.html#work" class="back-btn">← Back</a>
-    <a href="index.html" class="nav-logo" style="text-decoration: none;">Rumble Rewards</a>
+    <a href="index.html#work" class="back-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg> Back</a>
+    <a href="index.html" class="nav-logo" style="text-decoration: none; color: inherit;">Rumble Rewards</a>
   </div>
-    <div class="nav-meta">
-      <a href="index.html"
-        style="font-size: 11px; letter-spacing: 0.1em; color: var(--text-muted); text-transform: uppercase; text-decoration: none; transition: color 0.2s;"
-        onmouseover="this.style.color='var(--purple-bright)'" onmouseout="this.style.color='var(--text-muted)'">Home</a>
-      <span>Fintech <span class="sep" aria-hidden="true">·</span> Play Store <span class="sep" aria-hidden="true">·</span> Conversion</span>
-      <span class="nav-tag">Case Study <span class="sep" aria-hidden="true">·</span> 2026</span>
-      <a href="https://wa.me/918160333948" target="_blank" rel="noopener noreferrer" class="hire-me-pill">Hire Me</a>
-    </div>
-  </nav>
+  <ul class="nav-links">
+    <li><a href="#overview">Overview</a></li>
+    <li><a href="#gamification">Gamification</a></li>
+    <li><a href="#design">Design</a></li>
+    <li><a href="#impact">Impact</a></li>
+  </ul>
+</nav>
 
   <!-- -- HERO ----------------------------------- -->
-  <section class="hero" style="padding-top:120px; border-top:none;">
+  <section id="overview" class="hero" style="padding-top:120px; border-top:none;">
     <div class="hero-bg"></div>
 
     <!-- Decorative phone shape -->
@@ -2167,7 +2164,7 @@
   </section>
 
   <!-- -- 08. IMPACT ------------------------------- -->
-  <section class="impact-section">
+  <section id="impact" class="impact-section">
     <div class="section-label reveal">
       <span class="sl-text">Expected Impact</span>
       <span class="sl-num">/ 08</span>

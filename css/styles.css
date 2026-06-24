@@ -2337,3 +2337,41 @@ ul {
 .reveal-text.reveal--visible .reveal-text-word {
   transform: translateY(0);
 }
+
+/* Global SVG Alignment Helpers */
+p svg,
+li svg,
+strong svg,
+span svg,
+a svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  display: inline-block;
+  margin: 0 4px;
+  position: relative;
+  top: -1px;
+  flex-shrink: 0;
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-2);
+  text-decoration: none;
+  letter-spacing: 0.3px;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+@media (max-width: 900px) {
+  .nav-links { display: none; }
+}

@@ -918,6 +918,11 @@ ul {
     padding: 24px;
     width: 280px;
   }
+  
+  .photo-card {
+    width: 280px;
+    height: 200px;
+  }
 }
 
 /* Section: Philosophy */
@@ -1300,16 +1305,31 @@ ul {
   align-items: center;
 }
 
-.photo-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--gutter);
+.photo-carousel {
+  position: relative;
   width: 100%;
-  max-width: 1400px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+
+.photo-grid {
+  display: flex;
+  gap: var(--gutter);
+  width: max-content;
+  animation: scrollMarquee 25s linear infinite;
+}
+
+.photo-grid:hover {
+  animation-play-state: paused;
 }
 
 .photo-card {
+  width: 400px;
   height: 280px;
+  flex-shrink: 0;
   border-radius: 4px;
   background: var(--bg3);
   border: 1px solid var(--line);

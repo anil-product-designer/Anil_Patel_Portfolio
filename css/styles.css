@@ -825,10 +825,9 @@ ul {
 }
 
 .testimonials__wrapper {
-  max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   position: relative;
-  height: 320px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -917,7 +916,7 @@ ul {
 @media (max-width: 768px) {
   .testimonial-card {
     padding: 24px;
-    width: 320px;
+    width: 280px;
   }
 }
 

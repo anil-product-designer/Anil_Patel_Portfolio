@@ -917,7 +917,7 @@ ul {
 @media (max-width: 768px) {
   .testimonial-card {
     padding: 24px;
-    width: 90%;
+    width: 320px;
   }
 }
 
